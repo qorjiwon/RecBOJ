@@ -17,13 +17,15 @@ def open_user_page(user_id) :
 
 # 사용자 정보 받아와서 dataframe 형태로 저장
 def get_uer_info(page) :
-    problem_list=page.find_all('div', {'class':'panel panel-default'})
-    # 맞은 문제
-    correct=problem_list[1].find_all('div',{'class':'problem-list'})
-    correct_list=correct[0].text.split(' ')[:-1]
-    # 시도했지만 맞지 못한 문제
-    wrong=problem_list[2].find_all('div',{'class':'problem-list'})  
-    wrong_list=wrong[0].text.split(' ')[:-1]
+    table_list=page.find_all('div', {'class':'panel panel-default'})
+    for table in table_list :
+        table_title=table.find('h3',{'class':'panel-title'}).text
+        if table_title == '맞은 문제' :
+            correct=table.find_all('div',{'class':'problem-list'})
+            correct_list=correct[0].text.split(' ')[:-1]
+        elif table_title=='시도했지만 맞지 못한 문제' :
+            wrong=table.find_all('div',{'class':'problem-list'})  
+            wrong_list=wrong[0].text.split(' ')[:-1]
     return correct_list,wrong_list
 
 def open_problem_page(problem_id,user_id) :
@@ -61,14 +63,17 @@ def get_problem_info(user_id,problem_id,page) :
         
 
 def main() :
-    user_list=pd.read_csv('solvedac_user_data.csv',index_col=0)['handle'].to_list
+    user_list=pd.read_csv('RecBOJ/data/solvedac_user_data.csv',index_col=0)['handle'][:100]
     user_info_df=pd.DataFrame()
     user_problem_df = pd.DataFrame()
+    cnt=0
     for user in user_list :
+        cnt+=1
+        print(cnt)
         page=open_user_page(user)
         correct_list,wrong_list=get_uer_info(page)
         user_info_df=pd.concat([user_info_df, pd.DataFrame([[user,correct_list,wrong_list]])], ignore_index=True)
-
+        
         problem_list=correct_list+wrong_list
         for pro in problem_list :
             page2=open_problem_page(pro,user)
@@ -76,6 +81,7 @@ def main() :
                 user_problem_df=pd.concat([user_problem_df, pd.DataFrame([get_problem_info(user,pro,page2)])], ignore_index=True)
             except :
                 None
+        
     user_info_df.columns=['user_id','correct_problem','wrong_problem']
     user_problem_df.columns=['user_id','problem_id','total_count','wrong_count',
                                                         'memory','time','language','code_length','last_time']
