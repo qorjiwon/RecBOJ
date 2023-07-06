@@ -44,7 +44,9 @@ def get_problem_info(page) :
 
 def main() :
     df_problem=pd.DataFrame()
-    for id in range(1000,1005) :
+    start=1000
+    end=25000
+    for id in range(start,end+1) :
         try :
             page=open_page(id)
             info,text=get_problem_info(page)
