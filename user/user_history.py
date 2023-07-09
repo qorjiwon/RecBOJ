@@ -18,6 +18,8 @@ def open_user_page(user_id) :
 # 사용자 정보 받아와서 dataframe 형태로 저장
 def get_uer_info(page) :
     table_list=page.find_all('div', {'class':'panel panel-default'})
+    correct_list=[]
+    wrong_list=[]
     for table in table_list :
         table_title=table.find('h3',{'class':'panel-title'}).text
         if table_title == '맞은 문제' :
@@ -63,17 +65,21 @@ def get_problem_info(user_id,problem_id,page) :
         
 
 def main() :
-    user_list=pd.read_csv('RecBOJ/data/solvedac_user_data.csv',index_col=0)['handle'][:100]
+    user_list=pd.read_csv('RecBOJ/data/solvedac_user_data.csv',index_col=0)['handle']
     user_info_df=pd.DataFrame()
     user_problem_df = pd.DataFrame()
     cnt=0
+    u_list=[]
     for user in user_list :
         cnt+=1
-        print(cnt)
+        if cnt%100 == 0 :
+            print(f'{cnt}개 완료!')
         page=open_user_page(user)
         correct_list,wrong_list=get_uer_info(page)
-        user_info_df=pd.concat([user_info_df, pd.DataFrame([[user,correct_list,wrong_list]])], ignore_index=True)
+        u_list.append([user,correct_list,wrong_list])
+        #user_info_df=pd.concat([user_info_df, pd.DataFrame([[user,correct_list,wrong_list]])], ignore_index=True)
         
+        '''
         problem_list=correct_list+wrong_list
         for pro in problem_list :
             page2=open_problem_page(pro,user)
@@ -81,12 +87,13 @@ def main() :
                 user_problem_df=pd.concat([user_problem_df, pd.DataFrame([get_problem_info(user,pro,page2)])], ignore_index=True)
             except :
                 None
-        
+        '''
+    user_info_df=pd.DataFrame(u_list)
     user_info_df.columns=['user_id','correct_problem','wrong_problem']
-    user_problem_df.columns=['user_id','problem_id','total_count','wrong_count',
-                                                        'memory','time','language','code_length','last_time']
-    user_info_df.to_csv('user_info_csv')
-    user_problem_df.to_csv('user_problem_csv')
+    # user_problem_df.columns=['user_id','problem_id','total_count','wrong_count',
+    #                                                    'memory','time','language','code_length','last_time']
+    user_info_df.to_csv('user_info.csv')
+    #user_problem_df.to_csv('user_problem_3.csv')
 
 if __name__ == "__main__" :
     main()
