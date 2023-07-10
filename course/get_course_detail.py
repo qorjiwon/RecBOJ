@@ -38,7 +38,7 @@ def get_course_detail(total_course):
             course_id = page
             flash_data = [course_id, problem_id, title, correct_count, submmission_count, correct_ratio, detail]
 
-            data_all_df = data_all_df.append(pd.Series(flash_data, index=data_all_df.columns), ignore_index=True)
+            data_all_df = data_all_df._append(pd.Series(flash_data, index=data_all_df.columns), ignore_index=True)
         
         # time.sleep()
         print(f"{page}'s course extract complete!")
@@ -51,12 +51,12 @@ def get_course_detail(total_course):
 if __name__ == '__main__':
     # -- args setting -- 
     args = None
-    with open("get_course.yaml") as f:
+    with open("get_course.yaml", 'rt', encoding='UTF8') as f:
         tmp_args = yaml.load(f, Loader=yaml.FullLoader)
         args = dotdict(tmp_args)
     print(args)
     
-    total_course = pd.read_csv(os.path.join(args.data_path, 'course_data_list.csv'))
+    total_course = pd.read_csv(os.path.join(args.data_path, 'data\\course_data_list.csv'))
     course_detail = get_course_detail(total_course)
     course_detail.to_csv(os.path.join(args.data_path, 'course_detail.csv'), index=False)
     print('Done!')
