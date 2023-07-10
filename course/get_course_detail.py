@@ -59,4 +59,3 @@ if __name__ == '__main__':
     total_course = pd.read_csv('RecBOJ/data/course_data_list.csv')
     course_detail = get_course_detail(total_course)
     course_detail.to_csv('course_detail.csv', index=False)
-    print('Done!')
