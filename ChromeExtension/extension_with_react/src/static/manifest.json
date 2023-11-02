@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "My react Boilerplate",
+  "description": "연습용 익스텐션",
+  "version": "1.0.0",
+  "icons" : {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "click me",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "host_permissions" : [
+    "https://*/*"
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "identity",
+    "bookmarks"
+  ], 
+  "background": {
+   "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.acmicpc.net/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}

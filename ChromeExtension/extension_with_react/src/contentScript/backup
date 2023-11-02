@@ -1,0 +1,70 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+// 현재 URL 가져오기
+const currentURL = window.location.href;
+let problems;
+
+function shouldInsertCode() {
+    // 현재 페이지의 URL 가져오기
+    const currentPageURL = window.location.href;
+
+    // 원하는 URL 패턴 확인
+    const desiredURLPattern = "https://www.acmicpc.net/status?from_mine=";
+    
+    // 현재 페이지의 URL이 원하는 패턴으로 시작하는지 확인
+    return currentPageURL.startsWith(desiredURLPattern);
+}
+
+// 서버로 URL 데이터를 POST로 전송하는 함수
+const sendURLToServer_and_getProblem = (url) => {
+    fetch('http://127.0.0.1:8080/send_url', {
+        method: 'POST',
+        body: JSON.stringify({ url }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // 데이터를 사용하거나 콜백 함수를 호출
+        return data.message; // 데이터를 반환
+    })
+    .catch(error => {
+        console.error('오류 발생: ' + error);
+    });
+};
+
+function App() {
+    // 서버에 URL을 보내고 문제 번호를 받아옴
+    problems = sendURLToServer_and_getProblem(currentURL);
+    // 웹 페이지에 삽입하려는 내용 작성
+    const linkText = problems; // 원하는 링크 텍스트를 변수에 저장
+    const URL = "https://www.acmicpc.net/problem/"+linkText;
+    console.log(`Recommend Problem URL is ${problems}`);
+    return (
+        <div>
+            추천 문제: 
+            <a href={URL} target="_blank">{linkText}</a>
+        </div>
+    );
+}
+
+
+
+if (shouldInsertCode()) {
+    // 원하는 페이지에서만 코드 삽입
+    const appContainer = document.createElement('div');
+    const targetElement = document.querySelector('body > div.wrapper > div.container.content > div.row > div.margin-bottom-30') as HTMLElement;
+
+    // 플러그인 색상 지정
+    if (targetElement) {
+        targetElement.style.backgroundColor = '#F5F5F5'; 
+    }
+
+    targetElement?.appendChild(appContainer);
+    const root = createRoot(appContainer);
+    root.render(<App />);
+}
+
+
