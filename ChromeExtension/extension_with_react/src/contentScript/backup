@@ -1,0 +1,126 @@
+import { createRoot } from 'react-dom/client';
+import React, { useState, useEffect } from 'react';
+
+function shouldInsertCode() {
+    const currentPageURL = window.location.href;
+    const desiredURLPattern = "https://www.acmicpc.net/status?from_mine=";
+    return currentPageURL.startsWith(desiredURLPattern);
+}
+
+interface ProblemsType {
+    problem_equal: string;
+    problem_low: string;
+    problem_high: string;
+}
+
+function App() {
+    const [problems, setProblems] = useState<ProblemsType | null>(null);
+
+    useEffect(() => {
+       
+        const fetchData = async () => {
+            // Flask에 URL 전송
+            try {
+                // 플라스크가 응답할 때까지 await
+                const response = await fetch('http://127.0.0.1:8080/send_url', {
+                    method: 'POST',
+                    body: JSON.stringify({ url: window.location.href }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('서버 응답이 실패했습니다.');
+                }
+                const data = await response.json();
+                const problemsData = typeof data.message === 'string' ? JSON.parse(data.message) : data.message;
+                setProblems(problemsData);
+            }
+            catch (error) {
+                console.error('오류 발생: ' + error);
+            }
+        };
+
+        const fetchSubmits = async () => {
+            // 모든 #solution-으로 시작하는 요소를 선택
+            const elements = document.querySelectorAll("[id^='solution-'] > td.result > span.result-text");
+ㅁ
+            // 선택한 요소들의 텍스트를 가져옴
+            const texts = Array.from(elements).map(element => element.textContent);
+            
+            // 데이터를 서버로 전송
+            try {
+                const response = await fetch('http://127.0.0.1:8080/SubmitsData', {
+                    method: 'POST',
+                    body: JSON.stringify({ texts: texts }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('서버 응답이 실패했습니다.');
+                }
+
+                const data = await response.json();
+                console.log('데이터가 성공적으로 전송되었습니다:', data);
+            } catch (error) {
+                console.error('오류 발생:', error);
+            }
+        };
+        fetchData();
+        fetchSubmits();
+    }, []);
+
+    const urls: Record<string, string> = {};
+    const problem_ids: Record<string, string> = {};
+
+    if (problems) {
+        for (const key in problems) {
+            const problemNumber = problems[key as keyof ProblemsType];
+            const url = `https://www.acmicpc.net/problem/${problemNumber}`;
+            urls[key as keyof ProblemsType] = url;
+            problem_ids[key as keyof ProblemsType] = problemNumber;
+        }
+    }
+
+    console.log("URL_equal =", urls.problem_equal);
+    console.log("URL_low =", urls.problem_low);
+    console.log("URL_high =", urls.problem_high);
+
+    console.log(urls);
+
+    if (!problems) {
+        return null;
+    }
+
+    return (
+        <div>
+         <b>&nbsp; 추천 문제 (하):</b>  <a href={urls.problem_low} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem_low}</a> &nbsp;
+         <b>&nbsp; 추천 문제 (중):</b> <a href={urls.problem_equal} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem_equal}</a> &nbsp;
+         <b>&nbsp; 추천 문제 (상):</b> <a href={urls.problem_high} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem_high}</a> &nbsp;
+        </div>
+    );
+}
+
+if (shouldInsertCode()) {
+    const appContainer = document.createElement('div');
+    const targetElement = document.querySelector('body > div.wrapper > div.container.content > div.row > div.margin-bottom-30') as HTMLElement;
+    if (targetElement) {
+        const styles = {
+            backgroundColor: '#F5F5F5',
+            width: '1143px', // 원하는 너비로 설정
+            height: '27px', // 원하는 높이로 설정
+            position: 'relative', // 위치 지정을 상대적으로 설정
+            left: '13px', // 원하는 오른쪽 이동 거리로 설정
+            display: 'flex', // Flexbox 레이아웃 사용
+            alignItems: 'center', // 수직 가운데 정렬
+            top: '15px' // 원하는 아래로 이동 거리로 설정
+        };
+        Object.assign(targetElement.style, styles);
+    }
+    targetElement?.appendChild(appContainer);
+    const root = createRoot(appContainer);
+    root.render(<App />);
+}
