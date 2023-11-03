@@ -19,12 +19,15 @@ def send_url():
     user_id = extract_user_id_from_url(current_url)
     problem_id = extract_problem_id_from_url(current_url)
     
+    submits = data.get('submits')
+    
     # 터미널에 데이터 출력
-    print(f'Received URL: {current_url}')  
-    print(f'User ID: {user_id}')
-    print(f'Problem ID: {problem_id}')
-    problems = get_similar_problem(problem_id)
+    print(f'Received URL: {current_url}\nUser ID: {user_id}\nProblem ID: {problem_id}')  
+    print(submits)
+    
+    problems = get_item2vec_problem(problem_id, submits)
     return jsonify(message=f'{problems}')
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0',8080,debug=True)

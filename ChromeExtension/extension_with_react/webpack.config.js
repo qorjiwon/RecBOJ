@@ -43,7 +43,7 @@ module.exports = {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 type: "assets/resource",
                 use: "assets/resource",
-              },
+            },
         ]
     },
     plugins: 
