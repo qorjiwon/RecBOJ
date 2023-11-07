@@ -28,6 +28,10 @@ def get_uer_info(page) :
         elif table_title=='시도했지만 맞지 못한 문제' :
             wrong=table.find_all('div',{'class':'problem-list'})  
             wrong_list=wrong[0].text.split(' ')[:-1]
+    for idx in range(len(correct_list)) :
+        correct_list[idx]=int(correct_list[idx])
+    for idx in range(len(wrong_list)) :
+        wrong_list[idx]=int(wrong_list[idx])
     return correct_list,wrong_list
 
 def open_problem_page(problem_id,user_id) :
@@ -37,9 +41,11 @@ def open_problem_page(problem_id,user_id) :
     return page
 
 def get_problem_info(user_id,problem_id,page) :
-    # 사용자 번호 ,문제 번호, 총 시도 횟수, 틀린 횟수, 맨 위의 맞았습니다에 대한 '메모리, 시간', 언어, 코드 길이, 제출한 시간
-    total_cnt,wrong_cnt=[0]* 2
-    memory,run_time,language,code_length,last_time=[-1]*5
+    # < 수집할 정보 리스트 >
+    # 사용자 번호 ,문제 번호, 총 시도 횟수, 틀린 횟수, 틀린이유가 '시간초과'인 횟수, 틀린이유가 '틀렸습니다'인 횟수, 틀린이유가 '메모리초과'인 횟수
+    # 맨 위의 맞았습니다에 대한 '메모리, 시간', 언어, 코드 길이, 제출한 시간
+    total_cnt,wrong_cnt, wrong_timeover, wrong_wrong, wrong_memoryover = [0] * 5
+    memory,run_time,language,code_length,last_time = [-1] * 5
     flag=True
     col_list=page.find_all('tr')
     for col in col_list :
@@ -56,44 +62,58 @@ def get_problem_info(user_id,problem_id,page) :
                 memory,run_time=col.find_all('td')[4:6]
         else : # 결과가 '맞았습니다'가 아니라면 틀린 횟수 증가
             wrong_cnt+=1
+            if '시간 초과' in str(col.text) : wrong_timeover += 1
+            elif '틀렸습니다' in str(col.text) : wrong_wrong += 1
+            elif '메모리 초과' in str(col.text): wrong_memoryover += 1
     if -1 in [language,code_length,last_time] :
         print(f'{problem_id}번 문제 수집 과정에서 에러 발생')
         return Exception
     else :
-        problem_info=[user_id,problem_id,total_cnt-1,wrong_cnt,memory.text,run_time.text,language.text,code_length.text,last_time]
+        problem_info=[user_id,problem_id,total_cnt-1,wrong_cnt,wrong_timeover, wrong_wrong, wrong_memoryover, memory.text,run_time.text,language.text,code_length.text,last_time]
         return problem_info
         
 
 def main() :
-    user_list=pd.read_csv('RecBOJ/data/solvedac_user_data.csv',index_col=0)['handle']
-    user_info_df=pd.DataFrame()
-    user_problem_df = pd.DataFrame()
+    start_time = time.time()
+    user_df=pd.read_csv('RecBOJ/data/user_silver_gold.csv',index_col=0)
+    ## sangjin : user_list=user_df['handle'].to_list()[0:37411]
+    user_list=user_df['handle'].to_list()[37412:]
     cnt=0
     u_list=[]
+    p_list=[]
     for user in user_list :
         cnt+=1
-        if cnt%100 == 0 :
-            print(f'{cnt}개 완료!')
+        print(f'{cnt}개 완료!')
+        if cnt%100==0 :
+            temp_df=pd.read_csv('RecBOJ/data/user_data/temp_user_info.csv') #### 다른 사람이 돌린다면 이름 나눠서 저장하기
+            temp_df = pd.concat([temp_df, pd.DataFrame(u_list)])
+            temp_df.to_csv('RecBOJ/data/user_data/temp_user_info.csv') #### 다른 사람이 돌린다면 이름 나눠서 저장하기
+            temp_df= pd.read_csv('RecBOJ/data/user_data/temp_user_pronblem_info.csv') #### 다른 사람이 돌린다면 이름 나눠서 저장하기
+            temp_df = pd.concat([temp_df, pd.DataFrame(p_list)])
+            temp_df.to_csv('RecBOJ/data/user_data/temp_user_pronblem_info.csv') #### 다른 사람이 돌린다면 이름 나눠서 저장하기
         page=open_user_page(user)
         correct_list,wrong_list=get_uer_info(page)
         u_list.append([user,correct_list,wrong_list])
-        #user_info_df=pd.concat([user_info_df, pd.DataFrame([[user,correct_list,wrong_list]])], ignore_index=True)
         
-        '''
         problem_list=correct_list+wrong_list
         for pro in problem_list :
             page2=open_problem_page(pro,user)
             try :
-                user_problem_df=pd.concat([user_problem_df, pd.DataFrame([get_problem_info(user,pro,page2)])], ignore_index=True)
+                p_list.append(get_problem_info(user,pro,page2))
             except :
                 None
-        '''
+        
     user_info_df=pd.DataFrame(u_list)
+    user_problem_df=pd.DataFrame(p_list)
     user_info_df.columns=['user_id','correct_problem','wrong_problem']
-    # user_problem_df.columns=['user_id','problem_id','total_count','wrong_count',
-    #                                                    'memory','time','language','code_length','last_time']
-    user_info_df.to_csv('user_info.csv')
-    #user_problem_df.to_csv('user_problem_3.csv')
+    user_problem_df.columns=['user_id','problem_id','total_count','wrong_count', 'wrong_timeover', 'wrong_wrong', 'wrong_memoryover',
+                                                        'memory','time','language','code_length','last_time']
+    user_info_df = pd.concat([user_info_df, pd.read_csv('RecBOJ/data/user_data/temp_user_pronblem_info.csv')]) #### 다른 사람이 돌린다면 이름 나눠서 저장하기
+    user_info_df.to_csv('RecBOJ/data/user_data/user_pronblem_info.csv')  #### 다른 사람이 돌린다면 이름 나눠서 저장하기
+    user_problem_df = pd.concat([user_problem_df, pd.read_csv('RecBOJ/data/user_data/user_pronblem_info.csv')]) #### 다른 사람이 돌린다면 이름 나눠서 저장하기
+    user_problem_df.to_csv('RecBOJ/data/user_data/user_pronblem_info.csv') #### 다른 사람이 돌린다면 이름 나눠서 저장하기
+    end_time = time.time()
+    print(f"걸린 시간 : {end_time - start_time}")
 
 if __name__ == "__main__" :
     main()
