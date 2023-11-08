@@ -5,8 +5,8 @@ import json
     
 def get_item2vec_problem(problem_id, submits):
     # 저장된 모델 불러오기
-    model = Word2Vec.load("/Users/im_jungwoo/Desktop/project/RecJoon/ChromeExtension/server/models/model/item2vec/word2vec_model.bin") 
-    with open('/Users/im_jungwoo/Desktop/project/RecJoon/ChromeExtension/server/data/ProblemDict.json', 'r') as f:
+    model = Word2Vec.load("server\models\item2vec\word2vec_model.bin") 
+    with open('server\data\ProblemDict.json', 'r') as f:
         ProblemDict = json.load(f)
     similar_problem = model.wv.most_similar(problem_id, topn= 200)
 
