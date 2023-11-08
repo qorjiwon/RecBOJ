@@ -1,9 +1,16 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 
-function shouldInsertCode() {
+
+function IfSubmitPage() {
     const currentPageURL = window.location.href;
     const desiredURLPattern = "https://www.acmicpc.net/status?from_mine=";
+    return currentPageURL.startsWith(desiredURLPattern);
+}
+
+function IfMyPage() {
+    const currentPageURL = window.location.href;
+    const desiredURLPattern = "https://www.acmicpc.net/user/";
     return currentPageURL.startsWith(desiredURLPattern);
 }
 
@@ -17,10 +24,7 @@ interface ProblemsType {
     message;
 }
 
-
-
-
-function App() {
+function RelatedProblem() {
     const [problems, setProblems] = useState<ProblemsType | null>(null);
 
     useEffect(() => {
@@ -81,16 +85,16 @@ function App() {
         return null;
     }
     return (
-        <div id = "myTooltip">
-         <b>&nbsp; 추천 문제 1:</b>  <a href={urls.problem0} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem0}</a> &nbsp;
-         <b>&nbsp; 추천 문제 2:</b> <a href={urls.problem1} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem1}</a> &nbsp;
-         <b>&nbsp; 추천 문제 3:</b> <a href={urls.problem2} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem2}</a> &nbsp;
+        <div id="myTooltip">
+         <b>&nbsp; 연관 문제 1:</b>  <a href={urls.problem0} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem0}</a> &nbsp;
+         <b>&nbsp; 연관 문제 2:</b> <a href={urls.problem1} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem1}</a> &nbsp;
+         <b>&nbsp; 연관 문제 3:</b> <a href={urls.problem2} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem2}</a> &nbsp;
          <b>&nbsp; {problems.message}</b>
         </div>
     );
 }
 
-if (shouldInsertCode()) {
+if (IfSubmitPage()) {
     const appContainer = document.createElement('div');
     const targetElement = document.querySelector('body > div.wrapper > div.container.content > div.row > div.margin-bottom-30') as HTMLElement;
     if (targetElement) {
@@ -108,5 +112,43 @@ if (shouldInsertCode()) {
     }
     targetElement?.appendChild(appContainer);
     const root = createRoot(appContainer);
-    root.render(<App />);
+    root.render(<RelatedProblem />)
+}
+
+
+function MyPage() {
+    const style = {
+        border: '1px solid #ccc',
+        padding: '10px',
+        backgroundColor: '#f0f0f0',
+        borderRadius: '5px',
+    };
+
+    const textStyle = {
+        fontWeight: 'bold',
+        marginLeft: '5px',
+        textAlign: 'center'
+    };
+
+    return (
+        <div style={style}>
+            <b>&nbsp; 마이페이지 원시버전 </b>
+        </div>
+    );    
+}
+
+if (IfMyPage()) {
+
+    // 삽입할 div 요소를 생성합니다.
+    const divElement = document.createElement("div");
+
+    const targetSelector = "body > div.wrapper > div.container.content > div.row > div:nth-child(2) > div > div.col-md-9 > div:nth-child(1) > div.panel-body";
+    const targetElement = document.querySelector(targetSelector);
+
+    // 선택한 요소의 부모 요소를 찾아서 그 아래에 div 요소를 삽입합니다.
+    const parentElement = targetElement.parentElement;
+    parentElement.appendChild(divElement);
+
+    const root = createRoot(divElement);
+    root.render(<MyPage />)
 }
