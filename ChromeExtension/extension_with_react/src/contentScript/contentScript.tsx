@@ -86,7 +86,7 @@ function RelatedProblem() {
     }
     return (
         <div id="myTooltip">
-         <b>&nbsp; 연관 문제 1:</b>  <a href={urls.problem0} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem0}</a> &nbsp;
+         <b>&nbsp; 연관 문제 1:</b> <a href={urls.problem0} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem0}</a> &nbsp;
          <b>&nbsp; 연관 문제 2:</b> <a href={urls.problem1} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem1}</a> &nbsp;
          <b>&nbsp; 연관 문제 3:</b> <a href={urls.problem2} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem2}</a> &nbsp;
          <b>&nbsp; {problems.message}</b>
@@ -118,24 +118,134 @@ if (IfSubmitPage()) {
 
 function MyPage() {
     const style = {
-        border: '1px solid #ccc',
         padding: '10px',
-        backgroundColor: '#f0f0f0',
         borderRadius: '5px',
     };
 
-    const textStyle = {
-        fontWeight: 'bold',
-        marginLeft: '5px',
-        textAlign: 'center'
+    const divStyle = {
+    border: '1px solid #ccc',
+    padding: '10px',
+    backgroundColor: 'rgb(207, 242, 135)',
+    margin: '10px',
+    width: '250px',
     };
+
+    const Flexbox = {
+        flexDirection: 'column' as 'column',
+        display: 'inline-block', // Flexbox 레이아웃을 활용
+        
+    }
+
+    const pieChartData = [
+        { label: 'Bronze5', value: 10 },
+        { label: 'Bronze4', value: 10 },
+        { label: 'Bronze3', value: 10 },
+        { label: 'Bronze2', value: 10 },
+        { label: 'Bronze1', value: 10 },
+        { label: 'Silver5', value: 10 },
+        { label: 'Silver4', value: 10 },
+        { label: 'Silver3', value: 10 },
+        { label: 'Silver2', value: 10 },
+        { label: 'Silver1', value: 10 },
+        { label: 'Gold5', value: 10 },
+        { label: 'Gold4', value: 10 },
+        { label: 'Gold3', value: 10 },
+        { label: 'Gold2', value: 10 },
+        { label: 'Gold1', value: 10 },
+        { label: 'Platinum5', value: 10 },
+        { label: 'Platinum4', value: 10 },
+        { label: 'Platinum3', value: 10 },
+        { label: 'Platinum2', value: 10 },
+        { label: 'Platinum1', value: 10 },
+        { label: 'Diamond5', value: 10 },
+        { label: 'Diamond4', value: 10 },
+        { label: 'Diamond3', value: 10 },
+        { label: 'Diamond2', value: 10 },
+        { label: 'Diamond1', value: 10 }
+    ];
+
+    const pieChartColors = ['#9d4900', '#a54f00', '#ad5600', '#b55d0a', '#c67739', 
+    '#38546e', '#3d5a74', '#435f7a', '#496580', '#4e6a86',
+    '#d28500', '#df8f00', '#ec9a00', '#f9a518', '#ffb028',
+    '#00C78B', '#00D497', '#27E2A4', '#3EF0B1', '#51FDBD',
+    '#009EE5', '#00A9F0', '#00B4FC', '#2BBFFF', '#41CAFF'];
 
     return (
         <div style={style}>
-            <b>&nbsp; 마이페이지 원시버전 </b>
+            <div style={Flexbox}>
+                <div style={divStyle}>
+                    <p>취약 유형 기반 추천</p>
+                </div>
+                <div style={divStyle}>
+                    <p>problem</p>
+                </div>
+                <div style={divStyle}>
+                    <p>ㅁㅁ</p>
+                </div>
+            </div>
+            <div style={Flexbox}>
+                <div style={divStyle}>
+                    <p>푼 지 오래된 문제 추천</p>
+                </div>
+                <div style={divStyle}>
+                    <p>여기에 추가 내용이 있습니다.</p>
+                </div>
+                <div style={divStyle}>
+                    <p>여기에 추가 내용이 있습니다.</p>
+                </div>
+            </div>
+            <div style={Flexbox}>
+                <div style={divStyle}>
+                    <p>유사도 기반 추천</p>
+                </div>
+                <div style={divStyle}>
+                    <p>여기에 추가 내용이 있습니다.</p>
+                </div>
+                <div style={divStyle}>
+                    <p>여기에 추가 내용이 있습니다.</p>
+                </div>
+            </div>
+            <div style={Flexbox}>
+                <PieChart data={pieChartData} colors={pieChartColors} />
+            </div>
         </div>
-    );    
+    );
 }
+
+interface PieChartProps {
+    data: { label: string; value: number }[];
+    colors: string[];
+  }
+  
+  const PieChart: React.FC<PieChartProps> = ({ data, colors }) => {
+    // 각 데이터 항목에 대한 각도 계산
+    const total = data.reduce((acc, item) => acc + item.value, 0);
+    let startAngle = 0;
+  
+    return (
+      <svg width="250" height="250">
+        {data.map((item, index) => {
+          // 각 항목의 비율에 따라 각도 계산
+          const angle = (item.value / total) * 360;
+  
+          // 현재 항목에 대한 색상 선택
+          const color = colors[index % colors.length];
+  
+          // 원호 그리기
+          const pathData = `
+            M 125 125
+            L ${125 + Math.cos((startAngle * Math.PI) / 180) * 100} ${125 + Math.sin((startAngle * Math.PI) / 180) * 100}
+            A 100 100 0 ${angle > 180 ? 1 : 0} 1 ${125 + Math.cos(((startAngle + angle) * Math.PI) / 180) * 100} ${125 + Math.sin(((startAngle + angle) * Math.PI) / 180) * 100}
+            Z
+          `;
+          // 다음 항목의 시작 각도 업데이트
+          startAngle += angle;
+  
+          return <path key={index} d={pathData} fill={color} />;
+        })}
+      </svg>
+    );
+  };
 
 if (IfMyPage()) {
 

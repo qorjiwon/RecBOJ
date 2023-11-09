@@ -33475,12 +33475,17 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 };
 
 
-function shouldInsertCode() {
+function IfSubmitPage() {
     const currentPageURL = window.location.href;
     const desiredURLPattern = "https://www.acmicpc.net/status?from_mine=";
     return currentPageURL.startsWith(desiredURLPattern);
 }
-function App() {
+function IfMyPage() {
+    const currentPageURL = window.location.href;
+    const desiredURLPattern = "https://www.acmicpc.net/user/";
+    return currentPageURL.startsWith(desiredURLPattern);
+}
+function RelatedProblem() {
     const [problems, setProblems] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         const fetchData = () => __awaiter(this, void 0, void 0, function* () {
@@ -33530,15 +33535,15 @@ function App() {
         return null;
     }
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { id: "myTooltip" },
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "\u00A0 \uCD94\uCC9C \uBB38\uC81C 1:"),
-        "  ",
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "\u00A0 \uC5F0\uAD00 \uBB38\uC81C 1:"),
+        " ",
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { href: urls.problem0, style: { fontWeight: 'bold', marginRight: '10px' } }, problem_ids.problem0),
         " \u00A0",
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "\u00A0 \uCD94\uCC9C \uBB38\uC81C 2:"),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "\u00A0 \uC5F0\uAD00 \uBB38\uC81C 2:"),
         " ",
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { href: urls.problem1, style: { fontWeight: 'bold', marginRight: '10px' } }, problem_ids.problem1),
         " \u00A0",
-        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "\u00A0 \uCD94\uCC9C \uBB38\uC81C 3:"),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "\u00A0 \uC5F0\uAD00 \uBB38\uC81C 3:"),
         " ",
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { href: urls.problem2, style: { fontWeight: 'bold', marginRight: '10px' } }, problem_ids.problem2),
         " \u00A0",
@@ -33546,7 +33551,7 @@ function App() {
             "\u00A0 ",
             problems.message)));
 }
-if (shouldInsertCode()) {
+if (IfSubmitPage()) {
     const appContainer = document.createElement('div');
     const targetElement = document.querySelector('body > div.wrapper > div.container.content > div.row > div.margin-bottom-30');
     if (targetElement) {
@@ -33564,7 +33569,112 @@ if (shouldInsertCode()) {
     }
     targetElement === null || targetElement === void 0 ? void 0 : targetElement.appendChild(appContainer);
     const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(appContainer);
-    root.render(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(App, null));
+    root.render(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(RelatedProblem, null));
+}
+function MyPage() {
+    const style = {
+        padding: '10px',
+        borderRadius: '5px',
+    };
+    const divStyle = {
+        border: '1px solid #ccc',
+        padding: '10px',
+        backgroundColor: 'rgb(207, 242, 135)',
+        margin: '10px',
+        width: '250px',
+    };
+    const Flexbox = {
+        flexDirection: 'column',
+        display: 'inline-block', // Flexbox 레이아웃을 활용
+    };
+    const pieChartData = [
+        { label: 'Bronze5', value: 10 },
+        { label: 'Bronze4', value: 10 },
+        { label: 'Bronze3', value: 10 },
+        { label: 'Bronze2', value: 10 },
+        { label: 'Bronze1', value: 10 },
+        { label: 'Silver5', value: 10 },
+        { label: 'Silver4', value: 10 },
+        { label: 'Silver3', value: 10 },
+        { label: 'Silver2', value: 10 },
+        { label: 'Silver1', value: 10 },
+        { label: 'Gold5', value: 10 },
+        { label: 'Gold4', value: 10 },
+        { label: 'Gold3', value: 10 },
+        { label: 'Gold2', value: 10 },
+        { label: 'Gold1', value: 10 },
+        { label: 'Platinum5', value: 10 },
+        { label: 'Platinum4', value: 10 },
+        { label: 'Platinum3', value: 10 },
+        { label: 'Platinum2', value: 10 },
+        { label: 'Platinum1', value: 10 },
+        { label: 'Diamond5', value: 10 },
+        { label: 'Diamond4', value: 10 },
+        { label: 'Diamond3', value: 10 },
+        { label: 'Diamond2', value: 10 },
+        { label: 'Diamond1', value: 10 }
+    ];
+    const pieChartColors = ['#9d4900', '#a54f00', '#ad5600', '#b55d0a', '#c67739',
+        '#38546e', '#3d5a74', '#435f7a', '#496580', '#4e6a86',
+        '#d28500', '#df8f00', '#ec9a00', '#f9a518', '#ffb028',
+        '#00C78B', '#00D497', '#27E2A4', '#3EF0B1', '#51FDBD',
+        '#009EE5', '#00A9F0', '#00B4FC', '#2BBFFF', '#41CAFF'];
+    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: style },
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Flexbox },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uCDE8\uC57D \uC720\uD615 \uAE30\uBC18 \uCD94\uCC9C")),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "problem")),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\u3141\u3141"))),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Flexbox },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uD47C \uC9C0 \uC624\uB798\uB41C \uBB38\uC81C \uCD94\uCC9C")),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uC5EC\uAE30\uC5D0 \uCD94\uAC00 \uB0B4\uC6A9\uC774 \uC788\uC2B5\uB2C8\uB2E4.")),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uC5EC\uAE30\uC5D0 \uCD94\uAC00 \uB0B4\uC6A9\uC774 \uC788\uC2B5\uB2C8\uB2E4."))),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Flexbox },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uC720\uC0AC\uB3C4 \uAE30\uBC18 \uCD94\uCC9C")),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uC5EC\uAE30\uC5D0 \uCD94\uAC00 \uB0B4\uC6A9\uC774 \uC788\uC2B5\uB2C8\uB2E4.")),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uC5EC\uAE30\uC5D0 \uCD94\uAC00 \uB0B4\uC6A9\uC774 \uC788\uC2B5\uB2C8\uB2E4."))),
+        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Flexbox },
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement(PieChart, { data: pieChartData, colors: pieChartColors }))));
+}
+const PieChart = ({ data, colors }) => {
+    // 각 데이터 항목에 대한 각도 계산
+    const total = data.reduce((acc, item) => acc + item.value, 0);
+    let startAngle = 0;
+    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { width: "250", height: "250" }, data.map((item, index) => {
+        // 각 항목의 비율에 따라 각도 계산
+        const angle = (item.value / total) * 360;
+        // 현재 항목에 대한 색상 선택
+        const color = colors[index % colors.length];
+        // 원호 그리기
+        const pathData = `
+            M 125 125
+            L ${125 + Math.cos((startAngle * Math.PI) / 180) * 100} ${125 + Math.sin((startAngle * Math.PI) / 180) * 100}
+            A 100 100 0 ${angle > 180 ? 1 : 0} 1 ${125 + Math.cos(((startAngle + angle) * Math.PI) / 180) * 100} ${125 + Math.sin(((startAngle + angle) * Math.PI) / 180) * 100}
+            Z
+          `;
+        // 다음 항목의 시작 각도 업데이트
+        startAngle += angle;
+        return react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { key: index, d: pathData, fill: color });
+    })));
+};
+if (IfMyPage()) {
+    // 삽입할 div 요소를 생성합니다.
+    const divElement = document.createElement("div");
+    const targetSelector = "body > div.wrapper > div.container.content > div.row > div:nth-child(2) > div > div.col-md-9 > div:nth-child(1) > div.panel-body";
+    const targetElement = document.querySelector(targetSelector);
+    // 선택한 요소의 부모 요소를 찾아서 그 아래에 div 요소를 삽입합니다.
+    const parentElement = targetElement.parentElement;
+    parentElement.appendChild(divElement);
+    const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(divElement);
+    root.render(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(MyPage, null));
 }
 
 })();
