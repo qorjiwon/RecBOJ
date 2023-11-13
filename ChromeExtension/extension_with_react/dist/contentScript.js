@@ -33595,15 +33595,21 @@ function MyPage() {
         padding: '10px',
         fontSize: '15px',
         marginBottom: "10px",
-        color: '#6D7856'
+        color: '#6D7856',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     };
     const eBox = {
         height: '110px',
-        backgroundColor: '#FAFBF7',
         color: "#6D7856",
+        backgroundColor: '#FAFBF7',
         padding: '10px',
         overflow: 'hidden',
-        fontSize: '15px'
+        fontSize: '15px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     };
     const manuBox = {
         flexDirection: 'column',
