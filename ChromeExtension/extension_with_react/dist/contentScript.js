@@ -34140,7 +34140,6 @@ function MyPage() {
     const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
     const handleClick = (index) => {
         // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
-        console.log(currentPage, index);
         setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
         setActive((active) => (active === index ? null : index));
     };
@@ -34242,10 +34241,21 @@ function ProsCons() {
         cursor: 'pointer',
         transition: 'background-color 0.3s, color 0.3s, font-size 0.3s'
     };
+    const CircleComponent = ({ cx, cy, r, fill }) => {
+        return react__WEBPACK_IMPORTED_MODULE_1___default().createElement("circle", { cx: cx, cy: cy, r: r, fill: fill });
+    };
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', padding: '10px', margin: '5px' } },
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { border: '0.7px solid black', padding: '10px', marginBottom: '10px' } },
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "\uAC15\uC810 \uBD84\uC57C:"),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { style: { width: "20", height: "35", fill: "none", stroke: "#8a8f95", strokeWidth: "2" }, viewBox: "0 0 20 35" },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("g", { transform: "translate(2, 12)" },
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement(CircleComponent, { cx: "8.5", cy: "8.5", r: "1", fill: "currentColor" }),
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z" }))),
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { style: Object.assign(Object.assign({}, buttonStyle), { background: selectedButton === 'dp' ? '#ecf0f1' : 'white', marginLeft: '1%', marginRight: '5%' }), onClick: () => handleClick('dp') }, "DP"),
+            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { style: { width: "35", height: "35", fill: "none", stroke: "#8a8f95", strokeWidth: "2" }, viewBox: "0 0 35 35" },
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("g", { transform: "translate(8, 10)" },
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement(CircleComponent, { cx: "8.5", cy: "8.5", r: "1", fill: "currentColor" }),
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z" }))),
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { style: Object.assign(Object.assign({}, buttonStyle), { background: selectedButton === 'graph' ? '#ecf0f1' : 'white', marginRight: '5%' }), onClick: () => handleClick('graph') }, "Graphs"),
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { style: Object.assign(Object.assign({}, buttonStyle), { background: selectedButton === 'greedy' ? '#ecf0f1' : 'white', marginRight: '5%' }), onClick: () => handleClick('greedy') }, "Greedy")),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { border: '0.7px solid black', padding: '10px', marginBottom: '10px' } },
