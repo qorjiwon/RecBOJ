@@ -18,4 +18,4 @@
 
 ## 📄 Reference
 - [네이버 AI 부트캠프 참고 프로젝트1](https://github.com/boostcampaitech3/final-project-level3-recsys-05)
-- [네이버 AI 부트캠프 참고 프로젝트2](https://github.com/boostcampaitech3/final-project-level3-recsys-05)
+- [네이버 AI 부트캠프 참고 프로젝트2](https://github.com/Glanceyes/RECJOON)
