@@ -146,7 +146,8 @@ function MyPage() {
         color: '#6D7856',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: '100px'
     }
 
     const eBox = {
@@ -158,7 +159,8 @@ function MyPage() {
         fontSize: '15px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: '100px'
     }
 
     const manuBox = {
@@ -174,7 +176,6 @@ function MyPage() {
         margin: '10px',
         width: '250px',
         backgroundColor: '#FFFFFF',
-        color: '#6D7856',
         border: 'none',
         cursor: 'pointer',
         transition: 'background-color 0.3s, color 0.3s, font-size 0.3s', // 색 변화, 글자 굵기 및 크기 변화를 부드럽게 만들기 위한 트랜지션
@@ -182,9 +183,10 @@ function MyPage() {
     }
     
     const activeStyle = {
-        backgroundColor: '#C5C580',
+        backgroundColor: '#E0E0E0',
         fontWeight: 'bold',
-        fontSize: '15px'
+        fontSize: '15px',
+        borderRadius: '100px'
     };    
 
     return (

@@ -33598,7 +33598,8 @@ function MyPage() {
         color: '#6D7856',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: '100px'
     };
     const eBox = {
         height: '110px',
@@ -33609,7 +33610,8 @@ function MyPage() {
         fontSize: '15px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: '100px'
     };
     const manuBox = {
         flexDirection: 'column',
@@ -33622,16 +33624,16 @@ function MyPage() {
         margin: '10px',
         width: '250px',
         backgroundColor: '#FFFFFF',
-        color: '#6D7856',
         border: 'none',
         cursor: 'pointer',
         transition: 'background-color 0.3s, color 0.3s, font-size 0.3s',
         fontSize: '15px'
     };
     const activeStyle = {
-        backgroundColor: '#C5C580',
+        backgroundColor: '#E0E0E0',
         fontWeight: 'bold',
-        fontSize: '15px'
+        fontSize: '15px',
+        borderRadius: '100px'
     };
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: style },
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: manuBox },
