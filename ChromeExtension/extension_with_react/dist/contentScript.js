@@ -34139,8 +34139,10 @@ function MyPage() {
     const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
     const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
     const handleClick = (index) => {
-        setCurrentPage(index);
-        setActive(index);
+        // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
+        console.log(currentPage, index);
+        setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
+        setActive((active) => (active === index ? null : index));
     };
     return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "style" },
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { flexDirection: 'column', display: 'inline-block', borderBottom: '1px solid #ddd' } },

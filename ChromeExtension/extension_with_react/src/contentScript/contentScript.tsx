@@ -122,8 +122,10 @@ function MyPage() {
     const [active, setActive] = useState(null);
 
     const handleClick = (index) => {
-        setCurrentPage(index);
-        setActive(index);
+        // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
+        console.log(currentPage, index);
+        setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
+        setActive((active) => (active === index ? null : index));
     };
 
     return (
