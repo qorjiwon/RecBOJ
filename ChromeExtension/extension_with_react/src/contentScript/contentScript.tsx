@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
+import "./contentScript.css";
 
 
 function IfSubmitPage() {
@@ -117,96 +118,32 @@ if (IfSubmitPage()) {
 
 
 function MyPage() {
-    const style = {
-        padding: '10px',
-    };
-
-    const divStyle = {
-        display: 'flex', // 가로 정렬
-        padding: '10px',
-        width: '97%',
-        height: '300px',
-        border:'none',
-        justifyContent: 'center'
-    };
-
-    const Box = {
-        flexDirection: 'row' as 'row', // 세로 정렬
-        width: '35%',
-        marginLeft: '40px',
-        marginRight: '14px'
-    }
-
-    const pBox = {
-        height: '110px',
-        backgroundColor: '#FAFBF7',
-        padding: '10px',
-        fontSize: '15px',
-        marginBottom: "10px",
-        color: '#6D7856',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '100px'
-    }
-
-    const eBox = {
-        height: '110px',
-        color: "#6D7856",
-        backgroundColor: '#FAFBF7',
-        padding: '10px',
-        overflow: 'hidden',
-        fontSize: '15px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '100px'
-    }
-
-    const manuBox = {
-        flexDirection: 'column' as 'column',
-        display: 'inline-block', // Flexbox 레이아웃을 활용
-        borderBottom: '1px solid #ddd', // 선 추가
-    }
-
     const [currentPage, setCurrentPage] = useState(0);
+    const [active, setActive] = useState(null);
 
-    const buttonStyle = {
-        padding: '10px',
-        margin: '10px',
-        width: '250px',
-        backgroundColor: '#FFFFFF',
-        border: 'none',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s, color 0.3s, font-size 0.3s', // 색 변화, 글자 굵기 및 크기 변화를 부드럽게 만들기 위한 트랜지션
-        fontSize: '15px'
-    }
-    
-    const activeStyle = {
-        backgroundColor: '#E0E0E0',
-        fontWeight: 'bold',
-        fontSize: '15px',
-        borderRadius: '100px'
-    };    
+    const handleClick = (index) => {
+        setCurrentPage(index);
+        setActive(index);
+    };
 
     return (
-        <div style={style}>
-            <div style={manuBox}>
+        <div className="style">
+            <div style = {{flexDirection: 'column', display: 'inline-block', borderBottom: '1px solid #ddd'}}>
                 <button
-                    style={{ ...buttonStyle, ...(currentPage === 1 && activeStyle) }}
-                    onClick={() => setCurrentPage(1)}
+                    className={`manu ${active === 1 ? 'active' : ''}`}
+                    onClick={() => handleClick(1)}
                 >
                     취약 유형 기반 추천
                 </button>
                 <button
-                    style={{ ...buttonStyle, ...(currentPage === 2 && activeStyle) }}
-                    onClick={() => setCurrentPage(2)}
+                    className={`manu ${active === 2 ? 'active' : ''}`}
+                    onClick={() => handleClick(2)}
                 >
                     푼 지 오래된 문제 추천
                 </button>
                 <button
-                    style={{ ...buttonStyle, ...(currentPage === 3 && activeStyle) }}
-                    onClick={() => setCurrentPage(3)}
+                    className={`manu ${active === 3 ? 'active' : ''}`}
+                    onClick={() => handleClick(3)}
                 >
                     유사도 기반 추천
                 </button>
@@ -214,98 +151,98 @@ function MyPage() {
             <div>
                 <div>
                     {currentPage === 1 && (
-                        <>
-                            <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
-                                이런 문제는 어떤가요?
-                            </div>
-                            <div style = {divStyle}> 
-                                <div style = {Box} id = 'Box1'>
-                                    <div style = {pBox} id = "Problem1">
-                                        추천 문제 1번
-                                    </div>
-                                    <div style = {eBox} id = "explanation1">
-                                        추천 이유 등 메세지
-                                    </div>
+                    <>
+                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                            이런 문제는 어떤가요?
+                        </div>
+                        <div className='divStyle'>
+                            <div className='Box' id = 'Box1'>
+                                <div className = 'pBox' id = "Problem1">
+                                    추천 문제 1번
                                 </div>
-                                <div style = {Box} id = 'Box2'>
-                                    <div style = {pBox} id = "Problem2">
-                                        추천 문제 2번
-                                    </div>
-                                    <div style = {eBox} id = "explanation2">
-                                        추천 이유 등 메세지
-                                    </div>
-                                </div>
-                                <div style = {Box} id = 'Box3'>
-                                    <div style = {pBox} id = "Problem3">
-                                        추천 문제 3번
-                                    </div>
-                                    <div style = {eBox} id = "explanation3">
-                                        추천 이유 등 메세지
-                                    </div>
+                                <div className = 'eBox' id = "explanation1">
+                                    추천 이유 등 메세지
                                 </div>
                             </div>
+                            <div className='Box' id = 'Box2'>
+                                <div className = 'pBox' id = "Problem2">
+                                    추천 문제 2번
+                                </div>
+                                <div className = 'eBox' id = "explanation2">
+                                    추천 이유 등 메세지
+                                </div>
+                            </div>
+                            <div className='Box' id = 'Box3'>
+                                <div className = 'pBox' id = "Problem3">
+                                    추천 문제 3번
+                                </div>
+                                <div className = 'eBox' id = "explanation3">
+                                    추천 이유 등 메세지
+                                </div>
+                            </div>
+                        </div>
                         </>
                     )}
                     {currentPage === 2 && (
                         <>
-                            <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
-                                이런 문제는 어떤가요?
-                            </div>
-                            <div style = {divStyle}> 
-                                <div style = {Box} id = 'Box1'>
-                                    <div style = {pBox} id = "Problem1">
-                                        추천 문제 1번
-                                    </div>
-                                    <div style = {eBox} id = "explanation1">
-                                        추천 이유 등 메세지
-                                    </div>
+                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                            이런 문제는 어떤가요?
+                        </div>
+                        <div className='divStyle'>
+                            <div className='Box' id = 'Box1'>
+                                <div className = 'pBox' id = "Problem1">
+                                    추천 문제 1번
                                 </div>
-                                <div style = {Box} id = 'Box2'>
-                                    <div style = {pBox} id = "Problem2">
-                                        추천 문제 2번
-                                    </div>
-                                    <div style = {eBox} id = "explanation2">
-                                        추천 이유 등 메세지
-                                    </div>
-                                </div>
-                                <div style = {Box} id = 'Box3'>
-                                    <div style = {pBox} id = "Problem3">
-                                        추천 문제 3번
-                                    </div>
-                                    <div style = {eBox} id = "explanation3">
-                                        추천 이유 등 메세지
-                                    </div>
+                                <div className = 'eBox' id = "explanation1">
+                                    추천 이유 등 메세지
                                 </div>
                             </div>
+                            <div className='Box' id = 'Box2'>
+                                <div className = 'pBox' id = "Problem2">
+                                    추천 문제 2번
+                                </div>
+                                <div className = 'eBox' id = "explanation2">
+                                    추천 이유 등 메세지
+                                </div>
+                            </div>
+                            <div className='Box' id = 'Box3'>
+                                <div className = 'pBox' id = "Problem3">
+                                    추천 문제 3번
+                                </div>
+                                <div className = 'eBox' id = "explanation3">
+                                    추천 이유 등 메세지
+                                </div>
+                            </div>
+                        </div>
                         </>
                     )}
                     {currentPage === 3 && (
                         <>
-                            <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
                                 이런 문제는 어떤가요?
                             </div>
-                            <div style = {divStyle}> 
-                                <div style = {Box} id = 'Box1'>
-                                    <div style = {pBox} id = "Problem1">
+                            <div className='divStyle'>
+                                <div className='Box' id = 'Box1'>
+                                    <div className = 'pBox' id = "Problem1">
                                         추천 문제 1번
                                     </div>
-                                    <div style = {eBox} id = "explanation1">
+                                    <div className = 'eBox' id = "explanation1">
                                         추천 이유 등 메세지
                                     </div>
                                 </div>
-                                <div style = {Box} id = 'Box2'>
-                                    <div style = {pBox} id = "Problem2">
+                                <div className='Box' id = 'Box2'>
+                                    <div className = 'pBox' id = "Problem2">
                                         추천 문제 2번
                                     </div>
-                                    <div style = {eBox} id = "explanation2">
+                                    <div className = 'eBox' id = "explanation2">
                                         추천 이유 등 메세지
                                     </div>
                                 </div>
-                                <div style = {Box} id = 'Box3'>
-                                    <div style = {pBox} id = "Problem3">
+                                <div className='Box' id = 'Box3'>
+                                    <div className = 'pBox' id = "Problem3">
                                         추천 문제 3번
                                     </div>
-                                    <div style = {eBox} id = "explanation3">
+                                    <div className = 'eBox' id = "explanation3">
                                         추천 이유 등 메세지
                                     </div>
                                 </div>
@@ -318,18 +255,121 @@ function MyPage() {
     );
 }
 
+interface tagsType {
+    strong0: string;
+    strong1: string;
+    strong2: string;
+    weak0: string;
+    weak1: string;
+    weak2: string;
+}
+
+const problems = {
+    dp: ['문제 1', '문제 2', '문제 3'],
+    graph: ['문제 4', '문제 5', '문제 6'],
+    string: ['문제 7', '문제 8', '문제 9'],
+    dac: ['문제 10', '문제 11', '문제 12'],
+    ds : ['문제 13', '문제 14', '문제 15'],
+    greedy: ['문제 16', '문제 17', '문제 18']
+};
+
+function ProsCons() {
+    const [tags, setTags] = useState<tagsType | null>(null);
+    const [selectedField, setSelectedField] = useState<string | null>(null);
+    const [selectedButton, setSelectedButton] = useState<string | null>(null);
+
+    const handleClick = (field: string) => {
+        if (selectedField === field) {
+            setSelectedField(null);
+            setSelectedButton(null);
+        } else {
+            setSelectedField(field);
+            setSelectedButton(field);
+        }
+    };
+
+    useEffect(() => {
+       
+        const fetchTags = async () => {
+        
+                const response = await fetch('http://127.0.0.1:8080/tags', {
+                    method: 'POST',
+                    body: JSON.stringify({ url: window.location.href}),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('서버 응답이 실패했습니다.');
+                }
+                const data = await response.json();
+                let tagsData;
+                try {
+                    tagsData = JSON.parse(data.message);
+                } catch (error) {
+                    tagsData = data.message;
+                }
+
+                setTags(tagsData);
+        };
+
+        fetchTags();
+    }, []);
+
+    const buttonStyle = {
+        border: '1px solid white',
+        background: 'white',
+        color: 'black',
+        padding: '5px 10px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s, color 0.3s, font-size 0.3s'
+    };
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column', padding: '10px', margin: '5px' }}>
+        <div style={{ border: '0.7px solid black', padding: '10px', marginBottom: '10px'}}>
+            <b>강점 분야:</b>
+            <button style={{ ...buttonStyle, background: selectedButton === 'dp' ? '#ecf0f1' : 'white', marginLeft: '1%', marginRight: '5%' }} onClick={() => handleClick('dp')}>DP</button>
+            <button style={{ ...buttonStyle, background: selectedButton === 'graph' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('graph')}>Graphs</button>
+            <button style={{ ...buttonStyle, background: selectedButton === 'greedy' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('greedy')}>Greedy</button>
+        </div>
+        <div style={{ border: '0.7px solid black', padding: '10px', marginBottom: '10px'}}>
+            <b>약점 분야:</b>
+            <button style={{ ...buttonStyle, background: selectedButton === 'string' ? '#ecf0f1' : 'white', marginLeft: '1%', marginRight: '5%' }} onClick={() => handleClick('string')}>String</button>
+            <button style={{ ...buttonStyle, background: selectedButton === 'dac' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('dac')}>Divide and Conquer</button>
+            <button style={{ ...buttonStyle, background: selectedButton === 'ds' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('ds')}>Data Structure</button>
+        </div>
+            {selectedField && (
+                <div>
+                    <h2>{selectedField} 관련 문제</h2>
+                    <ul>
+                        {problems[selectedField].map((problem, index) => (
+                            <li key={index}>
+                                <a href={`/${selectedField}/${problem}`}>{problem}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+};
+
 if (IfMyPage()) {
-
-    // 삽입할 div 요소를 생성합니다.
-    const divElement = document.createElement("div");
-
     const targetSelector = "body > div.wrapper > div.container.content > div.row > div:nth-child(2) > div > div.col-md-9 > div:nth-child(1) > div.panel-body";
     const targetElement = document.querySelector(targetSelector);
-
-    // 선택한 요소의 부모 요소를 찾아서 그 아래에 div 요소를 삽입합니다.
+    
     const parentElement = targetElement.parentElement;
-    parentElement.appendChild(divElement);
-
-    const root = createRoot(divElement);
-    root.render(<MyPage />)
+    
+    // 새로운 divElement를 생성하여 첫 번째 root를 생성합니다.
+    const divElement1 = document.createElement("div");
+    parentElement.appendChild(divElement1);
+    const root1 = createRoot(divElement1);
+    root1.render(<ProsCons />);
+    
+    // 새로운 divElement를 생성하여 두 번째 root를 생성합니다.
+    const divElement2 = document.createElement("div");
+    parentElement.appendChild(divElement2);
+    const root2 = createRoot(divElement2);
+    root2.render(<MyPage />);
 }
