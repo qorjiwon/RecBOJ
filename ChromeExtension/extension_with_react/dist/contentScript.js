@@ -33576,12 +33576,34 @@ function MyPage() {
         padding: '10px',
     };
     const divStyle = {
+        display: 'flex',
         padding: '10px',
-        margin: '10px',
         width: '97%',
         height: '300px',
-        border: '1px solid #ddd',
-        borderRadius: '10px'
+        border: 'none',
+        justifyContent: 'center'
+    };
+    const Box = {
+        flexDirection: 'row',
+        width: '35%',
+        marginLeft: '40px',
+        marginRight: '14px'
+    };
+    const pBox = {
+        height: '110px',
+        backgroundColor: '#FAFBF7',
+        padding: '10px',
+        fontSize: '15px',
+        marginBottom: "10px",
+        color: '#6D7856'
+    };
+    const eBox = {
+        height: '110px',
+        backgroundColor: '#FAFBF7',
+        color: "#6D7856",
+        padding: '10px',
+        overflow: 'hidden',
+        fontSize: '15px'
     };
     const manuBox = {
         flexDirection: 'column',
@@ -33594,15 +33616,14 @@ function MyPage() {
         margin: '10px',
         width: '250px',
         backgroundColor: '#FFFFFF',
-        color: '#333',
+        color: '#6D7856',
         border: 'none',
-        borderRadius: '5px',
         cursor: 'pointer',
         transition: 'background-color 0.3s, color 0.3s, font-size 0.3s',
         fontSize: '15px'
     };
     const activeStyle = {
-        backgroundColor: '#E0E0E0',
+        backgroundColor: '#C5C580',
         fontWeight: 'bold',
         fontSize: '15px'
     };
@@ -33613,15 +33634,42 @@ function MyPage() {
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { style: Object.assign(Object.assign({}, buttonStyle), (currentPage === 3 && activeStyle)), onClick: () => setCurrentPage(3) }, "\uC720\uC0AC\uB3C4 \uAE30\uBC18 \uCD94\uCC9C")),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null,
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null,
-                currentPage === 1 && (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null,
-                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center' } },
-                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?")),
+                currentPage === 1 && (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856' } }, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?"),
                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
-                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "ss")))),
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box1' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem1" }, "\uCD94\uCC9C \uBB38\uC81C 1\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation1" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box2' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem2" }, "\uCD94\uCC9C \uBB38\uC81C 2\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation2" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box3' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem3" }, "\uCD94\uCC9C \uBB38\uC81C 3\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation3" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0"))))),
                 currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
-                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uD47C \uC9C0 \uC624\uB798\uB41C \uBB38\uC81C \uCD94\uCC9C"))),
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856' } }, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?"),
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box1' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem1" }, "\uCD94\uCC9C \uBB38\uC81C 1\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation1" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box2' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem2" }, "\uCD94\uCC9C \uBB38\uC81C 2\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation2" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box3' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem3" }, "\uCD94\uCC9C \uBB38\uC81C 3\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation3" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0"))))),
                 currentPage === 3 && (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
-                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "\uC720\uC0AC\uB3C4 \uAE30\uBC18 \uCD94\uCC9C")))))));
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856' } }, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?"),
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: divStyle },
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box1' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem1" }, "\uCD94\uCC9C \uBB38\uC81C 1\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation1" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box2' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem2" }, "\uCD94\uCC9C \uBB38\uC81C 2\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation2" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: Box, id: 'Box3' },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: pBox, id: "Problem3" }, "\uCD94\uCC9C \uBB38\uC81C 3\uBC88"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: eBox, id: "explanation3" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")))))))));
 }
 if (IfMyPage()) {
     // 삽입할 div 요소를 생성합니다.

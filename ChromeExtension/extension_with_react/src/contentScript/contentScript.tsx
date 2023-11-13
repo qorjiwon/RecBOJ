@@ -122,13 +122,38 @@ function MyPage() {
     };
 
     const divStyle = {
-    padding: '10px',
-    margin: '10px',
-    width: '97%',
-    height: '300px',
-    border: '1px solid #ddd',
-    borderRadius: '10px'
+        display: 'flex', // 가로 정렬
+        padding: '10px',
+        width: '97%',
+        height: '300px',
+        border:'none',
+        justifyContent: 'center'
     };
+
+    const Box = {
+        flexDirection: 'row' as 'row', // 세로 정렬
+        width: '35%',
+        marginLeft: '40px',
+        marginRight: '14px'
+    }
+
+    const pBox = {
+        height: '110px',
+        backgroundColor: '#FAFBF7',
+        padding: '10px',
+        fontSize: '15px',
+        marginBottom: "10px",
+        color: '#6D7856'
+    }
+
+    const eBox = {
+        height: '110px',
+        backgroundColor: '#FAFBF7',
+        color: "#6D7856",
+        padding: '10px',
+        overflow: 'hidden',
+        fontSize: '15px'
+    }
 
     const manuBox = {
         flexDirection: 'column' as 'column',
@@ -143,16 +168,15 @@ function MyPage() {
         margin: '10px',
         width: '250px',
         backgroundColor: '#FFFFFF',
-        color: '#333',
+        color: '#6D7856',
         border: 'none',
-        borderRadius: '5px',
         cursor: 'pointer',
         transition: 'background-color 0.3s, color 0.3s, font-size 0.3s', // 색 변화, 글자 굵기 및 크기 변화를 부드럽게 만들기 위한 트랜지션
         fontSize: '15px'
     }
     
     const activeStyle = {
-        backgroundColor: '#E0E0E0',
+        backgroundColor: '#C5C580',
         fontWeight: 'bold',
         fontSize: '15px'
     };    
@@ -182,25 +206,102 @@ function MyPage() {
             <div>
                 <div>
                     {currentPage === 1 && (
-                        <div>
-                            <div style={{ fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center' }}>
-                                <h1>이런 문제는 어떤가요?</h1>
+                        <>
+                            <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                                이런 문제는 어떤가요?
                             </div>
-                            <div style = {divStyle}>
-                                <p>ss</p>
+                            <div style = {divStyle}> 
+                                <div style = {Box} id = 'Box1'>
+                                    <div style = {pBox} id = "Problem1">
+                                        추천 문제 1번
+                                    </div>
+                                    <div style = {eBox} id = "explanation1">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                                <div style = {Box} id = 'Box2'>
+                                    <div style = {pBox} id = "Problem2">
+                                        추천 문제 2번
+                                    </div>
+                                    <div style = {eBox} id = "explanation2">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                                <div style = {Box} id = 'Box3'>
+                                    <div style = {pBox} id = "Problem3">
+                                        추천 문제 3번
+                                    </div>
+                                    <div style = {eBox} id = "explanation3">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </>
                     )}
                     {currentPage === 2 && (
                         <>
-                            <p>푼 지 오래된 문제 추천</p>
-                            {/* 여기에 푼 지 오래된 문제 추천 내용 추가 */}
+                            <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                                이런 문제는 어떤가요?
+                            </div>
+                            <div style = {divStyle}> 
+                                <div style = {Box} id = 'Box1'>
+                                    <div style = {pBox} id = "Problem1">
+                                        추천 문제 1번
+                                    </div>
+                                    <div style = {eBox} id = "explanation1">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                                <div style = {Box} id = 'Box2'>
+                                    <div style = {pBox} id = "Problem2">
+                                        추천 문제 2번
+                                    </div>
+                                    <div style = {eBox} id = "explanation2">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                                <div style = {Box} id = 'Box3'>
+                                    <div style = {pBox} id = "Problem3">
+                                        추천 문제 3번
+                                    </div>
+                                    <div style = {eBox} id = "explanation3">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                            </div>
                         </>
                     )}
                     {currentPage === 3 && (
                         <>
-                            <p>유사도 기반 추천</p>
-                            {/* 여기에 유사도 기반 추천 내용 추가 */}
+                            <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                                이런 문제는 어떤가요?
+                            </div>
+                            <div style = {divStyle}> 
+                                <div style = {Box} id = 'Box1'>
+                                    <div style = {pBox} id = "Problem1">
+                                        추천 문제 1번
+                                    </div>
+                                    <div style = {eBox} id = "explanation1">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                                <div style = {Box} id = 'Box2'>
+                                    <div style = {pBox} id = "Problem2">
+                                        추천 문제 2번
+                                    </div>
+                                    <div style = {eBox} id = "explanation2">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                                <div style = {Box} id = 'Box3'>
+                                    <div style = {pBox} id = "Problem3">
+                                        추천 문제 3번
+                                    </div>
+                                    <div style = {eBox} id = "explanation3">
+                                        추천 이유 등 메세지
+                                    </div>
+                                </div>
+                            </div>
                         </>
                     )}
                 </div>

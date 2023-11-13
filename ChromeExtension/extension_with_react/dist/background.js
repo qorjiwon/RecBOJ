@@ -7,7 +7,6 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log('I just installed my extension')
   });
 
-  
 /******/ })()
 ;
 //# sourceMappingURL=background.js.map
