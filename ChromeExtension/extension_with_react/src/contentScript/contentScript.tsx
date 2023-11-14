@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
-import "./contentScript.css";
+import "./MyPage.css";
+import "./ProsCons.css";
 import ReactTooltip from 'react-tooltip';
 
 function IfSubmitPage() {
@@ -13,8 +14,8 @@ function IfMyPage() {
     const currentPageURL = window.location.href;
     const desiredURLPattern = "https://www.acmicpc.net/user/";
     return currentPageURL.startsWith(desiredURLPattern);
-}
-
+}    
+  
 interface ProblemsType {
     problem0: string;
     problem1: string;
@@ -97,36 +98,45 @@ function RelatedProblem() {
     }
     return (
         <div id="myTooltip">
-         <b>&nbsp; 연관 문제 1:</b>
-         <a
-            data-tip={`제목: ${problems.problem0_titleKo},  유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
-            href={urls.problem0}
-            style={{ fontWeight: 'bold',  marginRight: '10px'}}
-         >
-            {problem_ids.problem0}
-         </a>
-         &nbsp;
-         <b>&nbsp; 연관 문제 2:</b>
-         <a
-            data-tip={`제목: ${problems.problem1_titleKo},  유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
-            href={urls.problem1}
-            style={{ fontWeight: 'bold',  marginRight: '10px'}}
-         >
-            {problem_ids.problem1}
-         </a>
-         &nbsp;
-         <b>&nbsp; 연관 문제 3:</b>
-         <a
-            data-tip={`제목: ${problems.problem2_titleKo},  유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem2_tags}`}
-            href={urls.problem2}
-            style={{ fontWeight: 'bold',  marginRight: '10px'}}
-         >
-            {problem_ids.problem2}
-         </a>
-         &nbsp;
-         <b>&nbsp; {problems.message}</b>
-         <ReactTooltip place="top" type="dark" effect="solid"/>
-        </div>
+        <b>&nbsp; 연관 문제 1:</b>
+        <a
+          data-tip={`제목: ${problems.problem0_titleKo},  유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
+          href={urls.problem0}
+          style={{
+            fontWeight: 'bold',
+            marginRight: '10px',
+            }}
+        >
+          {problem_ids.problem0}
+        </a>
+        &nbsp;
+        <b>&nbsp; 연관 문제 2:</b>
+        <a
+          data-tip={`제목: ${problems.problem1_titleKo},  유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
+          href={urls.problem1}
+          style={{
+            fontWeight: 'bold',
+            marginRight: '10px',
+            }}
+        >
+          {problem_ids.problem1}
+        </a>
+        &nbsp;
+        <b>&nbsp; 연관 문제 3:</b>
+        <a
+          data-tip={`제목: ${problems.problem2_titleKo},  유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
+          href={urls.problem2}
+          style={{
+            fontWeight: 'bold',
+            marginRight: '10px',
+            }}
+        >
+          {problem_ids.problem2}
+        </a>
+        &nbsp;
+        <b>&nbsp; {problems.message}</b>
+        <ReactTooltip place="top" type="dark" effect="solid"/>
+      </div>      
     );
 }
 
@@ -194,7 +204,7 @@ function MyPage() {
                         <div className='divStyle'>
                             <div className='Box' id = 'Box1'>
                                 <div className = 'pBox' id = "Problem1">
-                                    추천 문제 1번
+                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/2644'> 촌수계산 </a>
                                 </div>
                                 <div className = 'eBox' id = "explanation1">
                                     추천 이유 등 메세지
@@ -202,7 +212,7 @@ function MyPage() {
                             </div>
                             <div className='Box' id = 'Box2'>
                                 <div className = 'pBox' id = "Problem2">
-                                    추천 문제 2번
+                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/1260'> DFS와 BFS </a>
                                 </div>
                                 <div className = 'eBox' id = "explanation2">
                                     추천 이유 등 메세지
@@ -210,7 +220,7 @@ function MyPage() {
                             </div>
                             <div className='Box' id = 'Box3'>
                                 <div className = 'pBox' id = "Problem3">
-                                    추천 문제 3번
+                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/2468'> 안전 영역</a>
                                 </div>
                                 <div className = 'eBox' id = "explanation3">
                                     추천 이유 등 메세지
@@ -224,30 +234,35 @@ function MyPage() {
                         <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
                             이런 문제는 어떤가요?
                         </div>
-                        <div className='divStyle'>
-                            <div className='Box' id = 'Box1'>
-                                <div className = 'pBox' id = "Problem1">
-                                    추천 문제 1번
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                            <div className='divStyle'>
+                                <div className='Box' id = 'Box1'>
+                                    <div className = 'pBox' id = "Problem1">
+                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/9663'> N-Queen </a>
+                                    </div>
+                                    <div className = 'eBox' id = "explanation1">
+                                        backtracking 분야를 42.5% 기억하고 계십니다.
+                                    </div>
                                 </div>
-                                <div className = 'eBox' id = "explanation1">
-                                    추천 이유 등 메세지
+                                <div className='Box' id = 'Box2'>
+                                    <div className = 'pBox' id = "Problem2">
+                                        <a className = 'hrefBox' href='https://www.acmicpc.net/problem/1977'> 완전 제곱수 </a>
+                                    </div>
+                                    <div className = 'eBox' id = "explanation2">
+                                    implementation 분야를 32.7% 기억하고 계십니다.
+                                    </div>
+                                </div>
+                                <div className='Box' id = 'Box3'>
+                                    <div className = 'pBox' id = "Problem3">
+                                        <a className = 'hrefBox' href='https://www.acmicpc.net/problem/1759'> 암호만들기 </a>
+                                    </div>
+                                    <div className = 'eBox' id = "explanation3">
+                                        brute_forcing 분야를 34.2% 기억하고 계십니다. 
+                                    </div>
                                 </div>
                             </div>
-                            <div className='Box' id = 'Box2'>
-                                <div className = 'pBox' id = "Problem2">
-                                    추천 문제 2번
-                                </div>
-                                <div className = 'eBox' id = "explanation2">
-                                    추천 이유 등 메세지
-                                </div>
-                            </div>
-                            <div className='Box' id = 'Box3'>
-                                <div className = 'pBox' id = "Problem3">
-                                    추천 문제 3번
-                                </div>
-                                <div className = 'eBox' id = "explanation3">
-                                    추천 이유 등 메세지
-                                </div>
+                            <div style={{ textAlign: 'right', fontSize: '13px', paddingRight: '3%' }}>
+                                 <a style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'>에빙하우스의 망각곡선이란?</a>
                             </div>
                         </div>
                         </>
@@ -301,7 +316,7 @@ interface tagsType {
 }
 
 const problems = {
-    dp: ['문제 1', '문제 2', '문제 3'],
+    dp: ['피보나치 수열', 'KnapSack', '1로 만들기'],
     graph: ['문제 4', '문제 5', '문제 6'],
     string: ['문제 7', '문제 8', '문제 9'],
     dac: ['문제 10', '문제 11', '문제 12'],
@@ -311,19 +326,33 @@ const problems = {
 
 function ProsCons() {
     const [tags, setTags] = useState<tagsType | null>(null);
-    const [selectedField, setSelectedField] = useState<string | null>(null);
-    const [selectedButton, setSelectedButton] = useState<string | null>(null);
+    
+    const [selectedField_strong, setSelectedField_strong] = useState<string | null>(null);
+    const [selectedButton_strong, setSelectedButton_strong] = useState<string | null>(null);
 
-    const handleClick = (field: string) => {
-        if (selectedField === field) {
-            setSelectedField(null);
-            setSelectedButton(null);
+    const [selectedField_weak, setSelectedField_weak] = useState<string | null>(null);
+    const [selectedButton_weak, setSelectedButton_weak] = useState<string | null>(null);
+
+    const handleClick_strong = (field: string) => {
+        if (selectedField_strong === field) {
+            setSelectedField_strong(null);
+            setSelectedButton_strong(null);
         } else {
-            setSelectedField(field);
-            setSelectedButton(field);
+            setSelectedField_strong(field);
+            setSelectedButton_strong(field);
         }
     };
 
+
+    const handleClick_weak = (field: string) => {
+        if (selectedField_weak === field) {
+            setSelectedField_weak(null);
+            setSelectedButton_weak(null);
+        } else {
+            setSelectedField_weak(field);
+            setSelectedButton_weak(field);
+        }
+    };
     useEffect(() => {
        
         const fetchTags = async () => {
@@ -353,55 +382,121 @@ function ProsCons() {
         fetchTags();
     }, []);
 
-    const buttonStyle = {
-        border: '1px solid white',
-        background: 'white',
-        color: 'black',
-        padding: '5px 10px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s, color 0.3s, font-size 0.3s'
-    };
-
     const CircleComponent = ({ cx, cy, r, fill }) => {
         return <circle cx={cx} cy={cy} r={r} fill={fill} />;
       };
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', padding: '10px', margin: '5px' }}>
-        <div style={{ border: '0.7px solid black', padding: '10px', marginBottom: '10px'}}>
-            <b>강점 분야:</b>
-            <svg style={{ width:"20", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 20 35">
-                <g transform="translate(2, 12)">
-                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
-                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
-                </g>
-            </svg>
-            <button style={{ ...buttonStyle, background: selectedButton === 'dp' ? '#ecf0f1' : 'white', marginLeft: '1%', marginRight: '5%' }} onClick={() => handleClick('dp')}>DP</button>
+        <div style={{ borderBottom: '0.7px solid #7f8c8d', padding: '10px', marginBottom: '10px', }}>
+            <b style={{ fontSize: '14px' }}>강점 분야:</b>
             <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
                 <g transform="translate(8, 10)">
                     <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
                     <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
                 </g>
             </svg>
-            <button style={{ ...buttonStyle, background: selectedButton === 'graph' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('graph')}>Graphs</button>
-            <button style={{ ...buttonStyle, background: selectedButton === 'greedy' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('greedy')}>Greedy</button>
+            <button
+                className={`tagbtn${selectedButton_strong === 'dp' ? ' active' : ''}`}
+                onClick={() => handleClick_strong('dp')}
+                >
+                DP
+            </button>
+            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                <g transform="translate(8, 10)">
+                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                </g>
+            </svg>
+            <button
+                className={`tagbtn${selectedButton_strong === 'graph' ? ' active' : ''}`}
+                onClick={() => handleClick_strong('graph')}
+                >
+                Graph
+            </button>
+            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                <g transform="translate(8, 10)">
+                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                </g>
+            </svg>
+            <button
+                className={`tagbtn${selectedButton_strong === 'greedy' ? ' active' : ''}`}
+                onClick={() => handleClick_strong('greedy')}
+                >
+                Greedy
+            </button>
         </div>
-        <div style={{ border: '0.7px solid black', padding: '10px', marginBottom: '10px'}}>
-            <b>약점 분야:</b>
-            <button style={{ ...buttonStyle, background: selectedButton === 'string' ? '#ecf0f1' : 'white', marginLeft: '1%', marginRight: '5%' }} onClick={() => handleClick('string')}>String</button>
-            <button style={{ ...buttonStyle, background: selectedButton === 'dac' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('dac')}>Divide and Conquer</button>
-            <button style={{ ...buttonStyle, background: selectedButton === 'ds' ? '#ecf0f1' : 'white', marginRight: '5%' }} onClick={() => handleClick('ds')}>Data Structure</button>
-        </div>
-            {selectedField && (
-                <div>
-                    <h2>{selectedField} 관련 문제</h2>
-                    <ul>
-                        {problems[selectedField].map((problem, index) => (
-                            <li key={index}>
-                                <a href={`/${selectedField}/${problem}`}>{problem}</a>
-                            </li>
-                        ))}
-                    </ul>
+        {selectedField_strong && (
+                  <div className="container_rp">
+                  <h2 className="header_rp">{`${selectedField_strong} 관련 문제`}</h2>
+                  <ul className="list_rp">
+                    {problems[selectedField_strong]?.map((problem, index) => (
+                      <li key={index} className="listItem">
+                        <a
+                          href={`/${selectedField_strong}/${problem}`}
+                          className={`link ${problem === 'KnapSack' ? 'correctColor' : ''}`}
+                        >
+                          {problem}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>                
+                  )}
+
+        <div style={{ borderBottom: '0.7px solid #7f8c8d', padding: '10px', marginBottom: '10px'}}>
+        
+            <b style={{ fontSize: '14px' }}>약점 분야:</b>
+            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                <g transform="translate(8, 10)">
+                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                </g>
+            </svg>
+            <button
+                className={`tagbtn_weak${selectedButton_weak === 'string' ? ' active' : ''}`}
+                onClick={() => handleClick_weak('string')}
+                >
+                String
+            </button>
+            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                <g transform="translate(8, 10)">
+                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                </g>
+            </svg>
+            <button
+                className={`tagbtn_weak${selectedButton_weak === 'dac' ? ' active' : ''}`}
+                onClick={() => handleClick_weak('dac')}
+                >
+                Divide and Conquer
+            </button>
+            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                <g transform="translate(8, 10)">
+                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                </g>
+            </svg>
+            <button
+                className={`tagbtn_weak${selectedButton_weak === 'ds' ? ' active' : ''}`}
+                onClick={() => handleClick_weak('ds')}
+                >
+                Data Structure
+            </button>
+            </div>
+            {selectedField_weak && (
+                  <div className="container_rp">
+                  <h2 className="header_rp">{`${selectedField_weak} 관련 문제`}</h2>
+                  <ul className="list_rp">
+                    {problems[selectedField_weak]?.map((problem, index) => (
+                      <li key={index} className="listItem">
+                        <a href={`/${selectedField_weak}/${problem}`} className="link">
+                          {problem}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
             )}
         </div>

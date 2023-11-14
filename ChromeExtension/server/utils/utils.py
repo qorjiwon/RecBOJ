@@ -14,7 +14,7 @@ import warnings
 
 
 def return_user_data():
-    user_df = pd.read_csv('/Users/im_jungwoo/Desktop/project/RecBOJ/ChromeExtension/server/utils/final_silvergold_user_with_tag.csv')
+    user_df = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/utils/final_silvergold_user_with_tag.csv')
     df_user_problems = user_df[['id_to_index', 'target']]
     df_user_problems['solve'] = [1] * len(df_user_problems)
     pivot_table = df_user_problems.pivot_table(index=["id_to_index"], columns=["target"], values="solve")
@@ -44,7 +44,7 @@ def ease_recommend_problem(problem_list):
 
 
 def vae_recommend_problem(problem_list):
-    model = tf.keras.models.load_model('/Users/im_jungwoo/Desktop/project/RecBOJ/ChromeExtension/server/models/VAE/VAE_model_ver3.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/models/VAE/VAE_model_ver3.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     origin_problem, _ = return_user_data()
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
@@ -112,8 +112,7 @@ def get_problem_by_level(target_problem, ProblemDict, similar_problem, level_fla
                     cnt += 1
                     if cnt == 3:
                         return problem_list
-    
-        return []
+        return problem_list
 
 # 받아온 json 데이터로부터 제출 유형별 횟수를 반환
 def GetTries(data):
@@ -149,7 +148,7 @@ def get_levelflag(problem_id, data, ProblemDict):
     return flag
 
 def index_to_problem(top_problems):
-    problem_info = pd.read_csv('/Users/im_jungwoo/Desktop/project/RecBOJ/ChromeExtension/server/data/final_problem_processed.csv')
+    problem_info = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/final_problem_processed.csv')
     rec_id = problem_info.loc[top_problems, 'problemId']
     return rec_id    
 
