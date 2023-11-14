@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState, useEffect } from 'react';
 import "./contentScript.css";
-
+import ReactTooltip from 'react-tooltip';
 
 function IfSubmitPage() {
     const currentPageURL = window.location.href;
@@ -22,11 +22,23 @@ interface ProblemsType {
     problem0_similarity: string;
     problem1_similarity: string;
     problem2_similarity: string;
+    problem0_titleKo: string;
+    problem1_titleKo: string;
+    problem2_titleKo: string;
+    problem0_tags: string;
+    problem1_tags: string;
+    problem2_tags: string;
+    problem0_tier: string;
+    problem1_tier: string;
+    problem2_tier: string;
     message;
 }
 
 function RelatedProblem() {
     const [problems, setProblems] = useState<ProblemsType | null>(null);
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    }, []);
 
     useEffect(() => {
        
@@ -65,7 +77,7 @@ function RelatedProblem() {
 
     const urls: Record<string, string> = {};
     const problem_ids: Record<string, string> = {};
-
+    
     if (problems) {
         for (let i = 0; i < 3; i++) { // problem0, problem1, problem2에 대해서만 반복
             const key = `problem${i}` as keyof ProblemsType;
@@ -79,18 +91,41 @@ function RelatedProblem() {
     console.log("URL_problem0 =", urls.problem0);
     console.log("URL_problem1 =", urls.problem1);
     console.log("URL_problem2 =", urls.problem2);
-
-    console.log(urls);
-
+    console.log(problems)
     if (!problems) {
         return null;
     }
     return (
         <div id="myTooltip">
-         <b>&nbsp; 연관 문제 1:</b> <a href={urls.problem0} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem0}</a> &nbsp;
-         <b>&nbsp; 연관 문제 2:</b> <a href={urls.problem1} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem1}</a> &nbsp;
-         <b>&nbsp; 연관 문제 3:</b> <a href={urls.problem2} style={{ fontWeight: 'bold',  marginRight: '10px'}}>{problem_ids.problem2}</a> &nbsp;
+         <b>&nbsp; 연관 문제 1:</b>
+         <a
+            data-tip={`제목: ${problems.problem0_titleKo},  유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
+            href={urls.problem0}
+            style={{ fontWeight: 'bold',  marginRight: '10px'}}
+         >
+            {problem_ids.problem0}
+         </a>
+         &nbsp;
+         <b>&nbsp; 연관 문제 2:</b>
+         <a
+            data-tip={`제목: ${problems.problem1_titleKo},  유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
+            href={urls.problem1}
+            style={{ fontWeight: 'bold',  marginRight: '10px'}}
+         >
+            {problem_ids.problem1}
+         </a>
+         &nbsp;
+         <b>&nbsp; 연관 문제 3:</b>
+         <a
+            data-tip={`제목: ${problems.problem2_titleKo},  유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem2_tags}`}
+            href={urls.problem2}
+            style={{ fontWeight: 'bold',  marginRight: '10px'}}
+         >
+            {problem_ids.problem2}
+         </a>
+         &nbsp;
          <b>&nbsp; {problems.message}</b>
+         <ReactTooltip place="top" type="dark" effect="solid"/>
         </div>
     );
 }

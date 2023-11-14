@@ -10,6 +10,7 @@
     "global": "^4.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-tooltip": "4.2.10",
     "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2"

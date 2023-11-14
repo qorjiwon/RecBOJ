@@ -43,7 +43,7 @@ class EASE:
         return user_row @ self.B
     
 # network parameters
-input_shape = 5539
+input_shape = 5221
 original_dim= input_shape
 intermediate_dim = 512
 latent_dim = 2

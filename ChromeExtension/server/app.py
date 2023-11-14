@@ -28,6 +28,23 @@ def send_url():
     problems = get_item2vec_problem(problem_id, submits)
     return jsonify(message=f'{problems}')
 
+@app.route('/tags', methods=['POST'])
+def send_tags():
+    data = request.get_json()
+    current_url = data.get('url')
+    user_id = extract_user_id_from_mypage(current_url)
+    
+    submits = data.get('submits')
+    
+    tags = {}
+    tags["strong0"] = "DP"
+    tags["strong1"] = "Graphs"
+    tags["strong2"] = "Greedy"
+    tags["weak0"] = "String"
+    tags["weak1"] = "DataStruct"
+    tags["weak2"] = "Search"
+    print(tags)
+    return jsonify(message=f'{tags}')
 
 if __name__ == '__main__':
     app.run('0.0.0.0',8080,debug=True)
