@@ -19,30 +19,25 @@
 }
 
 .pBox {
-    height: 110px;
-    background-color: #f7f7f9;
-    padding: 10px;
-    font-size: 15px;
-    margin-bottom: 14px;
-    color: #6D7856;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px !important;
-    box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #004080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .eBox {
-    height: 140px;
-    color: #6D7856;
-    background-color: #f7f7f9;
-    padding: 10px;
-    overflow: hidden;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  width: 30%;
+  height: 140px;
+  color: #6D7856;
+  background-color: #f7f7f9;
+  padding: 10px;
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 
@@ -66,7 +61,7 @@
 .manu {
     padding: 10px;
     margin: 10px;
-    width: 250px;
+    width: 35%;
     background-color: #FFFFFF;
     border: none;
     cursor: pointer;
@@ -114,97 +109,88 @@
  /* styles.css */
 
 .header_rp {
-    border-bottom: 1px solid transparent;
     padding-bottom: 5px;
-    position: relative;
     color: #34495e;
     font-size: 15px;
     font-weight : bold;
-    text-align: center; 
+    text-align: center;
   }
   
-  .header_rp:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%; /* 줄의 길이를 조절합니다. */
-    border-bottom: 1px solid #ccc;
-  }
+.link {
+  color: #7f8c8d;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 */
+}
+
+.link:hover {
+  color: #004080; /* 마우스 호버 시에 변경될 색상 */
+}
   
-  .link {
-    color: #7f8c8d;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 */
-  }
-  
-  .link:hover {
-    color: #004080; /* 마우스 호버 시에 변경될 색상 */
-  }
-  
-  .tagbtn {
-    border: 1px solid #E0E0E0;;
-    padding: 0.8%;
-    padding-left: 2%;
-    padding-right: 2%;
-    cursor: pointer;
-    background: white;
-    transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
-    font-weight: normal;
-    font-family: 'Arial, sans-serif';
-    font-size: 10;
-    margin-right: 5%;
-    border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
-  }
-  
-  .container_rp {
-    background: 	#FAFAFA;
-  }
-  
+.tagbtn {
+  border: 1px solid #E0E0E0;;
+  padding: 0.8%;
+  padding-left: 2%;
+  padding-right: 2%;
+  cursor: pointer;
+  background: white;
+  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
+  font-weight: normal;
+  font-family: 'Arial, sans-serif';
+  font-size: 10;
+  margin-right: 5%;
+  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
+}
+
+.container_rp {
+  background: 	#FAFAFA;
+}
+
 .tagbtn.active {
-    background: #C9F3AF;
-    font-weight: bold;
-    /* 다른 조건부 스타일 추가 가능 */
-  }
-  .tagbtn:hover {
-    background: #C9F3AF;
-    font-weight: bold;
-  }
-  
+  background: #C9F3AF;
+  font-weight: bold;
+  /* 다른 조건부 스타일 추가 가능 */
+}
+.tagbtn:hover {
+  background: #C9F3AF;
+  font-weight: bold;
+}
 
-  .tagbtn_weak {
-    border: 1px solid #E0E0E0;;
-    padding: 0.8%;
-    padding-left: 2%;
-    padding-right: 2%;
-    cursor: pointer;
-    background: white;
-    transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
-    font-weight: normal;
-    font-family: 'Arial, sans-serif';
-    font-size: 10;
-    margin-right: 5%;
-    border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
-  }
-  
-  .container_rp {
-    background: 	#FAFAFA;
-  }
-  
+
+.tagbtn_weak {
+  border: 1px solid #E0E0E0;;
+  padding: 0.8%;
+  padding-left: 2%;
+  padding-right: 2%;
+  cursor: pointer;
+  background: white;
+  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
+  font-weight: normal;
+  font-family: 'Arial, sans-serif';
+  font-size: 10;
+  margin-right: 5%;
+  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
+}
+
+.container_rp {
+  background: 	#FAFAFA;
+}
+
 .tagbtn_weak.active {
-    background: #F0BEB4;
-    font-weight: bold;
-    /* 다른 조건부 스타일 추가 가능 */
-  }
-  .tagbtn_weak:hover {
-    background: #F0BEB4;
-    font-weight: bold;
-  }
-  
+  background: #F0BEB4;
+  font-weight: bold;
+  /* 다른 조건부 스타일 추가 가능 */
+}
+.tagbtn_weak:hover {
+  background: #F0BEB4;
+  font-weight: bold;
+}
 
-  .list_rp {
-    padding-left: 6%;
-
-  }
+.list_rp {
+  padding-left: 6%;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none; /* 리스트 기본 스타일 제거 */
+  padding:5px;
+}
