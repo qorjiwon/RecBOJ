@@ -223,7 +223,9 @@ function MyPage() {
                     {currentPage === 1 && (
                     <>
                         <div style={{ display: 'flex', flexDirection: 'column', padding: '10px', margin: '5px' }}>
+
                             <div style={{display: 'flex', marginBottom: '10px', justifyContent: 'center', alignItems: 'center'}}>
+
                                 <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
                                     <g transform="translate(8, 10)">
                                         <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
@@ -231,10 +233,10 @@ function MyPage() {
                                     </g>
                                 </svg>
                                 <button
-                                    className={`tagbtn_weak${selectedButton_weak === 'string' ? ' active' : ''}`}
-                                    onClick={() => handleClick_weak('string')}
+                                    className={`tagbtn_weak${selectedButton_weak === 'greedy' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('greedy')}
                                     >
-                                    String
+                                    Greedy
                                 </button>
                                 <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
                                     <g transform="translate(8, 10)">
@@ -263,32 +265,21 @@ function MyPage() {
                                 <div className="qmark">
                                     <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
                                 </div>
+        
                                 </div>
                                 {selectedField_weak && (
-                                    <div className="container_rp">
-                                    <h2 className="header_rp">{`${selectedField_weak} 관련 문제`}</h2>
-                                    <ul className="list_rp">
+                                    <div className="container_rp" style = {{display: 'flex', flexDirection: 'row'}}>
                                         {problems[selectedField_weak]?.map((problem, index) => (
-                                            <div style = {{display: 'flex', flexDirection: 'column'}}>
-                                            <li key={index} className="listItem">
-                                                <div className='pBox'>
+                                            <div className='rp_all' style = {{display: 'flex', flexDirection: 'column'}}>
+                                                <div className='pBox_header'>
                                                     <a href={`/${selectedField_weak}/${problem}`} className="link">
                                                     {problem}
                                                     </a>
                                                 </div>
-                                            </li>
-                                            </div>
-                                            ))}
-                                            {details[selectedField_weak]?.map((detail, index) => (
-                                            <div>
-                                            <li key={index} className="listItem">
-                                                <div className='eBox'>
-                                                    {detail}
+                                                <div className='pBox_content'>
                                                 </div>
-                                            </li>
                                             </div>
                                             ))}
-                                    </ul>
                                     </div>
                                 )}
                             </div>
@@ -296,8 +287,8 @@ function MyPage() {
                     )}
                     {currentPage === 2 && (
                         <>
-                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
-                            이런 문제는 어떤가요?
+                        <div style={{fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                            해당 분류의 문제를 푼 지 오래됐어요.
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <div className='divStyle'>
@@ -309,7 +300,8 @@ function MyPage() {
                                              N-Queen </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation1">
-                                        backtracking 분야를 42.5% 기억하고 계십니다.
+                                        현재 backtracking 내용을 42.5% 기억하고 있어요.
+                                        <br></br>내일은 38.7% 기억할 거예요.
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box2'>
@@ -321,7 +313,8 @@ function MyPage() {
                                          완전 제곱수 </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation2">
-                                    implementation 분야를 32.7% 기억하고 계십니다.
+                                    현재 implementation 분야를 34.7% 기억하고 있어요.
+                                    <br></br>내일은 32.8% 기억할 거예요.
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box3'>
@@ -333,7 +326,8 @@ function MyPage() {
                                              암호만들기 </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation3">
-                                        brute_forcing 분야를 34.2% 기억하고 계십니다. 
+                                        현재 brute_forcing 분야를 23.2% 기억하고 있어요.
+                                        <br></br>내일은 22.4% 기억할 거예요.
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +392,7 @@ const problems = {
     string: ['문제 7', '문제 8', '문제 9'],
     dac: ['문제 10', '문제 11', '문제 12'],
     ds : ['문제 13', '문제 14', '문제 15'],
-    greedy: ['문제 16', '문제 17', '문제 18']
+    greedy: ['수 묶기', '선 긋기', '공주님의 정원']
 };
 
 const details = {
@@ -407,7 +401,7 @@ const details = {
     string: ['문제 7', '문제 8', '문제 9'],
     dac: ['문제 10', '문제 11', '문제 12'],
     ds : ['문제 13', '문제 14', '문제 15'],
-    greedy: ['문제 16', '문제 17', '문제 18']
+    greedy: ['수 묶기', '선 긋기', '공주님의 정원']
 }
 
 function ProsCons() {
