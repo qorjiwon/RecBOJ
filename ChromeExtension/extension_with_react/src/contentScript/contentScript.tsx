@@ -268,31 +268,19 @@ function MyPage() {
         
                                 </div>
                                 {selectedField_weak && (
-                                    <div className="container_rp">
-                                    <h2 className="header_rp">{`${selectedField_weak} 관련 문제`}</h2>
-                                    <ul className="list_rp">
+                                    <div className="container_rp" style = {{display: 'flex', flexDirection: 'row'}}>
                                         {problems[selectedField_weak]?.map((problem, index) => (
-
-                                            <div style = {{display: 'flex', flexDirection: 'column'}}>
-                                            <li key={index} className="listItem">
-                                                <div className='pBox'>
+                                            <div className='rp_all' style = {{display: 'flex', flexDirection: 'column'}}>
+                                                <div className='pBox_header'>
                                                     <a href={`/${selectedField_weak}/${problem}`} className="link">
                                                     {problem}
                                                     </a>
                                                 </div>
-                                            </li>
-                                            </div>
-                                            ))}
-                                            {details[selectedField_weak]?.map((detail, index) => (
-                                            <div>
-                                            <li key={index} className="listItem">
-                                                <div className='eBox'>
-                                                    {detail}
+                                                <div className='pBox_content'>
+                                                    문제 내용
                                                 </div>
-                                            </li>
                                             </div>
                                             ))}
-                                    </ul>
                                     </div>
                                 )}
                             </div>
