@@ -111,7 +111,6 @@ function RelatedProblem() {
         <a
           data-tip={` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
           href={urls.problem1}
-          className= 'RecommenedProblem'
         >
           {problems.problem1_titleKo}
         </a>
@@ -120,7 +119,10 @@ function RelatedProblem() {
         <a
           data-tip={` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
           href={urls.problem2}
-          className= 'RecommenedProblem'
+          style={{
+            fontWeight: 'bold',
+            marginRight: '10px',
+            }}
         >
           {problems.problem2_titleKo}
         </a>
@@ -163,6 +165,37 @@ function MyPage() {
         setActive((active) => (active === index ? null : index));
     };
 
+    const [selectedField_strong, setSelectedField_strong] = useState<string | null>(null);
+    const [selectedButton_strong, setSelectedButton_strong] = useState<string | null>(null);
+
+    const [selectedField_weak, setSelectedField_weak] = useState<string | null>(null);
+    const [selectedButton_weak, setSelectedButton_weak] = useState<string | null>(null);
+
+    const handleClick_strong = (field: string) => {
+        if (selectedField_strong === field) {
+            setSelectedField_strong(null);
+            setSelectedButton_strong(null);
+        } else {
+            setSelectedField_strong(field);
+            setSelectedButton_strong(field);
+        }
+    };
+
+
+    const handleClick_weak = (field: string) => {
+        if (selectedField_weak === field) {
+            setSelectedField_weak(null);
+            setSelectedButton_weak(null);
+        } else {
+            setSelectedField_weak(field);
+            setSelectedButton_weak(field);
+        }
+    };
+
+    const CircleComponent = ({ cx, cy, r, fill }) => {
+        return <circle cx={cx} cy={cy} r={r} fill={fill} />;
+      };
+
     return (
         <div className="style">
             <div style = {{flexDirection: 'column', display: 'inline-block', borderBottom: '1px solid #ddd'}}>
@@ -189,36 +222,63 @@ function MyPage() {
                 <div>
                     {currentPage === 1 && (
                     <>
-                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
-                            이런 문제는 어떤가요?
-                        </div>
-                        <div className='divStyle'>
-                            <div className='Box' id = 'Box1'>
-                                <div className = 'pBox' id = "Problem1">
-                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/2644'> 촌수계산 </a>
+                        <div style={{ display: 'flex', flexDirection: 'column', padding: '10px', margin: '5px' }}>
+                            <div style={{ borderBottom: '0.7px solid #7f8c8d', padding: '10px', marginBottom: '10px'}}>
+                            
+                                <b style={{ fontSize: '14px' }}>약점 분야:</b>
+                                <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                                    <g transform="translate(8, 10)">
+                                        <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                                        <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                                    </g>
+                                </svg>
+                                <button
+                                    className={`tagbtn_weak${selectedButton_weak === 'string' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('string')}
+                                    >
+                                    String
+                                </button>
+                                <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                                    <g transform="translate(8, 10)">
+                                        <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                                        <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                                    </g>
+                                </svg>
+                                <button
+                                    className={`tagbtn_weak${selectedButton_weak === 'dac' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('dac')}
+                                    >
+                                    Divide and Conquer
+                                </button>
+                                <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
+                                    <g transform="translate(8, 10)">
+                                        <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
+                                        <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+                                    </g>
+                                </svg>
+                                <button
+                                    className={`tagbtn_weak${selectedButton_weak === 'ds' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('ds')}
+                                    >
+                                    Data Structure
+                                </button>
                                 </div>
-                                <div className = 'eBox' id = "explanation1">
-                                    추천 이유 등 메세지
-                                </div>
+                                {selectedField_weak && (
+                                    <div className="container_rp">
+                                    <h2 className="header_rp">{`${selectedField_weak} 관련 문제`}</h2>
+                                    <ul className="list_rp">
+                                        {problems[selectedField_weak]?.map((problem, index) => (
+                                        <li key={index} className="listItem">
+                                            <a href={`/${selectedField_weak}/${problem}`} className="link">
+                                            {problem}
+                                            </a>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                    </div>
+                                )}
                             </div>
-                            <div className='Box' id = 'Box2'>
-                                <div className = 'pBox' id = "Problem2">
-                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/1260'> DFS와 BFS </a>
-                                </div>
-                                <div className = 'eBox' id = "explanation2">
-                                    추천 이유 등 메세지
-                                </div>
-                            </div>
-                            <div className='Box' id = 'Box3'>
-                                <div className = 'pBox' id = "Problem3">
-                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/2468'> 안전 영역</a>
-                                </div>
-                                <div className = 'eBox' id = "explanation3">
-                                    추천 이유 등 메세지
-                                </div>
-                            </div>
-                        </div>
-                        </>
+                    </>
                     )}
                     {currentPage === 2 && (
                         <>
@@ -446,62 +506,7 @@ function ProsCons() {
                     ))}
                   </ul>
                 </div>                
-                  )}
-
-        <div style={{ borderBottom: '0.7px solid #7f8c8d', padding: '10px', marginBottom: '10px'}}>
-        
-            <b style={{ fontSize: '14px' }}>약점 분야:</b>
-            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
-                <g transform="translate(8, 10)">
-                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
-                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
-                </g>
-            </svg>
-            <button
-                className={`tagbtn_weak${selectedButton_weak === 'string' ? ' active' : ''}`}
-                onClick={() => handleClick_weak('string')}
-                >
-                String
-            </button>
-            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
-                <g transform="translate(8, 10)">
-                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
-                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
-                </g>
-            </svg>
-            <button
-                className={`tagbtn_weak${selectedButton_weak === 'dac' ? ' active' : ''}`}
-                onClick={() => handleClick_weak('dac')}
-                >
-                Divide and Conquer
-            </button>
-            <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
-                <g transform="translate(8, 10)">
-                    <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
-                    <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
-                </g>
-            </svg>
-            <button
-                className={`tagbtn_weak${selectedButton_weak === 'ds' ? ' active' : ''}`}
-                onClick={() => handleClick_weak('ds')}
-                >
-                Data Structure
-            </button>
-            </div>
-            {selectedField_weak && (
-                  <div className="container_rp">
-                  <h2 className="header_rp">{`${selectedField_weak} 관련 문제`}</h2>
-                  <ul className="list_rp">
-                    {problems[selectedField_weak]?.map((problem, index) => (
-                      <li key={index} className="listItem">
-                        <a href={`/${selectedField_weak}/${problem}`} className="link">
-                          {problem}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-            )}
+                  )}      
         </div>
     );
 };
