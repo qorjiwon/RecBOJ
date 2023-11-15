@@ -18,30 +18,30 @@
   margin-right: 14px;
 }
 .pBox {
-  height: 110px;
-  background-color: #f7f7f9;
-  padding: 10px;
-  font-size: 15px;
-  margin-bottom: 14px;
-  color: #6D7856;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px !important;
-  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+    height: 110px;
+    background-color: #f7f7f9;
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: #6D7856;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px !important;
+    box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .eBox {
-  height: 140px;
-  color: #6D7856;
-  background-color: #f7f7f9;
-  padding: 10px;
-  overflow: hidden;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    height: 140px;
+    color: #6D7856;
+    background-color: #f7f7f9;
+    padding: 10px;
+    overflow: hidden;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hrefBox {
@@ -223,4 +223,4 @@ padding:5px;
 .rp_all {
   align-items: center;
   width: 50%;
-}
+  }
