@@ -22,201 +22,231 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `.style {
-    padding: 10px;
+  padding: 10px;
 }
 
 .divStyle {
-    display: flex;
-    padding: 10px;
-    width: 97%;
-    height: 300px;
-    border: none;
-    justify-content: center;
-}
-
-.Box {
-    flex-direction: row;
-    width: 35%;
-    margin-left: 40px;
-    margin-right: 14px;
-}
-
-.pBox {
-  width: 30%;
-  font-size: 15px;
-  margin-bottom: 14px;
-  color: #004080;
   display: flex;
-  align-items: center;
+  padding: 10px;
+  width: 97%;
+  height: 300px;
+  border: none;
   justify-content: center;
 }
 
+.Box {
+  flex-direction: row;
+  width: 35%;
+  margin-left: 40px;
+  margin-right: 14px;
+}
+.pBox {
+  height: 110px;
+  background-color: #f7f7f9;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #6D7856;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px !important;
+  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .eBox {
-  width: 30%;
   height: 140px;
   color: #6D7856;
   background-color: #f7f7f9;
   padding: 10px;
+  overflow: hidden;
   font-size: 15px;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-
 .hrefBox {
-    height: 140px;
-    color: #6D7856;
-    background-color: #f7f7f9;
-    padding: 10px;
-    overflow: hidden;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  height: 140px;
+  color: #6D7856;
+  background-color: #f7f7f9;
+  padding: 10px;
+  overflow: hidden;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .hrefBox:hover {
-    color: #7f8c8d;
-    font-weight: bold;
+  color: #7f8c8d;
+  font-weight: bold;
 }
 
 .manu {
-    padding: 10px;
-    margin: 10px;
-    width: 35%;
-    background-color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-    font-size: 15px;
-    border-radius: 6px !important;
+  padding: 10px;
+  margin: 10px;
+  width: 35%;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+  font-size: 15px;
+  border-radius: 6px !important;
 }
 
 .manu:hover {
-    background-color: #E0E0E0;
-    font-weight: bold;
-    font-size: 15px;
-    border-radius: 100px;
+  background-color: #E0E0E0;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 100px;
 }
 
 .manu.active {
-    background-color: #E0E0E0;
-    font-weight: bold;
-    font-size: 15px;
-    border-radius: 100px;
+  background-color: #E0E0E0;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 100px;
 }
 
 .snowflakes {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    animation: snow 5s linear infinite;
-  }
-  
-  .snowflake {
-    position: absolute;
-    color: black;
-    font-size: 20px;
-    will-change: transform;
-  }
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  animation: snow 5s linear infinite;
+}
 
-  @keyframes snow {
-    to {
-      transform: translateY(100vh);
-    }
+.snowflake {
+  position: absolute;
+  color: black;
+  font-size: 20px;
+  will-change: transform;
+}
+
+@keyframes snow {
+  to {
+    transform: translateY(100vh);
   }
+}
 
 
- /* styles.css */
+/* styles.css */
 
 .header_rp {
-    padding-bottom: 5px;
-    color: #34495e;
-    font-size: 15px;
-    font-weight : bold;
-    text-align: center;
-  }
-  
+  padding-bottom: 5px;
+  color: #34495e;
+  font-size: 15px;
+  font-weight : bold;
+  text-align: center;
+}
+
 .link {
-  color: #7f8c8d;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 */
+color: #7f8c8d;
+text-decoration: none;
+font-weight: bold;
+cursor: pointer;
+transition: color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 */
 }
 
 .link:hover {
-  color: #004080; /* 마우스 호버 시에 변경될 색상 */
+color: #004080; /* 마우스 호버 시에 변경될 색상 */
 }
-  
+
 .tagbtn {
-  border: 1px solid #E0E0E0;;
-  padding: 0.8%;
-  padding-left: 2%;
-  padding-right: 2%;
-  cursor: pointer;
-  background: white;
-  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
-  font-weight: normal;
-  font-family: 'Arial, sans-serif';
-  font-size: 10;
-  margin-right: 5%;
-  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
+border: 1px solid #E0E0E0;;
+padding: 0.8%;
+padding-left: 2%;
+padding-right: 2%;
+cursor: pointer;
+background: white;
+transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
+font-weight: normal;
+font-family: 'Arial, sans-serif';
+font-size: 10;
+margin-right: 5%;
+border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
 }
 
 .container_rp {
-  background: 	#FAFAFA;
+background: 	#FAFAFA;
 }
 
 .tagbtn.active {
-  background: #C9F3AF;
-  font-weight: bold;
-  /* 다른 조건부 스타일 추가 가능 */
+background: #C9F3AF;
+font-weight: bold;
+/* 다른 조건부 스타일 추가 가능 */
 }
 .tagbtn:hover {
-  background: #C9F3AF;
-  font-weight: bold;
+background: #C9F3AF;
+font-weight: bold;
 }
 
 
 .tagbtn_weak {
-  border: 1px solid #E0E0E0;;
-  padding: 0.8%;
-  padding-left: 2%;
-  padding-right: 2%;
-  cursor: pointer;
-  background: white;
-  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
-  font-weight: normal;
-  font-family: 'Arial, sans-serif';
-  font-size: 10;
-  margin-right: 5%;
-  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
+border: 1px solid #E0E0E0;;
+padding: 0.8%;
+padding-left: 2%;
+padding-right: 2%;
+cursor: pointer;
+background: white;
+transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
+font-weight: normal;
+font-family: 'Arial, sans-serif';
+font-size: 10;
+margin-right: 5%;
+border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
 }
 
 .container_rp {
-  background: 	#FAFAFA;
+background: 	#FAFAFA;
 }
 
 .tagbtn_weak.active {
-  background: #F0BEB4;
-  font-weight: bold;
-  /* 다른 조건부 스타일 추가 가능 */
+background: #F0BEB4;
+font-weight: bold;
+/* 다른 조건부 스타일 추가 가능 */
 }
 .tagbtn_weak:hover {
-  background: #F0BEB4;
-  font-weight: bold;
+background: #F0BEB4;
+font-weight: bold;
 }
 
 .list_rp {
-  padding-left: 6%;
+padding-left: 6%;
+display: flex;
+flex-direction: row;
+list-style-type: none; /* 리스트 기본 스타일 제거 */
+padding:5px;
+}
+
+.pBox_header {
+  width: 60%;
+  padding: 10px;
+  font-size: 15px;
   display: flex;
-  flex-direction: row;
-  list-style-type: none; /* 리스트 기본 스타일 제거 */
-  padding:5px;
-}`, "",{"version":3,"sources":["webpack://./src/contentScript/MyPage.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,aAAa;IACb,UAAU;IACV,aAAa;IACb,YAAY;IACZ,uBAAuB;AAC3B;;AAEA;IACI,mBAAmB;IACnB,UAAU;IACV,iBAAiB;IACjB,kBAAkB;AACtB;;AAEA;EACE,UAAU;EACV,eAAe;EACf,mBAAmB;EACnB,cAAc;EACd,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,UAAU;EACV,aAAa;EACb,cAAc;EACd,yBAAyB;EACzB,aAAa;EACb,eAAe;EACf,mBAAmB;EACnB,uBAAuB;EACvB,kBAAkB;AACpB;;;AAGA;IACI,aAAa;IACb,cAAc;IACd,yBAAyB;IACzB,aAAa;IACb,gBAAgB;IAChB,eAAe;IACf,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,kBAAkB;AACtB;AACA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,UAAU;IACV,yBAAyB;IACzB,YAAY;IACZ,eAAe;IACf,6DAA6D;IAC7D,eAAe;IACf,6BAA6B;AACjC;;AAEA;IACI,yBAAyB;IACzB,iBAAiB;IACjB,eAAe;IACf,oBAAoB;AACxB;;AAEA;IACI,yBAAyB;IACzB,iBAAiB;IACjB,eAAe;IACf,oBAAoB;AACxB;;AAEA;IACI,eAAe;IACf,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,kCAAkC;EACpC;;EAEA;IACE,kBAAkB;IAClB,YAAY;IACZ,eAAe;IACf,sBAAsB;EACxB;;EAEA;IACE;MACE,4BAA4B;IAC9B;EACF;;;CAGD,eAAe;;AAEhB;IACI,mBAAmB;IACnB,cAAc;IACd,eAAe;IACf,kBAAkB;IAClB,kBAAkB;EACpB;;AAEF;EACE,cAAc;EACd,qBAAqB;EACrB,iBAAiB;EACjB,eAAe;EACf,2BAA2B,EAAE,wBAAwB;AACvD;;AAEA;EACE,cAAc,EAAE,qBAAqB;AACvC;;AAEA;EACE,yBAAyB;EACzB,aAAa;EACb,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;EACf,iBAAiB;EACjB,+EAA+E;EAC/E,mBAAmB;EACnB,gCAAgC;EAChC,aAAa;EACb,gBAAgB;EAChB,6BAA6B,EAAE,mBAAmB;AACpD;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,mBAAmB;EACnB,iBAAiB;EACjB,qBAAqB;AACvB;AACA;EACE,mBAAmB;EACnB,iBAAiB;AACnB;;;AAGA;EACE,yBAAyB;EACzB,aAAa;EACb,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;EACf,iBAAiB;EACjB,+EAA+E;EAC/E,mBAAmB;EACnB,gCAAgC;EAChC,aAAa;EACb,gBAAgB;EAChB,6BAA6B,EAAE,mBAAmB;AACpD;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,mBAAmB;EACnB,iBAAiB;EACjB,qBAAqB;AACvB;AACA;EACE,mBAAmB;EACnB,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,aAAa;EACb,mBAAmB;EACnB,qBAAqB,EAAE,kBAAkB;EACzC,WAAW;AACb","sourcesContent":[".style {\r\n    padding: 10px;\r\n}\r\n\r\n.divStyle {\r\n    display: flex;\r\n    padding: 10px;\r\n    width: 97%;\r\n    height: 300px;\r\n    border: none;\r\n    justify-content: center;\r\n}\r\n\r\n.Box {\r\n    flex-direction: row;\r\n    width: 35%;\r\n    margin-left: 40px;\r\n    margin-right: 14px;\r\n}\r\n\r\n.pBox {\r\n  width: 30%;\r\n  font-size: 15px;\r\n  margin-bottom: 14px;\r\n  color: #004080;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.eBox {\r\n  width: 30%;\r\n  height: 140px;\r\n  color: #6D7856;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  font-size: 15px;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n\r\n\r\n.hrefBox {\r\n    height: 140px;\r\n    color: #6D7856;\r\n    background-color: #f7f7f9;\r\n    padding: 10px;\r\n    overflow: hidden;\r\n    font-size: 15px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    text-align: center;\r\n}\r\n.hrefBox:hover {\r\n    color: #7f8c8d;\r\n    font-weight: bold;\r\n}\r\n\r\n.manu {\r\n    padding: 10px;\r\n    margin: 10px;\r\n    width: 35%;\r\n    background-color: #FFFFFF;\r\n    border: none;\r\n    cursor: pointer;\r\n    transition: background-color 0.3s, color 0.3s, font-size 0.3s;\r\n    font-size: 15px;\r\n    border-radius: 6px !important;\r\n}\r\n\r\n.manu:hover {\r\n    background-color: #E0E0E0;\r\n    font-weight: bold;\r\n    font-size: 15px;\r\n    border-radius: 100px;\r\n}\r\n\r\n.manu.active {\r\n    background-color: #E0E0E0;\r\n    font-weight: bold;\r\n    font-size: 15px;\r\n    border-radius: 100px;\r\n}\r\n\r\n.snowflakes {\r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    pointer-events: none;\r\n    animation: snow 5s linear infinite;\r\n  }\r\n  \r\n  .snowflake {\r\n    position: absolute;\r\n    color: black;\r\n    font-size: 20px;\r\n    will-change: transform;\r\n  }\r\n\r\n  @keyframes snow {\r\n    to {\r\n      transform: translateY(100vh);\r\n    }\r\n  }\r\n\r\n\r\n /* styles.css */\r\n\r\n.header_rp {\r\n    padding-bottom: 5px;\r\n    color: #34495e;\r\n    font-size: 15px;\r\n    font-weight : bold;\r\n    text-align: center;\r\n  }\r\n  \r\n.link {\r\n  color: #7f8c8d;\r\n  text-decoration: none;\r\n  font-weight: bold;\r\n  cursor: pointer;\r\n  transition: color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 */\r\n}\r\n\r\n.link:hover {\r\n  color: #004080; /* 마우스 호버 시에 변경될 색상 */\r\n}\r\n  \r\n.tagbtn {\r\n  border: 1px solid #E0E0E0;;\r\n  padding: 0.8%;\r\n  padding-left: 2%;\r\n  padding-right: 2%;\r\n  cursor: pointer;\r\n  background: white;\r\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\n  font-weight: normal;\r\n  font-family: 'Arial, sans-serif';\r\n  font-size: 10;\r\n  margin-right: 5%;\r\n  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n}\r\n\r\n.container_rp {\r\n  background: \t#FAFAFA;\r\n}\r\n\r\n.tagbtn.active {\r\n  background: #C9F3AF;\r\n  font-weight: bold;\r\n  /* 다른 조건부 스타일 추가 가능 */\r\n}\r\n.tagbtn:hover {\r\n  background: #C9F3AF;\r\n  font-weight: bold;\r\n}\r\n\r\n\r\n.tagbtn_weak {\r\n  border: 1px solid #E0E0E0;;\r\n  padding: 0.8%;\r\n  padding-left: 2%;\r\n  padding-right: 2%;\r\n  cursor: pointer;\r\n  background: white;\r\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\n  font-weight: normal;\r\n  font-family: 'Arial, sans-serif';\r\n  font-size: 10;\r\n  margin-right: 5%;\r\n  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n}\r\n\r\n.container_rp {\r\n  background: \t#FAFAFA;\r\n}\r\n\r\n.tagbtn_weak.active {\r\n  background: #F0BEB4;\r\n  font-weight: bold;\r\n  /* 다른 조건부 스타일 추가 가능 */\r\n}\r\n.tagbtn_weak:hover {\r\n  background: #F0BEB4;\r\n  font-weight: bold;\r\n}\r\n\r\n.list_rp {\r\n  padding-left: 6%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\r\n  padding:5px;\r\n}"],"sourceRoot":""}]);
+  align-items: center;
+  justify-content: center;
+}
+
+.pBox_content {
+  height: 180px;
+  width: 60%;
+  background-color: #f7f7f9;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #6D7856;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rp_all {
+  align-items: center;
+  width: 50%;
+}`, "",{"version":3,"sources":["webpack://./src/contentScript/MyPage.css"],"names":[],"mappings":"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","sourcesContent":[".style {\r\n  padding: 10px;\r\n}\r\n\r\n.divStyle {\r\n  display: flex;\r\n  padding: 10px;\r\n  width: 97%;\r\n  height: 300px;\r\n  border: none;\r\n  justify-content: center;\r\n}\r\n\r\n.Box {\r\n  flex-direction: row;\r\n  width: 35%;\r\n  margin-left: 40px;\r\n  margin-right: 14px;\r\n}\r\n.pBox {\r\n  height: 110px;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  font-size: 15px;\r\n  margin-bottom: 14px;\r\n  color: #6D7856;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  border-radius: 10px !important;\r\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.eBox {\r\n  height: 140px;\r\n  color: #6D7856;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  overflow: hidden;\r\n  font-size: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n\r\n.hrefBox {\r\n  height: 140px;\r\n  color: #6D7856;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  overflow: hidden;\r\n  font-size: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n.hrefBox:hover {\r\n  color: #7f8c8d;\r\n  font-weight: bold;\r\n}\r\n\r\n.manu {\r\n  padding: 10px;\r\n  margin: 10px;\r\n  width: 35%;\r\n  background-color: #FFFFFF;\r\n  border: none;\r\n  cursor: pointer;\r\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\r\n  font-size: 15px;\r\n  border-radius: 6px !important;\r\n}\r\n\r\n.manu:hover {\r\n  background-color: #E0E0E0;\r\n  font-weight: bold;\r\n  font-size: 15px;\r\n  border-radius: 100px;\r\n}\r\n\r\n.manu.active {\r\n  background-color: #E0E0E0;\r\n  font-weight: bold;\r\n  font-size: 15px;\r\n  border-radius: 100px;\r\n}\r\n\r\n.snowflakes {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  pointer-events: none;\r\n  animation: snow 5s linear infinite;\r\n}\r\n\r\n.snowflake {\r\n  position: absolute;\r\n  color: black;\r\n  font-size: 20px;\r\n  will-change: transform;\r\n}\r\n\r\n@keyframes snow {\r\n  to {\r\n    transform: translateY(100vh);\r\n  }\r\n}\r\n\r\n\r\n/* styles.css */\r\n\r\n.header_rp {\r\n  padding-bottom: 5px;\r\n  color: #34495e;\r\n  font-size: 15px;\r\n  font-weight : bold;\r\n  text-align: center;\r\n}\r\n\r\n.link {\r\ncolor: #7f8c8d;\r\ntext-decoration: none;\r\nfont-weight: bold;\r\ncursor: pointer;\r\ntransition: color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 */\r\n}\r\n\r\n.link:hover {\r\ncolor: #004080; /* 마우스 호버 시에 변경될 색상 */\r\n}\r\n\r\n.tagbtn {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n}\r\n\r\n.container_rp {\r\nbackground: \t#FAFAFA;\r\n}\r\n\r\n.tagbtn.active {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n/* 다른 조건부 스타일 추가 가능 */\r\n}\r\n.tagbtn:hover {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n}\r\n\r\n\r\n.tagbtn_weak {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n}\r\n\r\n.container_rp {\r\nbackground: \t#FAFAFA;\r\n}\r\n\r\n.tagbtn_weak.active {\r\nbackground: #F0BEB4;\r\nfont-weight: bold;\r\n/* 다른 조건부 스타일 추가 가능 */\r\n}\r\n.tagbtn_weak:hover {\r\nbackground: #F0BEB4;\r\nfont-weight: bold;\r\n}\r\n\r\n.list_rp {\r\npadding-left: 6%;\r\ndisplay: flex;\r\nflex-direction: row;\r\nlist-style-type: none; /* 리스트 기본 스타일 제거 */\r\npadding:5px;\r\n}\r\n\r\n.pBox_header {\r\n  width: 60%;\r\n  padding: 10px;\r\n  font-size: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.pBox_content {\r\n  height: 180px;\r\n  width: 60%;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  font-size: 15px;\r\n  margin-bottom: 14px;\r\n  color: #6D7856;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.rp_all {\r\n  align-items: center;\r\n  width: 50%;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -37426,7 +37456,7 @@ if (IfSubmitPage()) {
     root.render(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(RelatedProblem, null));
 }
 function MyPage() {
-    var _a, _b;
+    var _a;
     const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
     const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
     const handleClick = (index) => {
@@ -37475,7 +37505,7 @@ function MyPage() {
                                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement("g", { transform: "translate(8, 10)" },
                                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement(CircleComponent, { cx: "8.5", cy: "8.5", r: "1", fill: "currentColor" }),
                                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z" }))),
-                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { className: `tagbtn_weak${selectedButton_weak === 'string' ? ' active' : ''}`, onClick: () => handleClick_weak('string') }, "String"),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { className: `tagbtn_weak${selectedButton_weak === 'greedy' ? ' active' : ''}`, onClick: () => handleClick_weak('greedy') }, "Greedy"),
                             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("svg", { style: { width: "35", height: "35", fill: "none", stroke: "#8a8f95", strokeWidth: "2" }, viewBox: "0 0 35 35" },
                                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement("g", { transform: "translate(8, 10)" },
                                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement(CircleComponent, { cx: "8.5", cy: "8.5", r: "1", fill: "currentColor" }),
@@ -37488,32 +37518,35 @@ function MyPage() {
                             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("button", { className: `tagbtn_weak${selectedButton_weak === 'ds' ? ' active' : ''}`, onClick: () => handleClick_weak('ds') }, "Data Structure"),
                             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "qmark" },
                                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement("path", { d: "M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" }))),
-                        selectedField_weak && (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "container_rp" },
-                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", { className: "header_rp" }, `${selectedField_weak} 관련 문제`),
-                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("ul", { className: "list_rp" }, (_a = problems[selectedField_weak]) === null || _a === void 0 ? void 0 :
-                                _a.map((problem, index) => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { display: 'flex', flexDirection: 'column' } },
-                                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("li", { key: index, className: "listItem" },
-                                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'pBox' },
-                                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { href: `/${selectedField_weak}/${problem}`, className: "link" }, problem)))))), (_b = details[selectedField_weak]) === null || _b === void 0 ? void 0 :
-                                _b.map((detail, index) => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null,
-                                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("li", { key: index, className: "listItem" },
-                                        react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'eBox' }, detail))))))))))),
+                        selectedField_weak && (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: "container_rp", style: { display: 'flex', flexDirection: 'row' } }, (_a = problems[selectedField_weak]) === null || _a === void 0 ? void 0 : _a.map((problem, index) => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'rp_all', style: { display: 'flex', flexDirection: 'column' } },
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'pBox_header' },
+                                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { href: `/${selectedField_weak}/${problem}`, className: "link" }, problem)),
+                            react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'pBox_content' }))))))))),
                 currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null,
-                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856' } }, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?"),
+                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856' } }, "\uD574\uB2F9 \uBD84\uB958\uC758 \uBB38\uC81C\uB97C \uD47C \uC9C0 \uC624\uB798\uB410\uC5B4\uC694."),
                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: '20px' } },
                         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'divStyle' },
                             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'Box', id: 'Box1' },
                                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'pBox', id: "Problem1" },
                                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { "data-tip": `난이도: Gold4, 분류: backtracking, bruteforcing`, className: 'hrefBox', href: 'https://www.acmicpc.net/problem/9663' }, "N-Queen ")),
-                                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'eBox', id: "explanation1" }, "backtracking \uBD84\uC57C\uB97C 42.5% \uAE30\uC5B5\uD558\uACE0 \uACC4\uC2ED\uB2C8\uB2E4.")),
+                                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'eBox', id: "explanation1" },
+                                    "\uD604\uC7AC backtracking \uB0B4\uC6A9\uC744 42.5% \uAE30\uC5B5\uD558\uACE0 \uC788\uC5B4\uC694.",
+                                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("br", null),
+                                    "\uB0B4\uC77C\uC740 38.7% \uAE30\uC5B5\uD560 \uAC70\uC608\uC694.")),
                             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'Box', id: 'Box2' },
                                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'pBox', id: "Problem2" },
                                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { className: 'hrefBox', href: 'https://www.acmicpc.net/problem/1977', "data-tip": `난이도: Bronze4, 분류: math, implementation, bruteforcing` }, "\uC644\uC804 \uC81C\uACF1\uC218\u001C ")),
-                                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'eBox', id: "explanation2" }, "implementation \uBD84\uC57C\uB97C 32.7% \uAE30\uC5B5\uD558\uACE0 \uACC4\uC2ED\uB2C8\uB2E4.")),
+                                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'eBox', id: "explanation2" },
+                                    "\uD604\uC7AC implementation \uBD84\uC57C\uB97C 34.7% \uAE30\uC5B5\uD558\uACE0 \uC788\uC5B4\uC694.",
+                                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("br", null),
+                                    "\uB0B4\uC77C\uC740 32.8% \uAE30\uC5B5\uD560 \uAC70\uC608\uC694.")),
                             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'Box', id: 'Box3' },
                                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'pBox', id: "Problem3" },
                                     react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { "data-tip": `난이도: Gold5, 분류: math, implementation, bruteforcing`, className: 'hrefBox', href: 'https://www.acmicpc.net/problem/1759' }, "\uC554\uD638\uB9CC\uB4E4\uAE30 ")),
-                                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'eBox', id: "explanation3" }, "brute_forcing \uBD84\uC57C\uB97C 34.2% \uAE30\uC5B5\uD558\uACE0 \uACC4\uC2ED\uB2C8\uB2E4."))),
+                                react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { className: 'eBox', id: "explanation3" },
+                                    "\uD604\uC7AC brute_forcing \uBD84\uC57C\uB97C 23.2% \uAE30\uC5B5\uD558\uACE0 \uC788\uC5B4\uC694.",
+                                    react__WEBPACK_IMPORTED_MODULE_1___default().createElement("br", null),
+                                    "\uB0B4\uC77C\uC740 22.4% \uAE30\uC5B5\uD560 \uAC70\uC608\uC694."))),
                         react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%' } },
                             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", { style: { color: 'black', fontWeight: 'bold' }, href: 'https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0' }, "\uC5D0\uBE59\uD558\uC6B0\uC2A4\uC758 \uB9DD\uAC01\uACE1\uC120\uC774\uB780?")),
                         react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_4__["default"], { place: "top", type: "success", effect: "solid" })))),
@@ -37536,7 +37569,7 @@ const problems = {
     string: ['문제 7', '문제 8', '문제 9'],
     dac: ['문제 10', '문제 11', '문제 12'],
     ds: ['문제 13', '문제 14', '문제 15'],
-    greedy: ['문제 16', '문제 17', '문제 18']
+    greedy: ['수 묶기', '선 긋기', '공주님의 정원']
 };
 const details = {
     dp: ['피보나치 수열', 'KnapSack', '1로 만들기'],
@@ -37544,7 +37577,7 @@ const details = {
     string: ['문제 7', '문제 8', '문제 9'],
     dac: ['문제 10', '문제 11', '문제 12'],
     ds: ['문제 13', '문제 14', '문제 15'],
-    greedy: ['문제 16', '문제 17', '문제 18']
+    greedy: ['수 묶기', '선 긋기', '공주님의 정원']
 };
 function ProsCons() {
     var _a;

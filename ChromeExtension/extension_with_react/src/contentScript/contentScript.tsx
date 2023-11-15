@@ -233,10 +233,10 @@ function MyPage() {
                                     </g>
                                 </svg>
                                 <button
-                                    className={`tagbtn_weak${selectedButton_weak === 'string' ? ' active' : ''}`}
-                                    onClick={() => handleClick_weak('string')}
+                                    className={`tagbtn_weak${selectedButton_weak === 'greedy' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('greedy')}
                                     >
-                                    String
+                                    Greedy
                                 </button>
                                 <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
                                     <g transform="translate(8, 10)">
@@ -277,7 +277,6 @@ function MyPage() {
                                                     </a>
                                                 </div>
                                                 <div className='pBox_content'>
-                                                    문제 내용
                                                 </div>
                                             </div>
                                             ))}
@@ -288,8 +287,8 @@ function MyPage() {
                     )}
                     {currentPage === 2 && (
                         <>
-                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
-                            이런 문제는 어떤가요?
+                        <div style={{fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                            해당 분류의 문제를 푼 지 오래됐어요.
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <div className='divStyle'>
@@ -301,7 +300,8 @@ function MyPage() {
                                              N-Queen </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation1">
-                                        backtracking 분야를 42.5% 기억하고 계십니다.
+                                        현재 backtracking 내용을 42.5% 기억하고 있어요.
+                                        <br></br>내일은 38.7% 기억할 거예요.
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box2'>
@@ -313,7 +313,8 @@ function MyPage() {
                                          완전 제곱수 </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation2">
-                                    implementation 분야를 32.7% 기억하고 계십니다.
+                                    현재 implementation 분야를 34.7% 기억하고 있어요.
+                                    <br></br>내일은 32.8% 기억할 거예요.
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box3'>
@@ -325,7 +326,8 @@ function MyPage() {
                                              암호만들기 </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation3">
-                                        brute_forcing 분야를 34.2% 기억하고 계십니다. 
+                                        현재 brute_forcing 분야를 23.2% 기억하고 있어요.
+                                        <br></br>내일은 22.4% 기억할 거예요.
                                     </div>
                                 </div>
                             </div>
@@ -390,7 +392,7 @@ const problems = {
     string: ['문제 7', '문제 8', '문제 9'],
     dac: ['문제 10', '문제 11', '문제 12'],
     ds : ['문제 13', '문제 14', '문제 15'],
-    greedy: ['문제 16', '문제 17', '문제 18']
+    greedy: ['수 묶기', '선 긋기', '공주님의 정원']
 };
 
 const details = {
@@ -399,7 +401,7 @@ const details = {
     string: ['문제 7', '문제 8', '문제 9'],
     dac: ['문제 10', '문제 11', '문제 12'],
     ds : ['문제 13', '문제 14', '문제 15'],
-    greedy: ['문제 16', '문제 17', '문제 18']
+    greedy: ['수 묶기', '선 긋기', '공주님의 정원']
 }
 
 function ProsCons() {
