@@ -1,23 +1,25 @@
 
  /* styles.css */
+.RecommenedProblem {
+    margin-right: 20px;
+    margin-left: 8px;
+}
 
+.RecommenedProblem:hover {
+    font-weight: bold;    
+}
  .header_rp {
     border-bottom: 1px solid transparent;
-    padding-bottom: 5px;
     position: relative;
     color: #34495e;
     font-size: 15px;
     font-weight : bold;
-    text-align: center; 
-  }
-  
-  .header_rp:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%; /* 줄의 길이를 조절합니다. */
-    border-bottom: 1px solid #ccc;
+    text-align: center;
+    background-color: #FAFAFA;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px !important;
+    width: 99%;
+    margin-left: 0.5%;
   }
   
   .link {
@@ -33,7 +35,7 @@
   }
   
   .tagbtn {
-    border: 1px solid #E0E0E0;;
+    border: 1px solid #E0E0E0;
     padding: 0.8%;
     padding-left: 2%;
     padding-right: 2%;
@@ -44,11 +46,12 @@
     font-family: 'Arial, sans-serif';
     font-size: 10;
     margin-right: 5%;
-    border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
+    border-radius: 5px !important; 
   }
   
   .container_rp {
-    background: 	#FAFAFA;
+    background-color: white;
+    border-radius: 6px !important;
   }
   
 .tagbtn.active {
@@ -78,7 +81,8 @@
   }
   
   .container_rp {
-    background: 	#FAFAFA;
+    background: 	white;
+    border: 1px solid #E0E0E0;
   }
   
 .tagbtn_weak.active {
@@ -91,8 +95,8 @@
     font-weight: bold;
   }
   
-
   .list_rp {
+    background-color: white;
     padding-left: 6%;
   }
   .link.correctColor {

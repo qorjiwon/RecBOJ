@@ -97,41 +97,32 @@ function RelatedProblem() {
         return null;
     }
     return (
-        <div id="myTooltip">
-        <b>&nbsp; 연관 문제 1:</b>
+        <div>
+        <b>연관 문제 1:</b>
         <a
-          data-tip={`제목: ${problems.problem0_titleKo},  유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
+          data-tip={`유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
           href={urls.problem0}
-          style={{
-            fontWeight: 'bold',
-            marginRight: '10px',
-            }}
+          className= 'RecommenedProblem'
         >
-          {problem_ids.problem0}
+          {problems.problem0_titleKo}
         </a>
         &nbsp;
-        <b>&nbsp; 연관 문제 2:</b>
+        <b>연관 문제 2:</b>
         <a
-          data-tip={`제목: ${problems.problem1_titleKo},  유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
+          data-tip={` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
           href={urls.problem1}
-          style={{
-            fontWeight: 'bold',
-            marginRight: '10px',
-            }}
+          className= 'RecommenedProblem'
         >
-          {problem_ids.problem1}
+          {problems.problem1_titleKo}
         </a>
         &nbsp;
-        <b>&nbsp; 연관 문제 3:</b>
+        <b>연관 문제 3:</b>
         <a
-          data-tip={`제목: ${problems.problem2_titleKo},  유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
+          data-tip={` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
           href={urls.problem2}
-          style={{
-            fontWeight: 'bold',
-            marginRight: '10px',
-            }}
+          className= 'RecommenedProblem'
         >
-          {problem_ids.problem2}
+          {problems.problem2_titleKo}
         </a>
         &nbsp;
         <b>&nbsp; {problems.message}</b>
@@ -238,7 +229,10 @@ function MyPage() {
                             <div className='divStyle'>
                                 <div className='Box' id = 'Box1'>
                                     <div className = 'pBox' id = "Problem1">
-                                    <a className = 'hrefBox' href='https://www.acmicpc.net/problem/9663'> N-Queen </a>
+                                    <a 
+                                        data-tip = {`난이도: Gold4, 분류: backtracking, bruteforcing`}
+                                        className = 'hrefBox' href='https://www.acmicpc.net/problem/9663'>
+                                             N-Queen </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation1">
                                         backtracking 분야를 42.5% 기억하고 계십니다.
@@ -246,7 +240,11 @@ function MyPage() {
                                 </div>
                                 <div className='Box' id = 'Box2'>
                                     <div className = 'pBox' id = "Problem2">
-                                        <a className = 'hrefBox' href='https://www.acmicpc.net/problem/1977'> 완전 제곱수 </a>
+                                        <a 
+                                        className = 'hrefBox' href='https://www.acmicpc.net/problem/1977'
+                                        data-tip = {`난이도: Bronze4, 분류: math, implementation, bruteforcing`}
+                                        >
+                                         완전 제곱수 </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation2">
                                     implementation 분야를 32.7% 기억하고 계십니다.
@@ -254,7 +252,11 @@ function MyPage() {
                                 </div>
                                 <div className='Box' id = 'Box3'>
                                     <div className = 'pBox' id = "Problem3">
-                                        <a className = 'hrefBox' href='https://www.acmicpc.net/problem/1759'> 암호만들기 </a>
+                                        <a 
+                                            data-tip = {`난이도: Gold5, 분류: math, implementation, bruteforcing`}
+                                            className = 'hrefBox'
+                                            href='https://www.acmicpc.net/problem/1759'>
+                                             암호만들기 </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation3">
                                         brute_forcing 분야를 34.2% 기억하고 계십니다. 
@@ -264,6 +266,7 @@ function MyPage() {
                             <div style={{ textAlign: 'right', fontSize: '13px', paddingRight: '3%' }}>
                                  <a style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'>에빙하우스의 망각곡선이란?</a>
                             </div>
+                            <ReactTooltip place="top" type="success" effect="solid"/>
                         </div>
                         </>
                     )}
