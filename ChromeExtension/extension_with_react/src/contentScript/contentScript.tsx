@@ -198,7 +198,7 @@ function MyPage() {
 
     return (
         <div className="style">
-            <div style = {{flexDirection: 'column', display: 'inline-block', borderBottom: '1px solid #ddd'}}>
+            <div style = {{display: 'flex', borderBottom: '1px solid #ddd'}}>
                 <button
                     className={`manu ${active === 1 ? 'active' : ''}`}
                     onClick={() => handleClick(1)}
@@ -223,9 +223,9 @@ function MyPage() {
                     {currentPage === 1 && (
                     <>
                         <div style={{ display: 'flex', flexDirection: 'column', padding: '10px', margin: '5px' }}>
-                            <div style={{ borderBottom: '0.7px solid #7f8c8d', padding: '10px', marginBottom: '10px'}}>
-                            
-                                <b style={{ fontSize: '14px' }}>약점 분야:</b>
+
+                            <div style={{display: 'flex', marginBottom: '10px', justifyContent: 'center', alignItems: 'center'}}>
+
                                 <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
                                     <g transform="translate(8, 10)">
                                         <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
@@ -262,18 +262,36 @@ function MyPage() {
                                     >
                                     Data Structure
                                 </button>
+                                <div className="qmark">
+                                    <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+                                </div>
+        
                                 </div>
                                 {selectedField_weak && (
                                     <div className="container_rp">
                                     <h2 className="header_rp">{`${selectedField_weak} 관련 문제`}</h2>
                                     <ul className="list_rp">
                                         {problems[selectedField_weak]?.map((problem, index) => (
-                                        <li key={index} className="listItem">
-                                            <a href={`/${selectedField_weak}/${problem}`} className="link">
-                                            {problem}
-                                            </a>
-                                        </li>
-                                        ))}
+
+                                            <div style = {{display: 'flex', flexDirection: 'column'}}>
+                                            <li key={index} className="listItem">
+                                                <div className='pBox'>
+                                                    <a href={`/${selectedField_weak}/${problem}`} className="link">
+                                                    {problem}
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            </div>
+                                            ))}
+                                            {details[selectedField_weak]?.map((detail, index) => (
+                                            <div>
+                                            <li key={index} className="listItem">
+                                                <div className='eBox'>
+                                                    {detail}
+                                                </div>
+                                            </li>
+                                            </div>
+                                            ))}
                                     </ul>
                                     </div>
                                 )}
@@ -386,6 +404,15 @@ const problems = {
     ds : ['문제 13', '문제 14', '문제 15'],
     greedy: ['문제 16', '문제 17', '문제 18']
 };
+
+const details = {
+    dp: ['피보나치 수열', 'KnapSack', '1로 만들기'],
+    graph: ['문제 4', '문제 5', '문제 6'],
+    string: ['문제 7', '문제 8', '문제 9'],
+    dac: ['문제 10', '문제 11', '문제 12'],
+    ds : ['문제 13', '문제 14', '문제 15'],
+    greedy: ['문제 16', '문제 17', '문제 18']
+}
 
 function ProsCons() {
     const [tags, setTags] = useState<tagsType | null>(null);
