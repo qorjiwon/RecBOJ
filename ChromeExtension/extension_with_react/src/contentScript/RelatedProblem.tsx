@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
-
+import './style/RelatedProblem.css'
 interface ProblemsType {
-    problem0: string;
-    problem1: string;
-    problem2: string;
-    problem0_similarity: string;
-    problem1_similarity: string;
-    problem2_similarity: string;
-    problem0_titleKo: string;
-    problem1_titleKo: string;
-    problem2_titleKo: string;
-    problem0_tags: string;
-    problem1_tags: string;
-    problem2_tags: string;
-    problem0_tier: string;
-    problem1_tier: string;
-    problem2_tier: string;
-    message;
+  problem0: string;
+  problem1: string;
+  problem2: string;
+  problem0_similarity: string;
+  problem1_similarity: string;
+  problem2_similarity: string;
+  problem0_titleKo: string;
+  problem1_titleKo: string;
+  problem2_titleKo: string;
+  problem0_tags: string;
+  problem1_tags: string;
+  problem2_tags: string;
+  problem0_tier: string;
+  problem1_tier: string;
+  problem2_tier: string;
+  message;
 }
 
 function RelatedProblem() {
@@ -83,7 +83,7 @@ function RelatedProblem() {
     }
     return (
         <div>
-        <b>연관 문제 1:</b>
+        <b className='problem_index'>연관 문제 1:</b>
         <a
           data-tip={`유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
           href={urls.problem0}
@@ -91,21 +91,20 @@ function RelatedProblem() {
         >
           {problems.problem0_titleKo}
         </a>
-        &nbsp;
-        <b>연관 문제 2:</b>
+        <b className='problem_index'>연관 문제 2:</b>
         <a
           data-tip={` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
           href={urls.problem1}
+          className= 'RecommenedProblem'
         >
           {problems.problem1_titleKo}
         </a>
-        &nbsp;
-        <b>연관 문제 3:</b>
+        <b className='problem_index' >연관 문제 3:</b>
         <a
           data-tip={` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
           href={urls.problem2}
+          className= 'RecommenedProblem'
           style={{
-            fontWeight: 'bold',
             marginRight: '10px',
             }}
         >

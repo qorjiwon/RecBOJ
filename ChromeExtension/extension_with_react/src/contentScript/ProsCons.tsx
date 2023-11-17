@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './style/ProsCons.css'
 
 interface tagsType {
     strong0: string;
@@ -10,11 +11,8 @@ interface tagsType {
 }
 const problems = {
     dp: ['피보나치 수열', 'KnapSack', '1로 만들기'],
-    graph: ['문제 4', '문제 5', '문제 6'],
-    string: ['문제 7', '문제 8', '문제 9'],
-    dac: ['문제 10', '문제 11', '문제 12'],
-    ds : ['문제 13', '문제 14', '문제 15'],
-    greedy: ['문제 16', '문제 17', '문제 18']
+    graph: ['DFS와 BFS', '미로 탐색', '바이러스'],
+    greedy: ['Contact', '명령 프롬프트', '36진수'],
 };
 
 function ProsCons() {
@@ -22,9 +20,7 @@ function ProsCons() {
     
     const [selectedField_strong, setSelectedField_strong] = useState<string | null>(null);
     const [selectedButton_strong, setSelectedButton_strong] = useState<string | null>(null);
-
-    const [selectedField_weak, setSelectedField_weak] = useState<string | null>(null);
-    
+ 
     const handleClick_strong = (field: string) => {
         if (selectedField_strong === field) {
             setSelectedField_strong(null);
@@ -112,16 +108,17 @@ function ProsCons() {
         {selectedField_strong && (
                   <div className="container_rp">
                   <h2 className="header_rp">{`${selectedField_strong} 관련 문제`}</h2>
-                  <ul className="list_rp">
+                  <ul style={{display: 'flex', flexDirection: 'column'}} className="list_rp">
                     {problems[selectedField_strong]?.map((problem, index) => (
-                      <li key={index} className="listItem">
+                      
+                      <div key={index} className="listItem">
                         <a
                           href={`/${selectedField_strong}/${problem}`}
                           className={`link ${problem === 'KnapSack' ? 'correctColor' : ''}`}
                         >
                           {problem}
                         </a>
-                      </li>
+                      </div>
                     ))}
                   </ul>
                 </div>                

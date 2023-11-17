@@ -3,8 +3,13 @@ import "./style/MyPage.css";
 import ReactTooltip from 'react-tooltip';
 
 
+const problems = {
+    dac: ['1030', '1074', '1221'],
+    ds : ['1021', '1043', '1060'],
+    greedy: ['1026', '1036', '1040']
+};
 
-  interface DataType {
+  interface ResType {
     tag1: ProblemData;
     tag2: ProblemData;
     tag3: ProblemData;
@@ -13,11 +18,36 @@ import ReactTooltip from 'react-tooltip';
   interface ProblemData {
     tag_name: string;
     problems: string[];
-    explaination: string[][];
   }
 
 function MyPage() {
-      const [problems, setRes] = useState<DataType | null>(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [active, setActive] = useState(null);
+    const [selectedField_weak, setSelectedField_weak] = useState<string | null>(null);
+    const [selectedButton_weak, setSelectedButton_weak] = useState<string | null>(null);
+
+    const handleClick = (index) => {
+        // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
+        setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
+        setActive((active) => (active === index ? null : index));
+    };
+
+
+    const handleClick_weak = (field: string) => {
+        if (selectedField_weak === field) {
+            setSelectedField_weak(null);
+            setSelectedButton_weak(null);
+        } else {
+            setSelectedField_weak(field);
+            setSelectedButton_weak(field);
+        }
+    };
+
+    const CircleComponent = ({ cx, cy, r, fill }) => {
+        return <circle cx={cx} cy={cy} r={r} fill={fill} />;
+      };
+
+      const [res, setRes] = useState<ResType | null>(null);
   
       useEffect(() => {
          
@@ -48,40 +78,7 @@ function MyPage() {
   
           fetchData();
       }, []);
-      console.log(problems);
-
-    const [currentPage, setCurrentPage] = useState(0);
-    const [active, setActive] = useState(null);
-    const [selectedField_weak, setSelectedField_weak] = useState<string | null>('tag1');
-    const [selectedButton_weak, setSelectedButton_weak] = useState<string | null>('tag1');
-
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    }, []);
-
-
-    const handleClick = (index) => {
-        // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
-        setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
-        setActive((active) => (active === index ? null : index));
-    };
-
-
-    const handleClick_weak = (field: string) => {
-        if (selectedField_weak === field) {
-            setSelectedField_weak(null);
-            setSelectedButton_weak(null);
-        } else {
-            console.log(field)
-            setSelectedField_weak(field);
-            setSelectedButton_weak(field);
-        }
-    };
-
-    const CircleComponent = ({ cx, cy, r, fill }) => {
-        return <circle cx={cx} cy={cy} r={r} fill={fill} />;
-      };
-
+      console.log(res);
     return (
         <div className="style">
             <div style = {{display: 'flex', borderBottom: '1px solid #ddd'}}>
@@ -118,8 +115,8 @@ function MyPage() {
                                     </g>
                                 </svg>
                                 <button
-                                    className={`tagbtn_weak${selectedButton_weak === 'tag1' ? ' active' : ''}`}
-                                    onClick={() => handleClick_weak('tag1')}
+                                    className={`tagbtn_weak${selectedButton_weak === 'greedy' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('greedy')}
                                     >
                                     Greedy
                                 </button>
@@ -130,8 +127,8 @@ function MyPage() {
                                     </g>
                                 </svg>
                                 <button
-                                    className={`tagbtn_weak${selectedButton_weak === 'tag2' ? ' active' : ''}`}
-                                    onClick={() => handleClick_weak('tag2')}
+                                    className={`tagbtn_weak${selectedButton_weak === 'dac' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('dac')}
                                     >
                                     Divide and Conquer
                                 </button>
@@ -142,37 +139,32 @@ function MyPage() {
                                     </g>
                                 </svg>
                                 <button
-                                    className={`tagbtn_weak${selectedButton_weak ===  'tag3' ? ' active' : ''}`}
-                                    onClick={() => handleClick_weak('tag3')}
+                                    className={`tagbtn_weak${selectedButton_weak === 'ds' ? ' active' : ''}`}
+                                    onClick={() => handleClick_weak('ds')}
                                     >
                                     Data Structure
                                 </button>
-                                        
+                                <div className="qmark">
+                                    <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+                                </div>
+        
                                 </div>
                                 {selectedField_weak && (
                                     <div className="container_rp" style = {{display: 'flex', flexDirection: 'row'}}>
-                                        {problems[selectedField_weak].problems ?.map((problem, index) => (
+                                        {problems[selectedField_weak]?.map((problem, index) => (
                                             <div className='rp_all' style = {{display: 'flex', flexDirection: 'column'}}>
                                                 <div className='pBox_header'>
-                                                    <a data-tip = "지금 풀기" href={`/problem/${problem}`} className="link">
-                                                        {problems[selectedField_weak].explaination[index][0]}
+                                                    <a href={`/problem/${problem}`} className="link">
+                                                    {problem}
                                                     </a>
                                                 </div>
-                                                <div className='pBox_content' style = {{display: 'flex', flexDirection: 'column'}}>
-                                                    <p>{problems[selectedField_weak].explaination[index][1]}</p>
-                                                    <p>정답률: {problems[selectedField_weak].explaination[index][2]}</p>
+                                                <div className='pBox_content'>
+                                                    <a></a>
                                                 </div>
                                             </div>
                                             ))}
-                                         </div>
+                                    </div>
                                 )}
-                                <div className="qmark">
-                                    <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
-                                    <p data-tip = {`취약 유형은 crash1522님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요`}>
-                                        취약 유형이란?</p>
-                                    <ReactTooltip place="left" type="light" effect="solid"/>
-                                </div>
-
                             </div>
                     </>
                     )}

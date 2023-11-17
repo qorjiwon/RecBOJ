@@ -55,6 +55,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-weight: bold;
 }
 .hrefBox:hover {
   color: #7f8c8d;
@@ -176,6 +177,21 @@ margin-right: 5%;
 border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
 }
 
+.tagbtn_weak_problem {
+  height: 110px;
+  background-color: #f7f7f9;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #6D7856;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px !important;
+  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 3%;
+}
+
 .container_rp {
 background: 	#FAFAFA;
 }
@@ -212,15 +228,26 @@ padding:5px;
   width: 60%;
   background-color: #f7f7f9;
   padding: 10px;
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 14px;
   color: #6D7856;
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: pre-line;
 }
 
 .rp_all {
   align-items: center;
   width: 50%;
+  }
+
+  .qmark {
+    font-size: 12px;
+    margin-left: 85%;
+    margin-top: 10px;
+  }
+
+  .qmark:hover {
+    font-weight: bold;
   }

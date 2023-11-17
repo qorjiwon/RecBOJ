@@ -1,0 +1,9 @@
+
+.RecommenedProblem:hover {
+    font-weight: bold;    
+}
+
+.problem_index {
+    margin-left: 20px;
+    margin-right: 5px;
+}

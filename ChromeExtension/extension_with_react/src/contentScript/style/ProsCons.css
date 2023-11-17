@@ -1,13 +1,4 @@
 
- /* styles.css */
-.RecommenedProblem {
-    margin-right: 20px;
-    margin-left: 8px;
-}
-
-.RecommenedProblem:hover {
-    font-weight: bold;    
-}
  .header_rp {
     border-bottom: 1px solid transparent;
     position: relative;
