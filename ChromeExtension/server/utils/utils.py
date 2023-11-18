@@ -13,46 +13,84 @@ import torch
 import warnings
 
 
-def return_user_data():
-    user_df = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/utils/final_silvergold_user_with_tag.csv')
-    df_user_problems = user_df[['id_to_index', 'target']]
-    df_user_problems['solve'] = [1] * len(df_user_problems)
-    pivot_table = df_user_problems.pivot_table(index=["id_to_index"], columns=["target"], values="solve")
-    column_info = pivot_table.columns
-    X = pivot_table.to_numpy()
-    X = np.nan_to_num(X)
-    return X, column_info
+import pandas as pd
+from time import time
+from datetime import datetime
+import numpy as np
+
+def tag_split(df):
+    df['tags'] = df['tags'].str.split(',')
+    tag_df = df.explode('tags').dropna().reset_index(drop=True)
+    tag_df = tag_df[tag_df['tags'] != ""]
+    return tag_df
+
+def weak_strong_rec(df, user_id):
+    df = df[df['user_id'] == user_id]
+    # 개념 문제에 대해서만 할건지...??
+    # df = df[df['level'] <= 10]
+    # 평균 시도 횟수를 기준으로 나눔.
+    weak_problem = df[df['wrong_count'] > df['averageTries']]
+    strong_problem = df[df['wrong_count'] <= df['averageTries']]
+    #tag를 split
+    weak_df_tags = tag_split(weak_problem)
+    st_df_tags = tag_split(strong_problem)
+    # weak_df_tags의 user_id별 tag 수 세기
+    weak_tag_counts = weak_df_tags.groupby(['user_id', 'tags']).size().reset_index(name='weak_count')
+    # st_df_tags의 user_id별 tag 수 세기
+    strong_tag_counts = st_df_tags.groupby(['user_id', 'tags']).size().reset_index(name='strong_count')
+
+    # 정답률 계산
+    merged_df = pd.merge(weak_tag_counts, strong_tag_counts, how='outer', on=['user_id', 'tags']).fillna(0)
+    merged_df['total_count'] = merged_df['strong_count'] + merged_df['weak_count']
+    merged_df = merged_df[merged_df['total_count'] >= 10]
+    merged_df['accuracy'] = merged_df['strong_count'] / merged_df['total_count']
+    #strong, weak 3문제 뽑음
+    strong_3tag = merged_df.groupby('user_id').apply(lambda x: x.nlargest(3, 'accuracy')).reset_index(drop=True)
+    weak_3tag = merged_df.groupby('user_id').apply(lambda x: x.nsmallest(3, 'accuracy')).reset_index(drop=True)
+    #strong, weak 문제를 리스트로..
+    strong = strong_3tag[strong_3tag['user_id'] == user_id]['tags'].to_list()
+    weak = weak_3tag[weak_3tag['user_id'] == user_id]['tags'].to_list()
+    strong_pcr = strong_3tag[strong_3tag['user_id'] == user_id]['accuracy'].to_list()
+    weak_pcr = weak_3tag[weak_3tag['user_id'] == user_id]['accuracy'].to_list()
+
+    for i in range(len(min(strong_pcr, weak_pcr))):
+        strong_pcr[i] = round(strong_pcr[i] * 100, 1)
+        weak_pcr[i] = round(weak_pcr[i] * 100, 1)
+    return strong, weak, strong_pcr, weak_pcr
 
 
-def get_problem_list(user_id):
-    user_input, col = return_user_data()
-    problem_list = user_input[3000]
-    return problem_list
-# problem_list는    0    1   2   3   4   5   6   7   8   9  ...
-#                 [1.0	NaN	NaN	1.0	NaN	1.0	NaN	1.0	1.0	NaN	...	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN]
-#이런식으로 구성되게 만들어야 함.
+def forgetting_curve_with_repetition(df):
+    #t는 경과 시간, s는 상대적인 기억력, n은 반복 횟수
+    t = df['day']
+    s = 7  #일주일 뒤에는 푼 문제에 대해서 까먹는다고 가정...
+    n = df['count']
+    return np.exp(-((t / s) ** (1 / n)))
 
-def ease_recommend_problem(problem_list):
-    origin_problem, _ = return_user_data()
-    ease = EASE(300)
-    ease.train(origin_problem)
-    result = ease.forward(problem_list)
-    # 풀었던 문제는 리스트에서 제외해야하기 때문
-    result[problem_list.nonzero()] = -np.inf
+def forget_curve(df, user_id):
+    #data 불러오기
+    df = df[df['user_id'] == user_id]
+    
+    # tag 나누기
+    dfs = tag_split(df)
+    # tag별 최신 풀었던 문제와 푼 문제수 추출
+    df_tag = dfs.groupby('tags')['last_time'].agg(**{'recent_time':'max', 'count':'count'}).reset_index() 
+    
+    # 15문제 이상은 풀어야 애들 tag가 이상한게 안 뽑히더라....
+    df_tag = df_tag[df_tag['count'] >= 15]
+    
+    # 망각 곡선 계산 하기
+    current_timestamp = time()
+    df_tag['day'] = (current_timestamp - df_tag['recent_time']) / 86400
+    df_tag['forget_curve'] = df_tag.apply(forgetting_curve_with_repetition, axis=1).round(4)
+    
+    weak_3tag = df_tag.sort_values('forget_curve', ascending = True).head(3)
+    weak_tag = weak_3tag['tags'].to_list()
+    weak_tag_forgetpcr = weak_3tag['forget_curve'].to_list()
 
-    return result
+    for i in range(len(weak_tag_forgetpcr)):
+        weak_tag_forgetpcr[i] = round(weak_tag_forgetpcr[i] * 100 , 1)
+    return weak_tag, weak_tag_forgetpcr
 
-
-def vae_recommend_problem(problem_list):
-    model = tf.keras.models.load_model('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/models/VAE/VAE_model_ver3.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
-    origin_problem, _ = return_user_data()
-    input_x = np.nan_to_num(problem_list)
-    input = np.vstack([origin_problem[0, :], input_x])
-    result = model.predict(input)
-    result = result[-1, :]
-    result[problem_list.nonzero()] = -np.inf
-
-    return result
 
 def extract_user_id_from_url(url):
     pattern = r'user_id=([a-zA-Z0-9_-]+)'
@@ -90,7 +128,7 @@ def get_problem_by_level(target_problem, ProblemDict, similar_problem, level_fla
                 if int(ProblemDict[similar_problem[i][0]]['level']) == target_level:
                     problem_list.append((similar_problem[i][0], round(similar_problem[i][1] * 100)))
                     cnt += 1
-                    if cnt == 3:
+                    if cnt == 15:
                         return problem_list
         
         # target보다 난이도가 낮은 문제를 찾음
@@ -100,7 +138,7 @@ def get_problem_by_level(target_problem, ProblemDict, similar_problem, level_fla
                      and int(ProblemDict[similar_problem[i][0]]['level']) >= max(target_level - 2, 1):
                     problem_list.append((similar_problem[i][0], round(similar_problem[i][1] * 100)))
                     cnt += 1
-                    if cnt == 3:
+                    if cnt == 15:
                         return problem_list
         
         # target보다 난이도가 높은 문제를 찾음
@@ -110,9 +148,10 @@ def get_problem_by_level(target_problem, ProblemDict, similar_problem, level_fla
                     and int(ProblemDict[similar_problem[i][0]]['level']) <= target_level + 2:
                     problem_list.append((similar_problem[i][0], round(similar_problem[i][1] * 100)))
                     cnt += 1
-                    if cnt == 3:
+                    if cnt == 15:
                         return problem_list
         return problem_list
+
 
 # 받아온 json 데이터로부터 제출 유형별 횟수를 반환
 def GetTries(data):
@@ -147,28 +186,12 @@ def get_levelflag(problem_id, data, ProblemDict):
     print(f'avgTries: {avgTries}, wa_nums: {wa_nums}, flag = {flag}')
     return flag
 
-def index_to_problem(top_problems):
-    problem_info = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/final_problem_processed.csv')
-    rec_id = problem_info.loc[top_problems, 'problemId']
-    return rec_id    
-
-def Solved_Based_Recommenation(user_id):
-        # url에서 필요한 정보를 추출
-    #user_id에 맞는 문제 풀이 내역 추출
-    solve_problem = get_problem_list(user_id)
-    #user 문제 풀이 내역을 통한 추천 문제
-    vae_rec = vae_recommend_problem(solve_problem)
-    ease_rec = ease_recommend_problem(solve_problem)
-    total_rec = ease_rec + vae_rec
-    NUM_TOP_PROBLEMS = 3
-    top_problems = np.argpartition(-total_rec, NUM_TOP_PROBLEMS) # np.argpartition은 partition과 똑같이 동작하고, index를 리턴.
-    top_problems = top_problems[ :NUM_TOP_PROBLEMS]
-    problem_id = index_to_problem(top_problems)
-
-    rtn = {}
-    cnt = 0
-    for item in problem_id:
-        rtn['problem'+str(cnt)] = item
-        cnt += 1
-    return rtn
-
+def pretty_print(data, indent=0):
+    for key, value in data.items():
+        if isinstance(value, dict):
+            # 만약 값이 딕셔너리이면 재귀 호출
+            print(' ' * indent + f'{key}:')
+            pretty_print(value, indent + 2)
+        else:
+            # 딕셔너리가 아니면 그냥 출력
+            print(' ' * indent + f'{key}: {value}')

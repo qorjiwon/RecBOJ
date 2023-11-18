@@ -17,7 +17,6 @@ const problems = {
 
 function ProsCons() {
     const [tags, setTags] = useState<tagsType | null>(null);
-    
     const [selectedField_strong, setSelectedField_strong] = useState<string | null>(null);
     const [selectedButton_strong, setSelectedButton_strong] = useState<string | null>(null);
  

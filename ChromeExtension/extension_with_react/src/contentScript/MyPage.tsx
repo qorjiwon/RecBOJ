@@ -4,20 +4,9 @@ import ReactTooltip from 'react-tooltip';
 
 
 
-  interface DataType {
-    tag1: ProblemData;
-    tag2: ProblemData;
-    tag3: ProblemData;
-  }
-  
-  interface ProblemData {
-    tag_name: string;
-    problems: string[];
-    explaination: string[][];
-  }
 
 function MyPage() {
-      const [problems, setRes] = useState<DataType | null>(null);
+      const [problems, setRes] = useState<ResponseData | null>(null);
   
       useEffect(() => {
          
@@ -121,7 +110,7 @@ function MyPage() {
                                     className={`tagbtn_weak${selectedButton_weak === 'tag1' ? ' active' : ''}`}
                                     onClick={() => handleClick_weak('tag1')}
                                     >
-                                    Greedy
+                                    {problems.weak_tag_problems.tag1.tag_name}
                                 </button>
                                 <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
                                     <g transform="translate(8, 10)">
@@ -133,7 +122,7 @@ function MyPage() {
                                     className={`tagbtn_weak${selectedButton_weak === 'tag2' ? ' active' : ''}`}
                                     onClick={() => handleClick_weak('tag2')}
                                     >
-                                    Divide and Conquer
+                                    {problems.weak_tag_problems.tag2.tag_name}
                                 </button>
                                 <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
                                     <g transform="translate(8, 10)">
@@ -145,23 +134,25 @@ function MyPage() {
                                     className={`tagbtn_weak${selectedButton_weak ===  'tag3' ? ' active' : ''}`}
                                     onClick={() => handleClick_weak('tag3')}
                                     >
-                                    Data Structure
+                                    {problems.weak_tag_problems.tag3.tag_name}
                                 </button>
                                         
                                 </div>
                                 {selectedField_weak && (
                                     <div className="container_rp" style = {{display: 'flex', flexDirection: 'row'}}>
-                                        {problems[selectedField_weak].problems ?.map((problem, index) => (
+                                        {problems.weak_tag_problems[selectedField_weak].problems ?.map((problem, index) => (
                                             <div className='rp_all' style = {{display: 'flex', flexDirection: 'column'}}>
                                                 <div className='pBox_header'>
-                                                    <a data-tip = "지금 풀기" href={`/problem/${problem}`} className="link">
-                                                        {problems[selectedField_weak].explaination[index][0]}
+                                                    <a data-tip = {`지금 풀기`} href={`/problem/${problem}`} className="link">
+                                                        {problems.weak_tag_problems[selectedField_weak].explainations[index][1]}
                                                     </a>
                                                 </div>
                                                 <div className='pBox_content' style = {{display: 'flex', flexDirection: 'column'}}>
-                                                    <p>{problems[selectedField_weak].explaination[index][1]}</p>
-                                                    <p>정답률: {problems[selectedField_weak].explaination[index][2]}</p>
-                                                </div>
+                                                    <p>문제 번호: {problems.weak_tag_problems[selectedField_weak].explainations[index][0]}</p>
+                                                    <p>난이도: {problems.weak_tag_problems[selectedField_weak].explainations[index][2]}</p>
+                                                    <p>평균 시도 횟수: {problems.weak_tag_problems[selectedField_weak].explainations[index][3]}</p>
+                                                    <p>이만큼 약해요: {problems.weak_tag_problems[selectedField_weak].weak_pcr}%</p>
+                                                    </div>
                                             </div>
                                             ))}
                                          </div>
@@ -186,39 +177,36 @@ function MyPage() {
                                 <div className='Box' id = 'Box1'>
                                     <div className = 'pBox' id = "Problem1">
                                         <a 
-                                        data-tip = {`난이도: Gold4, 분류: backtracking, bruteforcing`}
-                                        className = 'hrefBox' href='https://www.acmicpc.net/problem/9663'>
-                                             N-Queen </a>
+                                        data-tip = {`난이도: ${problems.forgotten_tag_problems.tag1.problem.level}, 분류: ${problems.forgotten_tag_problems.tag1.tag}`}
+                                        className = 'hrefBox' href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag1.problem.problemID}`}>
+                                             {problems.forgotten_tag_problems.tag1.problem.titleKo} </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation1">
-                                        현재 backtracking 내용을 42.5% 기억하고 있어요.
-                                        <br></br>내일은 38.7% 기억할 거예요.
+                                        현재 {problems.forgotten_tag_problems.tag1.tag} 내용을 {problems.forgotten_tag_problems.tag1.forgottenPercent}% 기억하고 있어요.   
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box2'>
                                     <div className = 'pBox' id = "Problem2">
                                         <a 
-                                        className = 'hrefBox' href='https://www.acmicpc.net/problem/1977'
-                                        data-tip = {`난이도: Bronze4, 분류: math, implementation, bruteforcing`}
+                                        className = 'hrefBox' href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag2.problem.problemID}`}
+                                        data-tip = {`난이도: ${problems.forgotten_tag_problems.tag2.problem.level}, 분류: ${problems.forgotten_tag_problems.tag2.tag}`}
                                         >
-                                         완전 제곱수 </a>
+                                         {problems.forgotten_tag_problems.tag2.problem.titleKo} </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation2">
-                                    현재 implementation 분야를 34.7% 기억하고 있어요.
-                                    <br></br>내일은 32.8% 기억할 거예요.
+                                    현재 {problems.forgotten_tag_problems.tag2.tag} 내용을 {problems.forgotten_tag_problems.tag2.forgottenPercent}% 기억하고 있어요.   
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box3'>
                                     <div className = 'pBox' id = "Problem3">
                                         <a 
-                                            data-tip = {`난이도: Gold5, 분류: math, implementation, bruteforcing`}
+                                            data-tip = {`난이도: ${problems.forgotten_tag_problems.tag3.problem.level}, 분류: ${problems.forgotten_tag_problems.tag3.tag}`}
                                             className = 'hrefBox'
-                                            href='https://www.acmicpc.net/problem/1759'>
-                                             암호만들기 </a>
+                                            href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag3.problem.problemID}`}>
+                                             {problems.forgotten_tag_problems.tag3.problem.titleKo} </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation3">
-                                        현재 brute_forcing 분야를 23.2% 기억하고 있어요.
-                                        <br></br>내일은 22.4% 기억할 거예요.
+                                    현재 {problems.forgotten_tag_problems.tag3.tag} 내용을 {problems.forgotten_tag_problems.tag3.forgottenPercent}% 기억하고 있어요.   
                                     </div>
                                 </div>
                             </div>
@@ -238,10 +226,10 @@ function MyPage() {
                                 <div className='Box' id = 'Box1'>
                                     <div className = 'pBox' id = "Problem1">
                                         <a 
-                                        data-tip = {`난이도: Silver4, 분류: shortest_path, bruteforcing`}
+                                        data-tip = {`난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`}
                                         className = 'hrefBox'
-                                        href = 'https://www.acmicpc.net/problem/1058'>
-                                            친구
+                                        href = {`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem1.problemID}`}>
+                                            {problems.similarity_based_problems.problem1.titleKo}
                                         </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation1">
@@ -251,10 +239,10 @@ function MyPage() {
                                 <div className='Box' id = 'Box2'>
                                     <div className = 'pBox' id = "Problem2">
                                         <a 
-                                        data-tip = {`난이도: Gold3, 분류: implementation, devide and conquer`}
+                                        data-tip = {`난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`}
                                         className = 'hrefBox'
-                                        href='https://www.acmicpc.net/problem/1030'>
-                                            프랙탈 평면</a>
+                                        href={`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem2.problemID}`}>
+                                            {problems.similarity_based_problems.problem2.titleKo}</a>
                                     </div>
                                     <div className = 'eBox' id = "explanation2">
                                         추천 이유 등 메세지
@@ -263,9 +251,10 @@ function MyPage() {
                                 <div className='Box' id = 'Box3'>
                                     <div className = 'pBox' id = "Problem3">
                                         <a 
-                                            data-tip = {`난이도: Gold4, 분류: math, bruteforcing`}
+                                            data-tip = {`난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`}
                                             className = 'hrefBox'
-                                            href = 'https://www.acmicpc.net/problem/1238'>고층건물</a>
+                                            href = {`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem3.problemID}`}>
+                                                {problems.similarity_based_problems.problem3.titleKo}</a>
                                     </div>
                                     <div className = 'eBox' id = "explanation3">
                                         추천 이유 등 메세지
@@ -281,5 +270,51 @@ function MyPage() {
     );
 }
 
+interface Problem {
+    problemID: string;
+    titleKo: string;
+    level: string;
+    averageTries: string;
+    tags: string;
+  }
+  
+  interface Explaination {
+    problemID: string;
+    titleKo: string;
+    level: number;
+    averageTries: number;
+  }
 
+  interface Tag {
+    tag_name: string;
+    problems: string[];
+    explainations: Explaination[];
+    weak_pcr: number;
+  }
+  
+  interface WeakTagProblems {
+    [key: string]: Tag;
+  }
+  
+  interface ForgottenTagProblems {
+    [key: string]: {
+      tag: string;
+      forgottenPercent: number;
+      problem: Problem;
+    };
+  }
+  
+  interface SimilarityBasedProblems {
+    problem1: Problem;
+    problem2: Problem;
+    problem3: Problem;
+  }
+  
+  interface ResponseData {
+    weak_tag_problems: WeakTagProblems;
+    forgotten_tag_problems: ForgottenTagProblems;
+    similarity_based_problems: SimilarityBasedProblems;
+  }
+  
 export default MyPage;
+

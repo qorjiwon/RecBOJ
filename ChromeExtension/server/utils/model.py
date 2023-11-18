@@ -1,7 +1,6 @@
 from gensim.models import Word2Vec
 from .utils import *
 import json
-
 import os
 import random
 import numpy as np
@@ -15,16 +14,17 @@ from tensorflow.keras import Input,layers,Model
 from tensorflow.keras.losses import mse,binary_crossentropy
 import warnings
 
+with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/ProblemDict.json', 'r') as f:
+    ProblemDict = json.load(f)
+with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/ProblemTagsDict.json', 'r') as f:
+    TagDict = json.load(f)
+with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/level_to_tier.json', 'r') as f:
+    TierDict = json.load(f)
+  
 
-def get_item2vec_problem(problem_id, submits):
+def get_item2vec_problem(problem_id, submits, div):
     # 저장된 모델 불러오기
     model = Word2Vec.load("/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/models/item2vec/word2vec_model.bin") 
-    with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/ProblemDict.json', 'r') as f:
-        ProblemDict = json.load(f)
-    with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/ProblemTagsDict.json', 'r') as f:
-        TagDict = json.load(f)
-    with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/level_to_tier.json', 'r') as f:
-        TierDict = json.load(f)
     similar_problem = model.wv.most_similar(problem_id, topn= 500)
 
     problems = {}
@@ -33,11 +33,12 @@ def get_item2vec_problem(problem_id, submits):
     print(problem_list)
     for i in range(3): 
         try:
-            problems['problem'+str(i)] = problem_list[i][0]
-            problems['problem'+str(i)+'_similarity'] = problem_list[i][1]
-            problems['problem'+str(i)+'_titleKo'] = ProblemDict[problem_list[i][0]]['titleKo']
-            problems['problem'+str(i)+'_tags'] = TagDict[problem_list[i][0]]
-            problems['problem'+str(i)+'_tier'] = TierDict[str(ProblemDict[problem_list[i][0]]['level'])]
+            n = (3 * div + i) % len(problem_list)
+            problems['problem'+str(i)] = problem_list[n][0]
+            problems['problem'+str(i)+'_similarity'] = problem_list[n][1]
+            problems['problem'+str(i)+'_titleKo'] = ProblemDict[problem_list[n][0]]['titleKo']
+            problems['problem'+str(i)+'_tags'] = TagDict[problem_list[n][0]]
+            problems['problem'+str(i)+'_tier'] = TierDict[str(ProblemDict[problem_list[n][0]]['level'])]
         except:
             pass
     if level_flag == 0:
@@ -49,36 +50,6 @@ def get_item2vec_problem(problem_id, submits):
     results = json.dumps(problems)
     return results
 
-class EASE:
-    """
-    Embarrassingly Shallow Autoencoders model class
-    """
-
-    def __init__(self, lambda_):
-        self.B = None
-        self.lambda_ = lambda_
-
-    def train(self, interaction_matrix):
-        """
-        train pass
-        :param interaction_matrix: interaction_matrix
-        """
-        G = interaction_matrix.T @ interaction_matrix
-        diag = list(range(G.shape[0]))
-        G[diag, diag] += self.lambda_
-        P = np.linalg.inv(G)
-
-        # B = P * (X^T * X − diagMat(γ))
-        self.B = P / -np.diag(P)
-        min_dim = min(*self.B.shape)
-        self.B[range(min_dim), range(min_dim)] = 0
-
-    def forward(self, user_row):
-        """
-        forward pass
-        """
-        return user_row @ self.B
-    
 # network parameters
 input_shape = 5221
 original_dim= input_shape
@@ -139,3 +110,69 @@ def vae_loss(x,recon_x):
     # (2) KL divergence(Latent_loss)
     kl_loss = 0.5 * tf.reduce_sum(tf.square(z_mean)+ tf.exp(z_log_var)- z_log_var -1, 1)
     return tf.reduce_mean(reconstruction_loss + kl_loss) #ELBO(=VAE_loss)
+
+def return_user_data(pivot_table):
+    column_info = pivot_table.columns
+    X = pivot_table.to_numpy()
+    X = np.nan_to_num(X)
+    return X, column_info
+
+def get_problem_list(user_input, user_id):
+    #이 위에는 이제 user_id가 들어오면 user_id에 맞는 pivot_table에서의 행을 추출하는 코드를 작성 예정
+    problem_list = user_input[0]
+    return problem_list
+
+# problem_list는    0    1   2   3   4   5   6   7   8   9  ...
+#                 [1.0   NaN   NaN   1.0   NaN   1.0   NaN   1.0   1.0   NaN   ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN]
+#이런식으로 구성되게 만들어야 함.
+def vae_recommend_problem(problem_list, origin_problem):
+    model = tf.keras.models.load_model('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/models/VAE/VAE_model_ver3.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    input_x = np.nan_to_num(problem_list)
+    input = np.vstack([origin_problem[0, :], input_x])
+    result = model.predict(input)
+    result = result[-1, :]
+    result[problem_list.nonzero()] = -np.inf
+    
+    return result
+
+def index_to_problem(problem_info, top_problems):
+    rec_id = problem_info.loc[top_problems, 'problemId']
+    return rec_id    
+
+def Solved_Based_Recommenation(pivot_table, user_id, itpr, NUM_TOP_PROBLEMS = 3):
+    # url에서 필요한 정보를 추출
+    #user_id에 맞는 문제 풀이 내역 추출
+    origin_solution, _ = return_user_data(pivot_table)
+    user_solution = get_problem_list(origin_solution, user_id)
+    #user 문제 풀이 내역을 통한 추천 문제
+    total_rec = vae_recommend_problem(user_solution, origin_solution)
+    top_problems = np.argpartition(-total_rec, NUM_TOP_PROBLEMS) # np.argpartition은 partition과 똑같이 동작하고, index를 리턴.
+    top_problems = top_problems[ :NUM_TOP_PROBLEMS]    
+    problem_id = index_to_problem(itpr, top_problems)
+
+    rtn = {}
+    cnt = 0
+    for item in problem_id:
+        rtn['problem'+str(cnt)] = item
+        cnt += 1
+    return rtn
+
+def getProblemsByTag(SolvedBaseProblems, tag):
+    returnData = {}
+    idx = 1
+    for problem in SolvedBaseProblems.values():
+        try:
+            problem = str(problem)
+            
+            if tag in TagDict[problem]:
+                returnData["problem"+str(idx)] = {
+                    "problemID" : problem,
+                    "titleKo" : ProblemDict[problem]['titleKo'],
+                    "level" : TierDict[str(ProblemDict[problem]['level'])],
+                    "averageTries" : round(ProblemDict[problem]['averageTries'], 1),
+                    "tags": TagDict[problem][0]
+                }
+                idx += 1
+        except:
+            print(f'호환되지 데이터가 있습니다. {problem}가 TagDict안에 없습니다')
+    return returnData
