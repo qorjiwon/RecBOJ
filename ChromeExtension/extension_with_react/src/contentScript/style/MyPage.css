@@ -1,50 +1,36 @@
 .style {
-  padding: 10px;
+padding: 10px;
 }
 
 .divStyle {
-  display: flex;
-  padding: 10px;
-  width: 97%;
-  height: 300px;
-  border: none;
-  justify-content: center;
+display: flex;
+padding: 10px;
+width: 97%;
+height: 300px;
+border: none;
+justify-content: center;
 }
 
 .Box {
-  flex-direction: row;
-  width: 35%;
-  margin-left: 40px;
-  margin-right: 14px;
+flex-direction: row;
+width: 35%;
+margin-left: 40px;
+margin-right: 14px;
 }
+
 .pBox {
-    height: 110px;
-    background-color: #f7f7f9;
-    padding: 10px;
-    font-size: 15px;
-    margin-bottom: 14px;
-    color: #6D7856;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px !important;
-    box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f9;
+  padding: 3px;
+  margin-bottom: 14px;
+  color: #6D7856;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px !important;
+  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .eBox {
-    height: 140px;
-    color: #6D7856;
-    background-color: #f7f7f9;
-    padding: 10px;
-    overflow: hidden;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hrefBox {
   height: 140px;
   color: #6D7856;
   background-color: #f7f7f9;
@@ -55,69 +41,57 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-weight: bold;
+}
+
+.hrefBox {
+height: 40px;
+color: #6D7856;
+background-color: #f7f7f9;
+padding: 10px;
+font-size: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+font-weight: bold;
 }
 .hrefBox:hover {
-  color: #7f8c8d;
-  font-weight: bold;
+color: #7f8c8d;
+font-weight: bold;
 }
 
 .manu {
-  padding: 10px;
-  margin: 10px;
-  width: 35%;
-  background-color: #FFFFFF;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-  font-size: 15px;
-  border-radius: 6px !important;
+padding: 10px;
+margin: 10px;
+width: 35%;
+background-color: #FFFFFF;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+font-size: 15px;
+border-radius: 6px !important;
 }
 
 .manu:hover {
-  background-color: #E0E0E0;
-  font-weight: bold;
-  font-size: 15px;
-  border-radius: 100px;
+background-color: #E0E0E0;
+font-weight: bold;
+font-size: 15px;
+border-radius: 100px;
 }
 
 .manu.active {
-  background-color: #E0E0E0;
-  font-weight: bold;
-  font-size: 15px;
-  border-radius: 100px;
+background-color: #E0E0E0;
+font-weight: bold;
+font-size: 15px;
+border-radius: 100px;
 }
-
-.snowflakes {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  animation: snow 5s linear infinite;
-}
-
-.snowflake {
-  position: absolute;
-  color: black;
-  font-size: 20px;
-  will-change: transform;
-}
-
-@keyframes snow {
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-
-/* styles.css */
 
 .header_rp {
-  padding-bottom: 5px;
-  color: #34495e;
-  font-size: 15px;
-  font-weight : bold;
-  text-align: center;
+padding-bottom: 5px;
+color: #34495e;
+font-size: 15px;
+font-weight : bold;
+text-align: center;
 }
 
 
@@ -133,18 +107,14 @@ font-weight: normal;
 font-family: 'Arial, sans-serif';
 font-size: 10;
 margin-right: 5%;
-border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
-}
-
-.container_rp {
-background: 	#FAFAFA;
+border-radius: 5px !important;
 }
 
 .tagbtn.active {
 background: #C9F3AF;
 font-weight: bold;
-/* 다른 조건부 스타일 추가 가능 */
 }
+
 .tagbtn:hover {
 background: #C9F3AF;
 font-weight: bold;
@@ -166,33 +136,29 @@ margin-right: 5%;
 border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
 }
 
-.tagbtn_weak_problem {
-  height: 110px;
-  background-color: #f7f7f9;
-  padding: 10px;
-  font-size: 15px;
-  margin-bottom: 14px;
-  color: #6D7856;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px !important;
-  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 3%;
-}
-
-.container_rp {
-background: 	#FAFAFA;
-}
-
 .tagbtn_weak.active {
 background: #F0BEB4;
 font-weight: bold;
-/* 다른 조건부 스타일 추가 가능 */
 }
+
 .tagbtn_weak:hover {
-background: #F0BEB4;
+background: #fae6e2;
 font-weight: bold;
+}
+
+.tagbtn_weak_problem {
+height: 110px;
+background-color: #f7f7f9;
+padding: 10px;
+font-size: 15px;
+margin-bottom: 14px;
+color: #6D7856;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 10px !important;
+box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+margin-top: 3%;
 }
 
 .list_rp {
@@ -204,69 +170,74 @@ padding:5px;
 }
 
 .pBox_header {
-  width: 60%;
-  padding: 10px;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+width: 60%;
+padding: 10px;
+font-size: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .pBox_content {
-  height: 180px;
-  width: 70%;
-  background-color: #f7f7f9;
-  padding: 10px;
-  font-size: 13px;
-  margin-bottom: 14px;
-  color: #6D7856;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: pre-line;
-  border: 0;
-  transition: background-color 0.2s;
+height: 180px;
+width: 70%;
+background-color: #f7f7f9;
+padding: 10px;
+font-size: 13px;
+margin-bottom: 14px;
+color: #6D7856;
+display: flex;
+align-items: center;
+justify-content: center;
+white-space: pre-line;
+border: 0;
+transition: background-color 0.2s;
 }
 .pBox_content:hover {
-  background-color: lightgray
+background-color: lightgray
 }
+
+
 .rp_all {
+  margin-top: 10px;
   align-items: center;
   width: 50%;
-  }
-
-  .qmark {
-    font-size: 12px;
-    margin-left: 85%;
-    margin-top: 10px;
-  }
-
-  .qmark:hover {
-    font-weight: bold;
-  }
-
-  .weak_message {
-    margin-left: 40%;
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-
-
-.reloading {
-  width: 27px; 
-  height: 27px; 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: cover;
-  background-position: center;
-  background-color: white;
-  border: 0;
-  border-radius: 50% !important;
-  transition: background-color 0.1s;
-  position: relative;
-  left: 2%;
+  display: 'flex';
+  flex-direction: 'column'
 }
 
-.reloading:hover {
-  background-color: lightgray;
+.qmark {
+  font-size: 12px;
+  margin-left: 85%;
+  margin-top: 10px;
+}
+
+.qmark:hover {
+  font-weight: bold;
+}
+
+.weak_message {
+  margin-left: 40%;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+
+.reloadingM {
+width: 27px; 
+height: 27px; 
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E");
+background-size: cover;
+background-position: center;
+border: 0;
+border-radius: 50% !important;
+background-color: white;
+transition: background-color 0.1s;
+position: relative;
+left: 2%;
+}
+
+.reloadingM:hover {
+background-color: lightgray;
 }
