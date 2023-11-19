@@ -17,7 +17,7 @@ function MyPage() {
               // Flask에 URL 전송
               try {
                   // 플라스크가 응답할 때까지 await
-                  const response = await fetch('http://127.0.0.1:8080/mypage/problems', {
+                  const response = await fetch('https://recproblem.site//mypage/problems', {
                       method: 'POST',
                       body: JSON.stringify({ url: window.location.href, div: rotate}),
                       headers: {

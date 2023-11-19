@@ -93,6 +93,7 @@ def send_mypage_data():
     if len(cache) >= 50:
         cache.clear()
     json_res = json.dumps(responseData)
+    print(threeSimilar)
     return jsonify(message=f'{json_res}')
 
 if __name__ == '__main__':
