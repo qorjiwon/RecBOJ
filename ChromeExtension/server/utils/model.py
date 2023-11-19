@@ -14,20 +14,17 @@ from tensorflow.keras import Input,layers,Model
 from tensorflow.keras.losses import mse,binary_crossentropy
 import warnings
 
-file_path = 'C:/Users/wldnj/Desktop/simple/PROJECT/Recommend_BOJ/RecBOJ/ChromeExtension'
-
-
-with open(file_path+'/server/data/ProblemDict.json', 'r') as f:
+with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/ProblemDict.json', 'r') as f:
     ProblemDict = json.load(f)
-with open(file_path+'/server\data\ProblemTagsDict.json', 'r') as f:
+with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/ProblemTagsDict.json', 'r') as f:
     TagDict = json.load(f)
-with open(file_path+'/server\data\level_to_tier.json', 'r') as f:
+with open('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/level_to_tier.json', 'r') as f:
     TierDict = json.load(f)
   
 
 def get_item2vec_problem(problem_id, submits, div):
     # 저장된 모델 불러오기
-    model = Word2Vec.load(file_path+"/server/models/item2vec/word2vec_model.bin") 
+    model = Word2Vec.load("/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/models/item2vec/word2vec_model.bin") 
     similar_problem = model.wv.most_similar(problem_id, topn= 500)
 
     problems = {}
@@ -129,7 +126,7 @@ def get_problem_list(user_input, user_id):
 #                 [1.0   NaN   NaN   1.0   NaN   1.0   NaN   1.0   1.0   NaN   ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN]
 #이런식으로 구성되게 만들어야 함.
 def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model(file_path+'/server/models/VAE/VAE_model_ver3.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/models/VAE/VAE_model_ver3.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
     result = model.predict(input)
