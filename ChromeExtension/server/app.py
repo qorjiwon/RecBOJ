@@ -102,6 +102,7 @@ def send_mypage_data():
                 forgottenTagProblems = cache[user_id]['forgottenTagProblems']
                 similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
                 threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)    
+
     responseData = {
         'user_id' : user_id,    
         'weak_tag_problems': threeWeaks,
