@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27black%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E */ "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27black%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27gray%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E */ "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27gray%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
@@ -34,14 +34,14 @@ padding: 10px;
 display: flex;
 padding: 10px;
 width: 97%;
-height: 300px;
+height: 220px;
 border: none;
 justify-content: center;
 }
 
 .Box {
 flex-direction: row;
-width: 35%;
+width: 28%;
 margin-left: 40px;
 margin-right: 14px;
 }
@@ -207,29 +207,35 @@ justify-content: center;
 }
 
 .pBox_content {
-height: 180px;
-width: 70%;
+height: 190px;
+width: 100%;
 background-color: #f7f7f9;
-padding: 10px;
-font-size: 13px;
+font-size: 14px;
 margin-bottom: 14px;
 color: #6D7856;
 display: flex;
 align-items: center;
 justify-content: center;
 white-space: pre-line;
-border: 0;
+border: none;
 transition: background-color 0.2s;
 }
+
 .pBox_content:hover {
 background-color: lightgray
 }
 
+.container_rp{
+  display: flex;
+  flex-direction: 'row';
+  justify-content: center;
+}
 
 .rp_all {
-  margin-top: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
   align-items: center;
-  width: 50%;
+  width: 23%;
   display: 'flex';
   flex-direction: 'column'
 }
@@ -238,10 +244,12 @@ background-color: lightgray
   font-size: 12px;
   margin-left: 85%;
   margin-top: 10px;
+  color: #34495e;
 }
 
 .qmark:hover {
   font-weight: bold;
+  color: black;
 }
 
 .weak_message {
@@ -249,8 +257,6 @@ background-color: lightgray
   font-weight: bold;
   font-size: 20px;
 }
-
-
 
 .reloadingM {
 width: 27px; 
@@ -262,14 +268,16 @@ border: 0;
 border-radius: 50% !important;
 background-color: white;
 transition: background-color 0.1s;
+transition: transform 0.4s ease !important;
 position: relative;
 left: 2%;
 }
 
 .reloadingM:hover {
 background-color: lightgray;
+transform: rotate(400deg) !important;
 }
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"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","sourcesContent":[".style {\r\npadding: 10px;\r\n}\r\n\r\n.divStyle {\r\ndisplay: flex;\r\npadding: 10px;\r\nwidth: 97%;\r\nheight: 300px;\r\nborder: none;\r\njustify-content: center;\r\n}\r\n\r\n.Box {\r\nflex-direction: row;\r\nwidth: 35%;\r\nmargin-left: 40px;\r\nmargin-right: 14px;\r\n}\r\n\r\n.pBox {\r\n  background-color: #f7f7f9;\r\n  padding: 3px;\r\n  margin-bottom: 14px;\r\n  color: #6D7856;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  border-radius: 10px !important;\r\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.eBox {\r\n  height: 140px;\r\n  color: #6D7856;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  overflow: hidden;\r\n  font-size: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n\r\n.hrefBox {\r\nheight: 40px;\r\ncolor: #6D7856;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 16px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\ntext-align: center;\r\nfont-weight: bold;\r\n}\r\n.hrefBox:hover {\r\ncolor: #7f8c8d;\r\nfont-weight: bold;\r\n}\r\n\r\n.manu {\r\npadding: 10px;\r\nmargin: 10px;\r\nwidth: 35%;\r\nbackground-color: #FFFFFF;\r\nborder: none;\r\ncursor: pointer;\r\ntransition: background-color 0.3s, color 0.3s, font-size 0.3s;\r\nfont-size: 15px;\r\nborder-radius: 6px !important;\r\n}\r\n\r\n.manu:hover {\r\nbackground-color: #E0E0E0;\r\nfont-weight: bold;\r\nfont-size: 15px;\r\nborder-radius: 100px;\r\n}\r\n\r\n.manu.active {\r\nbackground-color: #E0E0E0;\r\nfont-weight: bold;\r\nfont-size: 15px;\r\nborder-radius: 100px;\r\n}\r\n\r\n.header_rp {\r\npadding-bottom: 5px;\r\ncolor: #34495e;\r\nfont-size: 15px;\r\nfont-weight : bold;\r\ntext-align: center;\r\n}\r\n\r\n\r\n.tagbtn {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important;\r\n}\r\n\r\n.tagbtn.active {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn:hover {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n}\r\n\r\n\r\n.tagbtn_weak {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n}\r\n\r\n.tagbtn_weak.active {\r\nbackground: #F0BEB4;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn_weak:hover {\r\nbackground: #fae6e2;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn_weak_problem {\r\nheight: 110px;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 15px;\r\nmargin-bottom: 14px;\r\ncolor: #6D7856;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nborder-radius: 10px !important;\r\nbox-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\nmargin-top: 3%;\r\n}\r\n\r\n.list_rp {\r\npadding-left: 6%;\r\ndisplay: flex;\r\nflex-direction: row;\r\nlist-style-type: none; /* 리스트 기본 스타일 제거 */\r\npadding:5px;\r\n}\r\n\r\n.pBox_header {\r\nwidth: 60%;\r\npadding: 10px;\r\nfont-size: 15px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\n}\r\n\r\n.pBox_content {\r\nheight: 180px;\r\nwidth: 70%;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 13px;\r\nmargin-bottom: 14px;\r\ncolor: #6D7856;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nwhite-space: pre-line;\r\nborder: 0;\r\ntransition: background-color 0.2s;\r\n}\r\n.pBox_content:hover {\r\nbackground-color: lightgray\r\n}\r\n\r\n\r\n.rp_all {\r\n  margin-top: 10px;\r\n  align-items: center;\r\n  width: 50%;\r\n  display: 'flex';\r\n  flex-direction: 'column'\r\n}\r\n\r\n.qmark {\r\n  font-size: 12px;\r\n  margin-left: 85%;\r\n  margin-top: 10px;\r\n}\r\n\r\n.qmark:hover {\r\n  font-weight: bold;\r\n}\r\n\r\n.weak_message {\r\n  margin-left: 40%;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n\r\n\r\n.reloadingM {\r\nwidth: 27px; \r\nheight: 27px; \r\nbackground-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\r\nbackground-size: cover;\r\nbackground-position: center;\r\nborder: 0;\r\nborder-radius: 50% !important;\r\nbackground-color: white;\r\ntransition: background-color 0.1s;\r\nposition: relative;\r\nleft: 2%;\r\n}\r\n\r\n.reloadingM:hover {\r\nbackground-color: lightgray;\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"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","sourcesContent":[".style {\r\npadding: 10px;\r\n}\r\n\r\n.divStyle {\r\ndisplay: flex;\r\npadding: 10px;\r\nwidth: 97%;\r\nheight: 220px;\r\nborder: none;\r\njustify-content: center;\r\n}\r\n\r\n.Box {\r\nflex-direction: row;\r\nwidth: 28%;\r\nmargin-left: 40px;\r\nmargin-right: 14px;\r\n}\r\n\r\n.pBox {\r\n  background-color: #f7f7f9;\r\n  padding: 3px;\r\n  margin-bottom: 14px;\r\n  color: #6D7856;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  border-radius: 10px !important;\r\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.eBox {\r\n  height: 140px;\r\n  color: #6D7856;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  overflow: hidden;\r\n  font-size: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n\r\n.hrefBox {\r\nheight: 40px;\r\ncolor: #6D7856;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 16px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\ntext-align: center;\r\nfont-weight: bold;\r\n}\r\n.hrefBox:hover {\r\ncolor: #7f8c8d;\r\nfont-weight: bold;\r\n}\r\n\r\n.manu {\r\npadding: 10px;\r\nmargin: 10px;\r\nwidth: 35%;\r\nbackground-color: #FFFFFF;\r\nborder: none;\r\ncursor: pointer;\r\ntransition: background-color 0.3s, color 0.3s, font-size 0.3s;\r\nfont-size: 15px;\r\nborder-radius: 6px !important;\r\n}\r\n\r\n.manu:hover {\r\nbackground-color: #E0E0E0;\r\nfont-weight: bold;\r\nfont-size: 15px;\r\nborder-radius: 100px;\r\n}\r\n\r\n.manu.active {\r\nbackground-color: #E0E0E0;\r\nfont-weight: bold;\r\nfont-size: 15px;\r\nborder-radius: 100px;\r\n}\r\n\r\n.header_rp {\r\npadding-bottom: 5px;\r\ncolor: #34495e;\r\nfont-size: 15px;\r\nfont-weight : bold;\r\ntext-align: center;\r\n}\r\n\r\n\r\n.tagbtn {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important;\r\n}\r\n\r\n.tagbtn.active {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn:hover {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n}\r\n\r\n\r\n.tagbtn_weak {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n}\r\n\r\n.tagbtn_weak.active {\r\nbackground: #F0BEB4;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn_weak:hover {\r\nbackground: #fae6e2;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn_weak_problem {\r\nheight: 110px;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 15px;\r\nmargin-bottom: 14px;\r\ncolor: #6D7856;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nborder-radius: 10px !important;\r\nbox-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\nmargin-top: 3%;\r\n}\r\n\r\n.list_rp {\r\npadding-left: 6%;\r\ndisplay: flex;\r\nflex-direction: row;\r\nlist-style-type: none; /* 리스트 기본 스타일 제거 */\r\npadding:5px;\r\n}\r\n\r\n.pBox_header {\r\nwidth: 60%;\r\npadding: 10px;\r\nfont-size: 15px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\n}\r\n\r\n.pBox_content {\r\nheight: 190px;\r\nwidth: 100%;\r\nbackground-color: #f7f7f9;\r\nfont-size: 14px;\r\nmargin-bottom: 14px;\r\ncolor: #6D7856;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nwhite-space: pre-line;\r\nborder: none;\r\ntransition: background-color 0.2s;\r\n}\r\n\r\n.pBox_content:hover {\r\nbackground-color: lightgray\r\n}\r\n\r\n.container_rp{\r\n  display: flex;\r\n  flex-direction: 'row';\r\n  justify-content: center;\r\n}\r\n\r\n.rp_all {\r\n  margin-left: 3%;\r\n  margin-right: 3%;\r\n  align-items: center;\r\n  width: 23%;\r\n  display: 'flex';\r\n  flex-direction: 'column'\r\n}\r\n\r\n.qmark {\r\n  font-size: 12px;\r\n  margin-left: 85%;\r\n  margin-top: 10px;\r\n  color: #34495e;\r\n}\r\n\r\n.qmark:hover {\r\n  font-weight: bold;\r\n  color: black;\r\n}\r\n\r\n.weak_message {\r\n  margin-left: 40%;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n.reloadingM {\r\nwidth: 27px; \r\nheight: 27px; \r\nbackground-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\r\nbackground-size: cover;\r\nbackground-position: center;\r\nborder: 0;\r\nborder-radius: 50% !important;\r\nbackground-color: white;\r\ntransition: background-color 0.1s;\r\ntransition: transform 0.4s ease !important;\r\nposition: relative;\r\nleft: 2%;\r\n}\r\n\r\n.reloadingM:hover {\r\nbackground-color: lightgray;\r\ntransform: rotate(400deg) !important;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -37239,7 +37247,7 @@ function MyPage() {
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
                 currentPage === 1 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, style: { display: 'flex', flexDirection: 'column', padding: '10px', margin: '5px' } },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, style: { display: 'flex', flexDirection: 'column' } },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', marginBottom: '10px', justifyContent: 'center', alignItems: 'center' } },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { style: { width: "35", height: "35", fill: "none", stroke: "#8a8f95", strokeWidth: "2" }, viewBox: "0 0 35 35" },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { transform: "translate(8, 10)" },
@@ -37261,19 +37269,22 @@ function MyPage() {
                                 problems.weak_tag_problems[selectedField_weak].weak_pcr,
                                 "%\uB9CC\uD07C \uC57D\uD55C \uBD84\uC57C\uC5D0\uC694"),
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp", style: { display: 'flex', flexDirection: 'row' } }, (_a = problems.weak_tag_problems[selectedField_weak].problems) === null || _a === void 0 ? void 0 : _a.map((problem, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'rp_all', style: { display: 'flex', flexDirection: 'column' } },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp" }, (_a = problems.weak_tag_problems[selectedField_weak].problems) === null || _a === void 0 ? void 0 : _a.map((problem, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'rp_all' },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'pBox_content', "data-tip": `${problem}번 풀러 가기`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problem}`), style: { display: 'flex', flexDirection: 'column' } },
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '17px' } },
                                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, problems.weak_tag_problems[selectedField_weak].explainations[index][1])),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '3px' } },
+                                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null,
+                                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null))),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                         "\uB09C\uC774\uB3C4: ",
                                         problems.weak_tag_problems[selectedField_weak].explainations[index][2]),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                         "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
                                         problems.weak_tag_problems[selectedField_weak].explainations[index][3])))))))),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%' } },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', paddingRight: '3%' } },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" }),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { "data-tip": `취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요`, style: { color: 'black', fontWeight: 'bold' } }, "\uCDE8\uC57D \uC720\uD615\uC774\uB780?"),
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { "data-tip": `취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요`, className: 'qmark' }, "\uCDE8\uC57D \uC720\uD615\uC774\uB780?"),
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "left", type: "success", effect: "solid" }))))),
                 currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856' } }, "\uD574\uB2F9 \uBD84\uB958\uC758 \uBB38\uC81C\uB97C \uD47C \uC9C0 \uC624\uB798\uB410\uC5B4\uC694."),
@@ -37313,7 +37324,7 @@ function MyPage() {
                                     " \uB0B4\uC6A9\uC744 ",
                                     problems.forgotten_tag_problems.tag3.forgottenPercent,
                                     "% \uAE30\uC5B5\uD558\uACE0 \uC788\uC5B4\uC694."))),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%' } },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px' } },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `에빙하우스의 망각곡선을 이용하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해드려요`, style: { color: 'black', fontWeight: 'bold' }, href: 'https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0' }, "\uB9DD\uAC01\uB3C4\uB780?")),
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "top", type: "success", effect: "solid" })))),
                 currentPage === 3 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
@@ -37333,7 +37344,7 @@ function MyPage() {
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem3" },
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem3.problemID}` }, problems.similarity_based_problems.problem3.titleKo)),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation3" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0"))),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%' } },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px' } },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `${problems.user_id}님과 비슷한 실력의 유저들이 많이 풀었지만,  ${problems.user_id}님이 풀지 않았을 것 같은 문제를 추천해드려요`, style: { color: 'black', fontWeight: 'bold' }, href: 'https://ko.wikipedia.org/wiki/%EC%BD%94%EC%82%AC%EC%9D%B8_%EC%9C%A0%EC%82%AC%EB%8F%84' }, "\uC2E4\uB825 \uAE30\uBC18 \uCD94\uCC9C?")),
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "top", type: "success", effect: "solid" }))))))));
 }
@@ -37561,6 +37572,17 @@ function v4(options, buf, offset) {
 
 "use strict";
 module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27black%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E";
+
+/***/ }),
+
+/***/ "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27gray%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27gray%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27gray%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E";
 
 /***/ })
 

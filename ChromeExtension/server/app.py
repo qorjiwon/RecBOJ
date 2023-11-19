@@ -9,12 +9,11 @@ app = Flask(__name__)
 CORS(app)  # CORS 미들웨어 초기화
 lock = threading.Lock()
 
-file_path = 'C:/Users/wldnj/Desktop/cleanup/PROJECT/Recommend_BOJ/RecBOJ/ChromeExtension'
 
 global weak_strong_forget_df, pivot_table, index_to_id_df, index_to_problem
-weak_strong_forget_df = pd.read_csv(file_path+'/server/data/forgetting_curve_df.csv')
-pivot_table = pd.read_csv(file_path+'/server/data/final_pivottable.csv')
-index_to_problem = pd.read_csv(file_path+'/server/data/final_problem_processed.csv')
+weak_strong_forget_df = pd.read_csv('data/forgetting_curve_df.csv')
+pivot_table = pd.read_csv('data/final_pivottable.csv')
+index_to_problem = pd.read_csv('data/final_problem_processed.csv')
 cache = {}
 #index_to_id_df 
 # 얘는 나중에 경희대학교 학생 데이터 만들면 넣을 예정 
