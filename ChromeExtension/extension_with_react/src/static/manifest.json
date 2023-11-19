@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "My react Boilerplate",
-  "description": "연습용 익스텐션",
+  "description": "백준 온라인 저지(BOJ)를 문제 추천 기능과 함께 사용해보세요.",
   "version": "1.0.0",
   "icons" : {
     "16": "icon.png",
