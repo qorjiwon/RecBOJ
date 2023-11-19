@@ -21,12 +21,10 @@ if (IfSubmitPage()) {
     if (targetElement) {
         const styles = {
             backgroundColor: '#F5F5F5',
-            width: '1143px', // 원하는 너비로 설정
-            height: '27px', // 원하는 높이로 설정
+            width: '97.5%', // 원하는 너비로 설정
+            height: '29px', // 원하는 높이로 설정
             position: 'relative', // 위치 지정을 상대적으로 설정
             left: '13px', // 원하는 오른쪽 이동 거리로 설정
-            display: 'flex', // Flexbox 레이아웃 사용
-            alignItems: 'center', // 수직 가운데 정렬
             top: '15px' // 원하는 아래로 이동 거리로 설정
         };
         Object.assign(targetElement.style, styles);
