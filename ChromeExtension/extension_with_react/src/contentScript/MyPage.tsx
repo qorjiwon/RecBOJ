@@ -17,7 +17,7 @@ function MyPage() {
               // Flask에 URL 전송
               try {
                   // 플라스크가 응답할 때까지 await
-                  const response = await fetch('https://recproblem.site//mypage/problems', {
+                  const response = await fetch('https://recproblem.site/mypage/problems', {
                       method: 'POST',
                       body: JSON.stringify({ url: window.location.href, div: rotate}),
                       headers: {
@@ -259,8 +259,10 @@ function MyPage() {
                                             {problems.similarity_based_problems.problem1.titleKo}
                                         </a>
                                     </div>
-                                    <div className = 'eBox' id = "explanation1">
-                                        추천 이유 등 메세지
+                                    <div className = 'eBox' id = "explanation1" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                                        <p>난이도: {problems.similarity_based_problems.problem1.level}</p>
+                                        <p>평균 시도 횟수: {problems.similarity_based_problems.problem1.averageTries}</p>
+                                        <p>분류: {problems.similarity_based_problems.problem1.tags}</p>
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box2'>
@@ -271,8 +273,10 @@ function MyPage() {
                                         href={`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem2.problemID}`}>
                                             {problems.similarity_based_problems.problem2.titleKo}</a>
                                     </div>
-                                    <div className = 'eBox' id = "explanation2">
-                                        추천 이유 등 메세지
+                                    <div className = 'eBox' id = "explanation2" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                                        <p>난이도: {problems.similarity_based_problems.problem2.level}</p>
+                                        <p>평균 시도 횟수: {problems.similarity_based_problems.problem2.averageTries}</p>
+                                        <p>분류: {problems.similarity_based_problems.problem2.tags}</p>
                                     </div>
                                 </div>
                                 <div className='Box' id = 'Box3'>
@@ -283,8 +287,10 @@ function MyPage() {
                                             href = {`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem3.problemID}`}>
                                                 {problems.similarity_based_problems.problem3.titleKo}</a>
                                     </div>
-                                    <div className = 'eBox' id = "explanation3">
-                                        추천 이유 등 메세지
+                                    <div className = 'eBox' id = "explanation3" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                                        <p>난이도: {problems.similarity_based_problems.problem3.level}</p>
+                                        <p>평균 시도 횟수: {problems.similarity_based_problems.problem3.averageTries}</p>
+                                        <p>분류: {problems.similarity_based_problems.problem3.tags}</p>
                                     </div>
                                 </div>
                             </div>

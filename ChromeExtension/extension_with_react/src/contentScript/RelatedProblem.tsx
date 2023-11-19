@@ -3,7 +3,6 @@ import ReactTooltip from 'react-tooltip';
 import './style/RelatedProblem.css'
 
 function RelatedProblem() {
-  
     const [problems, setProblems] = useState<ProblemsType | null>(null);
     const [rotate, setRotate] = useState(0);
    
@@ -15,10 +14,8 @@ function RelatedProblem() {
     {
       setRotate(rotate => rotate + 1);
     }
-
     useEffect(() => {
        
-      
         const fetchData = async () => {
 
             console.log(rotate);
@@ -75,47 +72,49 @@ function RelatedProblem() {
         return null;
     }
     return (
-        <div key={rotate} className='ContainerToRender'>
-
-          <button className='reloading' onClick={() => handleRotate()}></button>
-          <div className='problem_container'>
-            <b className='problem_index'>연관 문제 1:</b>
-            <a
-              data-tip={`유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
-              href={urls.problem0}
-              className= 'RecommenedProblem'
-            >
-              {problems.problem0_titleKo}
-            </a>
+      <div key={rotate} className='ContainerToRender'>
+          <div style={{ width: '96%', display: 'flex'}}>
+              <div className='problem_container'>
+                  <b className='problem_index'>연관 문제 1: </b>
+                  <a
+                    data-tip={`유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
+                    href={urls.problem0}
+                    className= 'RecommenedProblem'
+                  >
+                    {problems.problem0_titleKo}
+                  </a>
+              </div>
+              <div className='problem_container'>
+                  <b className='problem_index'>연관 문제 2: </b>
+                  <a
+                    data-tip={` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
+                    href={urls.problem1}
+                    className= 'RecommenedProblem'
+                  >
+                    {problems.problem1_titleKo}
+                  </a>
+              </div>
+              <div className='problem_container'>
+                  <b className='problem_index' >연관 문제 3: </b>
+                  <a
+                    data-tip={` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
+                    href={urls.problem2}
+                    className= 'RecommenedProblem'
+                    style={{
+                      marginRight: '10px',
+                      }}
+                  >
+                    {problems.problem2_titleKo}
+                  </a>
+              </div>
+              <b className='message'>{problems.message}</b>
           </div>
-            <div className='problem_container'>
-            <b className='problem_index'>연관 문제 2:</b>
-            <a
-              data-tip={` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
-              href={urls.problem1}
-              className= 'RecommenedProblem'
-            >
-              {problems.problem1_titleKo}
-            </a>
-          </div>
-            <div className='problem_container'>
-            <b className='problem_index' >연관 문제 3:</b>
-            <a
-              data-tip={` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
-              href={urls.problem2}
-              className= 'RecommenedProblem'
-              style={{
-                marginRight: '10px',
-                }}
-            >
-              {problems.problem2_titleKo}
-            </a>
-          </div>
-          <b className='message'>{problems.message}</b>
           <ReactTooltip place="top" type="dark" effect="solid"/>
-        </div>      
-      
-    );
+          <div style={{ width: '4%', display: 'flex', justifyContent: 'right'}}>
+              <button className='reloading' onClick={() => handleRotate()}></button>
+          </div>
+      </div>      
+  );
 }
 
 interface ProblemsType {
