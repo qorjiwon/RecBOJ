@@ -64,31 +64,50 @@ def send_mypage_data():
     data = request.get_json()
     current_url = data.get('url')
     user_id = extract_user_id_from_mypage(current_url)
-    user_id = '1000chw'
     rotate = data.get('div')
-    with lock:
-        if rotate == 0:
-            strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
-            # forget_curve를 이용해서...
-            forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
-            SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, 500)
-            weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
-            cache[user_id] = {}
-            cache[user_id]['weakTagProblems'] = weakTagProblems   
-            cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
-            cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
-            threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
-        else:
-            weakTagProblems = cache[user_id]['weakTagProblems']
-            forgottenTagProblems = cache[user_id]['forgottenTagProblems']
-            similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
-            threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)
+    try:
+        with lock:
+            if rotate == 0:
+                strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
+                # forget_curve를 이용해서...
+                forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
+                SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, 500)
+                weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
+                cache[user_id] = {}
+                cache[user_id]['weakTagProblems'] = weakTagProblems   
+                cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
+                cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
+                threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
+            else:
+                weakTagProblems = cache[user_id]['weakTagProblems']
+                forgottenTagProblems = cache[user_id]['forgottenTagProblems']
+                similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
+                threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)
+    except:
+        user_id = '1000chw'
+        with lock:
+            if rotate == 0:
+                strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
+                # forget_curve를 이용해서...
+                forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
+                SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, 500)
+                weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
+                cache[user_id] = {}
+                cache[user_id]['weakTagProblems'] = weakTagProblems   
+                cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
+                cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
+                threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
+            else:
+                weakTagProblems = cache[user_id]['weakTagProblems']
+                forgottenTagProblems = cache[user_id]['forgottenTagProblems']
+                similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
+                threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)    
     responseData = {
-            'user_id' : user_id,    
-            'weak_tag_problems': threeWeaks,
-            'forgotten_tag_problems': threeForgotten,
-            'similarity_based_problems': threeSimilar
-        }
+        'user_id' : user_id,    
+        'weak_tag_problems': threeWeaks,
+        'forgotten_tag_problems': threeForgotten,
+        'similarity_based_problems': threeSimilar
+    }
     # cache가 너무 커지면 비우기
     if len(cache) >= 50:
         cache.clear()
