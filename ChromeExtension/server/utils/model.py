@@ -14,7 +14,7 @@ from tensorflow.keras import Input,layers,Model
 from tensorflow.keras.losses import mse,binary_crossentropy
 import warnings
 
-file_path = 'C:/Users/wldnj/Desktop/simple/PROJECT/Recommend_BOJ/RecBOJ/ChromeExtension'
+file_path = 'C:/Users/wldnj/Desktop/cleanup/PROJECT/Recommend_BOJ/RecBOJ/ChromeExtension'
 
 
 with open(file_path+'/server/data/ProblemDict.json', 'r') as f:

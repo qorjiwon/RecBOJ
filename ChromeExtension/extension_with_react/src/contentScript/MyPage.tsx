@@ -105,7 +105,7 @@ function MyPage() {
                     className={`manu ${active === 3 ? 'active' : ''}`}
                     onClick={() => handleClick(3)}
                 >
-                    유사도 기반 추천
+                    실력 기반 추천
                 </button>
             </div>
             <div>
@@ -157,9 +157,9 @@ function MyPage() {
                                 {selectedField_weak && (
                                     <div>
                                         <div className='weak_message'>{problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요</div>
-                                        <button className='reloading' onClick={() => handleRotate()}></button>
+                                        <button className='reloadingM' onClick={() => handleRotate()}></button>
+                                        
                                         <div className="container_rp" style = {{display: 'flex', flexDirection: 'row'}}>
-                                                    
                                             {problems.weak_tag_problems[selectedField_weak].problems ?.map((problem, index) => (
                                                 <div className='rp_all' style = {{display: 'flex', flexDirection: 'column'}}>   
                                                     <button 
@@ -176,9 +176,10 @@ function MyPage() {
                                                 </div>
                                             </div>
                                 )}
-                                <div className="qmark">
+                                <div style={{ textAlign: 'right', fontSize: '13px', paddingRight: '3%' }}>
                                     <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
-                                    <p data-tip = {`취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요`}>
+                                    <p data-tip = {`취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요`}
+                                        style={{color: 'black', fontWeight: 'bold'}}>
                                         취약 유형이란?</p>
                                     <ReactTooltip place="left" type="success" effect="solid"/>
                                 </div>
@@ -188,11 +189,10 @@ function MyPage() {
                     )}
                     {currentPage === 2 && (
                         <>
-                        
                         <div style={{fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
                             해당 분류의 문제를 푼 지 오래됐어요.
                         </div>
-                        <button className='reloading' onClick={() => handleRotate()}></button>
+                        <button className='reloadingM' onClick={() => handleRotate()}></button>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <div className='divStyle'>
                                 <div className='Box' id = 'Box1'>
@@ -246,7 +246,7 @@ function MyPage() {
                         <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
                                 이런 문제는 어떤가요?
                             </div>
-                        <button className='reloading' onClick={() => handleRotate()}></button>
+                        <button className='reloadingM' onClick={() => handleRotate()}></button>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                         
                             <div className='divStyle'>
@@ -292,7 +292,7 @@ function MyPage() {
                                      <a 
                                      data-tip = {`${problems.user_id}님과 비슷한 실력의 유저들이 많이 풀었지만,  ${problems.user_id}님이 풀지 않았을 것 같은 문제를 추천해드려요`}
                                      style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EC%BD%94%EC%82%AC%EC%9D%B8_%EC%9C%A0%EC%82%AC%EB%8F%84'>
-                                        유사도란?</a>
+                                        실력 기반 추천?</a>
                                 </div>
                                 <ReactTooltip place="top" type="success" effect="solid"/>
                             </div>

@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)  # CORS 미들웨어 초기화
 lock = threading.Lock()
 
-file_path = 'C:/Users/wldnj/Desktop/simple/PROJECT/Recommend_BOJ/RecBOJ/ChromeExtension'
+file_path = 'C:/Users/wldnj/Desktop/cleanup/PROJECT/Recommend_BOJ/RecBOJ/ChromeExtension'
 
 global weak_strong_forget_df, pivot_table, index_to_id_df, index_to_problem
 weak_strong_forget_df = pd.read_csv(file_path+'/server/data/forgetting_curve_df.csv')
