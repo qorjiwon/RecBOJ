@@ -120,17 +120,6 @@
   text-align: center;
 }
 
-.link {
-color: #7f8c8d;
-text-decoration: none;
-font-weight: bold;
-cursor: pointer;
-transition: color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 */
-}
-
-.link:hover {
-color: #004080; /* 마우스 호버 시에 변경될 색상 */
-}
 
 .tagbtn {
 border: 1px solid #E0E0E0;;
@@ -225,7 +214,7 @@ padding:5px;
 
 .pBox_content {
   height: 180px;
-  width: 60%;
+  width: 70%;
   background-color: #f7f7f9;
   padding: 10px;
   font-size: 13px;
@@ -235,8 +224,12 @@ padding:5px;
   align-items: center;
   justify-content: center;
   white-space: pre-line;
+  border: 0;
+  transition: background-color 0.2s;
 }
-
+.pBox_content:hover {
+  background-color: lightgray
+}
 .rp_all {
   align-items: center;
   width: 50%;
@@ -250,4 +243,10 @@ padding:5px;
 
   .qmark:hover {
     font-weight: bold;
+  }
+
+  .weak_message {
+    margin-left: 40%;
+    font-weight: bold;
+    font-size: 20px;
   }
