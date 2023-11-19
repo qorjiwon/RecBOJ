@@ -195,3 +195,77 @@ def pretty_print(data, indent=0):
         else:
             # 딕셔너리가 아니면 그냥 출력
             print(' ' * indent + f'{key}: {value}')
+
+def cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems):
+    threeWeaks = {}
+    for i in range(1,4):
+        threeWeaks['tag'+str(i)] = {}
+        problems = weakTagProblems['tag'+str(i)]['problems'][:3]
+        explainations = weakTagProblems['tag'+str(i)]['explainations'][:3]
+        threeWeaks['tag'+str(i)]['tag_name'] = weakTagProblems['tag'+str(i)]['tag_name']
+        threeWeaks['tag'+str(i)]['problems'] = problems
+        threeWeaks['tag'+str(i)]['explainations'] = explainations
+        threeWeaks['tag'+str(i)]['weak_pcr'] = weakTagProblems['tag'+str(i)]['weak_pcr']
+    
+    threeForgotten = {}
+    problems = {}
+    for i in range(1, 4):
+        threeForgotten['tag'+str(i)] = {}
+        threeForgotten['tag'+str(i)]['tag'] = forgottenTagProblems['tag'+str(i)]['tag']
+        threeForgotten['tag'+str(i)]['forgottenPercent'] = forgottenTagProblems['tag'+str(i)]['forgottenPercent']
+        for j in range(1, 2):  # Extracting first three problems
+            problem_key = f'problem{j}'
+            if problem_key in forgottenTagProblems['tag'+str(i)]:
+                threeForgotten['tag'+str(i)]['problem'] = forgottenTagProblems['tag'+str(j)][problem_key]
+    threeSimilar = {}
+    for i in range(1, 4):
+        threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str(i)]
+    
+    return threeWeaks, threeForgotten, threeSimilar
+
+
+def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate):
+    threeWeaks = {}
+    threeForgotten = {}
+    threeSimilar = {}
+
+    rotate = int(rotate)
+   
+    for i in range(1,4):
+        tag_key = 'tag' + str(i)
+
+        threeWeaks[tag_key] = {}
+        problems_list = weakTagProblems[tag_key]['problems']
+        explanations_list = weakTagProblems[tag_key]['explainations']
+
+        start_index = (3 * rotate - 2) % len(problems_list)
+        end_index = (3 * rotate + 1) % len(problems_list)
+        if start_index > end_index:
+            start_index = 0
+            end_index = start_index + 3
+        problems = problems_list[start_index:end_index]
+        explainations = explanations_list[start_index:end_index]
+
+        threeWeaks['tag'+str(i)]['tag_name'] = weakTagProblems['tag'+str(i)]['tag_name']
+        threeWeaks['tag'+str(i)]['problems'] = problems
+        threeWeaks['tag'+str(i)]['explainations'] = explainations
+        threeWeaks['tag'+str(i)]['weak_pcr'] = weakTagProblems['tag'+str(i)]['weak_pcr']
+    
+    problems = {}
+    for i in range(1, 4):
+        tag_key = 'tag' + str(i)
+        
+        threeForgotten[tag_key] = {}
+        threeForgotten[tag_key]['tag'] = forgottenTagProblems['tag'+str(i)]['tag']
+        threeForgotten[tag_key]['forgottenPercent'] = forgottenTagProblems[tag_key]['forgottenPercent']
+        
+        problems_list = forgottenTagProblems[tag_key]
+        # 2를 빼는 이유는 태크와 망각률를 제외하고 문제수를 세기 위함
+        rotated_index = rotate % (len(problems_list) - 2) + 1
+        threeForgotten[tag_key]['problem'] = problems_list['problem' + str(rotated_index)]
+
+    for i in range(1, 4):
+        threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str((rotate + i) % len(similarityBasedProblems) + 1)]
+    
+    return threeWeaks, threeForgotten, threeSimilar
+        

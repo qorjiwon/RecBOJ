@@ -174,5 +174,69 @@ def getProblemsByTag(SolvedBaseProblems, tag):
                 }
                 idx += 1
         except:
-            print(f'호환되지 데이터가 있습니다. {problem}가 TagDict안에 없습니다')
+            print(f'호환되지 데이터가 있습니다. {problem}가 Dictionary안에 없습니다')
     return returnData
+
+
+def getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, num_to_extract = 15):
+
+    weakTagProblems = {}
+    forgottenTagProblems = {}
+    similarityBasedProblems = {}
+
+    for i in range(3):
+        problems = []
+        explainations = []
+        for j in range(num_to_extract):
+            try:
+                response = getProblemsByTag(SolvedBasedProblems, weak_tag[i])    
+                problems.append(response['problem'+str(j+1)]['problemID'])
+                tem = []
+                for value in response['problem'+str(j+1)].values():
+                    tem.append(value)
+                explainations.append(tem)
+            except:
+                pass
+        weakTagProblems['tag'+str(i+1)] = {
+            'tag_name' : weak_tag[i],
+            'problems' : problems,
+            'explainations' : explainations,
+            'weak_pcr' : weak_pcr[i]
+        }
+        print(weakTagProblems)        
+    
+    
+    try:
+        for i in range(3):
+            problems = {}
+            problems['tag'] = forgotten_tag[i]
+            problems['forgottenPercent'] = forgotten_pcr[i]
+            response = getProblemsByTag(SolvedBasedProblems, forgotten_tag[i])    
+            for j in range(num_to_extract):
+                try:
+                    problems['problem'+str(j+1)] = response['problem'+str(j+1)]
+                except:
+                    print(f'추천 문제가 {num_to_extract}개 보다 적습니다')
+            forgottenTagProblems['tag'+str(i+1)] = problems
+
+    except:
+        pass
+
+    try:
+        for j in range(num_to_extract):
+            try:
+                similarityBasedProblems['problem'+str(j+1)] = {}
+                problem =  str(SolvedBasedProblems['problem'+str(j+1)])
+                similarityBasedProblems['problem'+str(j+1)] = {
+                            "problemID" : problem,
+                            "titleKo" : ProblemDict[problem]['titleKo'],
+                            "level" : TierDict[str(ProblemDict[problem]['level'])],
+                            "averageTries" : round(ProblemDict[problem]['averageTries'], 1),
+                            "tags": TagDict[problem][0]
+                        }
+            except:
+                print(f'호환되지 데이터가 있습니다. {problem}가 Dictionary에 없습니다')    
+    except:
+        pass
+
+    return weakTagProblems, forgottenTagProblems, similarityBasedProblems

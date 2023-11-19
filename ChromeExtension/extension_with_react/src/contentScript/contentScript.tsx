@@ -47,7 +47,7 @@ if (IfMyPage()) {
     const divElement1 = document.createElement("div");
     parentElement.appendChild(divElement1);
     const root1 = createRoot(divElement1);
-    root1.render(<ProsCons />);
+    //root1.render(<ProsCons />);
     
     // 새로운 divElement를 생성하여 두 번째 root를 생성합니다.
     const divElement2 = document.createElement("div");

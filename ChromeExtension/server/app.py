@@ -7,7 +7,10 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)  # CORS 미들웨어 초기화
 
-global weak_strong_forget_df, pivot_table, index_to_id_df, index_to_problem
+global weak_strong_forget_df, pivot_table, index_to_id_df, index_to_problem, user_id
+weakTagProblems = {}
+forgottenTagProblems = {}
+similarityBasedProblems = {}
 weak_strong_forget_df = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/forgetting_curve_df.csv')
 pivot_table = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/final_pivottable.csv')
 index_to_problem = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/final_problem_processed.csv')
@@ -60,6 +63,7 @@ def send_tags():
 
 @app.route('/mypage/problems', methods=['POST'])
 def send_mypage_data():
+    global weakTagProblems, forgottenTagProblems, similarityBasedProblems, user_id
     data = request.get_json()
     current_url = data.get('url')
     user_id = extract_user_id_from_mypage(current_url)
@@ -74,48 +78,37 @@ def send_mypage_data():
     print(forgotten_tag, forgotten_pcr)
     print(strong_tag, weak_tag)
     print(strong_pcr, weak_pcr)
-    
-    weakTagProblems = {}
-    for i in range(3):
-        problems = []
-        explainations = []
-        for j in range(3):
-            response = getProblemsByTag(SolvedBasedProblems, weak_tag[i])    
-            problems.append(response['problem'+str(j+1)]['problemID'])
-            tem = []
-            for value in response['problem'+str(j+1)].values():
-                tem.append(value)
-            explainations.append(tem)
-        weakTagProblems['tag'+str(i+1)] = {
-            'tag_name' : weak_tag[i],
-            'problems' : problems,
-            'explainations' : explainations,
-            'weak_pcr' : weak_pcr[i]
-        }
-    
-    forgottenTagProblems = {}
-    for i in range(3):
-        problems = {}
-        problems['tag'] = forgotten_tag[i]
-        problems['forgottenPercent'] = forgotten_pcr[i]
-        response = getProblemsByTag(SolvedBasedProblems, forgotten_tag[i])    
-        problems['problem'] = response['problem'+str(1)]
-        forgottenTagProblems['tag'+str(i+1)] = problems
-    
-    similarityBasedProblems = {}
-    for j in range(3):
-        response = getProblemsByTag(SolvedBasedProblems, forgotten_tag[i])    
-        similarityBasedProblems['problem'+str(j+1)] = response['problem'+str(j+1)]
 
+    weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
+    
+    threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
     responseData = {
-        'weak_tag_problems': weakTagProblems,
-        'forgotten_tag_problems': forgottenTagProblems,
-        'similarity_based_problems': similarityBasedProblems
+        'user_id' : user_id,
+        'weak_tag_problems': threeWeaks,
+        'forgotten_tag_problems': threeForgotten,
+        'similarity_based_problems': threeSimilar
     }
+    json_res = json.dumps(responseData)
+    return jsonify(message=f'{json_res}')
 
+@app.route('/reload/mypage', methods=['POST'])
+def reloadProblem():
+    global weakTagProblems, forgottenTagProblems, similarityBasedProblems, user_id
+    data = request.get_json()
+    rotate = data.get('div')
+    threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)
+    
+    responseData = {
+        'user_id' : user_id,
+        'weak_tag_problems': threeWeaks,
+        'forgotten_tag_problems': threeForgotten,
+        'similarity_based_problems': threeSimilar
+    }
     pretty_print(responseData)
     json_res = json.dumps(responseData)
     return jsonify(message=f'{json_res}')
+
     
+
 if __name__ == '__main__':
     app.run('0.0.0.0',8080,debug=True)
