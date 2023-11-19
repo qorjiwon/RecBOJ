@@ -203,7 +203,6 @@ def getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag
             'explainations' : explainations,
             'weak_pcr' : weak_pcr[i]
         }
-        print(weakTagProblems)        
     
     
     try:

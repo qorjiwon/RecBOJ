@@ -19,7 +19,7 @@ function MyPage() {
                   // 플라스크가 응답할 때까지 await
                   const response = await fetch('http://127.0.0.1:8080/mypage/problems', {
                       method: 'POST',
-                      body: JSON.stringify({ url: window.location.href}),
+                      body: JSON.stringify({ url: window.location.href, div: rotate}),
                       headers: {
                           'Content-Type': 'application/json'
                       },
@@ -38,38 +38,10 @@ function MyPage() {
           };
   
           fetchData();
-      }, []);
+      }, [rotate]);
       console.log(problems);
 
           
-    useEffect(() => {
-        if (rotate !== 0) {
-            const fetchData = async () => {
-                // Flask에 URL 전송
-                try {
-                    // 플라스크가 응답할 때까지 await
-                    const response = await fetch('http://127.0.0.1:8080/reload/mypage', {
-                        method: 'POST',
-                        body: JSON.stringify({ div: rotate }),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
-    
-                    if (!response.ok) {
-                        throw new Error('서버 응답이 실패했습니다.');
-                    }
-    
-                    const data = await response.json();
-                    const problemsData = typeof data.message === 'string' ? JSON.parse(data.message) : data.message;
-                    setRes(problemsData);
-                } catch (error) {
-                    console.error('오류 발생: ' + error);
-                }
-            };
-            fetchData();
-        };
-    }, [rotate]);
 
    
     useEffect(() => {

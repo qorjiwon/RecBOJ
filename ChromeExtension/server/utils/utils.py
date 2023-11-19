@@ -11,7 +11,7 @@ from tqdm import tqdm
 import bottleneck as bn
 import torch
 import warnings
-
+import json
 
 import pandas as pd
 from time import time
@@ -183,7 +183,6 @@ def get_levelflag(problem_id, data, ProblemDict):
         flag = 2
     else:
         flag = 0
-    print(f'avgTries: {avgTries}, wa_nums: {wa_nums}, flag = {flag}')
     return flag
 
 def pretty_print(data, indent=0):
@@ -268,4 +267,13 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
         threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str((rotate + i) % len(similarityBasedProblems) + 1)]
     
     return threeWeaks, threeForgotten, threeSimilar
-        
+
+# 딕셔너리를 JSON 파일로 저장하는 함수
+def save_as_json(data, filename, dir_path = 'user_data/'):
+    with open(dir_path + filename + '.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+# JSON 파일을 딕셔너리로 읽어오는 함수
+def load_from_json(filename, dir_path = 'user_data/'):
+    with open(dir_path + filename + '.json', 'r', encoding='utf-8') as f:
+        return json.load(f)
