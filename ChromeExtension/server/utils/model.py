@@ -17,9 +17,9 @@ import warnings
 
 with open('data/ProblemDict.json', 'r') as f:
     ProblemDict = json.load(f)
-with open('data\ProblemTagsDict.json', 'r') as f:
+with open('data/ProblemTagsDict.json', 'r') as f:
     TagDict = json.load(f)
-with open('data\level_to_tier.json', 'r') as f:
+with open('data/level_to_tier.json', 'r') as f:
     TierDict = json.load(f)
   
 
