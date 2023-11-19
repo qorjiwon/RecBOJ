@@ -109,7 +109,7 @@ function MyPage() {
                 </button>
             </div>
             <div>
-                <div>
+                <div style = {{marginTop : '13px'}}>
                     {currentPage === 1 && (
                     <>
                         <div key={rotate} style={{ display: 'flex', flexDirection: 'column'}}>
@@ -193,6 +193,7 @@ function MyPage() {
                         <div style={{fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
                             해당 분류의 문제를 푼 지 오래됐어요.
                         </div>
+                        <p style={{textAlign: 'center', marginBottom: '0px'}}>나중엔 더 기억나지 않을 거예요!</p>
                         <button className='reloadingM' onClick={() => handleRotate()}></button>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <div className='divStyle'>
@@ -234,9 +235,9 @@ function MyPage() {
                             </div>
                             <div style={{ textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px'}}>
                                  <a 
-                                 data-tip = {`에빙하우스의 망각곡선을 이용하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해드려요`}
+                                 data-tip = {`해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`}
                                  style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'>
-                                    망각도란?</a>
+                                    에빙하우스의 망각곡선</a>
                             </div>
                             <ReactTooltip place="top" type="success" effect="solid"/>
                         </div>
@@ -244,9 +245,10 @@ function MyPage() {
                     )}
                     {currentPage === 3 && (
                         <>
-                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', margin: 'auto', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
                                 이런 문제는 어떤가요?
-                            </div>
+                        </div>
+                        <p style={{textAlign: 'center', marginBottom: '0px'}}>{problems.user_id}님과 비슷한 실력의 유저들이 많이 풀었지만,  {problems.user_id}님이 풀지 않았을 것 같은 문제들을 가져왔어요!</p>
                         <button className='reloadingM' onClick={() => handleRotate()}></button>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                         
@@ -289,13 +291,6 @@ function MyPage() {
                                     </div>
                                 </div>
                             </div>
-                                <div style={{ textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px'}}>
-                                     <a 
-                                     data-tip = {`${problems.user_id}님과 비슷한 실력의 유저들이 많이 풀었지만,  ${problems.user_id}님이 풀지 않았을 것 같은 문제를 추천해드려요`}
-                                     style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EC%BD%94%EC%82%AC%EC%9D%B8_%EC%9C%A0%EC%82%AC%EB%8F%84'>
-                                        실력 기반 추천?</a>
-                                </div>
-                                <ReactTooltip place="top" type="success" effect="solid"/>
                             </div>
                         </>
                     )}
