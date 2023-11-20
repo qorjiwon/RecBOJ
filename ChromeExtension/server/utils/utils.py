@@ -241,8 +241,9 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
         explanations_list = weakTagProblems[tag_key]['explainations']
         index = (3 * rotate - 2) % len(problems_list)
         while cnt < len(problems_list) and len(problems) < 3:
-            problems.append(problems_list[index])
-            explainations.append(explanations_list[index])
+            if checkTier(explanations_list[index][2], filter):
+                problems.append(problems_list[index])
+                explainations.append(explanations_list[index])
             index = (index + 1) % len(problems_list)
             cnt += 1
 
@@ -263,7 +264,6 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
         # 2를 빼는 이유는 태크와 망각률를 제외하고 문제수를 세기 위함
         rotated_index = rotate % (len(problems_list) - 2)
         cnt = 0
-        print(len(problems_list))
         while cnt < len(problems_list) - 2:
             if checkTier(problems_list['problem' + str(rotated_index)]['level'] ,filter):
                 threeForgotten[tag_key]['problem'] = problems_list['problem' + str(rotated_index)]
@@ -286,7 +286,6 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
         while cnt <= len(similarityBasedProblems):
             tier = similarityBasedProblems['problem'+str(index)]['level']
             if checkTier(tier ,filter):
-                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
                 threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str(index)]
                 break
             else:
