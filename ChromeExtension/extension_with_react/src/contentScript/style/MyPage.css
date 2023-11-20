@@ -6,14 +6,14 @@ padding: 10px;
 display: flex;
 padding: 10px;
 width: 97%;
-height: 300px;
+height: 220px;
 border: none;
 justify-content: center;
 }
 
 .Box {
 flex-direction: row;
-width: 35%;
+width: 28%;
 margin-left: 40px;
 margin-right: 14px;
 }
@@ -68,21 +68,19 @@ background-color: #FFFFFF;
 border: none;
 cursor: pointer;
 transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-font-size: 15px;
+font-size: 16px;
 border-radius: 6px !important;
 }
 
 .manu:hover {
 background-color: #E0E0E0;
 font-weight: bold;
-font-size: 15px;
 border-radius: 100px;
 }
 
 .manu.active {
 background-color: #E0E0E0;
 font-weight: bold;
-font-size: 15px;
 border-radius: 100px;
 }
 
@@ -179,29 +177,35 @@ justify-content: center;
 }
 
 .pBox_content {
-height: 180px;
-width: 70%;
+height: 190px;
+width: 100%;
 background-color: #f7f7f9;
-padding: 10px;
-font-size: 13px;
+font-size: 14px;
 margin-bottom: 14px;
 color: #6D7856;
 display: flex;
 align-items: center;
 justify-content: center;
 white-space: pre-line;
-border: 0;
+border: none;
 transition: background-color 0.2s;
 }
+
 .pBox_content:hover {
 background-color: lightgray
 }
 
+.container_rp{
+  display: flex;
+  flex-direction: 'row';
+  justify-content: center;
+}
 
 .rp_all {
-  margin-top: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
   align-items: center;
-  width: 50%;
+  width: 23%;
   display: 'flex';
   flex-direction: 'column'
 }
@@ -210,10 +214,12 @@ background-color: lightgray
   font-size: 12px;
   margin-left: 85%;
   margin-top: 10px;
+  color: #34495e;
 }
 
 .qmark:hover {
   font-weight: bold;
+  color: black;
 }
 
 .weak_message {
@@ -222,22 +228,22 @@ background-color: lightgray
   font-size: 20px;
 }
 
-
-
 .reloadingM {
-width: 27px; 
-height: 27px; 
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E");
+width: 23px; 
+height: 23px; 
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E");
 background-size: cover;
 background-position: center;
 border: 0;
 border-radius: 50% !important;
 background-color: white;
 transition: background-color 0.1s;
+transition: transform 0.4s ease !important;
 position: relative;
 left: 2%;
 }
 
 .reloadingM:hover {
 background-color: lightgray;
+transform: rotate(400deg) !important;
 }
