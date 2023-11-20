@@ -294,8 +294,7 @@ transform: rotate(400deg) !important;
 
 .options-exit-active {
   opacity: 0;
-  transform: translateY(-70%);
-  transition: opacity 300ms, transform 300ms;
+  transform: translateY(0%);
 }
 
 .options {

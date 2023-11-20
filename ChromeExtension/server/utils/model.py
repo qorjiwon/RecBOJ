@@ -205,7 +205,6 @@ def getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag
             'weak_pcr' : weak_pcr[i]
         }
     
-    
     try:
         for i in range(3):
             problems = {}
@@ -218,7 +217,6 @@ def getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag
                 except:
                     print(f'추천 문제가 {num_to_extract}개 보다 적습니다')
             forgottenTagProblems['tag'+str(i+1)] = problems
-
     except:
         pass
 

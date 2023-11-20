@@ -241,9 +241,8 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
         explanations_list = weakTagProblems[tag_key]['explainations']
         index = (3 * rotate - 2) % len(problems_list)
         while cnt < len(problems_list) and len(problems) < 3:
-            if checkTier(explanations_list[index][2], filter):
-                problems.append(problems_list[index])
-                explainations.append(explanations_list[index])
+            problems.append(problems_list[index])
+            explainations.append(explanations_list[index])
             index = (index + 1) % len(problems_list)
             cnt += 1
 
@@ -262,12 +261,46 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
         
         problems_list = forgottenTagProblems[tag_key]
         # 2를 빼는 이유는 태크와 망각률를 제외하고 문제수를 세기 위함
-        rotated_index = rotate % (len(problems_list) - 2) + 1
-        threeForgotten[tag_key]['problem'] = problems_list['problem' + str(rotated_index)]
-
+        rotated_index = rotate % (len(problems_list) - 2)
+        cnt = 0
+        print(len(problems_list))
+        while cnt < len(problems_list) - 2:
+            if checkTier(problems_list['problem' + str(rotated_index)]['level'] ,filter):
+                threeForgotten[tag_key]['problem'] = problems_list['problem' + str(rotated_index)]
+                break
+            else:
+                cnt += 1
+                rotated_index = (rotated_index + 1) % (len(problems_list) - 2) + 1
+        if 'problem' not in threeForgotten[tag_key]:
+            threeForgotten[tag_key]['problem'] = {
+                'problemID': '',
+                'titleKo': '알맞은 문제가 없어요',
+                'level': '',
+                'averageTries': '',
+                'tags': ''
+            }
+    print(similarityBasedProblems)
     for i in range(1, 4):
-        threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str((rotate + i) % len(similarityBasedProblems) + 1)]
-    
+        index = (rotate + i) % len(similarityBasedProblems) + 1
+        cnt = 0
+        while cnt <= len(similarityBasedProblems):
+            tier = similarityBasedProblems['problem'+str(index)]['level']
+            if checkTier(tier ,filter):
+                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str(index)]
+                break
+            else:
+                index = 3 * (index + 1) % len(similarityBasedProblems) + 1
+                cnt += 1
+        if 'problem'+str(i) not in threeSimilar:
+            threeSimilar['problem'+str(i)] = {
+                'problemID': '',
+                'titleKo': '알맞은 문제가 없어요',
+                'level': '',
+                'averageTries': '',
+                'tags': ''
+            }
+
     return threeWeaks, threeForgotten, threeSimilar
 
 # 딕셔너리를 JSON 파일로 저장하는 함수
@@ -281,8 +314,9 @@ def load_from_json(filename, dir_path = 'user_data/'):
         return json.load(f)
     
 def checkTier(tier, filter):
+    print(filter, tier)
     if filter == "None":
-        return 1
+        return True
     elif filter in tier:
-        return 1
-    return 0
+        return True
+    return False
