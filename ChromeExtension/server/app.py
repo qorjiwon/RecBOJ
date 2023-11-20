@@ -10,9 +10,9 @@ CORS(app)  # CORS 미들웨어 초기화
 lock = threading.Lock()
 
 global weak_strong_forget_df, pivot_table, index_to_id_df, index_to_problem
-weak_strong_forget_df = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/forgetting_curve_df.csv')
-pivot_table = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/final_pivottable.csv')
-index_to_problem = pd.read_csv('/Users/im_jungwoo/Desktop/project/backup/ChromeExtension/server/data/final_problem_processed.csv')
+weak_strong_forget_df = pd.read_csv('/home/ubuntu/flask/project/ChromeExtension/server/data/forgetting_curve_df.csv')
+pivot_table = pd.read_csv('/home/ubuntu/flask/project/ChromeExtension/server/data/final_pivottable.csv')
+index_to_problem = pd.read_csv('/home/ubuntu/flask/project/ChromeExtension/server/data/final_problem_processed.csv')
 cache = {}
 #index_to_id_df 
 # 얘는 나중에 경희대학교 학생 데이터 만들면 넣을 예정 
@@ -64,10 +64,30 @@ def send_mypage_data():
     data = request.get_json()
     current_url = data.get('url')
     user_id = extract_user_id_from_mypage(current_url)
-    user_id = '1000chw'
     rotate = data.get('div')
-    with lock:
-        if rotate == 0:
+    try:
+     with lock:
+         if rotate == 0:
+             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
+             # forget_curve를 이용해서...
+             forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
+             SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, 500)
+             weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
+             cache[user_id] = {}
+             cache[user_id]['weakTagProblems'] = weakTagProblems   
+             cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
+             cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
+             threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
+         else:
+             weakTagProblems = cache[user_id]['weakTagProblems']
+             forgottenTagProblems = cache[user_id]['forgottenTagProblems']
+             similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
+             threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)
+    except:
+        user_id = '1000chw'
+        rotate = data.get('div')
+        with lock:
+          if rotate == 0:
             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
             # forget_curve를 이용해서...
             forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
@@ -78,7 +98,7 @@ def send_mypage_data():
             cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
             cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
             threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
-        else:
+          else:
             weakTagProblems = cache[user_id]['weakTagProblems']
             forgottenTagProblems = cache[user_id]['forgottenTagProblems']
             similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
