@@ -65,6 +65,8 @@ def send_mypage_data():
     current_url = data.get('url')
     user_id = extract_user_id_from_mypage(current_url)
     rotate = data.get('div')
+    filter = data.get('filter')
+    print(filter)
     try:
         with lock:
             if rotate == 0:
@@ -90,7 +92,7 @@ def send_mypage_data():
             # forget_curve를 이용해서...
             forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
             SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, 500)
-            weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
+            weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 200)
             cache[user_id] = {}
             cache[user_id]['weakTagProblems'] = weakTagProblems   
             cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
@@ -100,7 +102,7 @@ def send_mypage_data():
             weakTagProblems = cache[user_id]['weakTagProblems']
             forgottenTagProblems = cache[user_id]['forgottenTagProblems']
             similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
-            threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)
+            threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter)
 
     
     responseData = {
@@ -109,6 +111,7 @@ def send_mypage_data():
             'forgotten_tag_problems': threeForgotten,
             'similarity_based_problems': threeSimilar
         }
+    pretty_print(responseData)
     # cache가 너무 커지면 비우기
     if len(cache) >= 50:
         cache.clear()

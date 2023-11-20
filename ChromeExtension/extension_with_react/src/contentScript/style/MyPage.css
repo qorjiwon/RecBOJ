@@ -241,9 +241,87 @@ transition: background-color 0.1s;
 transition: transform 0.4s ease !important;
 position: relative;
 left: 2%;
+margin-bottom: 1%;
 }
 
 .reloadingM:hover {
 background-color: lightgray;
 transform: rotate(400deg) !important;
+}
+
+/* filter */
+.option-button-container {
+  position: relative;
+  display: inline-block;
+  left: 3%;
+}
+
+
+.toggleOptions {
+
+  width: 70px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */ 
+  background-color: white;
+  font-weight: bold;
+  border: 0;
+  transition: background-color 0.2s;
+  margin-bottom: 5%;
+}
+
+.toggleOptions:hover {
+  background-color: lightgray;
+}
+
+.options-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.options-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.options-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.options-exit-active {
+  opacity: 0;
+  transform: translateY(-70%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.options {
+  position: absolute;
+  width: 100px;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 1;
+}
+
+.options button {
+  margin: 4px 0;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+}
+
+.options button:hover {
+  background-color: #f2f2f2;
 }

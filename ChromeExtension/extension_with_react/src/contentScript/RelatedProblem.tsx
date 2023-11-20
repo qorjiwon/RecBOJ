@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactTooltip from 'react-tooltip';
-import './style/RelatedProblem.css'
+import './style/RelatedProblem.css' 
 
 function RelatedProblem() {
     const [problems, setProblems] = useState<ProblemsType | null>(null);
     const [rotate, setRotate] = useState(0);
-   
+
     useEffect(() => {
         ReactTooltip.rebuild();
     }, []);
@@ -27,8 +27,9 @@ function RelatedProblem() {
             
             // Flask에 URL 전송
             try {
-                // 플라스크가 응답할 때까지 await
-                const response = await fetch('https://recproblem.site/send_url', {
+                // https://recproblem.site
+                // http://127.0.0.1:8080
+                const response = await fetch('http://127.0.0.1:8080/send_url', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {
@@ -73,7 +74,7 @@ function RelatedProblem() {
     }
     return (
       <div key={rotate} className='ContainerToRender'>
-          <div style={{ width: '96%', display: 'flex'}}>
+       
               <div className='problem_container'>
                   <b className='problem_index'>연관 문제 1: </b>
                   <a
@@ -108,7 +109,6 @@ function RelatedProblem() {
                   </a>
               </div>
               <b className='message'>{problems.message}</b>
-          </div>
           <ReactTooltip place="top" type="dark" effect="solid"/>
           <div style={{ width: '4%', display: 'flex', justifyContent: 'right'}}>
               <button className='reloading' onClick={() => handleRotate()}></button>

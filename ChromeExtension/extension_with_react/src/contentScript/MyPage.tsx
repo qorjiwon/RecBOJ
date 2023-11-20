@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import "./style/MyPage.css";
 import ReactTooltip from 'react-tooltip';
+import { CSSTransition } from 'react-transition-group';
 
 function MyPage() {
       const [problems, setRes] = useState<ResponseData | null>(null);
@@ -9,17 +10,20 @@ function MyPage() {
       const [selectedField_weak, setSelectedField_weak] = useState<string | null>('tag1');
       const [selectedButton_weak, setSelectedButton_weak] = useState<string | null>('tag1');
       const [rotate, setRotate] = useState(0);
-     
+      const [isOptionsVisible, setOptionsVisible] = useState(false);
+      const [filterTier, setFilter] = useState('None');
+
       useEffect(() => {
          
           const fetchData = async () => {
             console.log("Inside fetchData function");
               // Flask에 URL 전송
               try {
-                  // 플라스크가 응답할 때까지 await
-                  const response = await fetch('https://recproblem.site/mypage/problems', {
+                  // https://recproblem.site
+                  // http://127.0.0.1:8080
+                  const response = await fetch('http://127.0.0.1:8080/mypage/problems', {
                       method: 'POST',
-                      body: JSON.stringify({ url: window.location.href, div: rotate}),
+                      body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier}),
                       headers: {
                           'Content-Type': 'application/json'
                       },
@@ -40,14 +44,23 @@ function MyPage() {
           fetchData();
       }, [rotate]);
       console.log(problems);
-
-          
-
-   
+      
     useEffect(() => {
         ReactTooltip.rebuild();
     }, []);
 
+
+    const toggleOptions = () => {
+        setOptionsVisible(!isOptionsVisible);
+      };
+  
+     const handleFilter = (tier) => {
+        setFilter(tier);
+        handleRotate();
+        toggleOptions();
+        console.log(filterTier);
+        console.log(rotate)    
+     }
 
     const handleClick = (index) => {
         // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
@@ -152,14 +165,32 @@ function MyPage() {
                                     >
                                     {problems.weak_tag_problems.tag3.tag_name}
                                 </button>
-                                        
-                                </div>
+                                
+                            </div>
                                 {selectedField_weak && (
                                     <div>
                                         <div className='weak_message'>{problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요</div>
-                                        <button className='reloadingM' onClick={() => handleRotate()}></button>
-                                        
-                                        <div className="container_rp" >
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <button className='reloadingM' onClick={() => handleRotate()}></button>
+                                            <div className="option-button-container">
+                                                <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
+                                                <CSSTransition
+                                                    in={isOptionsVisible}
+                                                    timeout={250}
+                                                    classNames="options"
+                                                    unmountOnExit
+                                                >
+                                                    <div className="options">
+                                                        <button onClick={() => handleFilter('None')}>무작위</button>
+                                                        <button onClick={() => handleFilter('Silver')}>실버</button>
+                                                        <button onClick={() => handleFilter('Gold')}>골드</button>
+                                                        <button onClick={() => handleFilter('Platinum')}>플래티넘</button>
+                                                        <button onClick={() => handleFilter('Diamond')}>다이아몬드</button>
+                                                    </div>
+                                                </CSSTransition>
+                                            </div>
+                                        </div>
+                                    <div className="container_rp" >
                                             {problems.weak_tag_problems[selectedField_weak].problems ?.map((problem, index) => (
                                                 <div className='rp_all'>   
                                                     <button 
@@ -194,7 +225,28 @@ function MyPage() {
                             해당 분류의 문제를 푼 지 오래됐어요.
                         </div>
                         <p style={{textAlign: 'center', marginBottom: '0px'}}>나중엔 더 기억나지 않을 거예요!</p>
-                        <button className='reloadingM' onClick={() => handleRotate()}></button>
+                        <div className="option-button-container">
+                            <div style={{display: 'flex', alignItems: 'center'}}>   
+                                <button className='reloadingM' onClick={() => handleRotate()}></button>  
+                                <div className="option-button-container">   
+                                    <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
+                                    <CSSTransition
+                                        in={isOptionsVisible}
+                                        timeout={250}
+                                        classNames="options"
+                                        unmountOnExit
+                                    >
+                                        <div className="options">
+                                            <button onClick={() => handleFilter('None')}>무작위</button>
+                                            <button onClick={() => handleFilter('Silver')}>실버</button>
+                                            <button onClick={() => handleFilter('Gold')}>골드</button>
+                                            <button onClick={() => handleFilter('Platinum')}>플래티넘</button>
+                                            <button onClick={() => handleFilter('Diamond')}>다이아몬드</button>
+                                        </div>
+                                    </CSSTransition>
+                                </div>
+                            </div>
+                        </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <div className='divStyle'>
                                 <div className='Box' id = 'Box1'>
@@ -249,7 +301,26 @@ function MyPage() {
                                 이런 문제는 어떤가요?
                         </div>
                         <p style={{textAlign: 'center', marginBottom: '0px'}}>{problems.user_id}님과 비슷한 실력의 유저들이 많이 풀었지만,  {problems.user_id}님이 풀지 않았을 것 같은 문제들을 가져왔어요!</p>
-                        <button className='reloadingM' onClick={() => handleRotate()}></button>
+                        <div style={{display: 'flex', alignItems: 'center'}}>   
+                            <button className='reloadingM' onClick={() => handleRotate()}></button>  
+                            <div className="option-button-container">   
+                                <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
+                                <CSSTransition
+                                    in={isOptionsVisible}
+                                    timeout={250}
+                                    classNames="options"
+                                    unmountOnExit
+                                >
+                                    <div className="options">
+                                        <button onClick={() => handleFilter('None')}>무작위</button>
+                                        <button onClick={() => handleFilter('Silver')}>실버</button>
+                                        <button onClick={() => handleFilter('Gold')}>골드</button>
+                                        <button onClick={() => handleFilter('Platinum')}>플래티넘</button>
+                                        <button onClick={() => handleFilter('Diamond')}>다이아몬드</button>
+                                    </div>
+                                </CSSTransition>
+                            </div>
+                        </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                         
                             <div className='divStyle'>

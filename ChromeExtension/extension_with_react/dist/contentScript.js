@@ -269,13 +269,91 @@ transition: background-color 0.1s;
 transition: transform 0.4s ease !important;
 position: relative;
 left: 2%;
+margin-bottom: 1%;
 }
 
 .reloadingM:hover {
 background-color: lightgray;
 transform: rotate(400deg) !important;
 }
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"AAAA;AACA,aAAa;AACb;;AAEA;AACA,aAAa;AACb,aAAa;AACb,UAAU;AACV,aAAa;AACb,YAAY;AACZ,uBAAuB;AACvB;;AAEA;AACA,mBAAmB;AACnB,UAAU;AACV,iBAAiB;AACjB,kBAAkB;AAClB;;AAEA;EACE,yBAAyB;EACzB,YAAY;EACZ,mBAAmB;EACnB,cAAc;EACd,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,8BAA8B;EAC9B,4CAA4C;AAC9C;;AAEA;EACE,aAAa;EACb,cAAc;EACd,yBAAyB;EACzB,aAAa;EACb,gBAAgB;EAChB,eAAe;EACf,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,kBAAkB;AACpB;;AAEA;AACA,YAAY;AACZ,cAAc;AACd,yBAAyB;AACzB,aAAa;AACb,eAAe;AACf,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB,kBAAkB;AAClB,iBAAiB;AACjB;AACA;AACA,cAAc;AACd,iBAAiB;AACjB;;AAEA;AACA,aAAa;AACb,YAAY;AACZ,UAAU;AACV,yBAAyB;AACzB,YAAY;AACZ,eAAe;AACf,6DAA6D;AAC7D,eAAe;AACf,6BAA6B;AAC7B;;AAEA;AACA,yBAAyB;AACzB,iBAAiB;AACjB,oBAAoB;AACpB;;AAEA;AACA,yBAAyB;AACzB,iBAAiB;AACjB,oBAAoB;AACpB;;AAEA;AACA,mBAAmB;AACnB,cAAc;AACd,eAAe;AACf,kBAAkB;AAClB,kBAAkB;AAClB;;;AAGA;AACA,yBAAyB;AACzB,aAAa;AACb,gBAAgB;AAChB,iBAAiB;AACjB,eAAe;AACf,iBAAiB;AACjB,+EAA+E;AAC/E,mBAAmB;AACnB,gCAAgC;AAChC,aAAa;AACb,gBAAgB;AAChB,6BAA6B;AAC7B;;AAEA;AACA,mBAAmB;AACnB,iBAAiB;AACjB;;AAEA;AACA,mBAAmB;AACnB,iBAAiB;AACjB;;;AAGA;AACA,yBAAyB;AACzB,aAAa;AACb,gBAAgB;AAChB,iBAAiB;AACjB,eAAe;AACf,iBAAiB;AACjB,+EAA+E;AAC/E,mBAAmB;AACnB,gCAAgC;AAChC,aAAa;AACb,gBAAgB;AAChB,6BAA6B,EAAE,mBAAmB;AAClD;;AAEA;AACA,mBAAmB;AACnB,iBAAiB;AACjB;;AAEA;AACA,mBAAmB;AACnB,iBAAiB;AACjB;;AAEA;AACA,aAAa;AACb,yBAAyB;AACzB,aAAa;AACb,eAAe;AACf,mBAAmB;AACnB,cAAc;AACd,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB,8BAA8B;AAC9B,4CAA4C;AAC5C,cAAc;AACd;;AAEA;AACA,gBAAgB;AAChB,aAAa;AACb,mBAAmB;AACnB,qBAAqB,EAAE,kBAAkB;AACzC,WAAW;AACX;;AAEA;AACA,UAAU;AACV,aAAa;AACb,eAAe;AACf,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB;;AAEA;AACA,aAAa;AACb,WAAW;AACX,yBAAyB;AACzB,eAAe;AACf,mBAAmB;AACnB,cAAc;AACd,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB,qBAAqB;AACrB,YAAY;AACZ,iCAAiC;AACjC;;AAEA;AACA;AACA;;AAEA;EACE,aAAa;EACb,qBAAqB;EACrB,uBAAuB;AACzB;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;EACnB,UAAU;EACV,eAAe;EACf;AACF;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,gBAAgB;EAChB,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;AACjB;;AAEA;AACA,WAAW;AACX,YAAY;AACZ,yDAA6V;AAC7V,sBAAsB;AACtB,2BAA2B;AAC3B,SAAS;AACT,6BAA6B;AAC7B,uBAAuB;AACvB,iCAAiC;AACjC,0CAA0C;AAC1C,kBAAkB;AAClB,QAAQ;AACR;;AAEA;AACA,2BAA2B;AAC3B,oCAAoC;AACpC","sourcesContent":[".style {\r\npadding: 10px;\r\n}\r\n\r\n.divStyle {\r\ndisplay: flex;\r\npadding: 10px;\r\nwidth: 97%;\r\nheight: 220px;\r\nborder: none;\r\njustify-content: center;\r\n}\r\n\r\n.Box {\r\nflex-direction: row;\r\nwidth: 28%;\r\nmargin-left: 40px;\r\nmargin-right: 14px;\r\n}\r\n\r\n.pBox {\r\n  background-color: #f7f7f9;\r\n  padding: 3px;\r\n  margin-bottom: 14px;\r\n  color: #6D7856;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  border-radius: 10px !important;\r\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.eBox {\r\n  height: 140px;\r\n  color: #6D7856;\r\n  background-color: #f7f7f9;\r\n  padding: 10px;\r\n  overflow: hidden;\r\n  font-size: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n\r\n.hrefBox {\r\nheight: 40px;\r\ncolor: #6D7856;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 16px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\ntext-align: center;\r\nfont-weight: bold;\r\n}\r\n.hrefBox:hover {\r\ncolor: #7f8c8d;\r\nfont-weight: bold;\r\n}\r\n\r\n.manu {\r\npadding: 10px;\r\nmargin: 10px;\r\nwidth: 35%;\r\nbackground-color: #FFFFFF;\r\nborder: none;\r\ncursor: pointer;\r\ntransition: background-color 0.3s, color 0.3s, font-size 0.3s;\r\nfont-size: 16px;\r\nborder-radius: 6px !important;\r\n}\r\n\r\n.manu:hover {\r\nbackground-color: #E0E0E0;\r\nfont-weight: bold;\r\nborder-radius: 100px;\r\n}\r\n\r\n.manu.active {\r\nbackground-color: #E0E0E0;\r\nfont-weight: bold;\r\nborder-radius: 100px;\r\n}\r\n\r\n.header_rp {\r\npadding-bottom: 5px;\r\ncolor: #34495e;\r\nfont-size: 15px;\r\nfont-weight : bold;\r\ntext-align: center;\r\n}\r\n\r\n\r\n.tagbtn {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important;\r\n}\r\n\r\n.tagbtn.active {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn:hover {\r\nbackground: #C9F3AF;\r\nfont-weight: bold;\r\n}\r\n\r\n\r\n.tagbtn_weak {\r\nborder: 1px solid #E0E0E0;;\r\npadding: 0.8%;\r\npadding-left: 2%;\r\npadding-right: 2%;\r\ncursor: pointer;\r\nbackground: white;\r\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\nfont-weight: normal;\r\nfont-family: 'Arial, sans-serif';\r\nfont-size: 10;\r\nmargin-right: 5%;\r\nborder-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n}\r\n\r\n.tagbtn_weak.active {\r\nbackground: #F0BEB4;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn_weak:hover {\r\nbackground: #fae6e2;\r\nfont-weight: bold;\r\n}\r\n\r\n.tagbtn_weak_problem {\r\nheight: 110px;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 15px;\r\nmargin-bottom: 14px;\r\ncolor: #6D7856;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nborder-radius: 10px !important;\r\nbox-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\nmargin-top: 3%;\r\n}\r\n\r\n.list_rp {\r\npadding-left: 6%;\r\ndisplay: flex;\r\nflex-direction: row;\r\nlist-style-type: none; /* 리스트 기본 스타일 제거 */\r\npadding:5px;\r\n}\r\n\r\n.pBox_header {\r\nwidth: 60%;\r\npadding: 10px;\r\nfont-size: 15px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\n}\r\n\r\n.pBox_content {\r\nheight: 190px;\r\nwidth: 100%;\r\nbackground-color: #f7f7f9;\r\nfont-size: 14px;\r\nmargin-bottom: 14px;\r\ncolor: #6D7856;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nwhite-space: pre-line;\r\nborder: none;\r\ntransition: background-color 0.2s;\r\n}\r\n\r\n.pBox_content:hover {\r\nbackground-color: lightgray\r\n}\r\n\r\n.container_rp{\r\n  display: flex;\r\n  flex-direction: 'row';\r\n  justify-content: center;\r\n}\r\n\r\n.rp_all {\r\n  margin-left: 3%;\r\n  margin-right: 3%;\r\n  align-items: center;\r\n  width: 23%;\r\n  display: 'flex';\r\n  flex-direction: 'column'\r\n}\r\n\r\n.qmark {\r\n  font-size: 12px;\r\n  margin-left: 85%;\r\n  margin-top: 10px;\r\n  color: #34495e;\r\n}\r\n\r\n.qmark:hover {\r\n  font-weight: bold;\r\n  color: black;\r\n}\r\n\r\n.weak_message {\r\n  margin-left: 40%;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n.reloadingM {\r\nwidth: 23px; \r\nheight: 23px; \r\nbackground-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\r\nbackground-size: cover;\r\nbackground-position: center;\r\nborder: 0;\r\nborder-radius: 50% !important;\r\nbackground-color: white;\r\ntransition: background-color 0.1s;\r\ntransition: transform 0.4s ease !important;\r\nposition: relative;\r\nleft: 2%;\r\n}\r\n\r\n.reloadingM:hover {\r\nbackground-color: lightgray;\r\ntransform: rotate(400deg) !important;\r\n}\r\n"],"sourceRoot":""}]);
+
+/* filter */
+.option-button-container {
+  position: relative;
+  display: inline-block;
+  left: 3%;
+}
+
+
+.toggleOptions {
+
+  width: 70px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */ 
+  background-color: white;
+  font-weight: bold;
+  border: 0;
+  transition: background-color 0.2s;
+  margin-bottom: 5%;
+}
+
+.toggleOptions:hover {
+  background-color: lightgray;
+}
+
+.options-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.options-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.options-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.options-exit-active {
+  opacity: 0;
+  transform: translateY(-70%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.options {
+  position: absolute;
+  width: 100px;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 1;
+}
+
+.options button {
+  margin: 4px 0;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+}
+
+.options button:hover {
+  background-color: #f2f2f2;
+}
+`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"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","sourcesContent":[".style {\npadding: 10px;\n}\n\n.divStyle {\ndisplay: flex;\npadding: 10px;\nwidth: 97%;\nheight: 220px;\nborder: none;\njustify-content: center;\n}\n\n.Box {\nflex-direction: row;\nwidth: 28%;\nmargin-left: 40px;\nmargin-right: 14px;\n}\n\n.pBox {\n  background-color: #f7f7f9;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.eBox {\n  height: 140px;\n  color: #6D7856;\n  background-color: #f7f7f9;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\nheight: 40px;\ncolor: #6D7856;\nbackground-color: #f7f7f9;\npadding: 10px;\nfont-size: 16px;\ndisplay: flex;\nalign-items: center;\njustify-content: center;\ntext-align: center;\nfont-weight: bold;\n}\n.hrefBox:hover {\ncolor: #7f8c8d;\nfont-weight: bold;\n}\n\n.manu {\npadding: 10px;\nmargin: 10px;\nwidth: 35%;\nbackground-color: #FFFFFF;\nborder: none;\ncursor: pointer;\ntransition: background-color 0.3s, color 0.3s, font-size 0.3s;\nfont-size: 16px;\nborder-radius: 6px !important;\n}\n\n.manu:hover {\nbackground-color: #E0E0E0;\nfont-weight: bold;\nborder-radius: 100px;\n}\n\n.manu.active {\nbackground-color: #E0E0E0;\nfont-weight: bold;\nborder-radius: 100px;\n}\n\n.header_rp {\npadding-bottom: 5px;\ncolor: #34495e;\nfont-size: 15px;\nfont-weight : bold;\ntext-align: center;\n}\n\n\n.tagbtn {\nborder: 1px solid #E0E0E0;;\npadding: 0.8%;\npadding-left: 2%;\npadding-right: 2%;\ncursor: pointer;\nbackground: white;\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\nfont-weight: normal;\nfont-family: 'Arial, sans-serif';\nfont-size: 10;\nmargin-right: 5%;\nborder-radius: 5px !important;\n}\n\n.tagbtn.active {\nbackground: #C9F3AF;\nfont-weight: bold;\n}\n\n.tagbtn:hover {\nbackground: #C9F3AF;\nfont-weight: bold;\n}\n\n\n.tagbtn_weak {\nborder: 1px solid #E0E0E0;;\npadding: 0.8%;\npadding-left: 2%;\npadding-right: 2%;\ncursor: pointer;\nbackground: white;\ntransition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\nfont-weight: normal;\nfont-family: 'Arial, sans-serif';\nfont-size: 10;\nmargin-right: 5%;\nborder-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\n}\n\n.tagbtn_weak.active {\nbackground: #F0BEB4;\nfont-weight: bold;\n}\n\n.tagbtn_weak:hover {\nbackground: #fae6e2;\nfont-weight: bold;\n}\n\n.tagbtn_weak_problem {\nheight: 110px;\nbackground-color: #f7f7f9;\npadding: 10px;\nfont-size: 15px;\nmargin-bottom: 14px;\ncolor: #6D7856;\ndisplay: flex;\nalign-items: center;\njustify-content: center;\nborder-radius: 10px !important;\nbox-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\nmargin-top: 3%;\n}\n\n.list_rp {\npadding-left: 6%;\ndisplay: flex;\nflex-direction: row;\nlist-style-type: none; /* 리스트 기본 스타일 제거 */\npadding:5px;\n}\n\n.pBox_header {\nwidth: 60%;\npadding: 10px;\nfont-size: 15px;\ndisplay: flex;\nalign-items: center;\njustify-content: center;\n}\n\n.pBox_content {\nheight: 190px;\nwidth: 100%;\nbackground-color: #f7f7f9;\nfont-size: 14px;\nmargin-bottom: 14px;\ncolor: #6D7856;\ndisplay: flex;\nalign-items: center;\njustify-content: center;\nwhite-space: pre-line;\nborder: none;\ntransition: background-color 0.2s;\n}\n\n.pBox_content:hover {\nbackground-color: lightgray\n}\n\n.container_rp{\n  display: flex;\n  flex-direction: 'row';\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: 'flex';\n  flex-direction: 'column'\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n.weak_message {\n  margin-left: 40%;\n  font-weight: bold;\n  font-size: 20px;\n}\n\n.reloadingM {\nwidth: 23px; \nheight: 23px; \nbackground-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\nbackground-size: cover;\nbackground-position: center;\nborder: 0;\nborder-radius: 50% !important;\nbackground-color: white;\ntransition: background-color 0.1s;\ntransition: transform 0.4s ease !important;\nposition: relative;\nleft: 2%;\nmargin-bottom: 1%;\n}\n\n.reloadingM:hover {\nbackground-color: lightgray;\ntransform: rotate(400deg) !important;\n}\n\n/* filter */\n.option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n\n\n.toggleOptions {\n\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */ \n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n\n.toggleOptions:hover {\n  background-color: lightgray;\n}\n\n.options-enter {\n  opacity: 0;\n  transform: translateY(-100%);\n}\n\n.options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n\n.options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n.options-exit-active {\n  opacity: 0;\n  transform: translateY(-70%);\n  transition: opacity 300ms, transform 300ms;\n}\n\n.options {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n\n.options button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n\n.options button:hover {\n  background-color: #f2f2f2;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -345,7 +423,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.ContainerToRender {
 
 .reloading:hover {
   background-color: lightgray !important;
-}`, "",{"version":3,"sources":["webpack://./src/contentScript/style/RelatedProblem.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,iBAAiB;AACnB;;;AAGA;EACE,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,yDAA8V;EAC9V,sBAAsB;EACtB,2BAA2B;EAC3B,yBAAyB;EACzB,SAAS;EACT,6BAA6B;EAC7B,iCAAiC;EACjC,kBAAkB;EAClB,QAAQ;AACV;;AAEA;EACE,sCAAsC;AACxC","sourcesContent":[".ContainerToRender {\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.RecommenedProblem:hover {\r\n  font-weight: bold;  \r\n}\r\n\r\n.problem_container{\r\n  width: 230px;\r\n}\r\n\r\n.problem_index {\r\n  margin-left: 20px;\r\n}\r\n\r\n\r\n.message {\r\n  width: 220px;\r\n}\r\n\r\n.reloading {\r\n  width: 27px; \r\n  height: 27px; \r\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-color: #F5F5F5;\r\n  border: 0;\r\n  border-radius: 50% !important;\r\n  transition: background-color 0.1s;\r\n  position: relative;\r\n  left: 2%;\r\n}\r\n\r\n.reloading:hover {\r\n  background-color: lightgray !important;\r\n}"],"sourceRoot":""}]);
+}
+`, "",{"version":3,"sources":["webpack://./src/contentScript/style/RelatedProblem.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,iBAAiB;AACnB;;;AAGA;EACE,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,yDAA8V;EAC9V,sBAAsB;EACtB,2BAA2B;EAC3B,yBAAyB;EACzB,SAAS;EACT,6BAA6B;EAC7B,iCAAiC;EACjC,kBAAkB;EAClB,QAAQ;AACV;;AAEA;EACE,sCAAsC;AACxC","sourcesContent":[".ContainerToRender {\n  display: flex;\n  align-items: center;\n}\n\n.RecommenedProblem:hover {\n  font-weight: bold;  \n}\n\n.problem_container{\n  width: 230px;\n}\n\n.problem_index {\n  margin-left: 20px;\n}\n\n\n.message {\n  width: 220px;\n}\n\n.reloading {\n  width: 27px; \n  height: 27px; \n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  background-color: #F5F5F5;\n  border: 0;\n  border-radius: 50% !important;\n  transition: background-color 0.1s;\n  position: relative;\n  left: 2%;\n}\n\n.reloading:hover {\n  background-color: lightgray !important;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -506,6 +585,90 @@ module.exports = function (item) {
   }
   return [content].join("\n");
 };
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/addClass.js":
+/*!**************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/addClass.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ addClass)
+/* harmony export */ });
+/* harmony import */ var _hasClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hasClass */ "./node_modules/dom-helpers/esm/hasClass.js");
+
+/**
+ * Adds a CSS class to a given element.
+ * 
+ * @param element the element
+ * @param className the CSS class name
+ */
+
+function addClass(element, className) {
+  if (element.classList) element.classList.add(className);else if (!(0,_hasClass__WEBPACK_IMPORTED_MODULE_0__["default"])(element, className)) if (typeof element.className === 'string') element.className = element.className + " " + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + " " + className);
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/hasClass.js":
+/*!**************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/hasClass.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ hasClass)
+/* harmony export */ });
+/**
+ * Checks if a given element has a CSS class.
+ * 
+ * @param element the element
+ * @param className the CSS class name
+ */
+function hasClass(element, className) {
+  if (element.classList) return !!className && element.classList.contains(className);
+  return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/esm/removeClass.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/dom-helpers/esm/removeClass.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ removeClass)
+/* harmony export */ });
+function replaceClassName(origClass, classToRemove) {
+  return origClass.replace(new RegExp("(^|\\s)" + classToRemove + "(?:\\s|$)", 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
+}
+/**
+ * Removes a CSS class from a given element.
+ * 
+ * @param element the element
+ * @param className the CSS class name
+ */
+
+
+function removeClass(element, className) {
+  if (element.classList) {
+    element.classList.remove(className);
+  } else if (typeof element.className === 'string') {
+    element.className = replaceClassName(element.className, className);
+  } else {
+    element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
+  }
+}
 
 /***/ }),
 
@@ -33331,6 +33494,1186 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./node_modules/react-transition-group/esm/CSSTransition.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/CSSTransition.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var dom_helpers_addClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dom-helpers/addClass */ "./node_modules/dom-helpers/esm/addClass.js");
+/* harmony import */ var dom_helpers_removeClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! dom-helpers/removeClass */ "./node_modules/dom-helpers/esm/removeClass.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Transition__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Transition */ "./node_modules/react-transition-group/esm/Transition.js");
+/* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
+/* harmony import */ var _utils_reflow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/reflow */ "./node_modules/react-transition-group/esm/utils/reflow.js");
+
+
+
+
+
+
+
+
+
+
+
+var _addClass = function addClass(node, classes) {
+  return node && classes && classes.split(' ').forEach(function (c) {
+    return (0,dom_helpers_addClass__WEBPACK_IMPORTED_MODULE_3__["default"])(node, c);
+  });
+};
+
+var removeClass = function removeClass(node, classes) {
+  return node && classes && classes.split(' ').forEach(function (c) {
+    return (0,dom_helpers_removeClass__WEBPACK_IMPORTED_MODULE_4__["default"])(node, c);
+  });
+};
+/**
+ * A transition component inspired by the excellent
+ * [ng-animate](https://docs.angularjs.org/api/ngAnimate) library, you should
+ * use it if you're using CSS transitions or animations. It's built upon the
+ * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+ * component, so it inherits all of its props.
+ *
+ * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
+ * and `exit` states of the transition. The first class is applied and then a
+ * second `*-active` class in order to activate the CSS transition. After the
+ * transition, matching `*-done` class names are applied to persist the
+ * transition state.
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
+ *         <div>
+ *           {"I'll receive my-node-* classes"}
+ *         </div>
+ *       </CSSTransition>
+ *       <button type="button" onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the `in` prop is set to `true`, the child component will first receive
+ * the class `example-enter`, then the `example-enter-active` will be added in
+ * the next tick. `CSSTransition` [forces a
+ * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+ * between before adding the `example-enter-active`. This is an important trick
+ * because it allows us to transition between `example-enter` and
+ * `example-enter-active` even though they were added immediately one after
+ * another. Most notably, this is what makes it possible for us to animate
+ * _appearance_.
+ *
+ * ```css
+ * .my-node-enter {
+ *   opacity: 0;
+ * }
+ * .my-node-enter-active {
+ *   opacity: 1;
+ *   transition: opacity 200ms;
+ * }
+ * .my-node-exit {
+ *   opacity: 1;
+ * }
+ * .my-node-exit-active {
+ *   opacity: 0;
+ *   transition: opacity 200ms;
+ * }
+ * ```
+ *
+ * `*-active` classes represent which styles you want to animate **to**, so it's
+ * important to add `transition` declaration only to them, otherwise transitions
+ * might not behave as intended! This might not be obvious when the transitions
+ * are symmetrical, i.e. when `*-enter-active` is the same as `*-exit`, like in
+ * the example above (minus `transition`), but it becomes apparent in more
+ * complex transitions.
+ *
+ * **Note**: If you're using the
+ * [`appear`](http://reactcommunity.org/react-transition-group/transition#Transition-prop-appear)
+ * prop, make sure to define styles for `.appear-*` classes as well.
+ */
+
+
+var CSSTransition = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(CSSTransition, _React$Component);
+
+  function CSSTransition() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.appliedClasses = {
+      appear: {},
+      enter: {},
+      exit: {}
+    };
+
+    _this.onEnter = function (maybeNode, maybeAppearing) {
+      var _this$resolveArgument = _this.resolveArguments(maybeNode, maybeAppearing),
+          node = _this$resolveArgument[0],
+          appearing = _this$resolveArgument[1];
+
+      _this.removeClasses(node, 'exit');
+
+      _this.addClass(node, appearing ? 'appear' : 'enter', 'base');
+
+      if (_this.props.onEnter) {
+        _this.props.onEnter(maybeNode, maybeAppearing);
+      }
+    };
+
+    _this.onEntering = function (maybeNode, maybeAppearing) {
+      var _this$resolveArgument2 = _this.resolveArguments(maybeNode, maybeAppearing),
+          node = _this$resolveArgument2[0],
+          appearing = _this$resolveArgument2[1];
+
+      var type = appearing ? 'appear' : 'enter';
+
+      _this.addClass(node, type, 'active');
+
+      if (_this.props.onEntering) {
+        _this.props.onEntering(maybeNode, maybeAppearing);
+      }
+    };
+
+    _this.onEntered = function (maybeNode, maybeAppearing) {
+      var _this$resolveArgument3 = _this.resolveArguments(maybeNode, maybeAppearing),
+          node = _this$resolveArgument3[0],
+          appearing = _this$resolveArgument3[1];
+
+      var type = appearing ? 'appear' : 'enter';
+
+      _this.removeClasses(node, type);
+
+      _this.addClass(node, type, 'done');
+
+      if (_this.props.onEntered) {
+        _this.props.onEntered(maybeNode, maybeAppearing);
+      }
+    };
+
+    _this.onExit = function (maybeNode) {
+      var _this$resolveArgument4 = _this.resolveArguments(maybeNode),
+          node = _this$resolveArgument4[0];
+
+      _this.removeClasses(node, 'appear');
+
+      _this.removeClasses(node, 'enter');
+
+      _this.addClass(node, 'exit', 'base');
+
+      if (_this.props.onExit) {
+        _this.props.onExit(maybeNode);
+      }
+    };
+
+    _this.onExiting = function (maybeNode) {
+      var _this$resolveArgument5 = _this.resolveArguments(maybeNode),
+          node = _this$resolveArgument5[0];
+
+      _this.addClass(node, 'exit', 'active');
+
+      if (_this.props.onExiting) {
+        _this.props.onExiting(maybeNode);
+      }
+    };
+
+    _this.onExited = function (maybeNode) {
+      var _this$resolveArgument6 = _this.resolveArguments(maybeNode),
+          node = _this$resolveArgument6[0];
+
+      _this.removeClasses(node, 'exit');
+
+      _this.addClass(node, 'exit', 'done');
+
+      if (_this.props.onExited) {
+        _this.props.onExited(maybeNode);
+      }
+    };
+
+    _this.resolveArguments = function (maybeNode, maybeAppearing) {
+      return _this.props.nodeRef ? [_this.props.nodeRef.current, maybeNode] // here `maybeNode` is actually `appearing`
+      : [maybeNode, maybeAppearing];
+    };
+
+    _this.getClassNames = function (type) {
+      var classNames = _this.props.classNames;
+      var isStringClassNames = typeof classNames === 'string';
+      var prefix = isStringClassNames && classNames ? classNames + "-" : '';
+      var baseClassName = isStringClassNames ? "" + prefix + type : classNames[type];
+      var activeClassName = isStringClassNames ? baseClassName + "-active" : classNames[type + "Active"];
+      var doneClassName = isStringClassNames ? baseClassName + "-done" : classNames[type + "Done"];
+      return {
+        baseClassName: baseClassName,
+        activeClassName: activeClassName,
+        doneClassName: doneClassName
+      };
+    };
+
+    return _this;
+  }
+
+  var _proto = CSSTransition.prototype;
+
+  _proto.addClass = function addClass(node, type, phase) {
+    var className = this.getClassNames(type)[phase + "ClassName"];
+
+    var _this$getClassNames = this.getClassNames('enter'),
+        doneClassName = _this$getClassNames.doneClassName;
+
+    if (type === 'appear' && phase === 'done' && doneClassName) {
+      className += " " + doneClassName;
+    } // This is to force a repaint,
+    // which is necessary in order to transition styles when adding a class name.
+
+
+    if (phase === 'active') {
+      if (node) (0,_utils_reflow__WEBPACK_IMPORTED_MODULE_6__.forceReflow)(node);
+    }
+
+    if (className) {
+      this.appliedClasses[type][phase] = className;
+
+      _addClass(node, className);
+    }
+  };
+
+  _proto.removeClasses = function removeClasses(node, type) {
+    var _this$appliedClasses$ = this.appliedClasses[type],
+        baseClassName = _this$appliedClasses$.base,
+        activeClassName = _this$appliedClasses$.active,
+        doneClassName = _this$appliedClasses$.done;
+    this.appliedClasses[type] = {};
+
+    if (baseClassName) {
+      removeClass(node, baseClassName);
+    }
+
+    if (activeClassName) {
+      removeClass(node, activeClassName);
+    }
+
+    if (doneClassName) {
+      removeClass(node, doneClassName);
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        _ = _this$props.classNames,
+        props = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["classNames"]);
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_Transition__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+      onEnter: this.onEnter,
+      onEntered: this.onEntered,
+      onEntering: this.onEntering,
+      onExit: this.onExit,
+      onExiting: this.onExiting,
+      onExited: this.onExited
+    }));
+  };
+
+  return CSSTransition;
+}((react__WEBPACK_IMPORTED_MODULE_5___default().Component));
+
+CSSTransition.defaultProps = {
+  classNames: ''
+};
+CSSTransition.propTypes =  true ? (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _Transition__WEBPACK_IMPORTED_MODULE_7__["default"].propTypes, {
+  /**
+   * The animation classNames applied to the component as it appears, enters,
+   * exits or has finished the transition. A single name can be provided, which
+   * will be suffixed for each stage, e.g. `classNames="fade"` applies:
+   *
+   * - `fade-appear`, `fade-appear-active`, `fade-appear-done`
+   * - `fade-enter`, `fade-enter-active`, `fade-enter-done`
+   * - `fade-exit`, `fade-exit-active`, `fade-exit-done`
+   *
+   * A few details to note about how these classes are applied:
+   *
+   * 1. They are _joined_ with the ones that are already defined on the child
+   *    component, so if you want to add some base styles, you can use
+   *    `className` without worrying that it will be overridden.
+   *
+   * 2. If the transition component mounts with `in={false}`, no classes are
+   *    applied yet. You might be expecting `*-exit-done`, but if you think
+   *    about it, a component cannot finish exiting if it hasn't entered yet.
+   *
+   * 2. `fade-appear-done` and `fade-enter-done` will _both_ be applied. This
+   *    allows you to define different behavior for when appearing is done and
+   *    when regular entering is done, using selectors like
+   *    `.fade-enter-done:not(.fade-appear-done)`. For example, you could apply
+   *    an epic entrance animation when element first appears in the DOM using
+   *    [Animate.css](https://daneden.github.io/animate.css/). Otherwise you can
+   *    simply use `fade-enter-done` for defining both cases.
+   *
+   * Each individual classNames can also be specified independently like:
+   *
+   * ```js
+   * classNames={{
+   *  appear: 'my-appear',
+   *  appearActive: 'my-active-appear',
+   *  appearDone: 'my-done-appear',
+   *  enter: 'my-enter',
+   *  enterActive: 'my-active-enter',
+   *  enterDone: 'my-done-enter',
+   *  exit: 'my-exit',
+   *  exitActive: 'my-active-exit',
+   *  exitDone: 'my-done-exit',
+   * }}
+   * ```
+   *
+   * If you want to set these classes using CSS Modules:
+   *
+   * ```js
+   * import styles from './styles.css';
+   * ```
+   *
+   * you might want to use camelCase in your CSS file, that way could simply
+   * spread them instead of listing them one by one:
+   *
+   * ```js
+   * classNames={{ ...styles }}
+   * ```
+   *
+   * @type {string | {
+   *  appear?: string,
+   *  appearActive?: string,
+   *  appearDone?: string,
+   *  enter?: string,
+   *  enterActive?: string,
+   *  enterDone?: string,
+   *  exit?: string,
+   *  exitActive?: string,
+   *  exitDone?: string,
+   * }}
+   */
+  classNames: _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__.classNamesShape,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter' or 'appear' class is
+   * applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().func),
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter-active' or
+   * 'appear-active' class is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().func),
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter' or
+   * 'appear' classes are **removed** and the `done` class is added to the DOM node.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().func),
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit' class is
+   * applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().func),
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit-active' is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().func),
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit' classes
+   * are **removed** and the `exit-done` class is added to the DOM node.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().func)
+}) : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CSSTransition);
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/Transition.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/Transition.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ENTERED: () => (/* binding */ ENTERED),
+/* harmony export */   ENTERING: () => (/* binding */ ENTERING),
+/* harmony export */   EXITED: () => (/* binding */ EXITED),
+/* harmony export */   EXITING: () => (/* binding */ EXITING),
+/* harmony export */   UNMOUNTED: () => (/* binding */ UNMOUNTED),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./node_modules/react-transition-group/esm/config.js");
+/* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
+/* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
+/* harmony import */ var _utils_reflow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/reflow */ "./node_modules/react-transition-group/esm/utils/reflow.js");
+
+
+
+
+
+
+
+
+
+var UNMOUNTED = 'unmounted';
+var EXITED = 'exited';
+var ENTERING = 'entering';
+var ENTERED = 'entered';
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 1 },
+ *   entered:  { opacity: 1 },
+ *   exiting:  { opacity: 0 },
+ *   exited:  { opacity: 0 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+var Transition = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  } // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+  ;
+
+  var _proto = Transition.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      if (nextStatus === ENTERING) {
+        if (this.props.unmountOnExit || this.props.mountOnEnter) {
+          var node = this.props.nodeRef ? this.props.nodeRef.current : react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this); // https://github.com/reactjs/react-transition-group/pull/749
+          // With unmountOnExit or mountOnEnter, the enter animation should happen at the transition between `exited` and `entering`.
+          // To make the animation happen,  we have to separate each rendering and avoid being processed as batched.
+
+          if (node) (0,_utils_reflow__WEBPACK_IMPORTED_MODULE_4__.forceReflow)(node);
+        }
+
+        this.performEnter(mounting);
+      } else {
+        this.performExit();
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context ? this.context.isMounting : mounting;
+
+    var _ref2 = this.props.nodeRef ? [appearing] : [react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this), appearing],
+        maybeNode = _ref2[0],
+        maybeAppearing = _ref2[1];
+
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter || _config__WEBPACK_IMPORTED_MODULE_5__["default"].disabled) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onEnter(maybeNode, maybeAppearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(maybeNode, maybeAppearing);
+
+      _this2.onTransitionEnd(enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(maybeNode, maybeAppearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit() {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts();
+    var maybeNode = this.props.nodeRef ? undefined : react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this); // no exit animation skip right to EXITED
+
+    if (!exit || _config__WEBPACK_IMPORTED_MODULE_5__["default"].disabled) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(maybeNode);
+      });
+      return;
+    }
+
+    this.props.onExit(maybeNode);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(maybeNode);
+
+      _this3.onTransitionEnd(timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(maybeNode);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
+    this.setNextCallback(handler);
+    var node = this.props.nodeRef ? this.props.nodeRef.current : react_dom__WEBPACK_IMPORTED_MODULE_3__.findDOMNode(this);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node, this.nextCallback],
+          maybeNode = _ref3[0],
+          maybeNextCallback = _ref3[1];
+
+      this.props.addEndListener(maybeNode, maybeNextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        _in = _this$props.in,
+        _mountOnEnter = _this$props.mountOnEnter,
+        _unmountOnExit = _this$props.unmountOnExit,
+        _appear = _this$props.appear,
+        _enter = _this$props.enter,
+        _exit = _this$props.exit,
+        _timeout = _this$props.timeout,
+        _addEndListener = _this$props.addEndListener,
+        _onEnter = _this$props.onEnter,
+        _onEntering = _this$props.onEntering,
+        _onEntered = _this$props.onEntered,
+        _onExit = _this$props.onExit,
+        _onExiting = _this$props.onExiting,
+        _onExited = _this$props.onExited,
+        _nodeRef = _this$props.nodeRef,
+        childProps = (0,_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(_this$props, ["children", "in", "mountOnEnter", "unmountOnExit", "appear", "enter", "exit", "timeout", "addEndListener", "onEnter", "onEntering", "onEntered", "onExit", "onExiting", "onExited", "nodeRef"]);
+
+    return (
+      /*#__PURE__*/
+      // allows for nested Transitions
+      react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__["default"].Provider, {
+        value: null
+      }, typeof children === 'function' ? children(status, childProps) : react__WEBPACK_IMPORTED_MODULE_2___default().cloneElement(react__WEBPACK_IMPORTED_MODULE_2___default().Children.only(children), childProps))
+    );
+  };
+
+  return Transition;
+}((react__WEBPACK_IMPORTED_MODULE_2___default().Component));
+
+Transition.contextType = _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__["default"];
+Transition.propTypes =  true ? {
+  /**
+   * A React reference to DOM element that need to transition:
+   * https://stackoverflow.com/a/51127130/4671932
+   *
+   *   - When `nodeRef` prop is used, `node` is not passed to callback functions
+   *      (e.g. `onEnter`) because user already has direct access to the node.
+   *   - When changing `key` prop of `Transition` in a `TransitionGroup` a new
+   *     `nodeRef` need to be provided to `Transition` with changed `key` prop
+   *     (see
+   *     [test/CSSTransition-test.js](https://github.com/reactjs/react-transition-group/blob/13435f897b3ab71f6e19d724f145596f5910581c/test/CSSTransition-test.js#L362-L437)).
+   */
+  nodeRef: prop_types__WEBPACK_IMPORTED_MODULE_7___default().shape({
+    current: typeof Element === 'undefined' ? (prop_types__WEBPACK_IMPORTED_MODULE_7___default().any) : function (propValue, key, componentName, location, propFullName, secret) {
+      var value = propValue[key];
+      return prop_types__WEBPACK_IMPORTED_MODULE_7___default().instanceOf(value && 'ownerDocument' in value ? value.ownerDocument.defaultView.Element : Element)(propValue, key, componentName, location, propFullName, secret);
+    }
+  }),
+
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_7___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_7___default().func).isRequired, (prop_types__WEBPACK_IMPORTED_MODULE_7___default().element).isRequired]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * By default the child component does not perform the enter transition when
+   * it first mounts, regardless of the value of `in`. If you want this
+   * behavior, set both `appear` and `in` to `true`.
+   *
+   * > **Note**: there are no special appear states like `appearing`/`appeared`, this prop
+   * > only adds an additional enter transition. However, in the
+   * > `<CSSTransition>` component that first enter transition does result in
+   * > additional `.appear-*` classes, that way you can choose to style it
+   * > differently.
+   */
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. Timeouts are still used as a fallback if provided.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * **Note**: when `nodeRef` prop is passed, `node` is not passed
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func)
+} : 0; // Name the function so it is clearer in the documentation
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = UNMOUNTED;
+Transition.EXITED = EXITED;
+Transition.ENTERING = ENTERING;
+Transition.ENTERED = ENTERED;
+Transition.EXITING = EXITING;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Transition);
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/TransitionGroupContext.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/TransitionGroupContext.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_0___default().createContext(null));
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/config.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/config.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  disabled: false
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/utils/PropTypes.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/utils/PropTypes.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   classNamesShape: () => (/* binding */ classNamesShape),
+/* harmony export */   timeoutsShape: () => (/* binding */ timeoutsShape)
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+
+var timeoutsShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().number), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number),
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number)
+}).isRequired]) : 0;
+var classNamesShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().string), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  active: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+}), prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape({
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  enterActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exit: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitDone: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+  exitActive: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+})]) : 0;
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/esm/utils/reflow.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react-transition-group/esm/utils/reflow.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   forceReflow: () => (/* binding */ forceReflow)
+/* harmony export */ });
+var forceReflow = function forceReflow(node) {
+  return node.scrollTop;
+};
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -37157,6 +38500,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_MyPage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/MyPage.css */ "./src/contentScript/style/MyPage.css");
 /* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/CSSTransition.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -37169,6 +38513,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 
+
 function MyPage() {
     var _a;
     const [problems, setRes] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -37177,15 +38522,18 @@ function MyPage() {
     const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1');
     const [selectedButton_weak, setSelectedButton_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1');
     const [rotate, setRotate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+    const [isOptionsVisible, setOptionsVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const [filterTier, setFilter] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('None');
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         const fetchData = () => __awaiter(this, void 0, void 0, function* () {
             console.log("Inside fetchData function");
             // Flask에 URL 전송
             try {
-                // 플라스크가 응답할 때까지 await
+                // https://recproblem.site
+                // http://127.0.0.1:8080
                 const response = yield fetch('http://127.0.0.1:8080/mypage/problems', {
                     method: 'POST',
-                    body: JSON.stringify({ url: window.location.href, div: rotate }),
+                    body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier }),
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -37207,6 +38555,16 @@ function MyPage() {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"].rebuild();
     }, []);
+    const toggleOptions = () => {
+        setOptionsVisible(!isOptionsVisible);
+    };
+    const handleFilter = (tier) => {
+        setFilter(tier);
+        handleRotate();
+        toggleOptions();
+        console.log(filterTier);
+        console.log(rotate);
+    };
     const handleClick = (index) => {
         // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
         setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
@@ -37265,7 +38623,17 @@ function MyPage() {
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' },
                                 problems.weak_tag_problems[selectedField_weak].weak_pcr,
                                 "%\uB9CC\uD07C \uC57D\uD55C \uBD84\uC57C\uC5D0\uC694"),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_3__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
+                                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
+                                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('None') }, "\uBB34\uC791\uC704"),
+                                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
+                                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
+                                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
+                                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC"))))),
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp" }, (_a = problems.weak_tag_problems[selectedField_weak].problems) === null || _a === void 0 ? void 0 : _a.map((problem, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'rp_all' },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'pBox_content', "data-tip": `${problem}번 풀러 가기`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problem}`), style: { display: 'flex', flexDirection: 'column' } },
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '17px', padding: '8px' } },
@@ -37286,7 +38654,18 @@ function MyPage() {
                 currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856' } }, "\uD574\uB2F9 \uBD84\uB958\uC758 \uBB38\uC81C\uB97C \uD47C \uC9C0 \uC624\uB798\uB410\uC5B4\uC694."),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { textAlign: 'center', marginBottom: '0px' } }, "\uB098\uC911\uC5D4 \uB354 \uAE30\uC5B5\uB098\uC9C0 \uC54A\uC744 \uAC70\uC608\uC694!"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_3__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
+                                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('None') }, "\uBB34\uC791\uC704"),
+                                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
+                                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
+                                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
+                                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC")))))),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: '20px' } },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box1' },
@@ -37332,21 +38711,58 @@ function MyPage() {
                         "\uB2D8\uACFC \uBE44\uC2B7\uD55C \uC2E4\uB825\uC758 \uC720\uC800\uB4E4\uC774 \uB9CE\uC774 \uD480\uC5C8\uC9C0\uB9CC,  ",
                         problems.user_id,
                         "\uB2D8\uC774 \uD480\uC9C0 \uC54A\uC558\uC744 \uAC83 \uAC19\uC740 \uBB38\uC81C\uB4E4\uC744 \uAC00\uC838\uC654\uC5B4\uC694!"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_3__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('None') }, "\uBB34\uC791\uC704"),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC"))))),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: '20px' } },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box1' },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem1" },
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem1.problemID}` }, problems.similarity_based_problems.problem1.titleKo)),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation1" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation1", style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uB09C\uC774\uB3C4: ",
+                                        problems.similarity_based_problems.problem1.level),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
+                                        problems.similarity_based_problems.problem1.averageTries),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uBD84\uB958: ",
+                                        problems.similarity_based_problems.problem1.tags))),
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box2' },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem2" },
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem2.problemID}` }, problems.similarity_based_problems.problem2.titleKo)),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation2" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0")),
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation2", style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uB09C\uC774\uB3C4: ",
+                                        problems.similarity_based_problems.problem2.level),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
+                                        problems.similarity_based_problems.problem2.averageTries),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uBD84\uB958: ",
+                                        problems.similarity_based_problems.problem2.tags))),
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box3' },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem3" },
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem3.problemID}` }, problems.similarity_based_problems.problem3.titleKo)),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation3" }, "\uCD94\uCC9C \uC774\uC720 \uB4F1 \uBA54\uC138\uC9C0"))))))))));
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation3", style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uB09C\uC774\uB3C4: ",
+                                        problems.similarity_based_problems.problem3.level),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
+                                        problems.similarity_based_problems.problem3.averageTries),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                                        "\uBD84\uB958: ",
+                                        problems.similarity_based_problems.problem3.tags)))))))))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyPage);
 
@@ -37398,8 +38814,9 @@ function RelatedProblem() {
             const texts = Array.from(elements).map(element => element.textContent);
             // Flask에 URL 전송
             try {
-                // 플라스크가 응답할 때까지 await
-                const response = yield fetch('https://recproblem.site/send_url', {
+                // https://recproblem.site
+                // http://127.0.0.1:8080
+                const response = yield fetch('http://127.0.0.1:8080/send_url', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {
@@ -37438,19 +38855,18 @@ function RelatedProblem() {
         return null;
     }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, className: 'ContainerToRender' },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: '96%', display: 'flex' } },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'problem_container' },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'problem_index' }, "\uC5F0\uAD00 \uBB38\uC81C 1: "),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`, href: urls.problem0, className: 'RecommenedProblem' }, problems.problem0_titleKo)),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'problem_container' },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'problem_index' }, "\uC5F0\uAD00 \uBB38\uC81C 2: "),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": ` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`, href: urls.problem1, className: 'RecommenedProblem' }, problems.problem1_titleKo)),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'problem_container' },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'problem_index' }, "\uC5F0\uAD00 \uBB38\uC81C 3: "),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": ` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`, href: urls.problem2, className: 'RecommenedProblem', style: {
-                        marginRight: '10px',
-                    } }, problems.problem2_titleKo)),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'message' }, problems.message)),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'problem_container' },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'problem_index' }, "\uC5F0\uAD00 \uBB38\uC81C 1: "),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`, href: urls.problem0, className: 'RecommenedProblem' }, problems.problem0_titleKo)),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'problem_container' },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'problem_index' }, "\uC5F0\uAD00 \uBB38\uC81C 2: "),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": ` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`, href: urls.problem1, className: 'RecommenedProblem' }, problems.problem1_titleKo)),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'problem_container' },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'problem_index' }, "\uC5F0\uAD00 \uBB38\uC81C 3: "),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": ` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`, href: urls.problem2, className: 'RecommenedProblem', style: {
+                    marginRight: '10px',
+                } }, problems.problem2_titleKo)),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", { className: 'message' }, problems.message),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_1__["default"], { place: "top", type: "dark", effect: "solid" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: '4%', display: 'flex', justifyContent: 'right' } },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloading', onClick: () => handleRotate() }))));
@@ -37583,6 +38999,102 @@ module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%
 
 "use strict";
 module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27gray%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E";
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _extends)
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _inheritsLoose)
+/* harmony export */ });
+/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _objectWithoutPropertiesLoose)
+/* harmony export */ });
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _setPrototypeOf)
+/* harmony export */ });
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
 
 /***/ })
 

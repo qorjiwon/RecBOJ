@@ -223,7 +223,7 @@ def cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProbl
     return threeWeaks, threeForgotten, threeSimilar
 
 
-def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate):
+def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter):
     threeWeaks = {}
     threeForgotten = {}
     threeSimilar = {}
@@ -232,18 +232,20 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
    
     for i in range(1,4):
         tag_key = 'tag' + str(i)
-
+        problems = []
+        explainations = []
+        cnt = 0
         threeWeaks[tag_key] = {}
+       
         problems_list = weakTagProblems[tag_key]['problems']
         explanations_list = weakTagProblems[tag_key]['explainations']
-
-        start_index = (3 * rotate - 2) % len(problems_list)
-        end_index = (3 * rotate + 1) % len(problems_list)
-        if start_index > end_index:
-            start_index = 0
-            end_index = start_index + 3
-        problems = problems_list[start_index:end_index]
-        explainations = explanations_list[start_index:end_index]
+        index = (3 * rotate - 2) % len(problems_list)
+        while cnt < len(problems_list) and len(problems) < 3:
+            if checkTier(explanations_list[index][2], filter):
+                problems.append(problems_list[index])
+                explainations.append(explanations_list[index])
+            index = (index + 1) % len(problems_list)
+            cnt += 1
 
         threeWeaks['tag'+str(i)]['tag_name'] = weakTagProblems['tag'+str(i)]['tag_name']
         threeWeaks['tag'+str(i)]['problems'] = problems
@@ -277,3 +279,10 @@ def save_as_json(data, filename, dir_path = 'user_data/'):
 def load_from_json(filename, dir_path = 'user_data/'):
     with open(dir_path + filename + '.json', 'r', encoding='utf-8') as f:
         return json.load(f)
+    
+def checkTier(tier, filter):
+    if filter == "None":
+        return 1
+    elif filter in tier:
+        return 1
+    return 0
