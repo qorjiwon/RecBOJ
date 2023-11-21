@@ -68,7 +68,7 @@ def send_mypage_data():
                 similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
                 threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)
     except:
-        user_id = '1000chw'
+        user_id = 'eu2525'
         if rotate == 0:
             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
             # forget_curve를 이용해서...
