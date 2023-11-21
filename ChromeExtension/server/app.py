@@ -9,10 +9,11 @@ app = Flask(__name__)
 CORS(app)  # CORS 미들웨어 초기화
 lock = threading.Lock()
 
-global weak_strong_forget_df, pivot_table, index_to_id_df, index_to_problem
-weak_strong_forget_df = pd.read_csv('data/forgetting_curve_df.csv')
-pivot_table = pd.read_csv('data/final_pivottable.csv')
+global weak_strong_forget_df, pivot_table, index_to_problem, id_to_index
+weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv')
+pivot_table = pd.read_csv('data/khu_pivot_table.csv')
 index_to_problem = pd.read_csv('data/final_problem_processed.csv')
+id_to_index = pd.read_csv('data/khu_id_to_index.csv')
 cache = {}
 #index_to_id_df 
 # 얘는 나중에 경희대학교 학생 데이터 만들면 넣을 예정 
@@ -54,7 +55,7 @@ def send_mypage_data():
                 strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
                 # forget_curve를 이용해서...
                 forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
-                SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, 500)
+                SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
                 weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
                 cache[user_id] = {}
                 cache[user_id]['weakTagProblems'] = weakTagProblems   
@@ -72,7 +73,7 @@ def send_mypage_data():
             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
             # forget_curve를 이용해서...
             forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
-            SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, 500)
+            SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
             weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 200)
             cache[user_id] = {}
             cache[user_id]['weakTagProblems'] = weakTagProblems   
@@ -84,7 +85,6 @@ def send_mypage_data():
             forgottenTagProblems = cache[user_id]['forgottenTagProblems']
             similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
             threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter)
-
     
     responseData = {
             'user_id' : user_id,    
