@@ -29,8 +29,8 @@ def weak_strong_rec(df, user_id):
     # 개념 문제에 대해서만 할건지...??
     # df = df[df['level'] <= 10]
     # 평균 시도 횟수를 기준으로 나눔.
-    weak_problem = df[df['wrong_count'] > df['averageTries']]
-    strong_problem = df[df['wrong_count'] <= df['averageTries']]
+    weak_problem = df[(df['wrong_count'] + 1) > df['averageTries']]
+    strong_problem = df[(df['wrong_count'] + 1 )<= df['averageTries']]
     #tag를 split
     weak_df_tags = tag_split(weak_problem)
     st_df_tags = tag_split(strong_problem)
