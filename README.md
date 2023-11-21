@@ -25,7 +25,7 @@
 ![image](https://github.com/qorjiwon/RecBOJ/assets/82700743/7ed63c53-25e4-42c6-952e-56dce7e9116f)<br><br>
 
 
-## 👉 [알잘딱깔센추 Chrome Extension 설치하러 가기](https://chromewebstore.google.com/detail/%EC%95%8C%EC%9E%98%EB%94%B1%EA%B9%94%EC%84%BC%EC%B6%94/fcpblpadoappooofdepifdbmnpnohhap?hl=ko&utm_source=ext_sidebar)
+## ⏩⏩⏩ [알잘딱깔센추 Chrome Extension 설치하러 가기](https://chromewebstore.google.com/detail/%EC%95%8C%EC%9E%98%EB%94%B1%EA%B9%94%EC%84%BC%EC%B6%94/fcpblpadoappooofdepifdbmnpnohhap?hl=ko&utm_source=ext_sidebar) ⏪⏪⏪
 <img src='https://github.com/qorjiwon/RecBOJ/assets/82700743/67146739-3cdc-4208-9de4-680d5e7f9d19' height=140 width=560></img>
 ![소페시연영상원본](https://github.com/qorjiwon/RecBOJ/assets/82700743/6c7bac35-0114-4928-9e25-cd40521921a0)
 
@@ -37,7 +37,9 @@
 |[Jung Woo Im](https://github.com/crash1522)|[Sang Jin Han](https://github.com/eu2525)|[Myeong Eun Noh](https://github.com/NoMyeongEun)|[Ji Won Baek](https://github.com/qorjiwon)|
 |:-:|:-:|:-:|:-:|
 |<img src='https://avatars.githubusercontent.com/u/44426921?v=4' height=120 width=120></img>|<img src='https://avatars.githubusercontent.com/u/49024115?v=4' height=120 width=120></img>|<img src='https://avatars.githubusercontent.com/u/90135669?v=4' height=120 width=120></img>|<img src='https://avatars.githubusercontent.com/u/82700743?v=4' height=120 width=120></img>
-[Github](https://github.com/facerain)|[Github](https://github.com/wbin0718)|[Github](https://github.com/jinmyeongAN)|[Github](https://github.com/kyc3492)<br><br>
+Full-stack|RecSys|RecSys|Frontend
+
+<br><br>
 
 
 
