@@ -213,7 +213,7 @@ def getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag
                 try:
                     problems['problem'+str(j+1)] = response['problem'+str(j+1)]
                 except:
-                    print(f'추천 문제가 {num_to_extract}개 보다 적습니다')
+                    pass
             forgottenTagProblems['tag'+str(i+1)] = problems
     except:
         pass

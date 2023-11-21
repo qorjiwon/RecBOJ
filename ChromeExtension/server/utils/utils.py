@@ -44,6 +44,7 @@ def weak_strong_rec(df, user_id):
     merged_df['total_count'] = merged_df['strong_count'] + merged_df['weak_count']
     merged_df = merged_df[merged_df['total_count'] >= 10]
     merged_df['accuracy'] = merged_df['strong_count'] / merged_df['total_count']
+
     #strong, weak 3문제 뽑음
     strong_3tag = merged_df.groupby('user_id').apply(lambda x: x.nlargest(3, 'accuracy')).reset_index(drop=True)
     weak_3tag = merged_df.groupby('user_id').apply(lambda x: x.nsmallest(3, 'accuracy')).reset_index(drop=True)
