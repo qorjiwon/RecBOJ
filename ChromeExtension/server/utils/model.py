@@ -52,7 +52,7 @@ def get_item2vec_problem(problem_id, submits, div):
     return results
 
 # network parameters
-input_shape = 5221
+input_shape = 4468
 original_dim= input_shape
 intermediate_dim = 512
 latent_dim = 2
@@ -118,16 +118,14 @@ def return_user_data(pivot_table):
     X = np.nan_to_num(X)
     return X, column_info
 
-def get_problem_list(user_input, user_id):
+def get_problem_list(pivot, user_id, id_to_index):
     #이 위에는 이제 user_id가 들어오면 user_id에 맞는 pivot_table에서의 행을 추출하는 코드를 작성 예정
-    problem_list = user_input[0]
+    idx = id_to_index[id_to_index['name'] == user_id]['idx']
+    problem_list = pivot[idx].flatten()
     return problem_list
 
-# problem_list는    0    1   2   3   4   5   6   7   8   9  ...
-#                 [1.0   NaN   NaN   1.0   NaN   1.0   NaN   1.0   1.0   NaN   ...   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN   NaN]
-#이런식으로 구성되게 만들어야 함.
 def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model('models/VAE/VAE_model_ver3.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model('models/VAE/VAE_model_final.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
     result = model.predict(input)
@@ -137,14 +135,14 @@ def vae_recommend_problem(problem_list, origin_problem):
     return result
 
 def index_to_problem(problem_info, top_problems):
-    rec_id = problem_info.loc[top_problems, 'problemId']
-    return rec_id    
+    rec_id = problem_info.loc[top_problems, 'problemId'].tolist() #tolist안붙이니깐 index랑 같이 나옴 결과가.
+    return rec_id
 
-def Solved_Based_Recommenation(pivot_table, user_id, itpr, NUM_TOP_PROBLEMS = 3):
-    # url에서 필요한 정보를 추출
+def Solved_Based_Recommenation(pivot_table, user_id, itpr, id_to_index ,NUM_TOP_PROBLEMS = 3):
+    # url에서 필요한 정보를 
     #user_id에 맞는 문제 풀이 내역 추출
     origin_solution, _ = return_user_data(pivot_table)
-    user_solution = get_problem_list(origin_solution, user_id)
+    user_solution = get_problem_list(origin_solution, user_id, id_to_index)
     #user 문제 풀이 내역을 통한 추천 문제
     total_rec = vae_recommend_problem(user_solution, origin_solution)
     top_problems = np.argpartition(-total_rec, NUM_TOP_PROBLEMS) # np.argpartition은 partition과 똑같이 동작하고, index를 리턴.
