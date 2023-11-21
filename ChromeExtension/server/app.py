@@ -49,6 +49,12 @@ def send_mypage_data():
     user_id = extract_user_id_from_mypage(current_url)
     rotate = data.get('div')
     filter = data.get('filter')
+    strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
+    # forget_curve를 이용해서...
+    forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
+    SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
+    weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 30)
+    threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
     try:
         if rotate == 0:
             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
@@ -67,7 +73,7 @@ def send_mypage_data():
                 weakTagProblems = cache[user_id]['weakTagProblems']
                 forgottenTagProblems = cache[user_id]['forgottenTagProblems']
                 similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
-            threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate)
+            threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter)
     except:
         user_id = 'eu2525'
         if rotate == 0:
@@ -104,3 +110,4 @@ def send_mypage_data():
 
 if __name__ == '__main__':
     app.run('0.0.0.0',8080,debug=True, threaded=True)
+
