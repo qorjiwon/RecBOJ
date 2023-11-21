@@ -14,7 +14,7 @@
 사용자가 취약한 유형의 문제를 추천합니다.
 ![image](https://github.com/qorjiwon/RecBOJ/assets/82700743/0ad72ab5-bd8d-47a2-b539-87532206b900)
 
-- 푼 지 오래된 유형의 문제 추천
+- 푼 지 오래된 유형의 문제 추천<br>
 에빙하우스의 망각곡선에 기반하여 사용자가 해당 유형이 낯설어지지 않도록 잊을 만한 유형의 문제를 추천합니다.
 ![image](https://github.com/qorjiwon/RecBOJ/assets/82700743/797e6680-832e-43dc-b6c2-6840fbfe471e)
 
