@@ -29,7 +29,7 @@ function RelatedProblem() {
             try {
                 // https://recproblem.site
                 // http://127.0.0.1:8080
-                const response = await fetch('http://127.0.0.1:8080/send_url', {
+                const response = await fetch('https://recproblem.site/send_url', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {
@@ -74,41 +74,42 @@ function RelatedProblem() {
     }
     return (
       <div key={rotate} className='ContainerToRender'>
-       
-              <div className='problem_container'>
-                  <b className='problem_index'>연관 문제 1: </b>
-                  <a
-                    data-tip={`유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
-                    href={urls.problem0}
-                    className= 'RecommenedProblem'
-                  >
-                    {problems.problem0_titleKo}
-                  </a>
+              <div style={{width: '96%', display: 'flex', flexDirection: 'row'}}>
+                <div className='problem_container' >
+                    <b className='problem_index'>연관 문제 1: </b>
+                    <a
+                      data-tip={`유사도: ${problems.problem0_similarity}%, 티어: ${problems.problem0_tier}, 분류: ${problems.problem0_tags}`}
+                      href={urls.problem0}
+                      className= 'RecommenedProblem'
+                    >
+                      {problems.problem0_titleKo}
+                    </a>
+                </div>
+                <div className='problem_container'>
+                    <b className='problem_index'>연관 문제 2: </b>
+                    <a
+                      data-tip={` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
+                      href={urls.problem1}
+                      className= 'RecommenedProblem'
+                    >
+                      {problems.problem1_titleKo}
+                    </a>
+                </div>
+                <div className='problem_container'>
+                    <b className='problem_index' >연관 문제 3: </b>
+                    <a
+                      data-tip={` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
+                      href={urls.problem2}
+                      className= 'RecommenedProblem'
+                      style={{
+                        marginRight: '10px',
+                        }}
+                    >
+                      {problems.problem2_titleKo}
+                    </a>
+                </div>
+                <b className='message'>{problems.message}</b>
               </div>
-              <div className='problem_container'>
-                  <b className='problem_index'>연관 문제 2: </b>
-                  <a
-                    data-tip={` 유사도: ${problems.problem1_similarity}%, 티어: ${problems.problem1_tier}, 분류: ${problems.problem1_tags}`}
-                    href={urls.problem1}
-                    className= 'RecommenedProblem'
-                  >
-                    {problems.problem1_titleKo}
-                  </a>
-              </div>
-              <div className='problem_container'>
-                  <b className='problem_index' >연관 문제 3: </b>
-                  <a
-                    data-tip={` 유사도: ${problems.problem2_similarity}%, 티어: ${problems.problem2_tier}, 분류: ${problems.problem2_tags}`}
-                    href={urls.problem2}
-                    className= 'RecommenedProblem'
-                    style={{
-                      marginRight: '10px',
-                      }}
-                  >
-                    {problems.problem2_titleKo}
-                  </a>
-              </div>
-              <b className='message'>{problems.message}</b>
           <ReactTooltip place="top" type="dark" effect="solid"/>
           <div style={{ width: '4%', display: 'flex', justifyContent: 'right'}}>
               <button className='reloading' onClick={() => handleRotate()}></button>
