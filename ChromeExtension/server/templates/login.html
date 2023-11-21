@@ -1,20 +1,42 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../static/login.css">
-    <script src="{{ url_for('static', filename='register.js') }}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/login.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{{ url_for('static', filename='login.js') }}"></script>
 </head>
-<div class="login-box">
-    <h2>Please input your ID</h2>
-    <br>
-      <div class="user-box">
-        <input id='user_id' type="text">
-        <label>ID</label>
+<body>
+  <div class="login">
+    <div class="form">
+      <h2>Hi Bro👋<br><p style="font-size: 4px;"></p>please input your ID</h2>
+      <div class="form-field">
+        <label for="user-id"><i class="fa fa-user"></i></label>
+        <input id="user_id" type="text" placeholder="ID" style="font-size: 18px;">
+        <svg class="svg">
+          <use href="#svg-check" />
+        </svg>
       </div>
-      <button id='submitButton'>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Submit
+      <button type="submit" id="submitButton" class="submitButton">
+        <div class="arrow-wrapper">
+          <span class="arrow"></span>
+        </div>
+        <p class="submitButton-text">SIGN IN</p>
       </button>
+    </div>
+    <div class="finished">
+      <svg class="svg">
+        <use href="#svg-check" />
+      </svg>
+    </div>
   </div>
+
+  <!-- //--- ## SVG SYMBOLS ############# -->
+  <svg style="display:none;">
+    <symbol id="svg-check" viewBox="0 0 130.2 130.2">
+      <polyline points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+    </symbol>
+  </svg>
+</body>
+</html>

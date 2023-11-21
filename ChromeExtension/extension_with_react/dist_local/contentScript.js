@@ -38532,7 +38532,7 @@ function MyPage() {
             try {
                 // https://recproblem.site
                 // http://127.0.0.1:8080
-                const response = yield fetch('https://recproblem.site/mypage/problems', {
+                const response = yield fetch('http://127.0.0.1:8080/mypage/problems', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier }),
                     headers: {
@@ -38815,7 +38815,7 @@ function RelatedProblem() {
             try {
                 // https://recproblem.site
                 // http://127.0.0.1:8080
-                const response = yield fetch('https://recproblem.site/send_url', {
+                const response = yield fetch('http://127.0.0.1:8080/send_url', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {

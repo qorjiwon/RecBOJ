@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('submitButton').addEventListener('click', function() {
         sendData();
         console.log("test");
-        window.location.href = '/complete'; 
     });
 });
 
@@ -12,7 +11,7 @@ function sendData() {
     var userId = document.getElementById('user_id').value;
 
     // fetch 함수를 사용하여 플라스크 서버에 데이터 전송
-    fetch('/register', {
+    fetch('/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -28,3 +27,13 @@ function sendData() {
         console.error('오류 발생:', error);
     });
 }
+
+$(document).ready(function () {
+    $('.submitButton').on('click', function () {
+      console.log("click")
+      $('.login').addClass('loading').delay(2200).queue(function () {
+        $(this).addClass('active')
+        console.log("active")
+      });
+    });
+  });

@@ -4,6 +4,7 @@ from utils.utils import *
 from utils.model import *
 import pandas as pd
 import threading
+from utils.preprocessing import *
 
 app = Flask(__name__)
 CORS(app)  # CORS 미들웨어 초기화
@@ -23,18 +24,26 @@ cache = {}
 def index():
     return render_template('login.html')
 
-@app.route('/register', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def register():
-    global weak_strong_forget_df, pivot_table, index_to_problem, id_to_index
+    global weak_strong_forget_df, pivot_table, id_to_index
 
     data = request.get_json()
     user_id = data.get('user_id')
-    print(user_id)
+    print("Registered: ", user_id)
+    try:
+        make_csv(user_id)
+        with lock:
+            weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv')
+            pivot_table = pd.read_csv('data/khu_pivot_table.csv')
+            id_to_index = pd.read_csv('data/khu_id_to_index.csv')
+        print("╔══════════════════════╗")
+        print("║       Complete!      ║")
+        print("╚══════════════════════╝")
+    except:
+        print("Register Error!")
+        
     return f'입력받은 아이디: {user_id}'
-
-@app.route('/complete')
-def registered_page():
-    return render_template('complete.html')
 
 @app.route('/send_url', methods=['POST'])
 def sendRelatedProblem():

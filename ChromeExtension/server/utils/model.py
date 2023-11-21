@@ -52,7 +52,7 @@ def get_item2vec_problem(problem_id, submits, div):
     return results
 
 # network parameters
-input_shape = 4468
+input_shape =7144
 original_dim= input_shape
 intermediate_dim = 512
 latent_dim = 2
@@ -120,7 +120,7 @@ def return_user_data(pivot_table):
 
 def get_problem_list(pivot, user_id, id_to_index):
     #이 위에는 이제 user_id가 들어오면 user_id에 맞는 pivot_table에서의 행을 추출하는 코드를 작성 예정
-    idx = id_to_index[id_to_index['name'] == user_id]['idx']
+    idx = id_to_index[id_to_index['user_id'] == user_id]['id_to_index']
     problem_list = pivot[idx].flatten()
     return problem_list
 

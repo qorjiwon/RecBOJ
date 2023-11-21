@@ -1,167 +1,212 @@
-html {
-    height: 100%;
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+body {
+  background: linear-gradient(135deg, #4D4E63, #333342);
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+.login {
+  width: 420px;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login:before {
+  content: "";
+  position: absolute;
+  background: transparent;
+  bottom: 45px;
+  right: 40px;
+  width: 55px;
+  height: 55px;
+  z-index: 5;
+  transition: all 0.6s ease-in-out, background 0s ease;
+}
+.login .form {
+  display: block;
+  position: relative;
+}
+.login .form h2 {
+  background: #f5f5fa;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 30px 0;
+  padding: 40px;
+  font-weight: 200;
+  color: #9596A2;
+  font-size: 19px;
+}
+.login .form .form-field {
+  display: flex;
+  align-items: center;
+  height: 55px;
+  margin: 0 40px 30px 40px;
+  border-bottom: 1px solid #9596A2;
+}
+.login .form .form-field label {
+  width: 10px;
+  padding: 0 15px 0 0;
+  color: #9596A2;
+}
+.login .form .form-field input {
+  width: 100%;
+  background: transparent;
+  color: #9596A2;
+  padding: 3px;
+  border: 0;
+  margin: 0;
+}
+.login .form .form-field input + svg {
+  width: 35px;
+  width: 35px;
+  fill: none;
+  stroke: #00FCD1;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: -100;
+  transition: all 0.3s ease-in-out;
+}
+.login .form .form-field input:valid + svg {
+  stroke-dashoffset: 0;
+}
+.login .form .form-field input:focus {
+  outline: none;
+}
+.login .form .form-field *::placeholder {
+  color: #9596A2;
+}
+.login .form .submitButton {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0 40px 45px 40px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+}
+.login .form .submitButton .arrow-wrapper {
+  transition: all 0.45s ease-in-out;
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 55px;
+  right: 0;
+  float: right;
+  background: linear-gradient(90deg, #04DFBD, #00FCD1);
+  box-shadow: 0 3px 20px rgba(0, 252, 209, 0.4);
+  border-radius: 12px;
+}
+.login .form .submitButton .arrow-wrapper .arrow {
+  position: absolute;
+  top: 50%;
+  margin: auto;
+  transition: all 0.45s ease-in-out;
+  right: 35px;
+  width: 15px;
+  height: 2px;
+  background: none;
+  transform: translateY(-50%);
+}
+.login .form .submitButton .arrow-wrapper .arrow:before {
+  position: absolute;
+  content: "";
+  top: -4px;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(45deg);
+}
+.login .form .submitButton .submitButton-text {
+  transition: all 0.45s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  line-height: 55px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.login .finished {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+}
+.login .finished svg {
+  width: 100px;
+  width: 100px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: -100;
+  transition: all 0.3s ease-in-out 0.5s;
+}
+.login.loading .form .submitButton .arrow-wrapper {
+  width: 55px;
+  animation: sk-rotateplane 1.2s infinite ease-in-out 0.5s;
+}
+.login.loading .form .submitButton .arrow-wrapper .arrow {
+  background: #fff;
+  transform: translate(15px, 0);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out 0.5s;
+}
+.login.loading .form .submitButton .submitButton-text {
+  color: #9596A2;
+}
+.login.active:before {
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, #04DFBD, #00FCD1);
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+}
+.login.active .form .submitButton .arrow-wrapper {
+  animation-iteration-count: 1;
+}
+.login.active .finished svg {
+  stroke-dashoffset: 0;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px);
   }
-  body {
-    margin:0;
-    padding:0;
-    font-family: sans-serif;
-    background: linear-gradient(#141e30, #243b55);
+  50% {
+    transform: perspective(120px) rotateY(180deg);
   }
-  
-  .login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    padding: 40px;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,.5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
+  100% {
+    transform: perspective(120px) rotateY(180deg) rotateX(180deg);
   }
-  
-  .login-box h2 {
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .login-box .user-box {
-    position: relative;
-  }
-  
-  .login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-  }
-  .login-box .user-box label {
-    position: absolute;
-    top:0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-  }
-  
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #03e9f4;
-    font-size: 12px;
-  }
-  
-  .login-box form a {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #03e9f4;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    margin-top: 40px;
-    letter-spacing: 4px
-  }
-  
-  .login-box a:hover {
-    background: #03e9f4;
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 100px #03e9f4;
-  }
-  
-  .login-box a span {
-    position: absolute;
-    display: block;
-  }
-  
-  .login-box a span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03e9f4);
-    animation: btn-anim1 1s linear infinite;
-  }
-  
-  @keyframes btn-anim1 {
-    0% {
-      left: -100%;
-    }
-    50%,100% {
-      left: 100%;
-    }
-  }
-  
-  .login-box a span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
-    animation: btn-anim2 1s linear infinite;
-    animation-delay: .25s
-  }
-  
-  @keyframes btn-anim2 {
-    0% {
-      top: -100%;
-    }
-    50%,100% {
-      top: 100%;
-    }
-  }
-  
-  .login-box a span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
-    animation: btn-anim3 1s linear infinite;
-    animation-delay: .5s
-  }
-  
-  @keyframes btn-anim3 {
-    0% {
-      right: -100%;
-    }
-    50%,100% {
-      right: 100%;
-    }
-  }
-  
-  .login-box a span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
-    animation: btn-anim4 1s linear infinite;
-    animation-delay: .75s
-  }
-  
-  @keyframes btn-anim4 {
-    0% {
-      bottom: -100%;
-    }
-    50%,100% {
-      bottom: 100%;
-    }
-  }
+}
+
+.svg {
+  width: 100px;
+  width: 100px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: -100;
+  transition: all 0.3s ease-in-out 0.5s;
+}
