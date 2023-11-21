@@ -279,7 +279,6 @@ def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblem
                 'averageTries': '',
                 'tags': ''
             }
-    print(similarityBasedProblems)
     for i in range(1, 4):
         index = (rotate + i) % len(similarityBasedProblems) + 1
         cnt = 0
@@ -313,7 +312,6 @@ def load_from_json(filename, dir_path = 'user_data/'):
         return json.load(f)
     
 def checkTier(tier, filter):
-    print(filter, tier)
     if filter == "None":
         return True
     elif filter in tier:
