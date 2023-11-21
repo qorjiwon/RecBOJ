@@ -21,7 +21,7 @@ function MyPage() {
               try {
                   // https://recproblem.site
                   // http://127.0.0.1:8080
-                  const response = await fetch('http://127.0.0.1:8080/mypage/problems', {
+                  const response = await fetch('https://recproblem.site/mypage/problems', {
                       method: 'POST',
                       body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier}),
                       headers: {
@@ -194,12 +194,12 @@ function MyPage() {
                                             {problems.weak_tag_problems[selectedField_weak].problems ?.map((problem, index) => (
                                                 <div className='rp_all'>   
                                                     <button 
-                                                    className='pBox_content' 
+                                                    className='pBox_content'
                                                     data-tip={`${problem}번 풀러 가기`}
                                                     onClick={() => contentClick(`https://www.acmicpc.net/problem/${problem}`)}
                                                      style = {{display: 'flex', flexDirection: 'column'}}>
-                                                        <p style={{fontSize: '17px', padding: '8px'}}><b>{problems.weak_tag_problems[selectedField_weak].explainations[index][1]}</b></p>
-                                                        <p style={{fontSize: '3px'}}><b><br></br></b></p>
+                                                        <p style={{fontSize: '17px', padding: '8px', color: '#1f1f1f'}}><b>{problems.weak_tag_problems[selectedField_weak].explainations[index][1]}</b></p>
+                                                        <p style={{fontSize: '3px'}}><br></br></p>
                                                         <p >난이도: {problems.weak_tag_problems[selectedField_weak].explainations[index][2]}</p>
                                                         <p>평균 시도 횟수: {problems.weak_tag_problems[selectedField_weak].explainations[index][3]}</p>
                                                         </button>
@@ -213,7 +213,7 @@ function MyPage() {
                                     <p data-tip = {`취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요.`}
                                         className = 'qmark'>
                                         취약 유형이란?</p>
-                                    <ReactTooltip place="left" type="success" effect="solid"/>
+                                    <ReactTooltip place="left" type="dark" effect="solid"/>
                                 </div>
 
                             </div>
@@ -221,10 +221,10 @@ function MyPage() {
                     )}
                     {currentPage === 2 && (
                         <>
-                        <div style={{fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                        <div style={{fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#202125'}}>
                             해당 분류의 문제를 푼 지 오래됐어요.
                         </div>
-                        <p style={{textAlign: 'center', marginBottom: '0px'}}>나중엔 더 기억나지 않을 거예요!</p>
+                        <p style={{textAlign: 'center', marginBottom: '0px', color: '#5f6368'}}>나중엔 더 기억나지 않을 거예요!</p>
                         <div className="option-button-container">
                             <div style={{display: 'flex', alignItems: 'center'}}>   
                                 <button className='reloadingM' onClick={() => handleRotate()}></button>  
@@ -291,16 +291,16 @@ function MyPage() {
                                  style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'>
                                     에빙하우스의 망각곡선</a>
                             </div>
-                            <ReactTooltip place="top" type="success" effect="solid"/>
+                            <ReactTooltip place="top" type="dark" effect="solid"/>
                         </div>
                         </>
                     )}
                     {currentPage === 3 && (
                         <>
-                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '13px', color: '#6D7856'}}>
+                        <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '13px', color: '#202125'}}>
                                 이런 문제는 어떤가요?
                         </div>
-                        <p style={{textAlign: 'center', marginBottom: '0px'}}>{problems.user_id}님과 비슷한 실력의 유저들이 많이 풀었지만,  {problems.user_id}님이 풀지 않았을 것 같은 문제들을 가져왔어요!</p>
+                        <p style={{textAlign: 'center', marginBottom: '0px', color: '#5f6368'}}>{problems.user_id}님과 비슷한 실력의 유저들이 많이 푼 문제들을 가져왔어요!</p>
                         <div style={{display: 'flex', alignItems: 'center'}}>   
                             <button className='reloadingM' onClick={() => handleRotate()}></button>  
                             <div className="option-button-container">   
@@ -342,7 +342,7 @@ function MyPage() {
                                 <div className='Box' id = 'Box2'>
                                     <div className = 'pBox' id = "Problem2">
                                         <a 
-                                        data-tip = {`난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`}
+                                        data-tip = {`난이도: ${problems.similarity_based_problems.problem2.level}, 분류: ${problems.similarity_based_problems.problem2.tags}`}
                                         className = 'hrefBox'
                                         href={`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem2.problemID}`}>
                                             {problems.similarity_based_problems.problem2.titleKo}</a>
@@ -356,7 +356,7 @@ function MyPage() {
                                 <div className='Box' id = 'Box3'>
                                     <div className = 'pBox' id = "Problem3">
                                         <a 
-                                            data-tip = {`난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`}
+                                            data-tip = {`난이도: ${problems.similarity_based_problems.problem3.level}, 분류: ${problems.similarity_based_problems.problem3.tags}`}
                                             className = 'hrefBox'
                                             href = {`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem3.problemID}`}>
                                                 {problems.similarity_based_problems.problem3.titleKo}</a>
@@ -368,6 +368,7 @@ function MyPage() {
                                     </div>
                                 </div>
                             </div>
+                                <ReactTooltip place="top" type="dark" effect="solid"/>
                             </div>
                         </>
                     )}
@@ -425,4 +426,3 @@ interface Problem {
   }
   
 export default MyPage;
-
