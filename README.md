@@ -21,7 +21,7 @@
 - 실력 기반 추천
 사용자와 비슷한 실력의 유저들이 많이 풀었으나, 사용자는 아직 풀지 않은 문제 추천
 ![image](https://github.com/qorjiwon/RecBOJ/assets/82700743/2cd9d14a-a027-4856-9f69-bc22a03157ff)
----
+##
 ### 코드 제출 결과 페이지
 - 내 제출 결과를 분석하여 난이도를 조절하고 해당 문제와 비슷한 유형의 문제 추천
 ![image](https://github.com/qorjiwon/RecBOJ/assets/82700743/7ed63c53-25e4-42c6-952e-56dce7e9116f)
