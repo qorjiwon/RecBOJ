@@ -19,7 +19,7 @@ margin-right: 14px;
 }
 
 .pBox {
-  background-color: #f7f7f9;
+  background-color: #f8fafd;
   padding: 3px;
   margin-bottom: 14px;
   color: #6D7856;
@@ -32,8 +32,7 @@ margin-right: 14px;
 
 .eBox {
   height: 140px;
-  color: #6D7856;
-  background-color: #f7f7f9;
+  background-color: #f8fafd;
   padding: 10px;
   overflow: hidden;
   font-size: 15px;
@@ -45,7 +44,7 @@ margin-right: 14px;
 
 .hrefBox {
 height: 40px;
-color: #6D7856;
+color: #1f1f1f;
 background-color: #f7f7f9;
 padding: 10px;
 font-size: 16px;
@@ -56,7 +55,7 @@ text-align: center;
 font-weight: bold;
 }
 .hrefBox:hover {
-color: #7f8c8d;
+color: #041e49;
 font-weight: bold;
 }
 
@@ -73,13 +72,13 @@ border-radius: 6px !important;
 }
 
 .manu:hover {
-background-color: #E0E0E0;
+background-color: #eef2f9;
 font-weight: bold;
 border-radius: 100px;
 }
 
 .manu.active {
-background-color: #E0E0E0;
+background-color: #eef2f9;
 font-weight: bold;
 border-radius: 100px;
 }
@@ -135,12 +134,12 @@ border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
 }
 
 .tagbtn_weak.active {
-background: #F0BEB4;
+background: #FFD8E0;
 font-weight: bold;
 }
 
 .tagbtn_weak:hover {
-background: #fae6e2;
+background: #FFDDD9;
 font-weight: bold;
 }
 
@@ -179,20 +178,22 @@ justify-content: center;
 .pBox_content {
 height: 190px;
 width: 100%;
-background-color: #f7f7f9;
+background-color: #f8fafd;
+border-radius: 13px !important;
 font-size: 14px;
 margin-bottom: 14px;
-color: #6D7856;
 display: flex;
 align-items: center;
 justify-content: center;
 white-space: pre-line;
 border: none;
 transition: background-color 0.2s;
+transition: transform 0.2s ease-in-out;
 }
 
 .pBox_content:hover {
-background-color: lightgray
+background-color: #EAF0FD;
+transform: translateY(-3px);
 }
 
 .container_rp{
@@ -278,7 +279,7 @@ transform: rotate(400deg) !important;
 
 .options-enter {
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateY(-20%);
 }
 
 .options-enter-active {
@@ -323,4 +324,5 @@ transform: rotate(400deg) !important;
 
 .options button:hover {
   background-color: #f2f2f2;
+  color: #041e49
 }
