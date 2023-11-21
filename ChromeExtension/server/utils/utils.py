@@ -195,6 +195,7 @@ def pretty_print(data, indent=0):
             # 딕셔너리가 아니면 그냥 출력
             print(' ' * indent + f'{key}: {value}')
 
+
 def cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems):
     threeWeaks = {}
     for i in range(1,4):
@@ -215,13 +216,12 @@ def cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProbl
         for j in range(1, 2):  # Extracting first three problems
             problem_key = f'problem{j}'
             if problem_key in forgottenTagProblems['tag'+str(i)]:
-                threeForgotten['tag'+str(i)]['problem'] = forgottenTagProblems['tag'+str(j)][problem_key]
+                threeForgotten['tag'+str(i)]['problem'] = forgottenTagProblems['tag'+str(i)][problem_key]
     threeSimilar = {}
     for i in range(1, 4):
         threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str(i)]
     
     return threeWeaks, threeForgotten, threeSimilar
-
 
 def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter):
     threeWeaks = {}
