@@ -37,26 +37,8 @@ def sendRelatedProblem():
     
     # 터미널에 데이터 출력
     print(f'Received URL: {current_url}\nUser ID: {user_id}\nProblem ID: {problem_id}')  
-    print(submits)
     problems = get_item2vec_problem(problem_id, submits, div)
     return jsonify(message=f'{problems}')
-
-
-@app.route('/tags', methods=['POST'])
-def send_tags():
-    data = request.get_json()
-    current_url = data.get('url')
-    
-    tags = {}
-    tags["strong0"] = "DP"
-    tags["strong1"] = "Graphs"
-    tags["strong2"] = "Greedy"
-    tags["weak0"] = "String"
-    tags["weak1"] = "DataStruct"
-    tags["weak2"] = "Search"
-    print(tags)
-    return jsonify(message=f'{tags}')
-
 
 @app.route('/mypage/problems', methods=['POST'])
 def send_mypage_data():
@@ -66,7 +48,6 @@ def send_mypage_data():
     user_id = extract_user_id_from_mypage(current_url)
     rotate = data.get('div')
     filter = data.get('filter')
-    print(filter)
     try:
         with lock:
             if rotate == 0:
@@ -111,9 +92,9 @@ def send_mypage_data():
             'forgotten_tag_problems': threeForgotten,
             'similarity_based_problems': threeSimilar
         }
-    pretty_print(responseData)
+    print(f"Responsed to {user_id} (Mypage)")
     # cache가 너무 커지면 비우기
-    if len(cache) >= 50:
+    if len(cache) >= 100:
         cache.clear()
     json_res = json.dumps(responseData)
     return jsonify(message=f'{json_res}')
