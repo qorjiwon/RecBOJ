@@ -21,8 +21,20 @@ cache = {}
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('login.html')
 
+@app.route('/register', methods=['POST'])
+def register():
+    global weak_strong_forget_df, pivot_table, index_to_problem, id_to_index
+
+    data = request.get_json()
+    user_id = data.get('user_id')
+    print(user_id)
+    return f'입력받은 아이디: {user_id}'
+
+@app.route('/complete')
+def registered_page():
+    return render_template('complete.html')
 
 @app.route('/send_url', methods=['POST'])
 def sendRelatedProblem():
