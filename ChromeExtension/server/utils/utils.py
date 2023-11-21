@@ -152,7 +152,6 @@ def get_problem_by_level(target_problem, ProblemDict, similar_problem, level_fla
                         return problem_list
         return problem_list
 
-
 # 받아온 json 데이터로부터 제출 유형별 횟수를 반환
 def GetTries(data):
     submits = eval(str(data))
