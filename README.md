@@ -32,7 +32,7 @@
 ✔️백준 사이트에서 소속이 경희대여야만 사용이 가능합니다.<br><br>
 
 
-## 💬 Contributors
+## 💬 Members
 
 |[Jung Woo Im](https://github.com/crash1522)|[Sang Jin Han](https://github.com/eu2525)|[Myeong Eun Noh](https://github.com/NoMyeongEun)|[Ji Won Baek](https://github.com/qorjiwon)|
 |:-:|:-:|:-:|:-:|
