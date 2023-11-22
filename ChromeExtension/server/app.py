@@ -35,9 +35,9 @@ def register():
     try:
         make_csv(user_id)
         with lock:
-            weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv')
-            pivot_table = pd.read_csv('data/khu_pivot_table.csv')
-            id_to_index = pd.read_csv('data/khu_id_to_index.csv')
+            pd.to_csv(weak_strong_forget_df,'data/final_khu_forgetting_curve_df.csv')
+            pd.to_csv(pivot_table, 'data/khu_pivot_table.csv')
+            pd.to_csv(id_to_index, 'data/khu_id_to_index.csv')
         print("╔══════════════════════╗")
         print("║       Complete!      ║")
         print("╚══════════════════════╝")
