@@ -24,42 +24,6 @@ def tag_split(df):
     tag_df = tag_df[tag_df['tags'] != ""]
     return tag_df
 
-def weak_strong_rec(df, user_id):
-    df = df[df['user_id'] == user_id]
-    # 개념 문제에 대해서만 할건지...??
-    # df = df[df['level'] <= 10]
-    # 평균 시도 횟수를 기준으로 나눔.
-    weak_problem = df[(df['wrong_count'] + 1) > df['averageTries']]
-    strong_problem = df[(df['wrong_count'] + 1 )<= df['averageTries']]
-    #tag를 split
-    weak_df_tags = tag_split(weak_problem)
-    st_df_tags = tag_split(strong_problem)
-    # weak_df_tags의 user_id별 tag 수 세기
-    weak_tag_counts = weak_df_tags.groupby(['user_id', 'tags']).size().reset_index(name='weak_count')
-    # st_df_tags의 user_id별 tag 수 세기
-    strong_tag_counts = st_df_tags.groupby(['user_id', 'tags']).size().reset_index(name='strong_count')
-
-    # 정답률 계산
-    merged_df = pd.merge(weak_tag_counts, strong_tag_counts, how='outer', on=['user_id', 'tags']).fillna(0)
-    merged_df['total_count'] = merged_df['strong_count'] + merged_df['weak_count']
-    merged_df = merged_df[merged_df['total_count'] >= 10]
-    merged_df['accuracy'] = merged_df['strong_count'] / merged_df['total_count']
-
-    #strong, weak 3문제 뽑음
-    strong_3tag = merged_df.groupby('user_id').apply(lambda x: x.nlargest(3, 'accuracy')).reset_index(drop=True)
-    weak_3tag = merged_df.groupby('user_id').apply(lambda x: x.nsmallest(3, 'accuracy')).reset_index(drop=True)
-    #strong, weak 문제를 리스트로..
-    strong = strong_3tag[strong_3tag['user_id'] == user_id]['tags'].to_list()
-    weak = weak_3tag[weak_3tag['user_id'] == user_id]['tags'].to_list()
-    strong_pcr = strong_3tag[strong_3tag['user_id'] == user_id]['accuracy'].to_list()
-    weak_pcr = weak_3tag[weak_3tag['user_id'] == user_id]['accuracy'].to_list()
-
-    for i in range(len(min(strong_pcr, weak_pcr))):
-        strong_pcr[i] = round(strong_pcr[i] * 100, 1)
-        weak_pcr[i] = round(weak_pcr[i] * 100, 1)
-    return strong, weak, strong_pcr, weak_pcr
-
-
 def forgetting_curve_with_repetition(df):
     #t는 경과 시간, s는 상대적인 기억력, n은 반복 횟수
     t = df['day']
@@ -317,3 +281,7 @@ def checkTier(tier, filter):
     elif filter in tier:
         return True
     return False
+
+def index_to_problem(problem_info, top_problems):
+    rec_id = problem_info.loc[top_problems, 'problemId'].tolist() #tolist안붙이니깐 index랑 같이 나옴 결과가.
+    return rec_id
