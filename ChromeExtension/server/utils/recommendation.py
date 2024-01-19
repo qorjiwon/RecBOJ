@@ -145,3 +145,35 @@ def weak_strong_rec(df, user_id):
         strong_pcr[i] = round(strong_pcr[i] * 100, 1)
         weak_pcr[i] = round(weak_pcr[i] * 100, 1)
     return strong, weak, strong_pcr, weak_pcr
+
+def forgetting_curve_with_repetition(df):
+    #t는 경과 시간, s는 상대적인 기억력, n은 반복 횟수
+    t = df['day']
+    s = 7  #일주일 뒤에는 푼 문제에 대해서 까먹는다고 가정...
+    n = df['count']
+    return np.exp(-((t / s) ** (1 / n)))
+
+def forget_curve(df, user_id):
+    #data 불러오기
+    df = df[df['user_id'] == user_id]
+    
+    # tag 나누기
+    dfs = tag_split(df)
+    # tag별 최신 풀었던 문제와 푼 문제수 추출
+    df_tag = dfs.groupby('tags')['last_time'].agg(**{'recent_time':'max', 'count':'count'}).reset_index() 
+    
+    # 15문제 이상은 풀어야 애들 tag가 이상한게 안 뽑히더라....
+    df_tag = df_tag[df_tag['count'] >= 15]
+    
+    # 망각 곡선 계산 하기
+    current_timestamp = time()
+    df_tag['day'] = (current_timestamp - df_tag['recent_time']) / 86400
+    df_tag['forget_curve'] = df_tag.apply(forgetting_curve_with_repetition, axis=1).round(4)
+    
+    weak_3tag = df_tag.sort_values('forget_curve', ascending = True).head(3)
+    weak_tag = weak_3tag['tags'].to_list()
+    weak_tag_forgetpcr = weak_3tag['forget_curve'].to_list()
+
+    for i in range(len(weak_tag_forgetpcr)):
+        weak_tag_forgetpcr[i] = round(weak_tag_forgetpcr[i] * 100 , 1)
+    return weak_tag, weak_tag_forgetpcr
