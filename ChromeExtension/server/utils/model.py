@@ -111,15 +111,3 @@ def vae_loss(x,recon_x):
     # (2) KL divergence(Latent_loss)
     kl_loss = 0.5 * tf.reduce_sum(tf.square(z_mean)+ tf.exp(z_log_var)- z_log_var -1, 1)
     return tf.reduce_mean(reconstruction_loss + kl_loss) #ELBO(=VAE_loss)
-
-def return_user_data(pivot_table):
-    column_info = pivot_table.columns
-    X = pivot_table.to_numpy()
-    X = np.nan_to_num(X)
-    return X, column_info
-
-def get_problem_list(pivot, user_id, id_to_index):
-    #이 위에는 이제 user_id가 들어오면 user_id에 맞는 pivot_table에서의 행을 추출하는 코드를 작성 예정
-    idx = id_to_index[id_to_index['user_id'] == user_id]['id_to_index']
-    problem_list = pivot[idx].flatten()
-    return problem_list
