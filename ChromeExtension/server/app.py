@@ -5,6 +5,7 @@ from utils.model import *
 import pandas as pd
 import threading
 from utils.preprocessing import *
+from utils.recommendation import *
 
 app = Flask(__name__)
 CORS(app)  # CORS 미들웨어 초기화

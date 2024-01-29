@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 import warnings
 import ast
-import registerNewUser
+from .registerNewUser import *
 warnings.filterwarnings(action="ignore")
 
 def make_csv(user_id):

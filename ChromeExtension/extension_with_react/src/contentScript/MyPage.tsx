@@ -21,7 +21,7 @@ function MyPage() {
               try {
                   // https://recproblem.site
                   // http://127.0.0.1:8080
-                  const response = await fetch('https://recproblem.site/mypage/problems', {
+                  const response = await fetch('http://127.0.0.1:8080/mypage/problems', {
                       method: 'POST',
                       body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier}),
                       headers: {

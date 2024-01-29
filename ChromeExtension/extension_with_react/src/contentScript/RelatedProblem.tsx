@@ -29,7 +29,7 @@ function RelatedProblem() {
             try {
                 // https://recproblem.site
                 // http://127.0.0.1:8080
-                const response = await fetch('https://recproblem.site/send_url', {
+                const response = await fetch('http://127.0.0.1:8080/send_url', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {

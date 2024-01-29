@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "알잘딱깔센추",
+  "description": "백준 온라인 저지(BOJ)를 알아서 잘 딱 깔끔하고 센스있게 알고리즘 문제를 추천하는 Chrome Extension 알잘딱깔센추와 함께 사용해보세요.",
+  "version": "1.0.1",
+  "icons" : {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.acmicpc.net/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}
