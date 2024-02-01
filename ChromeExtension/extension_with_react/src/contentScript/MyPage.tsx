@@ -17,11 +17,10 @@ function MyPage() {
          
           const fetchData = async () => {
             console.log("Inside fetchData function");
-              // Flask에 URL 전송
+       
               try {
                   // https://recproblem.site
-                  // http://127.0.0.1:8080
-                  const response = await fetch('http://127.0.0.1:8080/mypage/problems', {
+                  const response = await fetch('http://127.0.0.1:8000/mypage/problems', {
                       method: 'POST',
                       body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier}),
                       headers: {
@@ -33,8 +32,7 @@ function MyPage() {
                       throw new Error('서버 응답이 실패했습니다.');
                   }
                   const data = await response.json();
-                  const parsed = JSON.parse(data.message); 
-                  setRes(parsed);
+                  setRes(data);
               }
               catch (error) {
                   console.error('오류 발생: ' + error);
@@ -44,6 +42,9 @@ function MyPage() {
           fetchData();
       }, [rotate]);
       console.log(problems);
+      console.log(problems[0]);
+
+      console.log(problems[1]);
       
     useEffect(() => {
         ReactTooltip.rebuild();
@@ -383,7 +384,7 @@ interface Problem {
     titleKo: string;
     level: string;
     averageTries: string;
-    tags: string;
+    tags: string[];
   }
   
   interface Explaination {

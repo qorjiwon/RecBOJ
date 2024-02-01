@@ -38528,11 +38528,9 @@ function MyPage() {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         const fetchData = () => __awaiter(this, void 0, void 0, function* () {
             console.log("Inside fetchData function");
-            // Flask에 URL 전송
             try {
                 // https://recproblem.site
-                // http://127.0.0.1:8080
-                const response = yield fetch('http://127.0.0.1:8080/mypage/problems', {
+                const response = yield fetch('http://127.0.0.1:8000/mypage/problems', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier }),
                     headers: {
@@ -38543,8 +38541,7 @@ function MyPage() {
                     throw new Error('서버 응답이 실패했습니다.');
                 }
                 const data = yield response.json();
-                const parsed = JSON.parse(data.message);
-                setRes(parsed);
+                setRes(data);
             }
             catch (error) {
                 console.error('오류 발생: ' + error);
@@ -38553,6 +38550,8 @@ function MyPage() {
         fetchData();
     }, [rotate]);
     console.log(problems);
+    console.log(problems[0]);
+    console.log(problems[1]);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"].rebuild();
     }, []);
@@ -38814,8 +38813,7 @@ function RelatedProblem() {
             // Flask에 URL 전송
             try {
                 // https://recproblem.site
-                // http://127.0.0.1:8080
-                const response = yield fetch('http://127.0.0.1:8080/send_url', {
+                const response = yield fetch('http://127.0.0.1:8000/submit_page/', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {
@@ -38826,8 +38824,7 @@ function RelatedProblem() {
                     throw new Error('서버 응답이 실패했습니다.');
                 }
                 const data = yield response.json();
-                const problemsData = typeof data.message === 'string' ? JSON.parse(data.message) : data.message;
-                setProblems(problemsData);
+                setProblems(data);
             }
             catch (error) {
                 console.error('오류 발생: ' + error);
@@ -38835,6 +38832,7 @@ function RelatedProblem() {
         });
         fetchData();
     }, [rotate]);
+    console.log(problems);
     const urls = {};
     const problem_ids = {};
     if (problems) {

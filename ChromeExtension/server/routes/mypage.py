@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template, jsonify
-from flask_cors import CORS  # CORS 미들웨어 추가
+from fastapi import APIRouter
+
+from models.mypage import *
 from utils.utils import *
 from utils.model import *
 import pandas as pd
@@ -7,71 +8,27 @@ import threading
 from utils.preprocessing import *
 from utils.recommendation import *
 
-app = Flask(__name__)
-CORS(app)  # CORS 미들웨어 초기화
+
+mypage_router = APIRouter(
+    tags=["mypage"]
+)
+
 lock = threading.Lock()
-
-global weak_strong_forget_df, pivot_table, index_to_problem, id_to_index
-
 weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv').drop(columns=['memory','time','language','code_length'])
 pivot_table = pd.read_csv('data/khu_pivot_table.csv')
 index_to_problem = pd.read_csv('data/final_problem_processed.csv')
 id_to_index = pd.read_csv('data/khu_id_to_index.csv')
+
 cache = {}
-#index_to_id_df 
-# 얘는 나중에 경희대학교 학생 데이터 만들면 넣을 예정 
 
-
-@app.route('/')
-def index():
-    return render_template('login.html')
-
-@app.route('/login', methods=['POST'])
-def register():
-    global weak_strong_forget_df, pivot_table, id_to_index
-
-    data = request.get_json()
-    user_id = data.get('user_id')
-    print("Registered: ", user_id)
-    try:
-        make_csv(user_id)
-        with lock:
-            weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv').drop(columns=['memory','time','language','code_length'])
-            pivot_table = pd.read_csv('data/khu_pivot_table.csv')
-            id_to_index = pd.read_csv('data/khu_id_to_index.csv')
-        print("╔══════════════════════╗")
-        print("║       Complete!      ║")
-        print("╚══════════════════════╝")
-    except:
-        print("Register Error!")
-        
-    return f'입력받은 아이디: {user_id}'
-
-@app.route('/send_url', methods=['POST'])
-def sendRelatedProblem():
-    # url을 받아옴
-    data = request.get_json()
-    current_url = data.get('url')
-    div = data.get('div')
-    # url에서 필요한 정보를 추출
-    user_id = extract_user_id_from_url(current_url)
-    problem_id = extract_problem_id_from_url(current_url)
-    
-    submits = data.get('submits')
-    
-    # 터미널에 데이터 출력
-    print(f'Received URL: {current_url}\nUser ID: {user_id}\nProblem ID: {problem_id}')  
-    problems = get_item2vec_problem(problem_id, submits, div)
-    return jsonify(message=f'{problems}')
-
-@app.route('/mypage/problems', methods=['POST'])
-def send_mypage_data():
+@mypage_router.post("/problems", response_model=ResponseData)
+async def send_mypage_data(request_data: MyPageRequest):
     global cache
-    data = request.get_json()
-    current_url = data.get('url')
+    current_url = request_data.url
+    rotate = request_data.div
+    filter = request_data.filter
     user_id = extract_user_id_from_mypage(current_url)
-    rotate = data.get('div')
-    filter = data.get('filter')
+
     strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
     # forget_curve를 이용해서...
     try:
@@ -122,10 +79,8 @@ def send_mypage_data():
         }
     print(f"Responsed to {user_id} (Mypage)")
     # cache가 너무 커지면 비우기
-    if len(cache) >= 100:
+    if len(cache) >= 10000:
         cache.clear()
-    json_res = json.dumps(responseData)
-    return jsonify(message=f'{json_res}')
-
-if __name__ == '__main__':
-    app.run('0.0.0.0',8080,debug=True, threaded=True)
+    response = ResponseData(**responseData)
+    print(responseData)
+    return response

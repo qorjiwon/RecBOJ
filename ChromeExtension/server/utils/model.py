@@ -23,9 +23,9 @@ with open('data/level_to_tier.json', 'r') as f:
     TierDict = json.load(f)
   
 
-def get_item2vec_problem(problem_id, submits, div):
+def get_item2vec_problem(problem_id, submits, div) -> dict:
     # 저장된 모델 불러오기
-    model = Word2Vec.load("models/item2vec/word2vec_model.bin") 
+    model = Word2Vec.load("recsys_models/item2vec/word2vec_model.bin") 
     similar_problem = model.wv.most_similar(problem_id, topn= 500)
 
     problems = {}
