@@ -4,3 +4,5 @@ item2vec/*.json
 VAE/
 *.bin
 *.jypnb_checkpoints
+models/
+data/
