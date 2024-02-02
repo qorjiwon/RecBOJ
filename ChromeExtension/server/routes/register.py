@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 import pandas as pd
-import threading
+import asyncio
 
 from utils.preprocessing import make_csv
 from models.register import *
@@ -9,7 +9,7 @@ register_router = APIRouter(
     tags=["register"]
 )
 
-lock = threading.Lock()
+lock = asyncio.Lock()
 
 
 @register_router.post("/")

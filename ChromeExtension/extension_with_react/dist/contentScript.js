@@ -38529,10 +38529,15 @@ function MyPage() {
         const fetchData = () => __awaiter(this, void 0, void 0, function* () {
             console.log("Inside fetchData function");
             try {
+                const requestData = {
+                    url: window.location.href,
+                    div: rotate,
+                    filter: filterTier,
+                };
                 // https://recproblem.site
                 const response = yield fetch('http://127.0.0.1:8000/mypage/problems', {
                     method: 'POST',
-                    body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier }),
+                    body: JSON.stringify(requestData),
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -38544,14 +38549,19 @@ function MyPage() {
                 setRes(data);
             }
             catch (error) {
-                console.error('오류 발생: ' + error);
+                if (error.respons) {
+                    // 유효성 검사 오류 발생 시
+                    const errorData = yield error.response.json();
+                    console.error("detail: ", errorData.detail);
+                }
+                else {
+                    console.error('에러 발생:', error);
+                }
             }
         });
         fetchData();
     }, [rotate]);
     console.log(problems);
-    console.log(problems[0]);
-    console.log(problems[1]);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"].rebuild();
     }, []);

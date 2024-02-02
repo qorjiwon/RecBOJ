@@ -19,10 +19,16 @@ function MyPage() {
             console.log("Inside fetchData function");
        
               try {
+                const requestData: MyPageRequest = {
+                    url: window.location.href,
+                    div: rotate,
+                    filter: filterTier,
+                  };
+            
                   // https://recproblem.site
                   const response = await fetch('http://127.0.0.1:8000/mypage/problems', {
                       method: 'POST',
-                      body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier}),
+                      body: JSON.stringify(requestData),
                       headers: {
                           'Content-Type': 'application/json'
                       },
@@ -35,16 +41,19 @@ function MyPage() {
                   setRes(data);
               }
               catch (error) {
-                  console.error('오류 발생: ' + error);
+                if (error.respons) {
+                    // 유효성 검사 오류 발생 시
+                    const errorData = await error.response.json();
+                    console.error("detail: ",errorData.detail);
+                  } else {
+                    console.error('에러 발생:', error);
+                  }
               }
           };
   
           fetchData();
       }, [rotate]);
       console.log(problems);
-      console.log(problems[0]);
-
-      console.log(problems[1]);
       
     useEffect(() => {
         ReactTooltip.rebuild();
@@ -379,18 +388,24 @@ function MyPage() {
     );
 }
 
+interface MyPageRequest {
+    url: string;
+    div: number;
+    filter: string;
+  }  
+
 interface Problem {
     problemID: string;
     titleKo: string;
     level: string;
-    averageTries: string;
+    averageTries: number;
     tags: string[];
   }
   
   interface Explaination {
     problemID: string;
     titleKo: string;
-    level: number;
+    level: string;
     averageTries: number;
   }
 
