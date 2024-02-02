@@ -11,7 +11,6 @@ register_router = APIRouter(
 
 lock = asyncio.Lock()
 
-
 @register_router.post("/")
 async def register(request_data: RegisterRequest):
     global weak_strong_forget_df, pivot_table, id_to_index
