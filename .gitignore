@@ -1,11 +1,5 @@
 *.DS_Store
-*.csv
-item2vec/*.json
-VAE/
-*.bin
 *.jypnb_checkpoints
-models/
-data/
-
 contentScript.js.map
 *.pyc
+__pycache__
