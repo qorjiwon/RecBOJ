@@ -1,8 +1,11 @@
 from .model import *
 from .utils import *
+import pandas as pd
+from time import time   
+import numpy as np
 
 def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model('models/VAE/VAE_model_final.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model('recsys_models/VAE/VAE_model_final_amd.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
     result = model.predict(input)

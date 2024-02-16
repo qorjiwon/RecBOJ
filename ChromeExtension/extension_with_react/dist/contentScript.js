@@ -38528,13 +38528,16 @@ function MyPage() {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         const fetchData = () => __awaiter(this, void 0, void 0, function* () {
             console.log("Inside fetchData function");
-            // Flask에 URL 전송
             try {
+                const requestData = {
+                    url: window.location.href,
+                    div: rotate,
+                    filter: filterTier,
+                };
                 // https://recproblem.site
-                // http://127.0.0.1:8080
-                const response = yield fetch('http://127.0.0.1:8080/mypage/problems', {
+                const response = yield fetch('http://127.0.0.1:8000/mypage/problems', {
                     method: 'POST',
-                    body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier }),
+                    body: JSON.stringify(requestData),
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -38543,11 +38546,17 @@ function MyPage() {
                     throw new Error('서버 응답이 실패했습니다.');
                 }
                 const data = yield response.json();
-                const parsed = JSON.parse(data.message);
-                setRes(parsed);
+                setRes(data);
             }
             catch (error) {
-                console.error('오류 발생: ' + error);
+                if (error.respons) {
+                    // 유효성 검사 오류 발생 시
+                    const errorData = yield error.response.json();
+                    console.error("detail: ", errorData.detail);
+                }
+                else {
+                    console.error('에러 발생:', error);
+                }
             }
         });
         fetchData();
@@ -38814,8 +38823,7 @@ function RelatedProblem() {
             // Flask에 URL 전송
             try {
                 // https://recproblem.site
-                // http://127.0.0.1:8080
-                const response = yield fetch('http://127.0.0.1:8080/send_url', {
+                const response = yield fetch('http://127.0.0.1:8000/submit_page/', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {
@@ -38826,8 +38834,7 @@ function RelatedProblem() {
                     throw new Error('서버 응답이 실패했습니다.');
                 }
                 const data = yield response.json();
-                const problemsData = typeof data.message === 'string' ? JSON.parse(data.message) : data.message;
-                setProblems(problemsData);
+                setProblems(data);
             }
             catch (error) {
                 console.error('오류 발생: ' + error);
@@ -38835,6 +38842,7 @@ function RelatedProblem() {
         });
         fetchData();
     }, [rotate]);
+    console.log(problems);
     const urls = {};
     const problem_ids = {};
     if (problems) {
