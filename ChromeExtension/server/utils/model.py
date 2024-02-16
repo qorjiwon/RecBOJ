@@ -1,18 +1,10 @@
 from gensim.models import Word2Vec
 from .utils import *
 import json
-import os
-import random
-import numpy as np
-import pandas as pd
-from tqdm import tqdm
-import bottleneck as bn
-import torch
 import tensorflow as tf
 from tensorflow import shape,math
 from tensorflow.keras import Input,layers,Model
 from tensorflow.keras.losses import mse,binary_crossentropy
-import warnings
 
 
 with open('data/ProblemDict.json', 'r') as f:

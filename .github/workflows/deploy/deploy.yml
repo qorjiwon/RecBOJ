@@ -1,0 +1,40 @@
+name: Deploy RecBOJ Backend # test ver
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Docker Login
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker Image
+        run: docker build -t wjddn/recboj -f Dockerfile .
+        working-directory: ./ChromeExtension/server
+      
+      #- name: Run Tests
+      #  run: docker run -e CI=true wjddn/recboj pytest
+      #  working-directory: ./ChromeExtension/server
+
+      - name: Push images
+        run: docker push wjddn/recboj
+
+      - name: Generate deployment package
+        run: bash deploy.sh
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: docker-gitaction
+          environment_name: docker-gitaction
+          existing_bucket_name: elasticbeanstalk-eu-north-1-900478210705
+          region: eu-north-1
+          version_label: ${{ github.sha }}
+          deployment_package: ./ChromeExtension/server/deploy.zip

@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 from bs4 import BeautifulSoup as bs
 
-HEADERS = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"}
+HEADERS = {"User-illa/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"}
 
 def get_new_user_dataframe(user_id) :
     correct_problem_list, wrong_problem_list = get_problem_history_list(user_id)

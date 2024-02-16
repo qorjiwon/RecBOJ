@@ -19,7 +19,7 @@ async def register(request_data: RegisterRequest):
     print("Registered: ", user_id)
     try:
         make_csv(user_id)
-        with lock:
+        async with lock:
             weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv').drop(columns=['memory','time','language','code_length'])
             pivot_table = pd.read_csv('data/khu_pivot_table.csv')
             id_to_index = pd.read_csv('data/khu_id_to_index.csv')

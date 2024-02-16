@@ -1,12 +1,10 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import ValidationError 
 import logging
 import asyncio
 from models.mypage import *
 from utils.utils import *
 from utils.model import *
 import pandas as pd
-import threading
 from utils.preprocessing import *
 from utils.recommendation import *
 
@@ -33,8 +31,8 @@ async def send_mypage_data(request_data: MyPageRequest):
         rotate = request_data.div
         filter = request_data.filter
         user_id = extract_user_id_from_mypage(current_url)
-
         strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
+        print("user id: ", user_id)
         try:
             if rotate == 0:
                 strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
@@ -42,14 +40,14 @@ async def send_mypage_data(request_data: MyPageRequest):
                 forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
                 SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
                 weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 200)
-                with lock:
+                async with lock:
                     cache[user_id] = {}
                     cache[user_id]['weakTagProblems'] = weakTagProblems   
                     cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
                     cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
                 threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
             else:
-                with lock:
+                async with lock:
                     weakTagProblems = cache[user_id]['weakTagProblems']
                     forgottenTagProblems = cache[user_id]['forgottenTagProblems']
                     similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
@@ -62,14 +60,14 @@ async def send_mypage_data(request_data: MyPageRequest):
                 forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
                 SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
                 weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 200)
-                with lock:
+                async with lock:
                     cache[user_id] = {}
                     cache[user_id]['weakTagProblems'] = weakTagProblems   
                     cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
                     cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
                 threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
             else:
-                with lock:
+                async with lock:
                     weakTagProblems = cache[user_id]['weakTagProblems']
                     forgottenTagProblems = cache[user_id]['forgottenTagProblems']
                     similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
