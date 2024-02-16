@@ -28,8 +28,7 @@ function RelatedProblem() {
             // Flask에 URL 전송
             try {
                 // https://recproblem.site
-                // http://127.0.0.1:8080
-                const response = await fetch('http://127.0.0.1:8080/send_url', {
+                const response = await fetch('http://127.0.0.1:8000/submit_page/', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href, submits: texts, div: rotate }),
                     headers: {
@@ -41,8 +40,10 @@ function RelatedProblem() {
                     throw new Error('서버 응답이 실패했습니다.');
                 }
                 const data = await response.json();
-                const problemsData = typeof data.message === 'string' ? JSON.parse(data.message) : data.message;
-                setProblems(problemsData);
+                
+                setProblems(data);
+                
+                
             }
             catch (error) {
                 console.error('오류 발생: ' + error);
@@ -52,6 +53,7 @@ function RelatedProblem() {
         fetchData();
     }, [rotate]);
 
+    console.log(problems);
     const urls: Record<string, string> = {};
     const problem_ids: Record<string, string> = {};
     
@@ -118,6 +120,10 @@ function RelatedProblem() {
   );
 }
 
+
+
+
+
 interface ProblemsType {
   problem0: string;
   problem1: string;
@@ -128,9 +134,9 @@ interface ProblemsType {
   problem0_titleKo: string;
   problem1_titleKo: string;
   problem2_titleKo: string;
-  problem0_tags: string;
-  problem1_tags: string;
-  problem2_tags: string;
+  problem0_tags: string[];
+  problem1_tags: string[];
+  problem2_tags: string[];
   problem0_tier: string;
   problem1_tier: string;
   problem2_tier: string;

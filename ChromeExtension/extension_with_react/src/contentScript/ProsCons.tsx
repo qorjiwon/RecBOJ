@@ -34,7 +34,7 @@ function ProsCons() {
        
         const fetchTags = async () => {
         
-                const response = await fetch('http://127.0.0.1:8080/tags', {
+                const response = await fetch('http://127.0.0.1:8000/tags', {
                     method: 'POST',
                     body: JSON.stringify({ url: window.location.href}),
                     headers: {

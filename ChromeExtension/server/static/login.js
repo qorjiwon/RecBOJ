@@ -11,7 +11,7 @@ function sendData() {
     var userId = document.getElementById('user_id').value;
 
     // fetch 함수를 사용하여 플라스크 서버에 데이터 전송
-    fetch('/login', {
+    fetch('/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

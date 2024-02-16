@@ -17,13 +17,18 @@ function MyPage() { // 사용자 상세 페이지 렌더링
          
           const fetchData = async () => {
             console.log("Inside fetchData function");
-              // Flask에 URL 전송
+       
               try {
+                const requestData: MyPageRequest = {
+                    url: window.location.href,
+                    div: rotate,
+                    filter: filterTier,
+                  };
+            
                   // https://recproblem.site
-                  // http://127.0.0.1:8080
-                  const response = await fetch('http://127.0.0.1:8080/mypage/problems', {
+                  const response = await fetch('http://127.0.0.1:8000/mypage/problems', {
                       method: 'POST',
-                      body: JSON.stringify({ url: window.location.href, div: rotate, filter: filterTier}),
+                      body: JSON.stringify(requestData),
                       headers: {
                           'Content-Type': 'application/json'
                       },
@@ -33,11 +38,16 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                       throw new Error('서버 응답이 실패했습니다.');
                   }
                   const data = await response.json();
-                  const parsed = JSON.parse(data.message); 
-                  setRes(parsed);
+                  setRes(data);
               }
               catch (error) {
-                  console.error('오류 발생: ' + error);
+                if (error.respons) {
+                    // 유효성 검사 오류 발생 시
+                    const errorData = await error.response.json();
+                    console.error("detail: ",errorData.detail);
+                  } else {
+                    console.error('에러 발생:', error);
+                  }
               }
           };
   
@@ -380,18 +390,24 @@ function MyPage() { // 사용자 상세 페이지 렌더링
     );
 }
 
+interface MyPageRequest {
+    url: string;
+    div: number;
+    filter: string;
+  }  
+
 interface Problem {
     problemID: string;
     titleKo: string;
     level: string;
-    averageTries: string;
-    tags: string;
+    averageTries: number;
+    tags: string[];
   }
   
   interface Explaination {
     problemID: string;
     titleKo: string;
-    level: number;
+    level: string;
     averageTries: number;
   }
 

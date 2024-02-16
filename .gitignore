@@ -6,3 +6,6 @@ VAE/
 *.jypnb_checkpoints
 models/
 data/
+
+contentScript.js.map
+*.pyc
