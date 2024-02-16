@@ -3,7 +3,7 @@ import "./style/MyPage.css";
 import ReactTooltip from 'react-tooltip';
 import { CSSTransition } from 'react-transition-group';
 
-function MyPage() {
+function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setRes] = useState<ResponseData | null>(null);
       const [currentPage, setCurrentPage] = useState(0);
       const [active, setActive] = useState(null);

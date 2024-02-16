@@ -4,7 +4,6 @@ from utils.utils import *
 from utils.model import *
 import pandas as pd
 import threading
-from utils.preprocessing import *
 from utils.recommendation import *
 
 app = Flask(__name__)
