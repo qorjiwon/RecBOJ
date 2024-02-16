@@ -1,6 +1,8 @@
-.style {
-padding: 10px;
+.header_bar {
+  display: flex;
+  border-bottom: 1px solid #ddd;
 }
+
 
 .divStyle {
 display: flex;

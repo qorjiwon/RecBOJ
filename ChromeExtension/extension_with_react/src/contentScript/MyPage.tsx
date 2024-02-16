@@ -3,7 +3,7 @@ import "./style/MyPage.css";
 import ReactTooltip from 'react-tooltip';
 import { CSSTransition } from 'react-transition-group';
 
-function MyPage() {
+function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setRes] = useState<ResponseData | null>(null);
       const [currentPage, setCurrentPage] = useState(0);
       const [active, setActive] = useState(null);
@@ -110,28 +110,30 @@ function MyPage() {
     }
 
     return (
-        <div className="style">
-            <div style = {{display: 'flex', borderBottom: '1px solid #ddd'}}>
-                <button
-                    className={`manu ${active === 1 ? 'active' : ''}`}
-                    onClick={() => handleClick(1)}
-                >
-                    취약 유형 기반 추천
-                </button>
-                <button
-                    className={`manu ${active === 2 ? 'active' : ''}`}
-                    onClick={() => handleClick(2)}
-                >
-                    푼 지 오래된 문제 추천
-                </button>
-                <button
-                    className={`manu ${active === 3 ? 'active' : ''}`}
-                    onClick={() => handleClick(3)}
-                >
-                    실력 기반 추천
-                </button>
-            </div>
-            <div>
+        <div className="main">
+            <header>
+                <div className="header_bar">
+                    <button
+                        className={`manu ${active === 1 ? 'active' : ''}`}
+                        onClick={() => handleClick(1)}
+                    >
+                        취약 유형 기반 추천
+                    </button>
+                    <button
+                        className={`manu ${active === 2 ? 'active' : ''}`}
+                        onClick={() => handleClick(2)}
+                    >
+                        푼 지 오래된 문제 추천
+                    </button>
+                    <button
+                        className={`manu ${active === 3 ? 'active' : ''}`}
+                        onClick={() => handleClick(3)}
+                    >
+                        실력 기반 추천
+                    </button>
+                </div>
+            </header>
+            <div className="recommendation">
                 <div style = {{marginTop : '13px'}}>
                     {currentPage === 1 && (
                     <>
@@ -207,7 +209,7 @@ function MyPage() {
                                                     className='pBox_content'
                                                     data-tip={`${problem}번 풀러 가기`}
                                                     onClick={() => contentClick(`https://www.acmicpc.net/problem/${problem}`)}
-                                                     style = {{display: 'flex', flexDirection: 'column'}}>
+                                                    style = {{display: 'flex', flexDirection: 'column'}}>
                                                         <p style={{fontSize: '17px', padding: '8px', color: '#1f1f1f'}}><b>{problems.weak_tag_problems[selectedField_weak].explainations[index][1]}</b></p>
                                                         <p style={{fontSize: '3px'}}><br></br></p>
                                                         <p >난이도: {problems.weak_tag_problems[selectedField_weak].explainations[index][2]}</p>
@@ -264,7 +266,7 @@ function MyPage() {
                                         <a 
                                         data-tip = {`난이도: ${problems.forgotten_tag_problems.tag1.problem.level}, 분류: ${problems.forgotten_tag_problems.tag1.tag}`}
                                         className = 'hrefBox' href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag1.problem.problemID}`}>
-                                             {problems.forgotten_tag_problems.tag1.problem.titleKo} </a>
+                                            {problems.forgotten_tag_problems.tag1.problem.titleKo} </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation1">
                                         현재 {problems.forgotten_tag_problems.tag1.tag} 내용을 {problems.forgotten_tag_problems.tag1.forgottenPercent}% 기억하고 있어요.   
@@ -276,7 +278,7 @@ function MyPage() {
                                         className = 'hrefBox' href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag2.problem.problemID}`}
                                         data-tip = {`난이도: ${problems.forgotten_tag_problems.tag2.problem.level}, 분류: ${problems.forgotten_tag_problems.tag2.tag}`}
                                         >
-                                         {problems.forgotten_tag_problems.tag2.problem.titleKo} </a>
+                                        {problems.forgotten_tag_problems.tag2.problem.titleKo} </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation2">
                                     현재 {problems.forgotten_tag_problems.tag2.tag} 내용을 {problems.forgotten_tag_problems.tag2.forgottenPercent}% 기억하고 있어요.   
@@ -288,7 +290,7 @@ function MyPage() {
                                             data-tip = {`난이도: ${problems.forgotten_tag_problems.tag3.problem.level}, 분류: ${problems.forgotten_tag_problems.tag3.tag}`}
                                             className = 'hrefBox'
                                             href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag3.problem.problemID}`}>
-                                             {problems.forgotten_tag_problems.tag3.problem.titleKo} </a>
+                                            {problems.forgotten_tag_problems.tag3.problem.titleKo} </a>
                                     </div>
                                     <div className = 'eBox' id = "explanation3">
                                     현재 {problems.forgotten_tag_problems.tag3.tag} 내용을 {problems.forgotten_tag_problems.tag3.forgottenPercent}% 기억하고 있어요.   
@@ -296,9 +298,9 @@ function MyPage() {
                                 </div>
                             </div>
                             <div style={{ textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px'}}>
-                                 <a 
-                                 data-tip = {`해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`}
-                                 style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'>
+                                <a 
+                                data-tip = {`해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`}
+                                style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'>
                                     에빙하우스의 망각곡선</a>
                             </div>
                             <ReactTooltip place="top" type="dark" effect="solid"/>

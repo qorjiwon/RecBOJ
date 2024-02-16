@@ -6,7 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from utils.utils import *
 from utils.model import *
-from utils.preprocessing import *
 from utils.recommendation import *
 from routes.mypage import mypage_router
 from routes.register import register_router
