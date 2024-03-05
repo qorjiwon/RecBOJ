@@ -1,0 +1,40 @@
+version: "3"
+   
+services:
+  postgres-server:
+    container_name: postgres-server
+    build:
+       context: ./DB
+       dockerfile: Dockerfile
+    ports:
+      - 8080:5432
+    environment:
+      POSTGRES_USER : myuser
+      POSTGRES_PASSWORD : mypassword
+      POSTGRES_DB : mydatabase
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-U", "myuser", "-d", "mydatabase"]
+      interval : 5s
+      timeout: 5s
+      retries: 5
+  table-generator:
+    container_name: table-generator
+    build: 
+      context: ./PY
+      dockerfile: Dockerfile
+    depends_on:
+      postgres-server:
+        condition: service_healthy
+    environment:
+      DATABASE_HOST: postgres-server
+  scrapy:
+    build: 
+      context: ./scrapy/recboj
+      dockerfile: Dockerfile
+    depends_on:
+      - table-generator
+    environment:
+      DATABASE_HOST: postgres-server
+    command: scrapy runspider probleminfo.py
+
+
