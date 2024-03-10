@@ -16,8 +16,8 @@ mypage_router = APIRouter(
 logging.basicConfig( level=logging.DEBUG)
 lock = asyncio.Lock()
 
-weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv').drop(columns=['memory','time','language','code_length'])
-pivot_table = pd.read_csv('data/khu_pivot_table.csv')
+weak_strong_forget_df = make_forgetting_df()
+pivot_table = make_pivot()
 index_to_problem = pd.read_csv('data/final_problem_processed.csv')
 id_to_index = pd.read_csv('data/khu_id_to_index.csv')
 

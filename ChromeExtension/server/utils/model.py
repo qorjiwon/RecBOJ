@@ -5,7 +5,9 @@ import tensorflow as tf
 from tensorflow import shape,math
 from tensorflow.keras import Input,layers,Model
 from tensorflow.keras.losses import mse,binary_crossentropy
-
+import boto3
+from dotenv import load_dotenv
+import os
 
 with open('data/ProblemDict.json', 'r') as f:
     ProblemDict = json.load(f)
@@ -14,6 +16,23 @@ with open('data/ProblemTagsDict.json', 'r') as f:
 with open('data/level_to_tier.json', 'r') as f:
     TierDict = json.load(f)
   
+
+# .env 파일을 로드
+load_dotenv()
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+aws_region = os.getenv('AWS_REGION')
+# S3 클라이언트를 생성합니다.
+s3 = boto3.client('s3', 
+                  aws_access_key_id=aws_access_key_id,
+                  aws_secret_access_key=aws_secret_access_key,
+                  region_name=aws_region)
+
+bucket_name = os.getenv('S3_BUCKET_NAME')
+model_key = os.getenv('S3_ITEM2VEC_PATH')
+local_model_path = 'recsys_models/item2vec/word2vec_model.bin'
+s3.download_file(bucket_name, model_key, local_model_path)
+
 
 def get_item2vec_problem(problem_id, submits, div) -> dict:
     # 저장된 모델 불러오기

@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2 import OperationalError
+import pandas as pd
 import os
 
 database_host = os.getenv('DATABASE_HOST', 'localhost')
@@ -43,7 +44,7 @@ def create_problem_table():
         problem_id int PRIMARY KEY,
         level int NOT NULL,
         averageTries numeric NOT NULL,
-        tag text[]
+        tag text
     );"""
     cur.execute(create_problem_query)
     conn.commit()
@@ -71,10 +72,19 @@ def create_database():
     create_problem_table()
     create_problem_log()
 
+def insert_problem():
+    problem_df = pd.read_csv('./final_problem_df.csv')
+    table_name = 'problem_df'
+    for index, row in problem_df.iterrows():
+        cur.execute(f"INSERT INTO {table_name} (problem_id , level , averagetries , tag) VALUES (%s, %s, %s, %s)",
+                    (row['problemId'], row['level'], row['averageTries'], row['tags'])
+                    )
+    conn.commit()
 
 def main() :
     DBconnect()
     create_database()
+    insert_problem()
     DBdisconnect()
 
 if __name__ == "__main__" :

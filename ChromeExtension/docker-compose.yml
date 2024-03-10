@@ -46,3 +46,5 @@ services:
     image: wjddn/recboj:latest
     ports:
       - 8000:8000
+    volumes:
+      - ./server/:/server
