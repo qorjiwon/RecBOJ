@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import "./style/MyPage.css";
 import ReactTooltip from 'react-tooltip';
 import { CSSTransition } from 'react-transition-group';
+import Tag from './icons/Tag';
 
 function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setRes] = useState<ResponseData | null>(null);
@@ -16,7 +17,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
       useEffect(() => {
          
           const fetchData = async () => {
-            console.log("Inside fetchData function");
        
               try {
                 const requestData: MyPageRequest = {
@@ -59,7 +59,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
       }, [rotate]);
 
     console.log(problems);
-    console.log('awdadopk');
       
       
     useEffect(() => {
@@ -144,94 +143,88 @@ function MyPage() { // 사용자 상세 페이지 렌더링
             <div className="rec_content">
                     {currentPage === 1 && (
                     <>
-                            <div key={rotate} className='week_tags'>
-                                <div className='tag'>
-                                    <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
-                                        <g transform="translate(8, 10)">
-                                            <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
-                                            <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
-                                        </g>
-                                    </svg>
-                                    <button
-                                        // className={`tagbtn_weak${selectedButton_weak === 'tag1' ? ' active' : ''}`}
-                                        className='week_tagbtn'
-                                        onClick={() => handleClick_weak('tag1')}
+                        <div key={rotate} className='week_tags'>
+                            <div className='tag'>
+                                <Tag />
+                                <button
+                                    // className={`tagbtn_weak${selectedButton_weak === 'tag1' ? ' active' : ''}`}
+                                    className='week_tagbtn'
+                                    onClick={() => handleClick_weak('tag1')}
+                                    >
+                                    {problems.weak_tag_problems.tag1.tag_name}
+                                </button>
+                            </div>
+                            <div className='tag'>
+                                <Tag />
+                                <button
+                                    // className={`tagbtn_weak${selectedButton_weak === 'tag2' ? ' active' : ''}`}
+                                    className='week_tagbtn'
+                                    onClick={() => handleClick_weak('tag2')}
+                                    >
+                                    {problems.weak_tag_problems.tag2.tag_name}
+                                </button>
+                            </div>
+                            <div className='tag'>
+                                <Tag />
+                                <button
+                                    // className={`tagbtn_weak${selectedButton_weak ===  'tag3' ? ' active' : ''}`}
+                                    className='week_tagbtn'
+                                    onClick={() => handleClick_weak('tag3')}
+                                    >
+                                    {problems.weak_tag_problems.tag3.tag_name}
+                                </button>
+                            </div>
+                        </div>
+                            
+                        {selectedField_weak && ( // 취약 유형 기반 추천
+                            <div>
+                                <div className='weak_message'>{problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요</div>
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <button className='reloadingM' onClick={() => handleRotate()}></button>
+                                    <div className="option-button-container">
+                                        <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
+                                        <CSSTransition
+                                            in={isOptionsVisible}
+                                            timeout={250}
+                                            classNames="options"
+                                            unmountOnExit
                                         >
-                                        {problems.weak_tag_problems.tag1.tag_name}
-                                    </button>
+                                            <div className="options">
+                                                <button onClick={() => handleFilter('None')}>무작위</button>
+                                                <button onClick={() => handleFilter('Silver')}>실버</button>
+                                                <button onClick={() => handleFilter('Gold')}>골드</button>
+                                                <button onClick={() => handleFilter('Platinum')}>플래티넘</button>
+                                                <button onClick={() => handleFilter('Diamond')}>다이아몬드</button>
+                                            </div>
+                                        </CSSTransition>
+                                    </div>
                                 </div>
-                                <div className='tag'>
-                                    <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
-                                        <g transform="translate(8, 10)">
-                                            <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
-                                            <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
-                                        </g>
-                                    </svg>
-                                    <button
-                                        // className={`tagbtn_weak${selectedButton_weak === 'tag2' ? ' active' : ''}`}
-                                        className='week_tagbtn'
-                                        onClick={() => handleClick_weak('tag2')}
-                                        >
-                                        {problems.weak_tag_problems.tag2.tag_name}
-                                    </button>
-                                </div>
-                                <div className='tag'>
-                                    <svg style={{ width:"35", height:"35", fill:"none", stroke:"#8a8f95", strokeWidth:"2"}} viewBox="0 0 35 35">
-                                        <g transform="translate(8, 10)">
-                                            <CircleComponent cx="8.5" cy="8.5" r="1" fill="currentColor" />
-                                            <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
-                                        </g>
-                                    </svg>
-                                    <button
-                                        // className={`tagbtn_weak${selectedButton_weak ===  'tag3' ? ' active' : ''}`}
-                                        className='week_tagbtn'
-                                        onClick={() => handleClick_weak('tag3')}
-                                        >
-                                        {problems.weak_tag_problems.tag3.tag_name}
-                                    </button>
+                                <div className="container_rp" >
+                                    {
+                                        problems.weak_tag_problems[selectedField_weak].problems ?.map((problem, index) => {
+
+                                            console.log(problems.weak_tag_problems[selectedField_weak].explainations);
+                                            // console.log(problems.weak_tag_problems[selectedField_weak].problems);
+
+                                            return  (
+                                                <div className='rp_all'>   
+                                                    <button 
+                                                        className='pBox_content'
+                                                        data-tip={`${problem}번 풀러 가기`}
+                                                        onClick={() => contentClick(`https://www.acmicpc.net/problem/${problem}`)}
+                                                        style = {{display: 'flex', flexDirection: 'column'}}
+                                                    >
+                                                        <p style={{fontSize: '17px', padding: '8px', color: '#1f1f1f'}}><b>{problems.weak_tag_problems[selectedField_weak].explainations[index]['problemID']}</b></p>
+                                                        <p style={{fontSize: '3px'}}><br></br></p>
+                                                        <p >난이도: {problems.weak_tag_problems[selectedField_weak].explainations[index][1]}</p>
+                                                        <p>평균 시도 횟수: {problems.weak_tag_problems[selectedField_weak].explainations[index][2]}</p>
+                                                    </button>
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
-                            
-                            {selectedField_weak && (
-                                <div>
-                                    <div className='weak_message'>{problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요</div>
-                                    <div style={{display: 'flex', alignItems: 'center'}}>
-                                        <button className='reloadingM' onClick={() => handleRotate()}></button>
-                                        <div className="option-button-container">
-                                            <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
-                                            <CSSTransition
-                                                in={isOptionsVisible}
-                                                timeout={250}
-                                                classNames="options"
-                                                unmountOnExit
-                                            >
-                                                <div className="options">
-                                                    <button onClick={() => handleFilter('None')}>무작위</button>
-                                                    <button onClick={() => handleFilter('Silver')}>실버</button>
-                                                    <button onClick={() => handleFilter('Gold')}>골드</button>
-                                                    <button onClick={() => handleFilter('Platinum')}>플래티넘</button>
-                                                    <button onClick={() => handleFilter('Diamond')}>다이아몬드</button>
-                                                </div>
-                                            </CSSTransition>
-                                        </div>
-                                    </div>
-                                <div className="container_rp" >
-                                        {problems.weak_tag_problems[selectedField_weak].problems ?.map((problem, index) => (
-                                            <div className='rp_all'>   
-                                                <button 
-                                                className='pBox_content'
-                                                data-tip={`${problem}번 풀러 가기`}
-                                                onClick={() => contentClick(`https://www.acmicpc.net/problem/${problem}`)}
-                                                style = {{display: 'flex', flexDirection: 'column'}}>
-                                                    <p style={{fontSize: '17px', padding: '8px', color: '#1f1f1f'}}><b>{problems.weak_tag_problems[selectedField_weak].explainations[index][1]}</b></p>
-                                                    <p style={{fontSize: '3px'}}><br></br></p>
-                                                    <p >난이도: {problems.weak_tag_problems[selectedField_weak].explainations[index][2]}</p>
-                                                    <p>평균 시도 횟수: {problems.weak_tag_problems[selectedField_weak].explainations[index][3]}</p>
-                                                    </button>
-                                            </div>
-                                            ))}
-                                            </div>
-                                        </div>
                             )}
                             <div style={{ textAlign: 'right', paddingRight: '3%' }}>
                                 <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
@@ -240,7 +233,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                                     취약 유형이란?</p>
                                 <ReactTooltip place="left" type="dark" effect="solid"/>
                             </div>
-
                     </>
                     )}
                     {currentPage === 2 && (
