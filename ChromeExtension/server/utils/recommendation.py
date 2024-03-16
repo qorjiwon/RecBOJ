@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 import os
 
 def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model('./VAE_model_final_7144.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model("./VAE_model_final_7144.h5", custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
     result = model.predict(input)
@@ -25,12 +25,12 @@ def Solved_Based_Recommenation(pivot_table, user_id, itpr, id_to_index ,NUM_TOP_
     user_solution = pivot_table[pivot_table.index == user_id].to_numpy().flatten()
 
     #user 문제 풀이 내역을 통한 추천 문제
-    print("VAE 추천 시작합니다")
+    print("START VAE")
     total_rec = vae_recommend_problem(user_solution, origin_solution)
     top_problems = np.argpartition(-total_rec, NUM_TOP_PROBLEMS) # np.argpartition은 partition과 똑같이 동작하고, index를 리턴.
-    top_problems = top_problems[ :NUM_TOP_PROBLEMS]    
+    top_problems = top_problems[ :NUM_TOP_PROBLEMS]
+    print("VAE Problem", top_problems)
     problem_id = index_to_problem(itpr, top_problems)
-    print("itpr이 뭐지?", problem_id)
     rtn = {}
     cnt = 0
     for item in problem_id:
@@ -124,8 +124,8 @@ def weak_strong_rec(df, user_id):
     # 개념 문제에 대해서만 할건지...??
     # df = df[df['level'] <= 10]
     # 평균 시도 횟수를 기준으로 나눔.
-    weak_problem = df[(df['wrong_count'] + 1) > df['averagetries']]
-    strong_problem = df[(df['wrong_count'] + 1 )<= df['averagetries']]
+    weak_problem = df[(df['wrong_count'] + 1) > df['averageTries']]
+    strong_problem = df[(df['wrong_count'] + 1 )<= df['averageTries']]
     #tag를 split
     weak_df_tags = tag_split(weak_problem)
     st_df_tags = tag_split(strong_problem)
@@ -184,4 +184,5 @@ def forget_curve(df, user_id):
 
     for i in range(len(weak_tag_forgetpcr)):
         weak_tag_forgetpcr[i] = round(weak_tag_forgetpcr[i] * 100 , 1)
+
     return weak_tag, weak_tag_forgetpcr

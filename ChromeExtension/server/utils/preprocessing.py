@@ -49,7 +49,7 @@ def make_pivot():
 def make_forgetting_df():
     cur, conned = DBconnect()
     print("자아 드갔다")
-    query = """SELECT pl.user_id, pl.problem_id , pl.total_count , pl.wrong_count, pl.last_time, pd.level, pd.averagetries, pd.tags
+    query = """SELECT pl.user_id, pl.problem_id , pl.total_count , pl.wrong_count, pl.last_time, pd.level, pd.averagetries as "averageTries", pd.tags
                FROM PROBLEM_log pl join problem_df pd on pl.problem_id = pd.problem_id """
     df = pd.read_sql_query(query, conned)
     conned.close()

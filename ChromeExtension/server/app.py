@@ -8,12 +8,12 @@ from utils.utils import *
 from utils.model import *
 from utils.recommendation import *
 from routes.mypage import mypage_router
-from routes.register import register_router
+#from routes.register import register_router
 from routes.submit_page import submit_page_router
 
 app = FastAPI()
 app.include_router(mypage_router, prefix="/mypage")
-app.include_router(register_router, prefix="/register")
+#app.include_router(register_router, prefix="/register")
 app.include_router(submit_page_router, prefix="/submit_page")
 app.add_middleware(
     CORSMiddleware,

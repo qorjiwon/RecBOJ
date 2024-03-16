@@ -101,6 +101,7 @@ async def send_mypage_data(request_data: MyPageRequest):
         if len(cache) >= 10000:
             cache.clear()
         response = ResponseData(**responseData)
+        pretty_print(responseData)
         return response
     except HTTPException as e:
         # HTTP 예외 발생 시 로그로 출력

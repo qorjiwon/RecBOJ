@@ -1,3 +1,4 @@
+'''
 import psycopg2
 import os
 
@@ -24,3 +25,6 @@ def DBdisconnect():
         print("DB Connect Close")
     except:
         print("Error: ", "Database Not Connected")
+
+
+'''
