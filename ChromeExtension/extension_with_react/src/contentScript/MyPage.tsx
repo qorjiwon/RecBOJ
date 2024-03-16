@@ -3,10 +3,11 @@ import "./style/MyPage.css";
 import ReactTooltip from 'react-tooltip';
 import { CSSTransition } from 'react-transition-group';
 import Tag from './icons/Tag';
+import axios from 'axios';
 
 function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setRes] = useState<ResponseData | null>(null);
-      const [currentPage, setCurrentPage] = useState(0);
+      const [currentPage, setCurrentPage] = useState(0); // 1: , 2: , 3:
       const [activeRec, setActiveRec] = useState(null);
       const [selectedField_weak, setSelectedField_weak] = useState<string | null>('tag1');
       const [selectedButton_weak, setSelectedButton_weak] = useState<string | null>('tag1');
@@ -14,48 +15,37 @@ function MyPage() { // 사용자 상세 페이지 렌더링
       const [isOptionsVisible, setOptionsVisible] = useState(false);
       const [filterTier, setFilter] = useState('None');
 
+      const url= window.location.href;
+
       useEffect(() => {
-         
-          const fetchData = async () => {
-       
+          (async () => {
               try {
-                const requestData: MyPageRequest = {
-                    url: window.location.href,
-                    div: rotate,
-                    filter: filterTier,
-                  };
-            
-                  // https://recproblem.site
-                  const response = await fetch('http://127.0.0.1:8000/mypage/problems', {
-                      method: 'POST',
-                      body: JSON.stringify(requestData),
-                      headers: {
-                          'Content-Type': 'application/json'
-                      },
-                  });
+                // https://recproblem.site
+                const response = await axios.post(
+                    'http://127.0.0.1:8000/mypage/problems',
+                    {
+                        url,
+                        div: rotate,
+                        filter: filterTier,
+                    },
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                );
   
-                  if (!response.ok) {
+                  if (!response) {
                       throw new Error('서버 응답이 실패했습니다.');
                   }
-                  const data = await response.json();
-                  setRes(data);
-
-                  const response2 = await fetch('http://127.0.0.1:8000/mypage/problems');
-                  handleClick(1);
+                  setRes(response.data);
+                  setCurrentPage(1);
 
               }
               catch (error) {
-                if (error.respons) {
-                    // 유효성 검사 오류 발생 시
-                    const errorData = await error.response.json();
-                    console.error("detail: ",errorData.detail);
-                  } else {
-                    console.error('에러 발생:', error);
-                  }
+                console.error('에러 발생:', error);
               }
-          };
-  
-          fetchData();
+          })();
       }, [rotate]);
 
     console.log(problems);
