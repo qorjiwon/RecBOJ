@@ -38510,7 +38510,7 @@ function MyPage() {
     var _a;
     const [problems, setRes] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-    const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [activeRec, setActiveRec] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1');
     const [selectedButton_weak, setSelectedButton_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1');
     const [rotate, setRotate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
@@ -38570,7 +38570,7 @@ function MyPage() {
     const handleClick = (index) => {
         // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
         setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
-        setActive((active) => (active === index ? null : index));
+        setActiveRec((activeRec) => (activeRec === index ? null : index));
     };
     const handleClick_weak = (field) => {
         if (selectedField_weak === field) {
@@ -38596,30 +38596,22 @@ function MyPage() {
     const handleRotate = () => {
         setRotate(rotate => rotate + 1);
     };
+    const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천'];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "main" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "header_bar" },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: `manu ${active === 1 ? 'active' : ''}`, onClick: () => handleClick(1) }, "\uCDE8\uC57D \uC720\uD615 \uAE30\uBC18 \uCD94\uCC9C"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: `manu ${active === 2 ? 'active' : ''}`, onClick: () => handleClick(2) }, "\uD47C \uC9C0 \uC624\uB798\uB41C \uBB38\uC81C \uCD94\uCC9C"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: `manu ${active === 3 ? 'active' : ''}`, onClick: () => handleClick(3) }, "\uC2E4\uB825 \uAE30\uBC18 \uCD94\uCC9C"))),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "header_bar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${activeRec === index + 1 ? 'active' : ''}`, onClick: () => handleClick(index + 1) }, text))))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rec_content" },
             currentPage === 1 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, className: 'week_tags' },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'tag' },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { 
-                            // className={`tagbtn_weak${selectedButton_weak === 'tag1' ? ' active' : ''}`}
-                            className: 'week_tagbtn', onClick: () => handleClick_weak('tag1') }, problems.weak_tag_problems.tag1.tag_name)),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => handleClick_weak('tag1') }, problems.weak_tag_problems.tag1.tag_name)),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'tag' },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { 
-                            // className={`tagbtn_weak${selectedButton_weak === 'tag2' ? ' active' : ''}`}
-                            className: 'week_tagbtn', onClick: () => handleClick_weak('tag2') }, problems.weak_tag_problems.tag2.tag_name)),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => handleClick_weak('tag2') }, problems.weak_tag_problems.tag2.tag_name)),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'tag' },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { 
-                            // className={`tagbtn_weak${selectedButton_weak ===  'tag3' ? ' active' : ''}`}
-                            className: 'week_tagbtn', onClick: () => handleClick_weak('tag3') }, problems.weak_tag_problems.tag3.tag_name))),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => handleClick_weak('tag3') }, problems.weak_tag_problems.tag3.tag_name))),
                 selectedField_weak && ( // 취약 유형 기반 추천
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' },
@@ -38636,21 +38628,20 @@ function MyPage() {
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC"))))),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp" }, (_a = problems.weak_tag_problems[selectedField_weak].problems) === null || _a === void 0 ? void 0 : _a.map((problem, index) => {
-                        console.log(problems.weak_tag_problems[selectedField_weak].explainations);
-                        // console.log(problems.weak_tag_problems[selectedField_weak].problems);
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp" }, (_a = problems.weak_tag_problems[selectedField_weak].explainations) === null || _a === void 0 ? void 0 : _a.map((problem, index) => {
+                        console.log(problem);
                         return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'rp_all' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'pBox_content', "data-tip": `${problem}번 풀러 가기`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problem}`), style: { display: 'flex', flexDirection: 'column' } },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'pBox_content', "data-tip": `${problem['problemID']}번 풀러 가기`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problem['problemID']}`), style: { display: 'flex', flexDirection: 'column' } },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '17px', padding: '8px', color: '#1f1f1f' } },
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, problems.weak_tag_problems[selectedField_weak].explainations[index]['problemID'])),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, problem['titleKo'])),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '3px' } },
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                     "\uB09C\uC774\uB3C4: ",
-                                    problems.weak_tag_problems[selectedField_weak].explainations[index][1]),
+                                    problem['level']),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                     "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
-                                    problems.weak_tag_problems[selectedField_weak].explainations[index][2]))));
+                                    problem['averageTries']))));
                     })))),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', paddingRight: '3%' } },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" }),
