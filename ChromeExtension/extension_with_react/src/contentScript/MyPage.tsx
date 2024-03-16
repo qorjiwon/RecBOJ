@@ -7,9 +7,9 @@ import axios from 'axios';
 
 function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setProblems] = useState<ResponseData>(null);
-      const [currentPage, setCurrentPage] = useState(-1); // 1: , 2: , 3:
-      const [selectedField_weak, setSelectedField_weak] = useState<string>('tag1');
-      const [rotate, setRotate] = useState(0);
+      const [currentPage, setCurrentPage] = useState(-1); // 취약 유형 기반, 푼 지 오래된 문제, 실력 기반
+      const [selectedField_weak, setSelectedField_weak] = useState<string>('tag1'); // 취약 유형
+      const [rotate, setRotate] = useState(0); // 새로고침.. python에서 배열에 저장해놓고 가져오도록 구현함
       const [isOptionsVisible, setOptionsVisible] = useState(false);
       const [filterTier, setFilter] = useState('None');
 
@@ -57,13 +57,12 @@ function MyPage() { // 사용자 상세 페이지 렌더링
   
      const handleFilter = (tier) => {
         setFilter(tier);
-        handleRotate();
         toggleOptions();
      }
 
     const CircleComponent = ({ cx, cy, r, fill }) => {
         return <circle cx={cx} cy={cy} r={r} fill={fill} />;
-      };
+    };
 
     // 클릭 이벤트 핸들러
     const contentClick = (url) => {
@@ -73,11 +72,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
         // 지정된 URL로 이동
         window.location.href = dynamicURL;
     };
-   
-    const handleRotate = () =>
-    {
-      setRotate(rotate => rotate + 1);
-    }
 
     const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천']
     const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond']
@@ -99,77 +93,80 @@ function MyPage() { // 사용자 상세 페이지 렌더링
             </header>
 
             <div className="RecContent">
-                    {currentPage === 0 && (
+                    {currentPage === 0 && ( // 취약 유형 기반
                     <>
-                        <div key={rotate} className='week_tags'>
+                        <div className='WeekTags'>
                             {
                                 ['tag1', 'tag2', 'tag3'].map((tag, index) => {
                                     return (
-                                        <div key={problems.weak_tag_problems[`${tag}`].tag_name} className='tag'>
-                                            <Tag />
-                                            <button className='week_tagbtn' onClick={() => setSelectedField_weak(`${tag}`)}>
-                                                {problems.weak_tag_problems[`${tag}`].tag_name}
-                                            </button>
-                                        </div>
+                                        <button key={problems.weak_tag_problems[`${tag}`].tag_name} className='WeekTagBtn' onClick={() => setSelectedField_weak(`${tag}`)}>
+                                            {problems.weak_tag_problems[`${tag}`].tag_name}
+                                        </button>
                                     )
                                 })
                             }
                         </div>
-                            
-                        {selectedField_weak && ( // 취약 유형 기반 추천
-                            <div>
-                                <div className='weak_message'>{problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요</div>
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <button className='reloadingM' onClick={() => handleRotate()}></button>
-                                    <div className="option-button-container">
-                                        <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
-                                        <CSSTransition
-                                            in={isOptionsVisible}
-                                            timeout={250}
-                                            classNames="options"
-                                            unmountOnExit
-                                        >
-                                            <div className="Tiers">
-                                                {
-                                                    Tiers.map((tier) => <button onClick={() => handleFilter(tier)}>{tier}</button>)
-                                                }
-                                            </div>
-                                        </CSSTransition>
+
+                        <div className='weak_message'>
+                            {problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요.
+                        </div>
+                    
+                        <div className={'OtherProblems'} style={{display: 'flex', alignItems: 'center'}}>
+                            <button className='reloadingM' onClick={() => setRotate(rotate => rotate + 1)}></button>
+                            <div className="option-button-container">
+                                <button className="toggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
+                                <CSSTransition
+                                    in={isOptionsVisible}
+                                    timeout={250}
+                                    classNames="options"
+                                    unmountOnExit
+                                >
+                                    <div className="Tiers">
+                                        {
+                                            Tiers.map((tier) => 
+                                                <button onClick={() => 
+                                                    {
+                                                        handleFilter(tier);
+                                                        setRotate(0)
+                                                    }}>
+                                                    {tier}
+                                                    </button>)
+                                        }
                                     </div>
-                                </div>
-                                <div className="container_rp" >
-                                    {
-                                        problems.weak_tag_problems[selectedField_weak].explainations ?.map((problem, index) => {
-
-                                            console.log(problem);
-
-                                            return  (
-                                                <div className='rp_all'>   
-                                                    <button 
-                                                        className='pBox_content'
-                                                        data-tip={`${problem['problemID']}번 풀러 가기`}
-                                                        onClick={() => contentClick(`https://www.acmicpc.net/problem/${problem['problemID']}`)}
-                                                        style = {{display: 'flex', flexDirection: 'column'}}
-                                                    >
-                                                        <p style={{fontSize: '17px', padding: '8px', color: '#1f1f1f'}}><b>{problem['titleKo']}</b></p>
-                                                        <p style={{fontSize: '3px'}}><br></br></p>
-                                                        <p >난이도: {problem['level']}</p>
-                                                        <p>평균 시도 횟수: {problem['averageTries']}</p>
-                                                    </button>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
+                                </CSSTransition>
                             </div>
-                            )}
-                            <div style={{ textAlign: 'right', paddingRight: '3%' }}>
-                                <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
-                                <p data-tip = {`취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요.`}
-                                    className = 'qmark'>
-                                    취약 유형이란?</p>
-                                <ReactTooltip place="left" type="dark" effect="solid"/>
+                        </div>
+                        <div>
+                            <div className="container_rp" >
+                                {
+                                    problems.weak_tag_problems[selectedField_weak].explainations ?.map((problem, index) => {
+                                        return  (
+                                            <div className='rp_all'>   
+                                                <button 
+                                                    className='pBox_content'
+                                                    data-tip={`${problem['problemID']}번 풀러 가기`}
+                                                    onClick={() => contentClick(`https://www.acmicpc.net/problem/${problem['problemID']}`)}
+                                                    style = {{display: 'flex', flexDirection: 'column'}}
+                                                >
+                                                    <p style={{fontSize: '17px', padding: '8px', color: '#1f1f1f'}}><b>{problem['titleKo']}</b></p>
+                                                    <p style={{fontSize: '3px'}}><br></br></p>
+                                                    <p >난이도: {problem['level']}</p>
+                                                    <p>평균 시도 횟수: {problem['averageTries']}</p>
+                                                </button>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
+                        </div>
+                        
+                        <div style={{ textAlign: 'right', paddingRight: '3%' }}>
+                            <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+                            <p data-tip = {`취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요.`}
+                                className = 'qmark'>
+                                취약 유형이란?</p>
+                            <ReactTooltip place="left" type="dark" effect="solid"/>
+                        </div>
                     </>
                     )}
                     {currentPage === 1 && (
@@ -180,7 +177,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         <p style={{textAlign: 'center', marginBottom: '0px', color: '#5f6368'}}>나중엔 더 기억나지 않을 거예요!</p>
                         <div className="option-button-container">
                             <div style={{display: 'flex', alignItems: 'center'}}>   
-                                <button className='reloadingM' onClick={() => handleRotate()}></button>  
+                                <button className='reloadingM' onClick={() => setRotate(rotate => rotate + 1)}></button>  
                                 <div className="option-button-container">   
                                     <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
                                     <CSSTransition
@@ -255,7 +252,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         </div>
                         <p style={{textAlign: 'center', marginBottom: '0px', color: '#5f6368'}}>{problems.user_id}님과 비슷한 실력의 유저들이 많이 푼 문제들을 가져왔어요!</p>
                         <div style={{display: 'flex', alignItems: 'center'}}>   
-                            <button className='reloadingM' onClick={() => handleRotate()}></button>  
+                            <button className='reloadingM' onClick={() => setRotate(rotate => rotate + 1)}></button>  
                             <div className="option-button-container">   
                                 <button className="toggleOptions" onClick={toggleOptions} > 난이도 필터 </button>
                                 <CSSTransition

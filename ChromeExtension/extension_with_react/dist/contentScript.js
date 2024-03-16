@@ -60,39 +60,138 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   margin-top: 15px;
 }
 
-.week_tags {
+.RecContent .WeekTags {
   display: flex;
   justify-content: space-around;
-  padding-left: 2%;
-  padding-right: 2%;
   margin: 10px;
+  padding: 0 2%;
 }
 
-.tag {
-  display: flex;
+.RecContent .WeekTags .WeekTagBtn {
+  width: 20%;
   min-width: 83px;
-}
-
-.week_tagbtn {
+  height: 33px;
   border: 1px solid #E0E0E0;
-  cursor: pointer;
+  font-weight: normal;
+  font-size: 11;
+  font-family: "Arial, sans-serif";
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: white;
   transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;
-  font-weight: normal;
-  font-family: "Arial, sans-serif";
-  font-size: 11;
-  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
-  width: 100%;
+  border-radius: 5px !important;
+  cursor: pointer;
 }
 
-.week_tagbtn.active {
-  background: #FFD8E0;
-  font-weight: bold;
-}
-
-.week_tagbtn:hover {
+.RecContent .WeekTags .WeekTagBtn:hover {
   background: #FFDDD9;
+}
+
+.RecContent .WeekTags .WeekTagBtn.active {
+  background: #FFD8E0;
+}
+
+.weak_message {
+  font-size: 20px;
   font-weight: bold;
+  text-align: center;
+}
+
+.OtherProblems .reloadingM {
+  width: 23px;
+  height: 23px;
+  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+  background-size: cover;
+  background-position: center;
+  border: 0;
+  border-radius: 50% !important;
+  background-color: white;
+  transition: background-color 0.1s;
+  transition: transform 0.4s ease !important;
+  position: relative;
+  left: 2%;
+  margin-bottom: 1%;
+}
+
+.OtherProblems .reloadingM:hover {
+  background-color: lightgray;
+  transform: rotate(400deg) !important;
+}
+
+.OtherProblems .option-button-container {
+  position: relative;
+  display: inline-block;
+  left: 3%;
+}
+
+.OtherProblems .toggleOptions {
+  width: 70px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */
+  background-color: white;
+  font-weight: bold;
+  border: 0;
+  transition: background-color 0.2s;
+  margin-bottom: 5%;
+}
+
+.OtherProblems .toggleOptions:hover {
+  background-color: lightgray;
+}
+
+.OtherProblems .options-enter {
+  opacity: 0;
+  transform: translateY(-20%);
+}
+
+.OtherProblems .options-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.OtherProblems .options-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.OtherProblems .options-exit-active {
+  opacity: 0;
+  transform: translateY(0%);
+}
+
+.OtherProblems .Tiers {
+  position: absolute;
+  width: 100px;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 1;
+}
+
+.OtherProblems .Tiers button {
+  margin: 4px 0;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+}
+
+.OtherProblems .Tiers button:hover {
+  background-color: #f2f2f2;
+  color: #041e49;
 }
 
 .divStyle {
@@ -241,109 +340,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   color: black;
 }
 
-.weak_message {
-  margin-left: 40%;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.reloadingM {
-  width: 23px;
-  height: 23px;
-  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
-  background-size: cover;
-  background-position: center;
-  border: 0;
-  border-radius: 50% !important;
-  background-color: white;
-  transition: background-color 0.1s;
-  transition: transform 0.4s ease !important;
-  position: relative;
-  left: 2%;
-  margin-bottom: 1%;
-}
-
-.reloadingM:hover {
-  background-color: lightgray;
-  transform: rotate(400deg) !important;
-}
-
-/* filter */
-.option-button-container {
-  position: relative;
-  display: inline-block;
-  left: 3%;
-}
-
-.toggleOptions {
-  width: 70px;
-  height: 30px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */
-  background-color: white;
-  font-weight: bold;
-  border: 0;
-  transition: background-color 0.2s;
-  margin-bottom: 5%;
-}
-
-.toggleOptions:hover {
-  background-color: lightgray;
-}
-
-.options-enter {
-  opacity: 0;
-  transform: translateY(-20%);
-}
-
-.options-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.options-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.options-exit-active {
-  opacity: 0;
-  transform: translateY(0%);
-}
-
-.Tiers {
-  position: absolute;
-  width: 100px;
-  top: 100%;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-  z-index: 1;
-}
-
-.Tiers button {
-  margin: 4px 0;
-  padding: 8px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  text-align: left;
-}
-
-.Tiers button:hover {
-  background-color: #f2f2f2;
-  color: #041e49;
-}
-
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"AAAA,gBAAgB;AAChB;EACE,aAAA;EACA,6BAAA;AACF;;AACA;EACE,aAAA;EACA,YAAA;EACA,UAAA;EACA,yBAAA;EACA,YAAA;EACA,eAAA;EACA,6DAAA;EACA,eAAA;EACA,6BAAA;AAEF;;AAAA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AAGF;;AADA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AAIF;;AADA;EACE,gBAAA;AAIF;;AADA;EACE,aAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,YAAA;AAIF;;AADA;EACE,aAAA;EACA,eAAA;AAIF;;AADA;EACE,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,+EAAA;EACA,mBAAA;EACA,gCAAA;EACA,aAAA;EACA,6BAAA,EAAA,mBAAA;EACA,WAAA;AAIF;;AADA;EACE,mBAAA;EACA,iBAAA;AAIF;;AADA;EACE,mBAAA;EACA,iBAAA;AAIF;;AADA;EACE,aAAA;EACA,aAAA;EACA,UAAA;EACA,aAAA;EACA,YAAA;EACA,uBAAA;AAIF;;AADA;EACE,mBAAA;EACA,UAAA;EACA,iBAAA;EACA,kBAAA;AAIF;;AADA;EACE,yBAAA;EACA,YAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;AAIF;;AADA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,gBAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;AAIF;;AADA;EACE,YAAA;EACA,cAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;EACA,iBAAA;AAIF;;AADA;EACE,cAAA;EACA,iBAAA;AAIF;;AADA;EACE,mBAAA;EACA,cAAA;EACA,eAAA;EACA,iBAAA;EACA,kBAAA;AAIF;;AADA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;EACA,cAAA;AAIF;;AADA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;EACA,qBAAA,EAAA,kBAAA;EACA,YAAA;AAIF;;AADA;EACE,UAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAIF;;AADA;EACE,aAAA;EACA,WAAA;EACA,yBAAA;EACA,8BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,qBAAA;EACA,YAAA;EACA,iCAAA;EACA,sCAAA;AAIF;;AADA;EACE,yBAAA;EACA,2BAAA;AAIF;;AADA;EACE,aAAA;EACA,qBAAA;EACA,uBAAA;AAIF;;AADA;EACE,eAAA;EACA,gBAAA;EACA,mBAAA;EACA,UAAA;EACA,eAAA;EACA,wBAAA;AAIF;;AADA;EACE,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,cAAA;AAIF;;AADA;EACE,iBAAA;EACA,YAAA;AAIF;;AADA;EACE,gBAAA;EACA,iBAAA;EACA,eAAA;AAIF;;AADA;EACE,WAAA;EACA,YAAA;EACA,yDAAA;EACA,sBAAA;EACA,2BAAA;EACA,SAAA;EACA,6BAAA;EACA,uBAAA;EACA,iCAAA;EACA,0CAAA;EACA,kBAAA;EACA,QAAA;EACA,iBAAA;AAIF;;AADA;EACE,2BAAA;EACA,oCAAA;AAIF;;AADA,WAAA;AACA;EACE,kBAAA;EACA,qBAAA;EACA,QAAA;AAIF;;AADA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,2BAAA;EACA,4BAAA;EACA,gBAAA,EAAA,kCAAA;EACA,uBAAA;EACA,iBAAA;EACA,SAAA;EACA,iCAAA;EACA,iBAAA;AAIF;;AADA;EACE,2BAAA;AAIF;;AADA;EACE,UAAA;EACA,2BAAA;AAIF;;AADA;EACE,UAAA;EACA,wBAAA;EACA,0CAAA;AAIF;;AADA;EACE,UAAA;EACA,wBAAA;AAIF;;AADA;EACE,UAAA;EACA,yBAAA;AAIF;;AADA;EACE,kBAAA;EACA,YAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,sBAAA;EACA,sBAAA;EACA,sBAAA;EACA,kBAAA;EACA,wCAAA;EACA,YAAA;EACA,UAAA;AAIF;;AADA;EACE,aAAA;EACA,YAAA;EACA,eAAA;EACA,YAAA;EACA,6BAAA;EACA,gBAAA;AAIF;;AADA;EACE,yBAAA;EACA,cAAA;AAIF","sourcesContent":["@charset \"UTF-8\";\n.HeaderBar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n.HeaderBar .manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n.HeaderBar .manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.HeaderBar .manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.RecContent {\n  margin-top: 15px;\n}\n\n.week_tags {\n  display: flex;\n  justify-content: space-around;\n  padding-left: 2%;\n  padding-right: 2%;\n  margin: 10px;\n}\n\n.tag {\n  display: flex;\n  min-width: 83px;\n}\n\n.week_tagbtn {\n  border: 1px solid #E0E0E0;\n  cursor: pointer;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  font-weight: normal;\n  font-family: \"Arial, sans-serif\";\n  font-size: 11;\n  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\n  width: 100%;\n}\n\n.week_tagbtn.active {\n  background: #FFD8E0;\n  font-weight: bold;\n}\n\n.week_tagbtn:hover {\n  background: #FFDDD9;\n  font-weight: bold;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n\n.Box {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n\n.pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n.weak_message {\n  margin-left: 40%;\n  font-weight: bold;\n  font-size: 20px;\n}\n\n.reloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n\n.reloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n\n/* filter */\n.option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n\n.toggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n\n.toggleOptions:hover {\n  background-color: lightgray;\n}\n\n.options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n\n.options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n\n.options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n.options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n\n.Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n\n.Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n\n.Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"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","sourcesContent":["@charset \"UTF-8\";\n.HeaderBar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n.HeaderBar .manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n.HeaderBar .manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.HeaderBar .manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.RecContent {\n  margin-top: 15px;\n}\n.RecContent .WeekTags {\n  display: flex;\n  justify-content: space-around;\n  margin: 10px;\n  padding: 0 2%;\n}\n.RecContent .WeekTags .WeekTagBtn {\n  width: 20%;\n  min-width: 83px;\n  height: 33px;\n  border: 1px solid #E0E0E0;\n  font-weight: normal;\n  font-size: 11;\n  font-family: \"Arial, sans-serif\";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  border-radius: 5px !important;\n  cursor: pointer;\n}\n.RecContent .WeekTags .WeekTagBtn:hover {\n  background: #FFDDD9;\n}\n.RecContent .WeekTags .WeekTagBtn.active {\n  background: #FFD8E0;\n}\n\n.weak_message {\n  font-size: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.OtherProblems .reloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n.OtherProblems .reloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n.OtherProblems .option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n.OtherProblems .toggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden;\n  /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n.OtherProblems .toggleOptions:hover {\n  background-color: lightgray;\n}\n.OtherProblems .options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n.OtherProblems .options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n.OtherProblems .options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n.OtherProblems .options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n.OtherProblems .Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n.OtherProblems .Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n.OtherProblems .Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n\n.Box {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n\n.pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38488,9 +38485,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_MyPage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/MyPage.css */ "./src/contentScript/style/MyPage.css");
 /* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
-/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/CSSTransition.js");
-/* harmony import */ var _icons_Tag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icons/Tag */ "./src/contentScript/icons/Tag.tsx");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "../../node_modules/axios/lib/axios.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/CSSTransition.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "../../node_modules/axios/lib/axios.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -38505,13 +38501,12 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 
-
 function MyPage() {
     var _a;
     const [problems, setProblems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-    const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1); // 1: , 2: , 3:
-    const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1');
-    const [rotate, setRotate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+    const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1); // 취약 유형 기반, 푼 지 오래된 문제, 실력 기반
+    const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1'); // 취약 유형
+    const [rotate, setRotate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // 새로고침.. python에서 배열에 저장해놓고 가져오도록 구현함
     const [isOptionsVisible, setOptionsVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
     const [filterTier, setFilter] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('None');
     const url = window.location.href;
@@ -38519,7 +38514,7 @@ function MyPage() {
         (() => __awaiter(this, void 0, void 0, function* () {
             try {
                 // https://recproblem.site
-                const response = yield axios__WEBPACK_IMPORTED_MODULE_4__["default"].post('http://127.0.0.1:8000/mypage/problems', {
+                const response = yield axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('http://127.0.0.1:8000/mypage/problems', {
                     url,
                     div: rotate,
                     filter: filterTier,
@@ -38547,7 +38542,6 @@ function MyPage() {
     };
     const handleFilter = (tier) => {
         setFilter(tier);
-        handleRotate();
         toggleOptions();
     };
     const CircleComponent = ({ cx, cy, r, fill }) => {
@@ -38560,33 +38554,33 @@ function MyPage() {
         // 지정된 URL로 이동
         window.location.href = dynamicURL;
     };
-    const handleRotate = () => {
-        setRotate(rotate => rotate + 1);
-    };
     const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천'];
     const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond'];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Main" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", { className: "HeaderBar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${currentPage === index ? 'active' : ''}`, onClick: () => setCurrentPage((currentPage) => (currentPage === index ? -1 : index)) }, text)))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "RecContent" },
-            currentPage === 0 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, className: 'week_tags' }, ['tag1', 'tag2', 'tag3'].map((tag, index) => {
-                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: problems.weak_tag_problems[`${tag}`].tag_name, className: 'tag' },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => setSelectedField_weak(`${tag}`) }, problems.weak_tag_problems[`${tag}`].tag_name)));
+            currentPage === 0 && ( // 취약 유형 기반
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'WeekTags' }, ['tag1', 'tag2', 'tag3'].map((tag, index) => {
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: problems.weak_tag_problems[`${tag}`].tag_name, className: 'WeekTagBtn', onClick: () => setSelectedField_weak(`${tag}`) }, problems.weak_tag_problems[`${tag}`].tag_name));
                 })),
-                selectedField_weak && ( // 취약 유형 기반 추천
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' },
+                    problems.weak_tag_problems[selectedField_weak].weak_pcr,
+                    "%\uB9CC\uD07C \uC57D\uD55C \uBD84\uC57C\uC5D0\uC694."),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'OtherProblems', style: { display: 'flex', alignItems: 'center' } },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => setRotate(rotate => rotate + 1) }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions },
+                            " ",
+                            '난이도 필터',
+                            " "),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_4__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Tiers" }, Tiers.map((tier) => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => {
+                                    handleFilter(tier);
+                                    setRotate(0);
+                                } }, tier)))))),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' },
-                        problems.weak_tag_problems[selectedField_weak].weak_pcr,
-                        "%\uB9CC\uD07C \uC57D\uD55C \uBD84\uC57C\uC5D0\uC694"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_5__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Tiers" }, Tiers.map((tier) => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter(tier) }, tier)))))),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp" }, (_a = problems.weak_tag_problems[selectedField_weak].explainations) === null || _a === void 0 ? void 0 : _a.map((problem, index) => {
-                        console.log(problem);
                         return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'rp_all' },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'pBox_content', "data-tip": `${problem['problemID']}번 풀러 가기`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problem['problemID']}`), style: { display: 'flex', flexDirection: 'column' } },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '17px', padding: '8px', color: '#1f1f1f' } },
@@ -38599,7 +38593,7 @@ function MyPage() {
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                     "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
                                     problem['averageTries']))));
-                    })))),
+                    }))),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', paddingRight: '3%' } },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" }),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { "data-tip": `취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요.`, className: 'qmark' }, "\uCDE8\uC57D \uC720\uD615\uC774\uB780?"),
@@ -38609,10 +38603,10 @@ function MyPage() {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { textAlign: 'center', marginBottom: '0px', color: '#5f6368' } }, "\uB098\uC911\uC5D4 \uB354 \uAE30\uC5B5\uB098\uC9C0 \uC54A\uC744 \uAC70\uC608\uC694!"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => setRotate(rotate => rotate + 1) }),
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_5__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_4__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => setFilter('None') }, "\uBB34\uC791\uC704"),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
@@ -38663,10 +38657,10 @@ function MyPage() {
                     problems.user_id,
                     "\uB2D8\uACFC \uBE44\uC2B7\uD55C \uC2E4\uB825\uC758 \uC720\uC800\uB4E4\uC774 \uB9CE\uC774 \uD47C \uBB38\uC81C\uB4E4\uC744 \uAC00\uC838\uC654\uC5B4\uC694!"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => handleRotate() }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => setRotate(rotate => rotate + 1) }),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_5__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_4__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('None') }, "\uBB34\uC791\uC704"),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
@@ -38824,34 +38818,6 @@ function RelatedProblem() {
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloading', onClick: () => handleRotate() }))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RelatedProblem);
-
-
-/***/ }),
-
-/***/ "./src/contentScript/icons/Tag.tsx":
-/*!*****************************************!*\
-  !*** ./src/contentScript/icons/Tag.tsx ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-const Tag = (() => {
-    const CircleComponent = ({ cx, cy, r, fill }) => {
-        return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("circle", { cx: cx, cy: cy, r: r, fill: fill });
-    };
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { style: { width: "35", height: "35", fill: "none", stroke: "#8a8f95", strokeWidth: "2" }, viewBox: "0 0 35 35" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { transform: "translate(8, 10)" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(CircleComponent, { cx: "8.5", cy: "8.5", r: "1", fill: "currentColor" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z" }))));
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tag);
 
 
 /***/ }),
