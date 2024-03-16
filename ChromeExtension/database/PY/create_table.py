@@ -44,7 +44,7 @@ def create_problem_table():
         problem_id int PRIMARY KEY,
         level int NOT NULL,
         averageTries numeric NOT NULL,
-        tag text
+        tags text
     );"""
     cur.execute(create_problem_query)
     conn.commit()
@@ -76,7 +76,7 @@ def insert_problem():
     problem_df = pd.read_csv('./final_problem_df.csv')
     table_name = 'problem_df'
     for index, row in problem_df.iterrows():
-        cur.execute(f"INSERT INTO {table_name} (problem_id , level , averagetries , tag) VALUES (%s, %s, %s, %s)",
+        cur.execute(f"INSERT INTO {table_name} (problem_id , level , averagetries , tags) VALUES (%s, %s, %s, %s)",
                     (row['problemId'], row['level'], row['averageTries'], row['tags'])
                     )
     conn.commit()

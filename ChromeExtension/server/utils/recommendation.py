@@ -7,25 +7,8 @@ import boto3
 from dotenv import load_dotenv
 import os
 
-# .env 파일을 로드
-load_dotenv()
-aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
-aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
-aws_region = os.getenv('AWS_REGION')
-
-# S3 클라이언트를 생성합니다.
-s3 = boto3.client('s3', 
-                  aws_access_key_id=aws_access_key_id,
-                  aws_secret_access_key=aws_secret_access_key,
-                  region_name=aws_region)
-
-bucket_name = os.getenv('S3_BUCKET_NAME')
-model_key = os.getenv('S3_VAE_PATH')
-local_model_path = 'recsys_models/VAE/VAE_model_final_amd.h5'
-s3.download_file(bucket_name, model_key, local_model_path)
-
 def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model(local_model_path, custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model('./VAE_model_final_7144.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
     result = model.predict(input)
@@ -37,14 +20,17 @@ def vae_recommend_problem(problem_list, origin_problem):
 def Solved_Based_Recommenation(pivot_table, user_id, itpr, id_to_index ,NUM_TOP_PROBLEMS = 3):
     # url에서 필요한 정보를 
     #user_id에 맞는 문제 풀이 내역 추출
-    origin_solution, _ = return_user_data(pivot_table)
-    user_solution = get_problem_list(origin_solution, user_id, id_to_index)
+
+    origin_solution = pivot_table.to_numpy()
+    user_solution = pivot_table[pivot_table.index == user_id].to_numpy().flatten()
+
     #user 문제 풀이 내역을 통한 추천 문제
+    print("VAE 추천 시작합니다")
     total_rec = vae_recommend_problem(user_solution, origin_solution)
     top_problems = np.argpartition(-total_rec, NUM_TOP_PROBLEMS) # np.argpartition은 partition과 똑같이 동작하고, index를 리턴.
     top_problems = top_problems[ :NUM_TOP_PROBLEMS]    
     problem_id = index_to_problem(itpr, top_problems)
-
+    print("itpr이 뭐지?", problem_id)
     rtn = {}
     cnt = 0
     for item in problem_id:
@@ -138,8 +124,8 @@ def weak_strong_rec(df, user_id):
     # 개념 문제에 대해서만 할건지...??
     # df = df[df['level'] <= 10]
     # 평균 시도 횟수를 기준으로 나눔.
-    weak_problem = df[(df['wrong_count'] + 1) > df['averageTries']]
-    strong_problem = df[(df['wrong_count'] + 1 )<= df['averageTries']]
+    weak_problem = df[(df['wrong_count'] + 1) > df['averagetries']]
+    strong_problem = df[(df['wrong_count'] + 1 )<= df['averagetries']]
     #tag를 split
     weak_df_tags = tag_split(weak_problem)
     st_df_tags = tag_split(strong_problem)
