@@ -6,11 +6,9 @@ import Tag from './icons/Tag';
 import axios from 'axios';
 
 function MyPage() { // 사용자 상세 페이지 렌더링
-      const [problems, setRes] = useState<ResponseData | null>(null);
-      const [currentPage, setCurrentPage] = useState(0); // 1: , 2: , 3:
-      const [activeRec, setActiveRec] = useState(null);
+      const [problems, setProblems] = useState<ResponseData>(null);
+      const [currentPage, setCurrentPage] = useState(-1); // 1: , 2: , 3:
       const [selectedField_weak, setSelectedField_weak] = useState<string | null>('tag1');
-      const [selectedButton_weak, setSelectedButton_weak] = useState<string | null>('tag1');
       const [rotate, setRotate] = useState(0);
       const [isOptionsVisible, setOptionsVisible] = useState(false);
       const [filterTier, setFilter] = useState('None');
@@ -38,8 +36,8 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                   if (!response) {
                       throw new Error('서버 응답이 실패했습니다.');
                   }
-                  setRes(response.data);
-                  setCurrentPage(1);
+                  setProblems(response.data);
+                  setCurrentPage(0);
 
               }
               catch (error) {
@@ -47,9 +45,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
               }
           })();
       }, [rotate]);
-
-    console.log(problems);
-      
       
     useEffect(() => {
         ReactTooltip.rebuild();
@@ -64,25 +59,14 @@ function MyPage() { // 사용자 상세 페이지 렌더링
         setFilter(tier);
         handleRotate();
         toggleOptions();
-        console.log(filterTier);
-        console.log(rotate)    
      }
-
-    const handleClick = (index) => {
-        // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
-        setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
-        setActiveRec((activeRec) => (activeRec === index ? null : index));
-    };
-
 
     const handleClick_weak = (field: string) => {
         if (selectedField_weak === field) {
             setSelectedField_weak(null);
-            setSelectedButton_weak(null);
         } else {
             console.log(field)
             setSelectedField_weak(field);
-            setSelectedButton_weak(field);
         }
     };
 
@@ -106,27 +90,26 @@ function MyPage() { // 사용자 상세 페이지 렌더링
     }
 
     const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천']
+    const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond']
 
     return (
         <div className="main">
-            <header>
-                <div className="header_bar">
-                    {
-                        TypeOfRecommendation.map((text, index) => (
-                            <button
-                                key={index}
-                                className={`manu ${activeRec === index + 1 ? 'active' : ''}`}
-                                onClick={() => handleClick(index + 1)}
-                            >
-                                {text}
-                            </button>
-                        ))
-                    }
-                </div>
+            <header className="header_bar">
+                {
+                    TypeOfRecommendation.map((text, index) => (
+                        <button
+                            key={index}
+                            className={`manu ${currentPage === index ? 'active' : ''}`}
+                            onClick={() => setCurrentPage((currentPage) => (currentPage === index ? -1 : index))}
+                        >
+                            {text}
+                        </button>
+                    ))
+                }
             </header>
 
             <div className="rec_content">
-                    {currentPage === 1 && (
+                    {currentPage === 0 && (
                     <>
                         <div key={rotate} className='week_tags'>
                             {/* {
@@ -182,12 +165,10 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                                             classNames="options"
                                             unmountOnExit
                                         >
-                                            <div className="options">
-                                                <button onClick={() => handleFilter('None')}>무작위</button>
-                                                <button onClick={() => handleFilter('Silver')}>실버</button>
-                                                <button onClick={() => handleFilter('Gold')}>골드</button>
-                                                <button onClick={() => handleFilter('Platinum')}>플래티넘</button>
-                                                <button onClick={() => handleFilter('Diamond')}>다이아몬드</button>
+                                            <div className="Tiers">
+                                                {
+                                                    Tiers.map((tier) => <button onClick={() => handleFilter(tier)}>{tier}</button>)
+                                                }
                                             </div>
                                         </CSSTransition>
                                     </div>
@@ -227,7 +208,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                             </div>
                     </>
                     )}
-                    {currentPage === 2 && (
+                    {currentPage === 1 && (
                         <>
                         <div style={{fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#202125'}}>
                             해당 분류의 문제를 푼 지 오래됐어요.
@@ -245,7 +226,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                                         unmountOnExit
                                     >
                                         <div className="options">
-                                            <button onClick={() => handleFilter('None')}>무작위</button>
+                                            <button onClick={() => setFilter('None')}>무작위</button>
                                             <button onClick={() => handleFilter('Silver')}>실버</button>
                                             <button onClick={() => handleFilter('Gold')}>골드</button>
                                             <button onClick={() => handleFilter('Platinum')}>플래티넘</button>
@@ -303,7 +284,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         </div>
                         </>
                     )}
-                    {currentPage === 3 && (
+                    {currentPage === 2 && (
                         <>
                         <div style={{fontSize: '24px', fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '13px', color: '#202125'}}>
                                 이런 문제는 어떤가요?
@@ -397,45 +378,45 @@ interface Problem {
     level: string;
     averageTries: number;
     tags: string[];
-  }
-  
-  interface Explaination {
+}
+
+interface Explaination {
     problemID: string;
     titleKo: string;
     level: string;
     averageTries: number;
-  }
+}
 
-  interface Tag {
+interface Tag {
     tag_name: string;
     problems: string[];
     explainations: Explaination[];
     weak_pcr: number;
-  }
-  
-  interface WeakTagProblems {
+}
+
+interface WeakTagProblems {
     [key: string]: Tag;
-  }
-  
-  interface ForgottenTagProblems {
+}
+
+interface ForgottenTagProblems {
     [key: string]: {
-      tag: string;
-      forgottenPercent: number;
-      problem: Problem;
+        tag: string;
+        forgottenPercent: number;
+        problem: Problem;
     };
-  }
-  
-  interface SimilarityBasedProblems {
+}
+
+interface SimilarityBasedProblems {
     problem1: Problem;
     problem2: Problem;
     problem3: Problem;
-  }
-  
-  interface ResponseData {
+}
+
+interface ResponseData {
     user_id: string;
     weak_tag_problems: WeakTagProblems;
     forgotten_tag_problems: ForgottenTagProblems;
     similarity_based_problems: SimilarityBasedProblems;
-  }
+}
   
 export default MyPage;

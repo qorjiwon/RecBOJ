@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/contentScript/style/MyPage.css":
-/*!********************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/contentScript/style/MyPage.css ***!
-  \********************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/MyPage.css":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/MyPage.css ***!
+  \***********************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -26,7 +26,8 @@ var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.header_bar {
+___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
+.header_bar {
   display: flex;
   border-bottom: 1px solid #ddd;
 }
@@ -48,19 +49,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.header_bar {
   min-width: 83px;
 }
 
-
 .week_tagbtn {
   border: 1px solid #E0E0E0;
   cursor: pointer;
   background: white;
-  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;
+  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;
   font-weight: normal;
-  font-family: 'Arial, sans-serif';
+  font-family: "Arial, sans-serif";
   font-size: 11;
   border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */
   width: 100%;
 }
-  
+
 .week_tagbtn.active {
   background: #FFD8E0;
   font-weight: bold;
@@ -72,19 +72,19 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.header_bar {
 }
 
 .divStyle {
-display: flex;
-padding: 10px;
-width: 97%;
-height: 220px;
-border: none;
-justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 97%;
+  height: 220px;
+  border: none;
+  justify-content: center;
 }
 
 .Box {
-flex-direction: row;
-width: 28%;
-margin-left: 40px;
-margin-right: 14px;
+  flex-direction: row;
+  width: 28%;
+  margin-left: 40px;
+  margin-right: 14px;
 }
 
 .pBox {
@@ -112,110 +112,111 @@ margin-right: 14px;
 }
 
 .hrefBox {
-height: 40px;
-color: #1f1f1f;
-background-color: #f7f7f9;
-padding: 10px;
-font-size: 16px;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-font-weight: bold;
+  height: 40px;
+  color: #1f1f1f;
+  background-color: #f7f7f9;
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
 }
+
 .hrefBox:hover {
-color: #041e49;
-font-weight: bold;
+  color: #041e49;
+  font-weight: bold;
 }
 
 .manu {
-padding: 10px;
-margin: 10px;
-width: 35%;
-background-color: #FFFFFF;
-border: none;
-cursor: pointer;
-transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-font-size: 16px;
-border-radius: 6px !important;
+  padding: 10px;
+  margin: 10px;
+  width: 35%;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+  font-size: 16px;
+  border-radius: 6px !important;
 }
 
 .manu:hover {
-background-color: #eef2f9;
-font-weight: bold;
-border-radius: 100px;
+  background-color: #eef2f9;
+  font-weight: bold;
+  border-radius: 100px;
 }
 
 .manu.active {
-background-color: #eef2f9;
-font-weight: bold;
-border-radius: 100px;
+  background-color: #eef2f9;
+  font-weight: bold;
+  border-radius: 100px;
 }
 
 .header_rp {
-padding-bottom: 5px;
-color: #34495e;
-font-size: 15px;
-font-weight : bold;
-text-align: center;
+  padding-bottom: 5px;
+  color: #34495e;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .tagbtn_weak_problem {
-height: 110px;
-background-color: #f7f7f9;
-padding: 10px;
-font-size: 15px;
-margin-bottom: 14px;
-color: #6D7856;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 10px !important;
-box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
-margin-top: 3%;
+  height: 110px;
+  background-color: #f7f7f9;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #6D7856;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px !important;
+  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 3%;
 }
 
 .list_rp {
-padding-left: 6%;
-display: flex;
-flex-direction: row;
-list-style-type: none; /* 리스트 기본 스타일 제거 */
-padding:5px;
+  padding-left: 6%;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none; /* 리스트 기본 스타일 제거 */
+  padding: 5px;
 }
 
 .pBox_header {
-width: 60%;
-padding: 10px;
-font-size: 15px;
-display: flex;
-align-items: center;
-justify-content: center;
+  width: 60%;
+  padding: 10px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pBox_content {
-height: 190px;
-width: 100%;
-background-color: #f8fafd;
-border-radius: 13px !important;
-font-size: 14px;
-margin-bottom: 14px;
-display: flex;
-align-items: center;
-justify-content: center;
-white-space: pre-line;
-border: none;
-transition: background-color 0.2s;
-transition: transform 0.2s ease-in-out;
+  height: 190px;
+  width: 100%;
+  background-color: #f8fafd;
+  border-radius: 13px !important;
+  font-size: 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-line;
+  border: none;
+  transition: background-color 0.2s;
+  transition: transform 0.2s ease-in-out;
 }
 
 .pBox_content:hover {
-background-color: #EAF0FD;
-transform: translateY(-3px);
+  background-color: #EAF0FD;
+  transform: translateY(-3px);
 }
 
-.container_rp{
+.container_rp {
   display: flex;
-  flex-direction: 'row';
+  flex-direction: "row";
   justify-content: center;
 }
 
@@ -224,8 +225,8 @@ transform: translateY(-3px);
   margin-right: 3%;
   align-items: center;
   width: 23%;
-  display: 'flex';
-  flex-direction: 'column'
+  display: "flex";
+  flex-direction: "column";
 }
 
 .qmark {
@@ -247,24 +248,24 @@ transform: translateY(-3px);
 }
 
 .reloadingM {
-width: 23px; 
-height: 23px; 
-background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
-background-size: cover;
-background-position: center;
-border: 0;
-border-radius: 50% !important;
-background-color: white;
-transition: background-color 0.1s;
-transition: transform 0.4s ease !important;
-position: relative;
-left: 2%;
-margin-bottom: 1%;
+  width: 23px;
+  height: 23px;
+  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+  background-size: cover;
+  background-position: center;
+  border: 0;
+  border-radius: 50% !important;
+  background-color: white;
+  transition: background-color 0.1s;
+  transition: transform 0.4s ease !important;
+  position: relative;
+  left: 2%;
+  margin-bottom: 1%;
 }
 
 .reloadingM:hover {
-background-color: lightgray;
-transform: rotate(400deg) !important;
+  background-color: lightgray;
+  transform: rotate(400deg) !important;
 }
 
 /* filter */
@@ -274,15 +275,13 @@ transform: rotate(400deg) !important;
   left: 3%;
 }
 
-
 .toggleOptions {
-
   width: 70px;
   height: 30px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */ 
+  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */
   background-color: white;
   font-weight: bold;
   border: 0;
@@ -315,7 +314,7 @@ transform: rotate(400deg) !important;
   transform: translateY(0%);
 }
 
-.options {
+.Tiers {
   position: absolute;
   width: 100px;
   top: 100%;
@@ -330,7 +329,7 @@ transform: rotate(400deg) !important;
   z-index: 1;
 }
 
-.options button {
+.Tiers button {
   margin: 4px 0;
   padding: 8px;
   cursor: pointer;
@@ -339,21 +338,22 @@ transform: rotate(400deg) !important;
   text-align: left;
 }
 
-.options button:hover {
+.Tiers button:hover {
   background-color: #f2f2f2;
-  color: #041e49
+  color: #041e49;
 }
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,6BAA6B;AAC/B;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,6BAA6B;EAC7B,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;AACd;;AAEA;EACE,aAAa;EACb,eAAe;AACjB;;;AAGA;EACE,yBAAyB;EACzB,eAAe;EACf,iBAAiB;EACjB,+EAA+E;EAC/E,mBAAmB;EACnB,gCAAgC;EAChC,aAAa;EACb,6BAA6B,EAAE,mBAAmB;EAClD,WAAW;AACb;;AAEA;EACE,mBAAmB;EACnB,iBAAiB;AACnB;;AAEA;EACE,mBAAmB;EACnB,iBAAiB;AACnB;;AAEA;AACA,aAAa;AACb,aAAa;AACb,UAAU;AACV,aAAa;AACb,YAAY;AACZ,uBAAuB;AACvB;;AAEA;AACA,mBAAmB;AACnB,UAAU;AACV,iBAAiB;AACjB,kBAAkB;AAClB;;AAEA;EACE,yBAAyB;EACzB,YAAY;EACZ,mBAAmB;EACnB,cAAc;EACd,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,8BAA8B;EAC9B,4CAA4C;AAC9C;;AAEA;EACE,aAAa;EACb,yBAAyB;EACzB,aAAa;EACb,gBAAgB;EAChB,eAAe;EACf,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,kBAAkB;AACpB;;AAEA;AACA,YAAY;AACZ,cAAc;AACd,yBAAyB;AACzB,aAAa;AACb,eAAe;AACf,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB,kBAAkB;AAClB,iBAAiB;AACjB;AACA;AACA,cAAc;AACd,iBAAiB;AACjB;;AAEA;AACA,aAAa;AACb,YAAY;AACZ,UAAU;AACV,yBAAyB;AACzB,YAAY;AACZ,eAAe;AACf,6DAA6D;AAC7D,eAAe;AACf,6BAA6B;AAC7B;;AAEA;AACA,yBAAyB;AACzB,iBAAiB;AACjB,oBAAoB;AACpB;;AAEA;AACA,yBAAyB;AACzB,iBAAiB;AACjB,oBAAoB;AACpB;;AAEA;AACA,mBAAmB;AACnB,cAAc;AACd,eAAe;AACf,kBAAkB;AAClB,kBAAkB;AAClB;;AAEA;AACA,aAAa;AACb,yBAAyB;AACzB,aAAa;AACb,eAAe;AACf,mBAAmB;AACnB,cAAc;AACd,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB,8BAA8B;AAC9B,4CAA4C;AAC5C,cAAc;AACd;;AAEA;AACA,gBAAgB;AAChB,aAAa;AACb,mBAAmB;AACnB,qBAAqB,EAAE,kBAAkB;AACzC,WAAW;AACX;;AAEA;AACA,UAAU;AACV,aAAa;AACb,eAAe;AACf,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB;;AAEA;AACA,aAAa;AACb,WAAW;AACX,yBAAyB;AACzB,8BAA8B;AAC9B,eAAe;AACf,mBAAmB;AACnB,aAAa;AACb,mBAAmB;AACnB,uBAAuB;AACvB,qBAAqB;AACrB,YAAY;AACZ,iCAAiC;AACjC,sCAAsC;AACtC;;AAEA;AACA,yBAAyB;AACzB,2BAA2B;AAC3B;;AAEA;EACE,aAAa;EACb,qBAAqB;EACrB,uBAAuB;AACzB;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;EACnB,UAAU;EACV,eAAe;EACf;AACF;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,gBAAgB;EAChB,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;AACjB;;AAEA;AACA,WAAW;AACX,YAAY;AACZ,yDAA6V;AAC7V,sBAAsB;AACtB,2BAA2B;AAC3B,SAAS;AACT,6BAA6B;AAC7B,uBAAuB;AACvB,iCAAiC;AACjC,0CAA0C;AAC1C,kBAAkB;AAClB,QAAQ;AACR,iBAAiB;AACjB;;AAEA;AACA,2BAA2B;AAC3B,oCAAoC;AACpC;;AAEA,WAAW;AACX;EACE,kBAAkB;EAClB,qBAAqB;EACrB,QAAQ;AACV;;;AAGA;;EAEE,WAAW;EACX,YAAY;EACZ,sBAAsB;EACtB,2BAA2B;EAC3B,4BAA4B;EAC5B,gBAAgB,EAAE,kCAAkC;EACpD,uBAAuB;EACvB,iBAAiB;EACjB,SAAS;EACT,iCAAiC;EACjC,iBAAiB;AACnB;;AAEA;EACE,2BAA2B;AAC7B;;AAEA;EACE,UAAU;EACV,2BAA2B;AAC7B;;AAEA;EACE,UAAU;EACV,wBAAwB;EACxB,0CAA0C;AAC5C;;AAEA;EACE,UAAU;EACV,wBAAwB;AAC1B;;AAEA;EACE,UAAU;EACV,yBAAyB;AAC3B;;AAEA;EACE,kBAAkB;EAClB,YAAY;EACZ,SAAS;EACT,OAAO;EACP,aAAa;EACb,sBAAsB;EACtB,sBAAsB;EACtB,sBAAsB;EACtB,kBAAkB;EAClB,wCAAwC;EACxC,YAAY;EACZ,UAAU;AACZ;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,6BAA6B;EAC7B,gBAAgB;AAClB;;AAEA;EACE,yBAAyB;EACzB;AACF","sourcesContent":[".header_bar {\r\n  display: flex;\r\n  border-bottom: 1px solid #ddd;\r\n}\r\n\r\n.rec_content {\r\n  margin-top: 15px;\r\n}\r\n\r\n.week_tags {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  padding-left: 2%;\r\n  padding-right: 2%;\r\n  margin: 10px;\r\n}\r\n\r\n.tag {\r\n  display: flex;\r\n  min-width: 83px;\r\n}\r\n\r\n\r\n.week_tagbtn {\r\n  border: 1px solid #E0E0E0;\r\n  cursor: pointer;\r\n  background: white;\r\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s; ;\r\n  font-weight: normal;\r\n  font-family: 'Arial, sans-serif';\r\n  font-size: 11;\r\n  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\r\n  width: 100%;\r\n}\r\n  \r\n.week_tagbtn.active {\r\n  background: #FFD8E0;\r\n  font-weight: bold;\r\n}\r\n\r\n.week_tagbtn:hover {\r\n  background: #FFDDD9;\r\n  font-weight: bold;\r\n}\r\n\r\n.divStyle {\r\ndisplay: flex;\r\npadding: 10px;\r\nwidth: 97%;\r\nheight: 220px;\r\nborder: none;\r\njustify-content: center;\r\n}\r\n\r\n.Box {\r\nflex-direction: row;\r\nwidth: 28%;\r\nmargin-left: 40px;\r\nmargin-right: 14px;\r\n}\r\n\r\n.pBox {\r\n  background-color: #f8fafd;\r\n  padding: 3px;\r\n  margin-bottom: 14px;\r\n  color: #6D7856;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  border-radius: 10px !important;\r\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.eBox {\r\n  height: 140px;\r\n  background-color: #f8fafd;\r\n  padding: 10px;\r\n  overflow: hidden;\r\n  font-size: 15px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n\r\n.hrefBox {\r\nheight: 40px;\r\ncolor: #1f1f1f;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 16px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\ntext-align: center;\r\nfont-weight: bold;\r\n}\r\n.hrefBox:hover {\r\ncolor: #041e49;\r\nfont-weight: bold;\r\n}\r\n\r\n.manu {\r\npadding: 10px;\r\nmargin: 10px;\r\nwidth: 35%;\r\nbackground-color: #FFFFFF;\r\nborder: none;\r\ncursor: pointer;\r\ntransition: background-color 0.3s, color 0.3s, font-size 0.3s;\r\nfont-size: 16px;\r\nborder-radius: 6px !important;\r\n}\r\n\r\n.manu:hover {\r\nbackground-color: #eef2f9;\r\nfont-weight: bold;\r\nborder-radius: 100px;\r\n}\r\n\r\n.manu.active {\r\nbackground-color: #eef2f9;\r\nfont-weight: bold;\r\nborder-radius: 100px;\r\n}\r\n\r\n.header_rp {\r\npadding-bottom: 5px;\r\ncolor: #34495e;\r\nfont-size: 15px;\r\nfont-weight : bold;\r\ntext-align: center;\r\n}\r\n\r\n.tagbtn_weak_problem {\r\nheight: 110px;\r\nbackground-color: #f7f7f9;\r\npadding: 10px;\r\nfont-size: 15px;\r\nmargin-bottom: 14px;\r\ncolor: #6D7856;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nborder-radius: 10px !important;\r\nbox-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\r\nmargin-top: 3%;\r\n}\r\n\r\n.list_rp {\r\npadding-left: 6%;\r\ndisplay: flex;\r\nflex-direction: row;\r\nlist-style-type: none; /* 리스트 기본 스타일 제거 */\r\npadding:5px;\r\n}\r\n\r\n.pBox_header {\r\nwidth: 60%;\r\npadding: 10px;\r\nfont-size: 15px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\n}\r\n\r\n.pBox_content {\r\nheight: 190px;\r\nwidth: 100%;\r\nbackground-color: #f8fafd;\r\nborder-radius: 13px !important;\r\nfont-size: 14px;\r\nmargin-bottom: 14px;\r\ndisplay: flex;\r\nalign-items: center;\r\njustify-content: center;\r\nwhite-space: pre-line;\r\nborder: none;\r\ntransition: background-color 0.2s;\r\ntransition: transform 0.2s ease-in-out;\r\n}\r\n\r\n.pBox_content:hover {\r\nbackground-color: #EAF0FD;\r\ntransform: translateY(-3px);\r\n}\r\n\r\n.container_rp{\r\n  display: flex;\r\n  flex-direction: 'row';\r\n  justify-content: center;\r\n}\r\n\r\n.rp_all {\r\n  margin-left: 3%;\r\n  margin-right: 3%;\r\n  align-items: center;\r\n  width: 23%;\r\n  display: 'flex';\r\n  flex-direction: 'column'\r\n}\r\n\r\n.qmark {\r\n  font-size: 12px;\r\n  margin-left: 85%;\r\n  margin-top: 10px;\r\n  color: #34495e;\r\n}\r\n\r\n.qmark:hover {\r\n  font-weight: bold;\r\n  color: black;\r\n}\r\n\r\n.weak_message {\r\n  margin-left: 40%;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n.reloadingM {\r\nwidth: 23px; \r\nheight: 23px; \r\nbackground-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\r\nbackground-size: cover;\r\nbackground-position: center;\r\nborder: 0;\r\nborder-radius: 50% !important;\r\nbackground-color: white;\r\ntransition: background-color 0.1s;\r\ntransition: transform 0.4s ease !important;\r\nposition: relative;\r\nleft: 2%;\r\nmargin-bottom: 1%;\r\n}\r\n\r\n.reloadingM:hover {\r\nbackground-color: lightgray;\r\ntransform: rotate(400deg) !important;\r\n}\r\n\r\n/* filter */\r\n.option-button-container {\r\n  position: relative;\r\n  display: inline-block;\r\n  left: 3%;\r\n}\r\n\r\n\r\n.toggleOptions {\r\n\r\n  width: 70px;\r\n  height: 30px;\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-repeat: no-repeat;\r\n  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */ \r\n  background-color: white;\r\n  font-weight: bold;\r\n  border: 0;\r\n  transition: background-color 0.2s;\r\n  margin-bottom: 5%;\r\n}\r\n\r\n.toggleOptions:hover {\r\n  background-color: lightgray;\r\n}\r\n\r\n.options-enter {\r\n  opacity: 0;\r\n  transform: translateY(-20%);\r\n}\r\n\r\n.options-enter-active {\r\n  opacity: 1;\r\n  transform: translateY(0);\r\n  transition: opacity 300ms, transform 300ms;\r\n}\r\n\r\n.options-exit {\r\n  opacity: 1;\r\n  transform: translateY(0);\r\n}\r\n\r\n.options-exit-active {\r\n  opacity: 0;\r\n  transform: translateY(0%);\r\n}\r\n\r\n.options {\r\n  position: absolute;\r\n  width: 100px;\r\n  top: 100%;\r\n  left: 0;\r\n  display: flex;\r\n  flex-direction: column;\r\n  background-color: #fff;\r\n  border: 1px solid #ccc;\r\n  border-radius: 4px;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r\n  padding: 8px;\r\n  z-index: 1;\r\n}\r\n\r\n.options button {\r\n  margin: 4px 0;\r\n  padding: 8px;\r\n  cursor: pointer;\r\n  border: none;\r\n  background-color: transparent;\r\n  text-align: left;\r\n}\r\n\r\n.options button:hover {\r\n  background-color: #f2f2f2;\r\n  color: #041e49\r\n}\r\n"],"sourceRoot":""}]);
+
+`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"AAAA,gBAAgB;AAChB;EACE,aAAA;EACA,6BAAA;AACF;;AAEA;EACE,gBAAA;AACF;;AAEA;EACE,aAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,YAAA;AACF;;AAEA;EACE,aAAA;EACA,eAAA;AACF;;AAEA;EACE,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,+EAAA;EACA,mBAAA;EACA,gCAAA;EACA,aAAA;EACA,6BAAA,EAAA,mBAAA;EACA,WAAA;AACF;;AAEA;EACE,mBAAA;EACA,iBAAA;AACF;;AAEA;EACE,mBAAA;EACA,iBAAA;AACF;;AAEA;EACE,aAAA;EACA,aAAA;EACA,UAAA;EACA,aAAA;EACA,YAAA;EACA,uBAAA;AACF;;AAEA;EACE,mBAAA;EACA,UAAA;EACA,iBAAA;EACA,kBAAA;AACF;;AAEA;EACE,yBAAA;EACA,YAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;AACF;;AAEA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,gBAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;AACF;;AAEA;EACE,YAAA;EACA,cAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;EACA,iBAAA;AACF;;AAEA;EACE,cAAA;EACA,iBAAA;AACF;;AAEA;EACE,aAAA;EACA,YAAA;EACA,UAAA;EACA,yBAAA;EACA,YAAA;EACA,eAAA;EACA,6DAAA;EACA,eAAA;EACA,6BAAA;AACF;;AAEA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AACF;;AAEA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AACF;;AAEA;EACE,mBAAA;EACA,cAAA;EACA,eAAA;EACA,iBAAA;EACA,kBAAA;AACF;;AAEA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;EACA,cAAA;AACF;;AAEA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;EACA,qBAAA,EAAA,kBAAA;EACA,YAAA;AACF;;AAEA;EACE,UAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AACF;;AAEA;EACE,aAAA;EACA,WAAA;EACA,yBAAA;EACA,8BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,qBAAA;EACA,YAAA;EACA,iCAAA;EACA,sCAAA;AACF;;AAEA;EACE,yBAAA;EACA,2BAAA;AACF;;AAEA;EACE,aAAA;EACA,qBAAA;EACA,uBAAA;AACF;;AAEA;EACE,eAAA;EACA,gBAAA;EACA,mBAAA;EACA,UAAA;EACA,eAAA;EACA,wBAAA;AACF;;AAEA;EACE,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,cAAA;AACF;;AAEA;EACE,iBAAA;EACA,YAAA;AACF;;AAEA;EACE,gBAAA;EACA,iBAAA;EACA,eAAA;AACF;;AAEA;EACE,WAAA;EACA,YAAA;EACA,yDAAA;EACA,sBAAA;EACA,2BAAA;EACA,SAAA;EACA,6BAAA;EACA,uBAAA;EACA,iCAAA;EACA,0CAAA;EACA,kBAAA;EACA,QAAA;EACA,iBAAA;AACF;;AAEA;EACE,2BAAA;EACA,oCAAA;AACF;;AAEA,WAAA;AACA;EACE,kBAAA;EACA,qBAAA;EACA,QAAA;AACF;;AAEA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,2BAAA;EACA,4BAAA;EACA,gBAAA,EAAA,kCAAA;EACA,uBAAA;EACA,iBAAA;EACA,SAAA;EACA,iCAAA;EACA,iBAAA;AACF;;AAEA;EACE,2BAAA;AACF;;AAEA;EACE,UAAA;EACA,2BAAA;AACF;;AAEA;EACE,UAAA;EACA,wBAAA;EACA,0CAAA;AACF;;AAEA;EACE,UAAA;EACA,wBAAA;AACF;;AAEA;EACE,UAAA;EACA,yBAAA;AACF;;AAEA;EACE,kBAAA;EACA,YAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,sBAAA;EACA,sBAAA;EACA,sBAAA;EACA,kBAAA;EACA,wCAAA;EACA,YAAA;EACA,UAAA;AACF;;AAEA;EACE,aAAA;EACA,YAAA;EACA,eAAA;EACA,YAAA;EACA,6BAAA;EACA,gBAAA;AACF;;AAEA;EACE,yBAAA;EACA,cAAA;AACF","sourcesContent":["@charset \"UTF-8\";\n.header_bar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n\n.rec_content {\n  margin-top: 15px;\n}\n\n.week_tags {\n  display: flex;\n  justify-content: space-around;\n  padding-left: 2%;\n  padding-right: 2%;\n  margin: 10px;\n}\n\n.tag {\n  display: flex;\n  min-width: 83px;\n}\n\n.week_tagbtn {\n  border: 1px solid #E0E0E0;\n  cursor: pointer;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  font-weight: normal;\n  font-family: \"Arial, sans-serif\";\n  font-size: 11;\n  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\n  width: 100%;\n}\n\n.week_tagbtn.active {\n  background: #FFD8E0;\n  font-weight: bold;\n}\n\n.week_tagbtn:hover {\n  background: #FFDDD9;\n  font-weight: bold;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n\n.Box {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n\n.pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n\n.manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n.weak_message {\n  margin-left: 40%;\n  font-weight: bold;\n  font-size: 20px;\n}\n\n.reloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n\n.reloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n\n/* filter */\n.option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n\n.toggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n\n.toggleOptions:hover {\n  background-color: lightgray;\n}\n\n.options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n\n.options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n\n.options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n.options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n\n.Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n\n.Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n\n.Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/contentScript/style/RelatedProblem.css":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/contentScript/style/RelatedProblem.css ***!
-  \****************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/RelatedProblem.css":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/RelatedProblem.css ***!
+  \*******************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -381,10 +381,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.ContainerToRender {
 }
 
 .RecommenedProblem:hover {
-  font-weight: bold;  
+  font-weight: bold;
 }
 
-.problem_container{
+.problem_container {
   width: 230px;
 }
 
@@ -392,14 +392,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.ContainerToRender {
   margin-left: 20px;
 }
 
-
 .message {
   width: 220px;
 }
 
 .reloading {
-  width: 27px; 
-  height: 27px; 
+  width: 27px;
+  height: 27px;
   background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
   background-size: cover;
   background-position: center;
@@ -413,8 +412,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.ContainerToRender {
 
 .reloading:hover {
   background-color: lightgray !important;
-}
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/RelatedProblem.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,iBAAiB;AACnB;;;AAGA;EACE,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,yDAA8V;EAC9V,sBAAsB;EACtB,2BAA2B;EAC3B,yBAAyB;EACzB,SAAS;EACT,6BAA6B;EAC7B,iCAAiC;EACjC,kBAAkB;EAClB,QAAQ;AACV;;AAEA;EACE,sCAAsC;AACxC","sourcesContent":[".ContainerToRender {\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.RecommenedProblem:hover {\r\n  font-weight: bold;  \r\n}\r\n\r\n.problem_container{\r\n  width: 230px;\r\n}\r\n\r\n.problem_index {\r\n  margin-left: 20px;\r\n}\r\n\r\n\r\n.message {\r\n  width: 220px;\r\n}\r\n\r\n.reloading {\r\n  width: 27px; \r\n  height: 27px; \r\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-color: #F5F5F5;\r\n  border: 0;\r\n  border-radius: 50% !important;\r\n  transition: background-color 0.1s;\r\n  position: relative;\r\n  left: 2%;\r\n}\r\n\r\n.reloading:hover {\r\n  background-color: lightgray !important;\r\n}\r\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/contentScript/style/RelatedProblem.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,mBAAA;AACF;;AAEA;EACE,iBAAA;AACF;;AAEA;EACE,YAAA;AACF;;AAEA;EACE,iBAAA;AACF;;AAGA;EACE,YAAA;AAAF;;AAGA;EACE,WAAA;EACA,YAAA;EACA,yDAAA;EACA,sBAAA;EACA,2BAAA;EACA,yBAAA;EACA,SAAA;EACA,6BAAA;EACA,iCAAA;EACA,kBAAA;EACA,QAAA;AAAF;;AAGA;EACE,sCAAA;AAAF","sourcesContent":[".ContainerToRender {\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.RecommenedProblem:hover {\r\n  font-weight: bold;  \r\n}\r\n\r\n.problem_container{\r\n  width: 230px;\r\n}\r\n\r\n.problem_index {\r\n  margin-left: 20px;\r\n}\r\n\r\n\r\n.message {\r\n  width: 220px;\r\n}\r\n\r\n.reloading {\r\n  width: 27px; \r\n  height: 27px; \r\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='black' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\r\n  background-size: cover;\r\n  background-position: center;\r\n  background-color: #F5F5F5;\r\n  border: 0;\r\n  border-radius: 50% !important;\r\n  transition: background-color 0.1s;\r\n  position: relative;\r\n  left: 2%;\r\n}\r\n\r\n.reloading:hover {\r\n  background-color: lightgray !important;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38115,7 +38113,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_MyPage_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./MyPage.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/contentScript/style/MyPage.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_MyPage_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./MyPage.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/MyPage.css");
 
       
       
@@ -38137,12 +38135,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_MyPage_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -38170,7 +38168,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./RelatedProblem.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/contentScript/style/RelatedProblem.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./RelatedProblem.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/RelatedProblem.css");
 
       
       
@@ -38192,12 +38190,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_RelatedProblem_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -38510,11 +38508,9 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 function MyPage() {
     var _a;
-    const [problems, setRes] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-    const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // 1: , 2: , 3:
-    const [activeRec, setActiveRec] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [problems, setProblems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1); // 1: , 2: , 3:
     const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1');
-    const [selectedButton_weak, setSelectedButton_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1');
     const [rotate, setRotate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
     const [isOptionsVisible, setOptionsVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
     const [filterTier, setFilter] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('None');
@@ -38535,15 +38531,14 @@ function MyPage() {
                 if (!response) {
                     throw new Error('서버 응답이 실패했습니다.');
                 }
-                setRes(response.data);
-                setCurrentPage(1);
+                setProblems(response.data);
+                setCurrentPage(0);
             }
             catch (error) {
                 console.error('에러 발생:', error);
             }
         }))();
     }, [rotate]);
-    console.log(problems);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"].rebuild();
     }, []);
@@ -38554,23 +38549,14 @@ function MyPage() {
         setFilter(tier);
         handleRotate();
         toggleOptions();
-        console.log(filterTier);
-        console.log(rotate);
-    };
-    const handleClick = (index) => {
-        // 현재 클릭한 버튼이 이미 활성 상태라면 비활성 상태로, 그렇지 않다면 활성 상태로 설정
-        setCurrentPage((currentPage) => (currentPage === index ? 0 : index));
-        setActiveRec((activeRec) => (activeRec === index ? null : index));
     };
     const handleClick_weak = (field) => {
         if (selectedField_weak === field) {
             setSelectedField_weak(null);
-            setSelectedButton_weak(null);
         }
         else {
             console.log(field);
             setSelectedField_weak(field);
-            setSelectedButton_weak(field);
         }
     };
     const CircleComponent = ({ cx, cy, r, fill }) => {
@@ -38587,11 +38573,11 @@ function MyPage() {
         setRotate(rotate => rotate + 1);
     };
     const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천'];
+    const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond'];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "main" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "header_bar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${activeRec === index + 1 ? 'active' : ''}`, onClick: () => handleClick(index + 1) }, text))))),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", { className: "header_bar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${currentPage === index ? 'active' : ''}`, onClick: () => setCurrentPage((currentPage) => (currentPage === index ? -1 : index)) }, text)))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rec_content" },
-            currentPage === 1 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+            currentPage === 0 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, className: 'week_tags' },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'tag' },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
@@ -38612,12 +38598,7 @@ function MyPage() {
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_5__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('None') }, "\uBB34\uC791\uC704"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC"))))),
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Tiers" }, Tiers.map((tier) => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter(tier) }, tier)))))),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp" }, (_a = problems.weak_tag_problems[selectedField_weak].explainations) === null || _a === void 0 ? void 0 : _a.map((problem, index) => {
                         console.log(problem);
                         return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'rp_all' },
@@ -38637,7 +38618,7 @@ function MyPage() {
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" }),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { "data-tip": `취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요.`, className: 'qmark' }, "\uCDE8\uC57D \uC720\uD615\uC774\uB780?"),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "left", type: "dark", effect: "solid" })))),
-            currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+            currentPage === 1 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#202125' } }, "\uD574\uB2F9 \uBD84\uB958\uC758 \uBB38\uC81C\uB97C \uD47C \uC9C0 \uC624\uB798\uB410\uC5B4\uC694."),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { textAlign: 'center', marginBottom: '0px', color: '#5f6368' } }, "\uB098\uC911\uC5D4 \uB354 \uAE30\uC5B5\uB098\uC9C0 \uC54A\uC744 \uAC70\uC608\uC694!"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
@@ -38647,7 +38628,7 @@ function MyPage() {
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_5__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('None') }, "\uBB34\uC791\uC704"),
+                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => setFilter('None') }, "\uBB34\uC791\uC704"),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
@@ -38690,7 +38671,7 @@ function MyPage() {
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px' } },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`, style: { color: 'black', fontWeight: 'bold' }, href: 'https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0' }, "\uC5D0\uBE59\uD558\uC6B0\uC2A4\uC758 \uB9DD\uAC01\uACE1\uC120")),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "top", type: "dark", effect: "solid" })))),
-            currentPage === 3 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+            currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '13px', color: '#202125' } }, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?"),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { textAlign: 'center', marginBottom: '0px', color: '#5f6368' } },
                     problems.user_id,
