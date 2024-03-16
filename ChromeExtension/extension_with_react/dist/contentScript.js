@@ -27,12 +27,36 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
-.header_bar {
+.HeaderBar {
   display: flex;
   border-bottom: 1px solid #ddd;
 }
 
-.rec_content {
+.HeaderBar .manu {
+  padding: 10px;
+  margin: 10px;
+  width: 35%;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+  font-size: 16px;
+  border-radius: 6px !important;
+}
+
+.HeaderBar .manu:hover {
+  background-color: #eef2f9;
+  font-weight: bold;
+  border-radius: 100px;
+}
+
+.HeaderBar .manu.active {
+  background-color: #eef2f9;
+  font-weight: bold;
+  border-radius: 100px;
+}
+
+.RecContent {
   margin-top: 15px;
 }
 
@@ -127,30 +151,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
 .hrefBox:hover {
   color: #041e49;
   font-weight: bold;
-}
-
-.manu {
-  padding: 10px;
-  margin: 10px;
-  width: 35%;
-  background-color: #FFFFFF;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-  font-size: 16px;
-  border-radius: 6px !important;
-}
-
-.manu:hover {
-  background-color: #eef2f9;
-  font-weight: bold;
-  border-radius: 100px;
-}
-
-.manu.active {
-  background-color: #eef2f9;
-  font-weight: bold;
-  border-radius: 100px;
 }
 
 .header_rp {
@@ -343,7 +343,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   color: #041e49;
 }
 
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"AAAA,gBAAgB;AAChB;EACE,aAAA;EACA,6BAAA;AACF;;AAEA;EACE,gBAAA;AACF;;AAEA;EACE,aAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,YAAA;AACF;;AAEA;EACE,aAAA;EACA,eAAA;AACF;;AAEA;EACE,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,+EAAA;EACA,mBAAA;EACA,gCAAA;EACA,aAAA;EACA,6BAAA,EAAA,mBAAA;EACA,WAAA;AACF;;AAEA;EACE,mBAAA;EACA,iBAAA;AACF;;AAEA;EACE,mBAAA;EACA,iBAAA;AACF;;AAEA;EACE,aAAA;EACA,aAAA;EACA,UAAA;EACA,aAAA;EACA,YAAA;EACA,uBAAA;AACF;;AAEA;EACE,mBAAA;EACA,UAAA;EACA,iBAAA;EACA,kBAAA;AACF;;AAEA;EACE,yBAAA;EACA,YAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;AACF;;AAEA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,gBAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;AACF;;AAEA;EACE,YAAA;EACA,cAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;EACA,iBAAA;AACF;;AAEA;EACE,cAAA;EACA,iBAAA;AACF;;AAEA;EACE,aAAA;EACA,YAAA;EACA,UAAA;EACA,yBAAA;EACA,YAAA;EACA,eAAA;EACA,6DAAA;EACA,eAAA;EACA,6BAAA;AACF;;AAEA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AACF;;AAEA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AACF;;AAEA;EACE,mBAAA;EACA,cAAA;EACA,eAAA;EACA,iBAAA;EACA,kBAAA;AACF;;AAEA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;EACA,cAAA;AACF;;AAEA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;EACA,qBAAA,EAAA,kBAAA;EACA,YAAA;AACF;;AAEA;EACE,UAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AACF;;AAEA;EACE,aAAA;EACA,WAAA;EACA,yBAAA;EACA,8BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,qBAAA;EACA,YAAA;EACA,iCAAA;EACA,sCAAA;AACF;;AAEA;EACE,yBAAA;EACA,2BAAA;AACF;;AAEA;EACE,aAAA;EACA,qBAAA;EACA,uBAAA;AACF;;AAEA;EACE,eAAA;EACA,gBAAA;EACA,mBAAA;EACA,UAAA;EACA,eAAA;EACA,wBAAA;AACF;;AAEA;EACE,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,cAAA;AACF;;AAEA;EACE,iBAAA;EACA,YAAA;AACF;;AAEA;EACE,gBAAA;EACA,iBAAA;EACA,eAAA;AACF;;AAEA;EACE,WAAA;EACA,YAAA;EACA,yDAAA;EACA,sBAAA;EACA,2BAAA;EACA,SAAA;EACA,6BAAA;EACA,uBAAA;EACA,iCAAA;EACA,0CAAA;EACA,kBAAA;EACA,QAAA;EACA,iBAAA;AACF;;AAEA;EACE,2BAAA;EACA,oCAAA;AACF;;AAEA,WAAA;AACA;EACE,kBAAA;EACA,qBAAA;EACA,QAAA;AACF;;AAEA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,2BAAA;EACA,4BAAA;EACA,gBAAA,EAAA,kCAAA;EACA,uBAAA;EACA,iBAAA;EACA,SAAA;EACA,iCAAA;EACA,iBAAA;AACF;;AAEA;EACE,2BAAA;AACF;;AAEA;EACE,UAAA;EACA,2BAAA;AACF;;AAEA;EACE,UAAA;EACA,wBAAA;EACA,0CAAA;AACF;;AAEA;EACE,UAAA;EACA,wBAAA;AACF;;AAEA;EACE,UAAA;EACA,yBAAA;AACF;;AAEA;EACE,kBAAA;EACA,YAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,sBAAA;EACA,sBAAA;EACA,sBAAA;EACA,kBAAA;EACA,wCAAA;EACA,YAAA;EACA,UAAA;AACF;;AAEA;EACE,aAAA;EACA,YAAA;EACA,eAAA;EACA,YAAA;EACA,6BAAA;EACA,gBAAA;AACF;;AAEA;EACE,yBAAA;EACA,cAAA;AACF","sourcesContent":["@charset \"UTF-8\";\n.header_bar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n\n.rec_content {\n  margin-top: 15px;\n}\n\n.week_tags {\n  display: flex;\n  justify-content: space-around;\n  padding-left: 2%;\n  padding-right: 2%;\n  margin: 10px;\n}\n\n.tag {\n  display: flex;\n  min-width: 83px;\n}\n\n.week_tagbtn {\n  border: 1px solid #E0E0E0;\n  cursor: pointer;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  font-weight: normal;\n  font-family: \"Arial, sans-serif\";\n  font-size: 11;\n  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\n  width: 100%;\n}\n\n.week_tagbtn.active {\n  background: #FFD8E0;\n  font-weight: bold;\n}\n\n.week_tagbtn:hover {\n  background: #FFDDD9;\n  font-weight: bold;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n\n.Box {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n\n.pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n\n.manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n.weak_message {\n  margin-left: 40%;\n  font-weight: bold;\n  font-size: 20px;\n}\n\n.reloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n\n.reloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n\n/* filter */\n.option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n\n.toggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n\n.toggleOptions:hover {\n  background-color: lightgray;\n}\n\n.options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n\n.options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n\n.options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n.options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n\n.Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n\n.Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n\n.Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"AAAA,gBAAgB;AAChB;EACE,aAAA;EACA,6BAAA;AACF;;AACA;EACE,aAAA;EACA,YAAA;EACA,UAAA;EACA,yBAAA;EACA,YAAA;EACA,eAAA;EACA,6DAAA;EACA,eAAA;EACA,6BAAA;AAEF;;AAAA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AAGF;;AADA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AAIF;;AADA;EACE,gBAAA;AAIF;;AADA;EACE,aAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;EACA,YAAA;AAIF;;AADA;EACE,aAAA;EACA,eAAA;AAIF;;AADA;EACE,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,+EAAA;EACA,mBAAA;EACA,gCAAA;EACA,aAAA;EACA,6BAAA,EAAA,mBAAA;EACA,WAAA;AAIF;;AADA;EACE,mBAAA;EACA,iBAAA;AAIF;;AADA;EACE,mBAAA;EACA,iBAAA;AAIF;;AADA;EACE,aAAA;EACA,aAAA;EACA,UAAA;EACA,aAAA;EACA,YAAA;EACA,uBAAA;AAIF;;AADA;EACE,mBAAA;EACA,UAAA;EACA,iBAAA;EACA,kBAAA;AAIF;;AADA;EACE,yBAAA;EACA,YAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;AAIF;;AADA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,gBAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;AAIF;;AADA;EACE,YAAA;EACA,cAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;EACA,iBAAA;AAIF;;AADA;EACE,cAAA;EACA,iBAAA;AAIF;;AADA;EACE,mBAAA;EACA,cAAA;EACA,eAAA;EACA,iBAAA;EACA,kBAAA;AAIF;;AADA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;EACA,cAAA;AAIF;;AADA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;EACA,qBAAA,EAAA,kBAAA;EACA,YAAA;AAIF;;AADA;EACE,UAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAIF;;AADA;EACE,aAAA;EACA,WAAA;EACA,yBAAA;EACA,8BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,qBAAA;EACA,YAAA;EACA,iCAAA;EACA,sCAAA;AAIF;;AADA;EACE,yBAAA;EACA,2BAAA;AAIF;;AADA;EACE,aAAA;EACA,qBAAA;EACA,uBAAA;AAIF;;AADA;EACE,eAAA;EACA,gBAAA;EACA,mBAAA;EACA,UAAA;EACA,eAAA;EACA,wBAAA;AAIF;;AADA;EACE,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,cAAA;AAIF;;AADA;EACE,iBAAA;EACA,YAAA;AAIF;;AADA;EACE,gBAAA;EACA,iBAAA;EACA,eAAA;AAIF;;AADA;EACE,WAAA;EACA,YAAA;EACA,yDAAA;EACA,sBAAA;EACA,2BAAA;EACA,SAAA;EACA,6BAAA;EACA,uBAAA;EACA,iCAAA;EACA,0CAAA;EACA,kBAAA;EACA,QAAA;EACA,iBAAA;AAIF;;AADA;EACE,2BAAA;EACA,oCAAA;AAIF;;AADA,WAAA;AACA;EACE,kBAAA;EACA,qBAAA;EACA,QAAA;AAIF;;AADA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,2BAAA;EACA,4BAAA;EACA,gBAAA,EAAA,kCAAA;EACA,uBAAA;EACA,iBAAA;EACA,SAAA;EACA,iCAAA;EACA,iBAAA;AAIF;;AADA;EACE,2BAAA;AAIF;;AADA;EACE,UAAA;EACA,2BAAA;AAIF;;AADA;EACE,UAAA;EACA,wBAAA;EACA,0CAAA;AAIF;;AADA;EACE,UAAA;EACA,wBAAA;AAIF;;AADA;EACE,UAAA;EACA,yBAAA;AAIF;;AADA;EACE,kBAAA;EACA,YAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,sBAAA;EACA,sBAAA;EACA,sBAAA;EACA,kBAAA;EACA,wCAAA;EACA,YAAA;EACA,UAAA;AAIF;;AADA;EACE,aAAA;EACA,YAAA;EACA,eAAA;EACA,YAAA;EACA,6BAAA;EACA,gBAAA;AAIF;;AADA;EACE,yBAAA;EACA,cAAA;AAIF","sourcesContent":["@charset \"UTF-8\";\n.HeaderBar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n.HeaderBar .manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n.HeaderBar .manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.HeaderBar .manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.RecContent {\n  margin-top: 15px;\n}\n\n.week_tags {\n  display: flex;\n  justify-content: space-around;\n  padding-left: 2%;\n  padding-right: 2%;\n  margin: 10px;\n}\n\n.tag {\n  display: flex;\n  min-width: 83px;\n}\n\n.week_tagbtn {\n  border: 1px solid #E0E0E0;\n  cursor: pointer;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  font-weight: normal;\n  font-family: \"Arial, sans-serif\";\n  font-size: 11;\n  border-radius: 5px !important; /* 모서리를 둥글게 만듭니다. */\n  width: 100%;\n}\n\n.week_tagbtn.active {\n  background: #FFD8E0;\n  font-weight: bold;\n}\n\n.week_tagbtn:hover {\n  background: #FFDDD9;\n  font-weight: bold;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n\n.Box {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n\n.pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n.weak_message {\n  margin-left: 40%;\n  font-weight: bold;\n  font-size: 20px;\n}\n\n.reloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n\n.reloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n\n/* filter */\n.option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n\n.toggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden; /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n\n.toggleOptions:hover {\n  background-color: lightgray;\n}\n\n.options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n\n.options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n\n.options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n.options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n\n.Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n\n.Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n\n.Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38550,15 +38550,6 @@ function MyPage() {
         handleRotate();
         toggleOptions();
     };
-    const handleClick_weak = (field) => {
-        if (selectedField_weak === field) {
-            setSelectedField_weak(null);
-        }
-        else {
-            console.log(field);
-            setSelectedField_weak(field);
-        }
-    };
     const CircleComponent = ({ cx, cy, r, fill }) => {
         return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("circle", { cx: cx, cy: cy, r: r, fill: fill });
     };
@@ -38574,20 +38565,15 @@ function MyPage() {
     };
     const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천'];
     const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond'];
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "main" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", { className: "header_bar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${currentPage === index ? 'active' : ''}`, onClick: () => setCurrentPage((currentPage) => (currentPage === index ? -1 : index)) }, text)))),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rec_content" },
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Main" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", { className: "HeaderBar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${currentPage === index ? 'active' : ''}`, onClick: () => setCurrentPage((currentPage) => (currentPage === index ? -1 : index)) }, text)))),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "RecContent" },
             currentPage === 0 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, className: 'week_tags' },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'tag' },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: rotate, className: 'week_tags' }, ['tag1', 'tag2', 'tag3'].map((tag, index) => {
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { key: problems.weak_tag_problems[`${tag}`].tag_name, className: 'tag' },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => handleClick_weak('tag1') }, problems.weak_tag_problems.tag1.tag_name)),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'tag' },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => handleClick_weak('tag2') }, problems.weak_tag_problems.tag2.tag_name)),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'tag' },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_icons_Tag__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => handleClick_weak('tag3') }, problems.weak_tag_problems.tag3.tag_name))),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'week_tagbtn', onClick: () => setSelectedField_weak(`${tag}`) }, problems.weak_tag_problems[`${tag}`].tag_name)));
+                })),
                 selectedField_weak && ( // 취약 유형 기반 추천
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' },

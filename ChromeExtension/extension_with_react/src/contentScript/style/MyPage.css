@@ -1,10 +1,31 @@
 @charset "UTF-8";
-.header_bar {
+.HeaderBar {
   display: flex;
   border-bottom: 1px solid #ddd;
 }
+.HeaderBar .manu {
+  padding: 10px;
+  margin: 10px;
+  width: 35%;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+  font-size: 16px;
+  border-radius: 6px !important;
+}
+.HeaderBar .manu:hover {
+  background-color: #eef2f9;
+  font-weight: bold;
+  border-radius: 100px;
+}
+.HeaderBar .manu.active {
+  background-color: #eef2f9;
+  font-weight: bold;
+  border-radius: 100px;
+}
 
-.rec_content {
+.RecContent {
   margin-top: 15px;
 }
 
@@ -99,30 +120,6 @@
 .hrefBox:hover {
   color: #041e49;
   font-weight: bold;
-}
-
-.manu {
-  padding: 10px;
-  margin: 10px;
-  width: 35%;
-  background-color: #FFFFFF;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-  font-size: 16px;
-  border-radius: 6px !important;
-}
-
-.manu:hover {
-  background-color: #eef2f9;
-  font-weight: bold;
-  border-radius: 100px;
-}
-
-.manu.active {
-  background-color: #eef2f9;
-  font-weight: bold;
-  border-radius: 100px;
 }
 
 .header_rp {

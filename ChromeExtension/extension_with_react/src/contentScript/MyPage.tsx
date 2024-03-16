@@ -8,7 +8,7 @@ import axios from 'axios';
 function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setProblems] = useState<ResponseData>(null);
       const [currentPage, setCurrentPage] = useState(-1); // 1: , 2: , 3:
-      const [selectedField_weak, setSelectedField_weak] = useState<string | null>('tag1');
+      const [selectedField_weak, setSelectedField_weak] = useState<string>('tag1');
       const [rotate, setRotate] = useState(0);
       const [isOptionsVisible, setOptionsVisible] = useState(false);
       const [filterTier, setFilter] = useState('None');
@@ -61,15 +61,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
         toggleOptions();
      }
 
-    const handleClick_weak = (field: string) => {
-        if (selectedField_weak === field) {
-            setSelectedField_weak(null);
-        } else {
-            console.log(field)
-            setSelectedField_weak(field);
-        }
-    };
-
     const CircleComponent = ({ cx, cy, r, fill }) => {
         return <circle cx={cx} cy={cy} r={r} fill={fill} />;
       };
@@ -82,7 +73,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
         // 지정된 URL로 이동
         window.location.href = dynamicURL;
     };
-    
    
     const handleRotate = () =>
     {
@@ -93,8 +83,8 @@ function MyPage() { // 사용자 상세 페이지 렌더링
     const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond']
 
     return (
-        <div className="main">
-            <header className="header_bar">
+        <div className="Main">
+            <header className="HeaderBar">
                 {
                     TypeOfRecommendation.map((text, index) => (
                         <button
@@ -108,48 +98,22 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                 }
             </header>
 
-            <div className="rec_content">
+            <div className="RecContent">
                     {currentPage === 0 && (
                     <>
                         <div key={rotate} className='week_tags'>
-                            {/* {
-                                problems.weak_tag_problems.map((tag, index) => {
+                            {
+                                ['tag1', 'tag2', 'tag3'].map((tag, index) => {
                                     return (
-                                    <div key={tag} className='tag'>
-                                        <Tag />
-                                        <button className='week_tagbtn' onClick={() => handleClick_weak(`tag${index}`)}>
-                                            {problems.weak_tag_problems.{tag}.tag_name}
-                                        </button>
-                                    </div>
-                                }))
-                            } */}
-                            <div className='tag'>
-                                <Tag />
-                                <button
-                                    className='week_tagbtn'
-                                    onClick={() => handleClick_weak('tag1')}
-                                    >
-                                    {problems.weak_tag_problems.tag1.tag_name}
-                                </button>
-                            </div>
-                            <div className='tag'>
-                                <Tag />
-                                <button
-                                    className='week_tagbtn'
-                                    onClick={() => handleClick_weak('tag2')}
-                                    >
-                                    {problems.weak_tag_problems.tag2.tag_name}
-                                </button>
-                            </div>
-                            <div className='tag'>
-                                <Tag />
-                                <button
-                                    className='week_tagbtn'
-                                    onClick={() => handleClick_weak('tag3')}
-                                    >
-                                    {problems.weak_tag_problems.tag3.tag_name}
-                                </button>
-                            </div>
+                                        <div key={problems.weak_tag_problems[`${tag}`].tag_name} className='tag'>
+                                            <Tag />
+                                            <button className='week_tagbtn' onClick={() => setSelectedField_weak(`${tag}`)}>
+                                                {problems.weak_tag_problems[`${tag}`].tag_name}
+                                            </button>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                             
                         {selectedField_weak && ( // 취약 유형 기반 추천
