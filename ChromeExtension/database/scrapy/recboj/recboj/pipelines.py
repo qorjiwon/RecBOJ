@@ -18,7 +18,7 @@ class RecbojPipeline:
     
     def __init__(self) :
         try:
-            self.conn = psycopg2.connect(user="myuser", password="mypassword", host= database_host, port=5433, database="mydatabase")
+            self.conn = psycopg2.connect(user="myuser", password="mypassword", host=database_host, port=5433, database="mydatabase")
             self.cur = self.conn.cursor()
             print("Database Connect Success")
         except Exception as err:
@@ -33,7 +33,6 @@ class RecbojPipeline:
 
     def handle_user(self,item, spider) :
         user_id = item.get('user_id')
-        print(user_id, "handle_user 시작합니다.")
         correct_problem = item.get('correct_problem')
         wrong_problem = item.get('wrong_problem')
         sql_query = "INSERT INTO user_info(user_id, correct_problem, wrong_problem) " \
@@ -47,7 +46,6 @@ class RecbojPipeline:
         data_to_insert = (user_id, correct_problems, wrong_problems)
         self.cur.execute(sql_query, data_to_insert)
         self.conn.commit()
-        print(data_to_insert)
         return item
 
     def handle_problem(self, item, spider) :

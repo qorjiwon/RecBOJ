@@ -3,9 +3,12 @@ from .utils import *
 import pandas as pd
 from time import time   
 import numpy as np
+import boto3
+from dotenv import load_dotenv
+import os
 
 def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model('recsys_models/VAE/VAE_model_final_amd.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model("./VAE_model_final_7144.h5", custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
     result = model.predict(input)
@@ -14,18 +17,20 @@ def vae_recommend_problem(problem_list, origin_problem):
     
     return result
 
-
 def Solved_Based_Recommenation(pivot_table, user_id, itpr, id_to_index ,NUM_TOP_PROBLEMS = 3):
     # url에서 필요한 정보를 
     #user_id에 맞는 문제 풀이 내역 추출
-    origin_solution, _ = return_user_data(pivot_table)
-    user_solution = get_problem_list(origin_solution, user_id, id_to_index)
+
+    origin_solution = pivot_table.to_numpy()
+    user_solution = pivot_table[pivot_table.index == user_id].to_numpy().flatten()
+
     #user 문제 풀이 내역을 통한 추천 문제
+    print("START VAE")
     total_rec = vae_recommend_problem(user_solution, origin_solution)
     top_problems = np.argpartition(-total_rec, NUM_TOP_PROBLEMS) # np.argpartition은 partition과 똑같이 동작하고, index를 리턴.
-    top_problems = top_problems[ :NUM_TOP_PROBLEMS]    
+    top_problems = top_problems[ :NUM_TOP_PROBLEMS]
+    print("VAE Problem", top_problems)
     problem_id = index_to_problem(itpr, top_problems)
-
     rtn = {}
     cnt = 0
     for item in problem_id:
@@ -179,4 +184,5 @@ def forget_curve(df, user_id):
 
     for i in range(len(weak_tag_forgetpcr)):
         weak_tag_forgetpcr[i] = round(weak_tag_forgetpcr[i] * 100 , 1)
+
     return weak_tag, weak_tag_forgetpcr

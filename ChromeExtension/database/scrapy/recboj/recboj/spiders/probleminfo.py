@@ -8,8 +8,8 @@ class ProblemInfoSpider(Spider) :
     name = "probleminfo"
 
     def start_requests(self):
-        #user_list = list(pd.read_csv('/home/ubuntu/airflow/airflow/data/khu_id_to_index.csv')['user_id'])[:4]
-        user_list = ["kst54252"]
+        #user_list = list(pd.read_csv('./khu_id_to_index.csv')['user_id'])[:4]
+        user_list = ["eu2525"]
         base_url = "https://www.acmicpc.net/user/"
         for user in user_list :
             profile_url = base_url + user

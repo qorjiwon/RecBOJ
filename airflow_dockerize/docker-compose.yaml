@@ -53,7 +53,7 @@ x-airflow-common:
   build: .
   environment:
     &airflow-common-env
-    DATABASE_HOST : postgres
+    DATABASE_HOST: postgres-server
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
@@ -83,6 +83,8 @@ x-airflow-common:
       condition: service_healthy
     postgres:
       condition: service_healthy
+  networks:
+    - my-custom-network
 
 services:
   postgres:
@@ -286,3 +288,7 @@ services:
 
 volumes:
   postgres-db-volume:
+
+networks:
+  my-custom-network:
+    external: true
