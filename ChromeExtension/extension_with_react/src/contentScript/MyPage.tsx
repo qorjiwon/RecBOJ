@@ -5,10 +5,12 @@ import { CSSTransition } from 'react-transition-group';
 import Tag from './icons/Tag';
 import { ResponseData, getData } from '../Data/Data';
 
+const PROBLEM_SIZE = 3
+
 function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setProblems] = useState<ResponseData|null>(null);
       const [currentPage, setCurrentPage] = useState(-1); // 취약 유형 기반, 푼 지 오래된 문제, 실력 기반
-      const [selectedField_weak, setSelectedField_weak] = useState<string>('tag1'); // 취약 유형
+      const [selectedField_weak, setSelectedField_weak] = useState(-1); // 취약 유형
       const [rotate, setRotate] = useState(0); // 새로고침.. python에서 배열에 저장해놓고 가져오도록 구현함
       const [isOptionsVisible, setOptionsVisible] = useState(false);
       const [filterTier, setFilter] = useState('None');
@@ -18,7 +20,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
       useEffect(() => {
           (async () => {
             try {
-              const response = await getData(url, rotate, filterTier)
+              const response = await getData(url, PROBLEM_SIZE, rotate, filterTier)
               if (response) {
                 setProblems(response);
                 setCurrentPage(0);
@@ -77,10 +79,10 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                     <>
                         <div className='WeekTags'>
                             {
-                                ['tag1', 'tag2', 'tag3'].map((tag, index) => {
+                                problems.weak_tag_problems.map((tag, index) => {
                                     return (
-                                        <button key={problems.weak_tag_problems[`${tag}`].tag_name} className='WeekTagBtn' onClick={() => setSelectedField_weak(`${tag}`)}>
-                                            {problems.weak_tag_problems[`${tag}`].tag_name}
+                                        <button key={tag.tag_name} className='WeekTagBtn' onClick={() => setSelectedField_weak(index)}>
+                                            {tag.tag_name}
                                         </button>
                                     )
                                 })
@@ -88,13 +90,13 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         </div>
 
                         <div className='weak_message'>
-                            {problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요.
+                            {`${problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요.`}
                         </div>
                     
-                        <div className={'OtherProblems'} style={{display: 'flex', alignItems: 'center'}}>
-                            <button className='reloadingM' onClick={() => setRotate(rotate => rotate + 1)}></button>
+                        <div className={'OtherProblems'}>
+                            <button className='ReloadingM' onClick={() => setRotate((rotate) => rotate + 1)}></button>
                             <div className="option-button-container">
-                                <button className="toggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
+                                <button className="ToggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
                                 <CSSTransition
                                     in={isOptionsVisible}
                                     timeout={250}
@@ -110,7 +112,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                                                         setRotate(0)
                                                     }}>
                                                     {tier}
-                                                    </button>)
+                                                </button>)
                                         }
                                     </div>
                                 </CSSTransition>
@@ -179,47 +181,29 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             <div className='divStyle'>
-                                <div className='Box' id = 'Box1'>
-                                    <div className = 'pBox' id = "Problem1">
-                                        <a 
-                                        data-tip = {`난이도: ${problems.forgotten_tag_problems.tag1.problem.level}, 분류: ${problems.forgotten_tag_problems.tag1.tag}`}
-                                        className = 'hrefBox' href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag1.problem.problemID}`}>
-                                            {problems.forgotten_tag_problems.tag1.problem.titleKo} </a>
-                                    </div>
-                                    <div className = 'eBox' id = "explanation1">
-                                        현재 {problems.forgotten_tag_problems.tag1.tag} 내용을 {problems.forgotten_tag_problems.tag1.forgottenPercent}% 기억하고 있어요.   
-                                    </div>
-                                </div>
-                                <div className='Box' id = 'Box2'>
-                                    <div className = 'pBox' id = "Problem2">
-                                        <a 
-                                        className = 'hrefBox' href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag2.problem.problemID}`}
-                                        data-tip = {`난이도: ${problems.forgotten_tag_problems.tag2.problem.level}, 분류: ${problems.forgotten_tag_problems.tag2.tag}`}
-                                        >
-                                        {problems.forgotten_tag_problems.tag2.problem.titleKo} </a>
-                                    </div>
-                                    <div className = 'eBox' id = "explanation2">
-                                    현재 {problems.forgotten_tag_problems.tag2.tag} 내용을 {problems.forgotten_tag_problems.tag2.forgottenPercent}% 기억하고 있어요.   
-                                    </div>
-                                </div>
-                                <div className='Box' id = 'Box3'>
-                                    <div className = 'pBox' id = "Problem3">
-                                        <a 
-                                            data-tip = {`난이도: ${problems.forgotten_tag_problems.tag3.problem.level}, 분류: ${problems.forgotten_tag_problems.tag3.tag}`}
-                                            className = 'hrefBox'
-                                            href={`https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag3.problem.problemID}`}>
-                                            {problems.forgotten_tag_problems.tag3.problem.titleKo} </a>
-                                    </div>
-                                    <div className = 'eBox' id = "explanation3">
-                                    현재 {problems.forgotten_tag_problems.tag3.tag} 내용을 {problems.forgotten_tag_problems.tag3.forgottenPercent}% 기억하고 있어요.   
-                                    </div>
-                                </div>
+                                {
+                                    problems.forgotten_tag_problems.map((problemInfo) => {
+                                        return (
+                                            <div className='ProblemBox'>
+                                                <div className = 'pBox'>
+                                                    <a 
+                                                    data-tip = {`난이도: ${problemInfo.problem.level}, 분류: ${problemInfo.tag}`}
+                                                    className = 'hrefBox' href={`https://www.acmicpc.net/problem/${problemInfo.problem.problemID}`}>
+                                                        {problemInfo.problem.titleKo} </a>
+                                                </div>
+                                                <div className = 'eBox'>
+                                                    {`현재 ${problemInfo.tag} 내용을 ${problemInfo.forgottenPercent}% 기억하고 있어요. `}  
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                             <div style={{ textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px'}}>
                                 <a 
                                 data-tip = {`해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`}
                                 style={{color: 'black', fontWeight: 'bold'}} href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'>
-                                    에빙하우스의 망각곡선</a>
+                                    {'에빙하우스의 망각곡선'}</a>
                             </div>
                             <ReactTooltip place="top" type="dark" effect="solid"/>
                         </div>
@@ -254,49 +238,27 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                         
                             <div className='divStyle'>
-                                <div className='Box' id = 'Box1'>
-                                    <div className = 'pBox' id = "Problem1">
-                                        <a 
-                                        data-tip = {`난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`}
-                                        className = 'hrefBox'
-                                        href = {`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem1.problemID}`}>
-                                            {problems.similarity_based_problems.problem1.titleKo}
-                                        </a>
-                                    </div>
-                                    <div className = 'eBox' id = "explanation1" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                                        <p>난이도: {problems.similarity_based_problems.problem1.level}</p>
-                                        <p>평균 시도 횟수: {problems.similarity_based_problems.problem1.averageTries}</p>
-                                        <p>분류: {problems.similarity_based_problems.problem1.tags}</p>
-                                    </div>
-                                </div>
-                                <div className='Box' id = 'Box2'>
-                                    <div className = 'pBox' id = "Problem2">
-                                        <a 
-                                        data-tip = {`난이도: ${problems.similarity_based_problems.problem2.level}, 분류: ${problems.similarity_based_problems.problem2.tags}`}
-                                        className = 'hrefBox'
-                                        href={`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem2.problemID}`}>
-                                            {problems.similarity_based_problems.problem2.titleKo}</a>
-                                    </div>
-                                    <div className = 'eBox' id = "explanation2" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                                        <p>난이도: {problems.similarity_based_problems.problem2.level}</p>
-                                        <p>평균 시도 횟수: {problems.similarity_based_problems.problem2.averageTries}</p>
-                                        <p>분류: {problems.similarity_based_problems.problem2.tags}</p>
-                                    </div>
-                                </div>
-                                <div className='Box' id = 'Box3'>
-                                    <div className = 'pBox' id = "Problem3">
-                                        <a 
-                                            data-tip = {`난이도: ${problems.similarity_based_problems.problem3.level}, 분류: ${problems.similarity_based_problems.problem3.tags}`}
-                                            className = 'hrefBox'
-                                            href = {`https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem3.problemID}`}>
-                                                {problems.similarity_based_problems.problem3.titleKo}</a>
-                                    </div>
-                                    <div className = 'eBox' id = "explanation3" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                                        <p>난이도: {problems.similarity_based_problems.problem3.level}</p>
-                                        <p>평균 시도 횟수: {problems.similarity_based_problems.problem3.averageTries}</p>
-                                        <p>분류: {problems.similarity_based_problems.problem3.tags}</p>
-                                    </div>
-                                </div>
+                                {
+                                    problems.similarity_based_problems.map((problem) => {
+                                        return (
+                                            <div className='Box' id = 'Box1'>
+                                                <div className = 'pBox' id = "Problem1">
+                                                    <a 
+                                                    data-tip = {`난이도: ${problem.level}, 분류: ${problem.tags}`}
+                                                    className = 'hrefBox'
+                                                    href = {`https://www.acmicpc.net/problem/${problem.problemID}`}>
+                                                        {problem.titleKo}
+                                                    </a>
+                                                </div>
+                                                <div className = 'eBox' style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                                                    <p>난이도: {problem.level}</p>
+                                                    <p>평균 시도 횟수: {problem.averageTries}</p>
+                                                    <p>분류: {problem.tags}</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                                 <ReactTooltip place="top" type="dark" effect="solid"/>
                             </div>

@@ -63,7 +63,11 @@
   text-align: center;
 }
 
-.OtherProblems .reloadingM {
+.OtherProblems {
+  display: flex;
+  align-items: center;
+}
+.OtherProblems .ReloadingM {
   width: 23px;
   height: 23px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E");
@@ -78,7 +82,7 @@
   left: 2%;
   margin-bottom: 1%;
 }
-.OtherProblems .reloadingM:hover {
+.OtherProblems .ReloadingM:hover {
   background-color: lightgray;
   transform: rotate(400deg) !important;
 }
@@ -87,7 +91,7 @@
   display: inline-block;
   left: 3%;
 }
-.OtherProblems .toggleOptions {
+.OtherProblems .ToggleOptions {
   width: 70px;
   height: 30px;
   background-size: cover;
@@ -101,7 +105,7 @@
   transition: background-color 0.2s;
   margin-bottom: 5%;
 }
-.OtherProblems .toggleOptions:hover {
+.OtherProblems .ToggleOptions:hover {
   background-color: lightgray;
 }
 .OtherProblems .options-enter {
@@ -156,15 +160,13 @@
   border: none;
   justify-content: center;
 }
-
-.Box {
+.divStyle .ProblemBox {
   flex-direction: row;
   width: 28%;
   margin-left: 40px;
   margin-right: 14px;
 }
-
-.pBox {
+.divStyle .ProblemBox .pBox {
   background-color: #f8fafd;
   padding: 3px;
   margin-bottom: 14px;
@@ -175,8 +177,7 @@
   border-radius: 10px !important;
   box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.eBox {
+.divStyle .ProblemBox .eBox {
   height: 140px;
   background-color: #f8fafd;
   padding: 10px;

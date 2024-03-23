@@ -98,7 +98,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   text-align: center;
 }
 
-.OtherProblems .reloadingM {
+.OtherProblems {
+  display: flex;
+  align-items: center;
+}
+
+.OtherProblems .ReloadingM {
   width: 23px;
   height: 23px;
   background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
@@ -114,7 +119,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   margin-bottom: 1%;
 }
 
-.OtherProblems .reloadingM:hover {
+.OtherProblems .ReloadingM:hover {
   background-color: lightgray;
   transform: rotate(400deg) !important;
 }
@@ -125,7 +130,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   left: 3%;
 }
 
-.OtherProblems .toggleOptions {
+.OtherProblems .ToggleOptions {
   width: 70px;
   height: 30px;
   background-size: cover;
@@ -140,7 +145,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   margin-bottom: 5%;
 }
 
-.OtherProblems .toggleOptions:hover {
+.OtherProblems .ToggleOptions:hover {
   background-color: lightgray;
 }
 
@@ -203,14 +208,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   justify-content: center;
 }
 
-.Box {
+.divStyle .ProblemBox {
   flex-direction: row;
   width: 28%;
   margin-left: 40px;
   margin-right: 14px;
 }
 
-.pBox {
+.divStyle .ProblemBox .pBox {
   background-color: #f8fafd;
   padding: 3px;
   margin-bottom: 14px;
@@ -222,7 +227,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.eBox {
+.divStyle .ProblemBox .eBox {
   height: 140px;
   background-color: #f8fafd;
   padding: 10px;
@@ -340,7 +345,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   color: black;
 }
 
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"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","sourcesContent":["@charset \"UTF-8\";\n.HeaderBar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n.HeaderBar .manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n.HeaderBar .manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.HeaderBar .manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.RecContent {\n  margin-top: 15px;\n}\n.RecContent .WeekTags {\n  display: flex;\n  justify-content: space-around;\n  margin: 10px;\n  padding: 0 2%;\n}\n.RecContent .WeekTags .WeekTagBtn {\n  width: 20%;\n  min-width: 83px;\n  height: 33px;\n  border: 1px solid #E0E0E0;\n  font-weight: normal;\n  font-size: 11;\n  font-family: \"Arial, sans-serif\";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  border-radius: 5px !important;\n  cursor: pointer;\n}\n.RecContent .WeekTags .WeekTagBtn:hover {\n  background: #FFDDD9;\n}\n.RecContent .WeekTags .WeekTagBtn.active {\n  background: #FFD8E0;\n}\n\n.weak_message {\n  font-size: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.OtherProblems .reloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n.OtherProblems .reloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n.OtherProblems .option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n.OtherProblems .toggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden;\n  /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n.OtherProblems .toggleOptions:hover {\n  background-color: lightgray;\n}\n.OtherProblems .options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n.OtherProblems .options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n.OtherProblems .options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n.OtherProblems .options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n.OtherProblems .Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n.OtherProblems .Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n.OtherProblems .Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n\n.Box {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n\n.pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n\n.eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"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","sourcesContent":["@charset \"UTF-8\";\n.HeaderBar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n.HeaderBar .manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n.HeaderBar .manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.HeaderBar .manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.RecContent {\n  margin-top: 15px;\n}\n.RecContent .WeekTags {\n  display: flex;\n  justify-content: space-around;\n  margin: 10px;\n  padding: 0 2%;\n}\n.RecContent .WeekTags .WeekTagBtn {\n  width: 20%;\n  min-width: 83px;\n  height: 33px;\n  border: 1px solid #E0E0E0;\n  font-weight: normal;\n  font-size: 11;\n  font-family: \"Arial, sans-serif\";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  border-radius: 5px !important;\n  cursor: pointer;\n}\n.RecContent .WeekTags .WeekTagBtn:hover {\n  background: #FFDDD9;\n}\n.RecContent .WeekTags .WeekTagBtn.active {\n  background: #FFD8E0;\n}\n\n.weak_message {\n  font-size: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.OtherProblems {\n  display: flex;\n  align-items: center;\n}\n.OtherProblems .ReloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n.OtherProblems .ReloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n.OtherProblems .option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n.OtherProblems .ToggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden;\n  /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n.OtherProblems .ToggleOptions:hover {\n  background-color: lightgray;\n}\n.OtherProblems .options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n.OtherProblems .options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n.OtherProblems .options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n.OtherProblems .options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n.OtherProblems .Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n.OtherProblems .Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n.OtherProblems .Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n.divStyle .ProblemBox {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n.divStyle .ProblemBox .pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n.divStyle .ProblemBox .eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38492,11 +38497,12 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
     });
 };
 
-const getData = (url, rotate, filterTier) => __awaiter(void 0, void 0, void 0, function* () {
+const getData = (url, numProblems, rotate, filterTier) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // https://recproblem.site
         const response = yield axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://127.0.0.1:8000/mypage/problems', {
             url,
+            numProblems: numProblems,
             div: rotate,
             filter: filterTier,
         }, {
@@ -38505,6 +38511,7 @@ const getData = (url, rotate, filterTier) => __awaiter(void 0, void 0, void 0, f
             }
         });
         if (response) {
+            console.log(response);
             return response.data;
         }
         return null;
@@ -38549,11 +38556,12 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 
+const PROBLEM_SIZE = 3;
 function MyPage() {
     var _a;
     const [problems, setProblems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1); // 취약 유형 기반, 푼 지 오래된 문제, 실력 기반
-    const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('tag1'); // 취약 유형
+    const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1); // 취약 유형
     const [rotate, setRotate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // 새로고침.. python에서 배열에 저장해놓고 가져오도록 구현함
     const [isOptionsVisible, setOptionsVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
     const [filterTier, setFilter] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('None');
@@ -38561,7 +38569,7 @@ function MyPage() {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         (() => __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield (0,_Data_Data__WEBPACK_IMPORTED_MODULE_3__.getData)(url, rotate, filterTier);
+                const response = yield (0,_Data_Data__WEBPACK_IMPORTED_MODULE_3__.getData)(url, PROBLEM_SIZE, rotate, filterTier);
                 if (response) {
                     setProblems(response);
                     setCurrentPage(0);
@@ -38596,16 +38604,14 @@ function MyPage() {
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "RecContent" },
             currentPage === 0 && ( // 취약 유형 기반
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'WeekTags' }, ['tag1', 'tag2', 'tag3'].map((tag, index) => {
-                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: problems.weak_tag_problems[`${tag}`].tag_name, className: 'WeekTagBtn', onClick: () => setSelectedField_weak(`${tag}`) }, problems.weak_tag_problems[`${tag}`].tag_name));
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'WeekTags' }, problems.weak_tag_problems.map((tag, index) => {
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: tag.tag_name, className: 'WeekTagBtn', onClick: () => setSelectedField_weak(index) }, tag.tag_name));
                 })),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' },
-                    problems.weak_tag_problems[selectedField_weak].weak_pcr,
-                    "%\uB9CC\uD07C \uC57D\uD55C \uBD84\uC57C\uC5D0\uC694."),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'OtherProblems', style: { display: 'flex', alignItems: 'center' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => setRotate(rotate => rotate + 1) }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' }, `${problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요.`),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'OtherProblems' },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'ReloadingM', onClick: () => setRotate((rotate) => rotate + 1) }),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "ToggleOptions", onClick: toggleOptions },
                             " ",
                             '난이도 필터',
                             " "),
@@ -38649,42 +38655,16 @@ function MyPage() {
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
                                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC")))))),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: '20px' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box1' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem1" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.forgotten_tag_problems.tag1.problem.level}, 분류: ${problems.forgotten_tag_problems.tag1.tag}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag1.problem.problemID}` },
-                                    problems.forgotten_tag_problems.tag1.problem.titleKo,
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' }, problems.forgotten_tag_problems.map((problemInfo) => {
+                        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'ProblemBox' },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox' },
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problemInfo.problem.level}, 분류: ${problemInfo.tag}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problemInfo.problem.problemID}` },
+                                    problemInfo.problem.titleKo,
                                     " ")),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation1" },
-                                "\uD604\uC7AC ",
-                                problems.forgotten_tag_problems.tag1.tag,
-                                " \uB0B4\uC6A9\uC744 ",
-                                problems.forgotten_tag_problems.tag1.forgottenPercent,
-                                "% \uAE30\uC5B5\uD558\uACE0 \uC788\uC5B4\uC694.")),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box2' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem2" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag2.problem.problemID}`, "data-tip": `난이도: ${problems.forgotten_tag_problems.tag2.problem.level}, 분류: ${problems.forgotten_tag_problems.tag2.tag}` },
-                                    problems.forgotten_tag_problems.tag2.problem.titleKo,
-                                    "\u001C ")),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation2" },
-                                "\uD604\uC7AC ",
-                                problems.forgotten_tag_problems.tag2.tag,
-                                " \uB0B4\uC6A9\uC744 ",
-                                problems.forgotten_tag_problems.tag2.forgottenPercent,
-                                "% \uAE30\uC5B5\uD558\uACE0 \uC788\uC5B4\uC694.")),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box3' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem3" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.forgotten_tag_problems.tag3.problem.level}, 분류: ${problems.forgotten_tag_problems.tag3.tag}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.forgotten_tag_problems.tag3.problem.problemID}` },
-                                    problems.forgotten_tag_problems.tag3.problem.titleKo,
-                                    " ")),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation3" },
-                                "\uD604\uC7AC ",
-                                problems.forgotten_tag_problems.tag3.tag,
-                                " \uB0B4\uC6A9\uC744 ",
-                                problems.forgotten_tag_problems.tag3.forgottenPercent,
-                                "% \uAE30\uC5B5\uD558\uACE0 \uC788\uC5B4\uC694."))),
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox' }, `현재 ${problemInfo.tag} 내용을 ${problemInfo.forgottenPercent}% 기억하고 있어요. `)));
+                    })),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px' } },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`, style: { color: 'black', fontWeight: 'bold' }, href: 'https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0' }, "\uC5D0\uBE59\uD558\uC6B0\uC2A4\uC758 \uB9DD\uAC01\uACE1\uC120")),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`, style: { color: 'black', fontWeight: 'bold' }, href: 'https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0' }, '에빙하우스의 망각곡선')),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "top", type: "dark", effect: "solid" })))),
             currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '13px', color: '#202125' } }, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?"),
@@ -38703,46 +38683,21 @@ function MyPage() {
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC"))))),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: '20px' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box1' },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' }, problems.similarity_based_problems.map((problem) => {
+                        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box1' },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem1" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.similarity_based_problems.problem1.level}, 분류: ${problems.similarity_based_problems.problem1.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem1.problemID}` }, problems.similarity_based_problems.problem1.titleKo)),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation1", style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
+                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problem.level}, 분류: ${problem.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problem.problemID}` }, problem.titleKo)),
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                     "\uB09C\uC774\uB3C4: ",
-                                    problems.similarity_based_problems.problem1.level),
+                                    problem.level),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                     "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
-                                    problems.similarity_based_problems.problem1.averageTries),
+                                    problem.averageTries),
                                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
                                     "\uBD84\uB958: ",
-                                    problems.similarity_based_problems.problem1.tags))),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box2' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem2" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.similarity_based_problems.problem2.level}, 분류: ${problems.similarity_based_problems.problem2.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem2.problemID}` }, problems.similarity_based_problems.problem2.titleKo)),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation2", style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uB09C\uC774\uB3C4: ",
-                                    problems.similarity_based_problems.problem2.level),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
-                                    problems.similarity_based_problems.problem2.averageTries),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uBD84\uB958: ",
-                                    problems.similarity_based_problems.problem2.tags))),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box3' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem3" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problems.similarity_based_problems.problem3.level}, 분류: ${problems.similarity_based_problems.problem3.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problems.similarity_based_problems.problem3.problemID}` }, problems.similarity_based_problems.problem3.titleKo)),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', id: "explanation3", style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uB09C\uC774\uB3C4: ",
-                                    problems.similarity_based_problems.problem3.level),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
-                                    problems.similarity_based_problems.problem3.averageTries),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uBD84\uB958: ",
-                                    problems.similarity_based_problems.problem3.tags)))),
+                                    problem.tags))));
+                    })),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "top", type: "dark", effect: "solid" })))))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyPage);
