@@ -3,10 +3,10 @@ import "./style/MyPage.css";
 import ReactTooltip from 'react-tooltip';
 import { CSSTransition } from 'react-transition-group';
 import Tag from './icons/Tag';
-import axios from 'axios';
+import { ResponseData, getData } from '../Data/Data';
 
 function MyPage() { // 사용자 상세 페이지 렌더링
-      const [problems, setProblems] = useState<ResponseData>(null);
+      const [problems, setProblems] = useState<ResponseData|null>(null);
       const [currentPage, setCurrentPage] = useState(-1); // 취약 유형 기반, 푼 지 오래된 문제, 실력 기반
       const [selectedField_weak, setSelectedField_weak] = useState<string>('tag1'); // 취약 유형
       const [rotate, setRotate] = useState(0); // 새로고침.. python에서 배열에 저장해놓고 가져오도록 구현함
@@ -17,28 +17,12 @@ function MyPage() { // 사용자 상세 페이지 렌더링
 
       useEffect(() => {
           (async () => {
-              try {
-                // https://recproblem.site
-                const response = await axios.post(
-                    'http://127.0.0.1:8000/mypage/problems',
-                    {
-                        url,
-                        div: rotate,
-                        filter: filterTier,
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                );
-  
-                  if (!response) {
-                      throw new Error('서버 응답이 실패했습니다.');
-                  }
-                  setProblems(response.data);
-                  setCurrentPage(0);
-
+            try {
+              const response = await getData(url, rotate, filterTier)
+              if (response) {
+                setProblems(response);
+                setCurrentPage(0);
+              }
               }
               catch (error) {
                 console.error('에러 발생:', error);
@@ -59,10 +43,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
         setFilter(tier);
         toggleOptions();
      }
-
-    const CircleComponent = ({ cx, cy, r, fill }) => {
-        return <circle cx={cx} cy={cy} r={r} fill={fill} />;
-    };
 
     // 클릭 이벤트 핸들러
     const contentClick = (url) => {
@@ -325,59 +305,6 @@ function MyPage() { // 사용자 상세 페이지 렌더링
             </div>
         </div>
     );
-}
-
-interface MyPageRequest {
-    url: string;
-    div: number;
-    filter: string;
-  }  
-
-interface Problem {
-    problemID: string;
-    titleKo: string;
-    level: string;
-    averageTries: number;
-    tags: string[];
-}
-
-interface Explaination {
-    problemID: string;
-    titleKo: string;
-    level: string;
-    averageTries: number;
-}
-
-interface Tag {
-    tag_name: string;
-    problems: string[];
-    explainations: Explaination[];
-    weak_pcr: number;
-}
-
-interface WeakTagProblems {
-    [key: string]: Tag;
-}
-
-interface ForgottenTagProblems {
-    [key: string]: {
-        tag: string;
-        forgottenPercent: number;
-        problem: Problem;
-    };
-}
-
-interface SimilarityBasedProblems {
-    problem1: Problem;
-    problem2: Problem;
-    problem3: Problem;
-}
-
-interface ResponseData {
-    user_id: string;
-    weak_tag_problems: WeakTagProblems;
-    forgotten_tag_problems: ForgottenTagProblems;
-    similarity_based_problems: SimilarityBasedProblems;
 }
   
 export default MyPage;

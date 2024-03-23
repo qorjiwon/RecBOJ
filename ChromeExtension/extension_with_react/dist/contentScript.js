@@ -38470,6 +38470,54 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/Data/Data.tsx":
+/*!***************************!*\
+  !*** ./src/Data/Data.tsx ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getData: () => (/* binding */ getData)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../../node_modules/axios/lib/axios.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+const getData = (url, rotate, filterTier) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // https://recproblem.site
+        const response = yield axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://127.0.0.1:8000/mypage/problems', {
+            url,
+            div: rotate,
+            filter: filterTier,
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response) {
+            return response.data;
+        }
+        return null;
+    }
+    catch (error) {
+        console.error('에러 발생:', error);
+        return null;
+    }
+});
+
+
+/***/ }),
+
 /***/ "./src/contentScript/MyPage.tsx":
 /*!**************************************!*\
   !*** ./src/contentScript/MyPage.tsx ***!
@@ -38486,7 +38534,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_MyPage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/MyPage.css */ "./src/contentScript/style/MyPage.css");
 /* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/CSSTransition.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "../../node_modules/axios/lib/axios.js");
+/* harmony import */ var _Data_Data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Data/Data */ "./src/Data/Data.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -38513,21 +38561,11 @@ function MyPage() {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         (() => __awaiter(this, void 0, void 0, function* () {
             try {
-                // https://recproblem.site
-                const response = yield axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('http://127.0.0.1:8000/mypage/problems', {
-                    url,
-                    div: rotate,
-                    filter: filterTier,
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                if (!response) {
-                    throw new Error('서버 응답이 실패했습니다.');
+                const response = yield (0,_Data_Data__WEBPACK_IMPORTED_MODULE_3__.getData)(url, rotate, filterTier);
+                if (response) {
+                    setProblems(response);
+                    setCurrentPage(0);
                 }
-                setProblems(response.data);
-                setCurrentPage(0);
             }
             catch (error) {
                 console.error('에러 발생:', error);
@@ -38543,9 +38581,6 @@ function MyPage() {
     const handleFilter = (tier) => {
         setFilter(tier);
         toggleOptions();
-    };
-    const CircleComponent = ({ cx, cy, r, fill }) => {
-        return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("circle", { cx: cx, cy: cy, r: r, fill: fill });
     };
     // 클릭 이벤트 핸들러
     const contentClick = (url) => {
