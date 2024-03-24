@@ -3,13 +3,15 @@ from scrapy import Spider
 from recboj import items
 import pandas as pd
 import urllib.parse
+import json
+import requests
 
 class ProblemInfoSpider(Spider) :
     name = "probleminfo"
 
     def start_requests(self):
         #user_list = list(pd.read_csv('/home/ubuntu/airflow/airflow/data/khu_id_to_index.csv')['user_id'])[:4]
-        user_list = ["kst54252"]
+        user_list = ["crash1522"]
         base_url = "https://www.acmicpc.net/user/"
         for user in user_list :
             profile_url = base_url + user
@@ -25,6 +27,15 @@ class ProblemInfoSpider(Spider) :
             else :
                 user['wrong_problem'] = link.xpath('./a/text()').getall()
         problem_list = response.xpath('//*[@class="problem-list"]/a/text()').getall()
+        #level 정보 받아오기.
+        url = f"https://solved.ac/api/v3/user/show?handle={user_id}"
+        r_profile = requests.get(url)
+        if r_profile.status_code == requests.codes.ok:
+            profile = json.loads(r_profile.content.decode('utf-8'))
+            level = profile.get('tier')
+        else:
+            level = 0
+        user['level'] = level 
         yield user
         for problem in problem_list :
             problem= urllib.parse.unquote(problem)

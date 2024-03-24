@@ -21,6 +21,7 @@ class RecbojPipeline:
             self.conn = psycopg2.connect(user="myuser", password="mypassword", host= database_host, port=5433, database="mydatabase")
             self.cur = self.conn.cursor()
             print("Database Connect Success")
+            
         except Exception as err:
             print(str(err)) 
 
@@ -36,15 +37,17 @@ class RecbojPipeline:
         print(user_id, "handle_user 시작합니다.")
         correct_problem = item.get('correct_problem')
         wrong_problem = item.get('wrong_problem')
-        sql_query = "INSERT INTO user_info(user_id, correct_problem, wrong_problem) " \
-                "VALUES (%s, %s, %s) " \
+        level = item.get('level')
+        sql_query = "INSERT INTO user_info(user_id, correct_problem, wrong_problem, level) " \
+                "VALUES (%s, %s, %s, %s) " \
                 "ON CONFLICT (user_id) DO UPDATE " \
                 "SET correct_problem = EXCLUDED.correct_problem, " \
-                "wrong_problem = EXCLUDED.wrong_problem;"
+                "wrong_problem = EXCLUDED.wrong_problem," \
+                "level = EXCLUDED.level;" 
         # 데이터를 정수 배열로 변환
         correct_problems = [int(x) for x in correct_problem]
         wrong_problems = [int(x) for x in wrong_problem]
-        data_to_insert = (user_id, correct_problems, wrong_problems)
+        data_to_insert = (user_id, correct_problems, wrong_problems, level)
         self.cur.execute(sql_query, data_to_insert)
         self.conn.commit()
         print(data_to_insert)

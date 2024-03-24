@@ -53,6 +53,7 @@ x-airflow-common:
   build: .
   environment:
     &airflow-common-env
+    DATABASE_SERVER: postgres
     DATABASE_HOST: postgres-server
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
@@ -104,6 +105,8 @@ services:
     restart: always
     ports:
       - 2345:5432
+    networks:
+      - my-custom-network
 
   redis:
     image: redis:latest
@@ -116,6 +119,8 @@ services:
       retries: 50
       start_period: 30s
     restart: always
+    networks:
+      - my-custom-network
 
   airflow-webserver:
     <<: *airflow-common

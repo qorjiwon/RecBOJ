@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD : mypassword
       POSTGRES_DB : mydatabase
     expose:
-      - "5433" # Publishes 5433 to other containers but NOT to host machine
+      - "5433" # Publishes 5433 to other containers
     ports:
       - "5433:5433"
     command: -p 5433
@@ -57,6 +57,8 @@ services:
   #     - 8000:8000
   #   volumes:
   #     - ./server/:/server
+  #   networks:
+  #     - my-custom-network
 
 networks:
   my-custom-network:

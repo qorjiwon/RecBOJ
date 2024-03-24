@@ -3,6 +3,8 @@ from scrapy import Spider
 from recboj import items
 import pandas as pd
 import urllib.parse
+import json
+import requests
 
 class ProblemInfoSpider(Spider) :
     name = "probleminfo"
@@ -25,6 +27,16 @@ class ProblemInfoSpider(Spider) :
             else :
                 user['wrong_problem'] = link.xpath('./a/text()').getall()
         problem_list = response.xpath('//*[@class="problem-list"]/a/text()').getall()
+        
+        #level 정보 받아오기.
+        url = f"https://solved.ac/api/v3/user/show?handle={user_id}"
+        r_profile = requests.get(url)
+        if r_profile.status_code == requests.codes.ok:
+            profile = json.loads(r_profile.content.decode('utf-8'))
+            level = profile.get('tier')
+        else:
+            level = 0
+        user['level'] = level #level 정보 넣어주면 됌
         yield user
         for problem in problem_list :
             problem= urllib.parse.unquote(problem)

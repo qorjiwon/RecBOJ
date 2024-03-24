@@ -20,7 +20,7 @@ dag_args = dict(
     default_args=default_args,
     description='RecBOJ',
     schedule_interval=timedelta(days=1),
-    start_date=datetime(2024, 3, 16),
+    start_date=datetime(2024, 3, 21),
     tags=['recboj-airflow-test'],
 )
 

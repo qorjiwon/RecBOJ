@@ -8,7 +8,7 @@ class User(scrapy.Item):
     user_id = scrapy.Field()
     correct_problem = scrapy.Field()
     wrong_problem = scrapy.Field()
-    problem_info = scrapy.Field()
+    level = scrapy.Field()
     pass
 
 class Problem(scrapy.Item):
