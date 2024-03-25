@@ -3,9 +3,29 @@ from .utils import *
 import pandas as pd
 from time import time   
 import numpy as np
+import boto3
+from dotenv import load_dotenv
+import os
+
+
+# .env 파일을 로드
+load_dotenv()
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+aws_region = os.getenv('AWS_REGION')
+# S3 클라이언트를 생성합니다.
+s3 = boto3.client('s3', 
+                  aws_access_key_id=aws_access_key_id,
+                  aws_secret_access_key=aws_secret_access_key,
+                  region_name=aws_region)
+
+bucket_name = os.getenv('S3_BUCKET_NAME')
+model_key = os.getenv('S3_VAE_PATH')
+local_model_path = 'recsys_models/VAE/VAE_model_final_amd.h5'
+s3.download_file(bucket_name, model_key, local_model_path)
 
 def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model('recsys_models/VAE/VAE_model_final_amd.h5', custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
+    model = tf.keras.models.load_model(local_model_path, custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
     input_x = np.nan_to_num(problem_list)
     input = np.vstack([origin_problem[0, :], input_x])
     result = model.predict(input)
