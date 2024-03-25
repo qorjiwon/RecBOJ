@@ -10,7 +10,7 @@ const PROBLEM_SIZE = 3
 function MyPage() { // 사용자 상세 페이지 렌더링
       const [problems, setProblems] = useState<ResponseData|null>(null);
       const [currentPage, setCurrentPage] = useState(-1); // 취약 유형 기반, 푼 지 오래된 문제, 실력 기반
-      const [selectedField_weak, setSelectedField_weak] = useState(-1); // 취약 유형
+      const [selectedField_weak, setSelectedField_weak] = useState(0); // 취약 유형
       const [rotate, setRotate] = useState(0); // 새로고침.. python에서 배열에 저장해놓고 가져오도록 구현함
       const [isOptionsVisible, setOptionsVisible] = useState(false);
       const [filterTier, setFilter] = useState('None');
@@ -24,6 +24,8 @@ function MyPage() { // 사용자 상세 페이지 렌더링
               if (response) {
                 setProblems(response);
                 setCurrentPage(0);
+                console.log('good')
+                console.log(response)
               }
               }
               catch (error) {

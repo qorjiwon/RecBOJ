@@ -38561,7 +38561,7 @@ function MyPage() {
     var _a;
     const [problems, setProblems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [currentPage, setCurrentPage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1); // 취약 유형 기반, 푼 지 오래된 문제, 실력 기반
-    const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1); // 취약 유형
+    const [selectedField_weak, setSelectedField_weak] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // 취약 유형
     const [rotate, setRotate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // 새로고침.. python에서 배열에 저장해놓고 가져오도록 구현함
     const [isOptionsVisible, setOptionsVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
     const [filterTier, setFilter] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('None');
@@ -38573,6 +38573,8 @@ function MyPage() {
                 if (response) {
                     setProblems(response);
                     setCurrentPage(0);
+                    console.log('good');
+                    console.log(response);
                 }
             }
             catch (error) {
