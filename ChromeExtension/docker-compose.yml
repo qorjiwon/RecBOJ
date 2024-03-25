@@ -1,0 +1,65 @@
+version: "3"
+   
+services:
+  postgres-server:
+    container_name: postgres-server
+    build:
+       context: ./database/DB
+       dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER : myuser
+      POSTGRES_PASSWORD : mypassword
+      POSTGRES_DB : mydatabase
+    expose:
+      - "5433" # Publishes 5433 to other containers
+    ports:
+      - "5433:5433"
+    command: -p 5433
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-U", "myuser", "-d", "mydatabase","-p 5433"]
+      interval : 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - my-custom-network
+
+  table-generator:
+    container_name: table-generator
+    build: 
+      context: ./database/PY
+      dockerfile: Dockerfile
+    depends_on:
+      postgres-server:
+        condition: service_healthy
+    networks:
+      - my-custom-network
+    environment:
+      DATABASE_HOST: postgres-server
+  
+  scrapy:
+    build: 
+      context: ./database/scrapy/recboj
+      dockerfile: Dockerfile
+    depends_on:
+      - table-generator
+    environment:
+      DATABASE_HOST: postgres-server
+    command: scrapy runspider probleminfo.py
+    networks:
+      - my-custom-network
+
+  # server:
+  #   build: 
+  #     context: ./server
+  #     dockerfile: Dockerfile
+  #   image: wjddn/recboj:latest
+  #   ports:
+  #     - 8000:8000
+  #   volumes:
+  #     - ./server/:/server
+  #   networks:
+  #     - my-custom-network
+
+networks:
+  my-custom-network:
+    external: true

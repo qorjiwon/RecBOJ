@@ -12,7 +12,7 @@ def return_user_data(pivot_table):
 # user_id에 맞는 pivot table의 행을 추출 
 def get_problem_list(pivot, user_id, id_to_index):
     idx = id_to_index[id_to_index['user_id'] == user_id]['id_to_index']
-    problem_list = pivot[idx].flatten()
+    problem_list = pivot[['user_id'] == user_id].flatten()
     return problem_list
 
 # 데이터프레임의 tag를 나눔

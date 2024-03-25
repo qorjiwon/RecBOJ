@@ -16,8 +16,8 @@ mypage_router = APIRouter(
 logging.basicConfig( level=logging.DEBUG)
 lock = asyncio.Lock()
 
-weak_strong_forget_df = pd.read_csv('data/final_khu_forgetting_curve_df.csv').drop(columns=['memory','time','language','code_length'])
-pivot_table = pd.read_csv('data/khu_pivot_table.csv')
+weak_strong_forget_df = make_forgetting_df()
+pivot_table = make_pivot()
 index_to_problem = pd.read_csv('data/final_problem_processed.csv')
 id_to_index = pd.read_csv('data/khu_id_to_index.csv')
 
@@ -32,7 +32,8 @@ async def send_mypage_data(request_data: MyPageRequest):
         filter = request_data.filter
         user_id = extract_user_id_from_mypage(current_url)
         strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
-        print("user id: ", user_id)
+        print("weak_tag는 : ", weak_tag)
+        print("user id는 : ", user_id)
         try:
             if rotate == 0:
                 strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
@@ -100,6 +101,7 @@ async def send_mypage_data(request_data: MyPageRequest):
         if len(cache) >= 10000:
             cache.clear()
         response = ResponseData(**responseData)
+        pretty_print(responseData)
         return response
     except HTTPException as e:
         # HTTP 예외 발생 시 로그로 출력
