@@ -40,7 +40,7 @@ export type Problem = {
     titleKo: string;
     level: string;
     averageTries: number;
-    tags: string[];
+    tags: string; // 문자열 배열에서 단일 문자열로 변경
 }
 
 export type Explaination = {
@@ -48,6 +48,7 @@ export type Explaination = {
     titleKo: string;
     level: string;
     averageTries: number;
+    tags: string; // 서버 모델에 맞춰 tags 필드 추가
 }
 
 export type WeakTagProblem = {
