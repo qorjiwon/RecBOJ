@@ -60,6 +60,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
 
     return (
         <div className="Main">
+            { problems &&
             <header className="HeaderBar">
                 {
                     TypeOfRecommendation.map((text, index) => (
@@ -72,9 +73,14 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         </button>
                     ))
                 }
-            </header>
+            </header>}
 
             <div className="RecContent">
+                {
+                    !problems && <div>
+                        <img src='https://velog.velcdn.com/images/qorjiwon/post/0de07a4d-690f-4f6a-b319-fceb8058e093/image.gif'/>
+                    </div>
+                }
                     {currentPage === 0 && ( // 취약 유형 기반
                     <>
                         <div className='WeekTags'>

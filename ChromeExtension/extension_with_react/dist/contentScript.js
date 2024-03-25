@@ -38600,8 +38600,11 @@ function MyPage() {
     const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천'];
     const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond'];
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Main" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", { className: "HeaderBar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${currentPage === index ? 'active' : ''}`, onClick: () => setCurrentPage((currentPage) => (currentPage === index ? -1 : index)) }, text)))),
+        problems &&
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", { className: "HeaderBar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${currentPage === index ? 'active' : ''}`, onClick: () => setCurrentPage((currentPage) => (currentPage === index ? -1 : index)) }, text)))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "RecContent" },
+            !problems && react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: 'https://velog.velcdn.com/images/qorjiwon/post/0de07a4d-690f-4f6a-b319-fceb8058e093/image.gif' })),
             currentPage === 0 && ( // 취약 유형 기반
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'WeekTags' }, problems.weak_tag_problems.map((tag, index) => {
