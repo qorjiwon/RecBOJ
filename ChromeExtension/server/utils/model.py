@@ -28,14 +28,14 @@ s3 = boto3.client('s3',
                   aws_secret_access_key=aws_secret_access_key,
                   region_name=aws_region)
 
-bucket_name = os.getenv('S3_BUCKET_NAME')
-model_key = os.getenv('S3_ITEM2VEC_PATH')
+# bucket_name = os.getenv('S3_BUCKET_NAME')
+# model_key = os.getenv('S3_ITEM2VEC_PATH')
 local_model_path = 'recsys_models/item2vec/word2vec_model.bin'
-s3.download_file(bucket_name, model_key, local_model_path)
+# s3.download_file(bucket_name, model_key, local_model_path)
 
 def get_item2vec_problem(problem_id, submits, div) -> dict:
     # 저장된 모델 불러오기
-    model = Word2Vec.load(local_model_path) 
+    model = Word2Vec.load(local_model_path)
     similar_problem = model.wv.most_similar(problem_id, topn= 500)
     problems = {}
     level_flag = get_levelflag(problem_id, submits, ProblemDict)

@@ -76,9 +76,12 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                 </header>
             }
             <div className="RecommendBox">
-                {
-                    !problems && <div>
-                        <img src='https://velog.velcdn.com/images/qorjiwon/post/0de07a4d-690f-4f6a-b319-fceb8058e093/image.gif'/>
+                { !problems && 
+                    <div className={'LoadingBox'}>
+                        <div className={'Loading'}>
+                            <span>{'데이터를 불러오고 있습니다...'}</span>
+                            <img src='https://velog.velcdn.com/images/qorjiwon/post/0de07a4d-690f-4f6a-b319-fceb8058e093/image.gif'/>
+                        </div>
                     </div>
                 }
                 { currentPage === 0 && ( // 취약 유형 기반

@@ -33,6 +33,28 @@
 	.RecommendBox {
 		margin-top: 15px;
 		position: relative;
+
+		.LoadingBox {
+			width: 100%;
+			height: 400px;
+			
+			.Loading {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+	
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+	
+				span {
+					font-size: 17px;
+					font-weight: 700;
+					white-space: nowrap;
+				}
+			}
+		}
 	
 		.WeekTags {
 			display: flex;
@@ -220,8 +242,6 @@
 		}
 		
 		.Notice {
-			width: auto;
-
 			position: absolute;
 			left: 50%;
 			top: 50%;

@@ -28,6 +28,24 @@
   margin-top: 15px;
   position: relative;
 }
+.RecBOJ .RecommendBox .LoadingBox {
+  width: 100%;
+  height: 400px;
+}
+.RecBOJ .RecommendBox .LoadingBox .Loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.RecBOJ .RecommendBox .LoadingBox .Loading span {
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
 .RecBOJ .RecommendBox .WeekTags {
   display: flex;
   justify-content: space-around;
@@ -182,7 +200,6 @@
   font-weight: 700;
 }
 .RecBOJ .RecommendBox .Notice {
-  width: auto;
   position: absolute;
   left: 50%;
   top: 50%;

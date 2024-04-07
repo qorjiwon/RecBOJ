@@ -19,10 +19,10 @@ s3 = boto3.client('s3',
                   aws_secret_access_key=aws_secret_access_key,
                   region_name=aws_region)
 
-bucket_name = os.getenv('S3_BUCKET_NAME')
-model_key = os.getenv('S3_VAE_PATH')
+# bucket_name = os.getenv('S3_BUCKET_NAME')
+# model_key = os.getenv('S3_VAE_PATH')
 local_model_path = 'recsys_models/VAE/VAE_model_final_amd.h5'
-s3.download_file(bucket_name, model_key, local_model_path)
+# s3.download_file(bucket_name, model_key, local_model_path)
 
 def vae_recommend_problem(problem_list, origin_problem):
     model = tf.keras.models.load_model(local_model_path, custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
