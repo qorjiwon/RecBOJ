@@ -1,7 +1,8 @@
 import re
 import numpy as np
 import json
-
+from models.mypage import *
+from typing import Dict
 # Pivot_Table의 Nan값 처리
 def return_user_data(pivot_table):
     column_info = pivot_table.columns
@@ -125,111 +126,106 @@ def pretty_print(data, indent=0):
             # 딕셔너리가 아니면 그냥 출력
             print(' ' * indent + f'{key}: {value}')
 
-
-def cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems):
-    threeWeaks = {}
-    for i in range(1,4):
-        threeWeaks['tag'+str(i)] = {}
-        problems = weakTagProblems['tag'+str(i)]['problems'][:3]
-        explainations = weakTagProblems['tag'+str(i)]['explainations'][:3]
-        threeWeaks['tag'+str(i)]['tag_name'] = weakTagProblems['tag'+str(i)]['tag_name']
-        threeWeaks['tag'+str(i)]['problems'] = problems
-        threeWeaks['tag'+str(i)]['explainations'] = explainations
-        threeWeaks['tag'+str(i)]['weak_pcr'] = weakTagProblems['tag'+str(i)]['weak_pcr']
+def cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, tag_num = 3, n = 3):
     
-    threeForgotten = {}
-    problems = {}
-    for i in range(1, 4):
-        threeForgotten['tag'+str(i)] = {}
-        threeForgotten['tag'+str(i)]['tag'] = forgottenTagProblems['tag'+str(i)]['tag']
-        threeForgotten['tag'+str(i)]['forgottenPercent'] = forgottenTagProblems['tag'+str(i)]['forgottenPercent']
-        for j in range(1, 2):  # Extracting first three problems
-            problem_key = f'problem{j}'
-            if problem_key in forgottenTagProblems['tag'+str(i)]:
-                threeForgotten['tag'+str(i)]['problem'] = forgottenTagProblems['tag'+str(i)][problem_key]
-    threeSimilar = {}
-    for i in range(1, 4):
-        threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str(i)]
-    
-    return threeWeaks, threeForgotten, threeSimilar
+    # 취약 유형 문제 
+    weaks = []
+    for i in range(1, tag_num + 1):
+        tag_key = f'tag{i}'
+        problems = weakTagProblems[tag_key]['problems'][:3]
+        explainations_input = weakTagProblems[tag_key]['explainations'][:3]
+        
+        explainations = [
+            Explaination(problemID=exp[0], titleKo=exp[1], level=exp[2], averageTries=exp[3], tags=exp[4])
+            for exp in explainations_input
+        ]
+        
+        weak = WeakTagProblem(
+            tag_name=weakTagProblems[tag_key]['tag_name'],
+            problems=problems,
+            explainations=explainations,
+            weak_pcr=weakTagProblems[tag_key]['weak_pcr']
+        )
+        weaks.append(weak)
 
-def reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter):
-    threeWeaks = {}
-    threeForgotten = {}
-    threeSimilar = {}
+    # 푼 지 오래된 문제
+    forgottens = []
+    for i in range(1, tag_num + 1):
+        tag_key = f'tag{i}'
+        problem_data = forgottenTagProblems[tag_key]['problem1']
+        forgotten = ForgottenTagProblem(
+            tag=forgottenTagProblems[tag_key]['tag'],
+            forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
+            problem=Problem(**problem_data)  # Problem 모델을 사용하여 직접 생성
+        )
+        forgottens.append(forgotten)
+
+    # 유사도 기반 추천
+    similars = [Problem(**similarityBasedProblems[f'problem{i}']) for i in range(1, n + 1)]
+    return weaks, forgottens, similars
+
+def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarityBasedProblems: Dict, rotate: int, filter: str, tag_num: int = 3, n: int = 3):
+    Weaks: List[WeakTagProblem] = []
+    Forgottens: List[ForgottenTagProblem] = []
+    Similars: List[Problem] = []
 
     rotate = int(rotate)
-   
-    for i in range(1,4):
-        tag_key = 'tag' + str(i)
+
+    for i in range(1, tag_num+1):
+        tag_key = f'tag{i}'
         problems = []
         explainations = []
         cnt = 0
-        threeWeaks[tag_key] = {}
-       
         problems_list = weakTagProblems[tag_key]['problems']
         explanations_list = weakTagProblems[tag_key]['explainations']
-        index = (3 * rotate - 2) % len(problems_list)
-        while cnt < len(problems_list) and len(problems) < 3:
-            if checkTier(explanations_list[index][2], filter):
+        index = (n * rotate - (n-1)) % len(problems_list)
+        while cnt < len(problems_list) and len(problems) < n:
+            exp = explanations_list[index]
+            #exp가 List여서 2로 접근하는데 이거 아님.
+            # exp = [문제번호, 이름, 티어, 평균시도횟수, tag]
+            if checkTier(exp[2], filter):
                 problems.append(problems_list[index])
-                explainations.append(explanations_list[index])
+                explainations.append(Explaination(problemID=exp[0], titleKo=exp[1], level=exp[2], averageTries=exp[3], tags=exp[4]))
             index = (index + 1) % len(problems_list)
             cnt += 1
 
-        threeWeaks['tag'+str(i)]['tag_name'] = weakTagProblems['tag'+str(i)]['tag_name']
-        threeWeaks['tag'+str(i)]['problems'] = problems
-        threeWeaks['tag'+str(i)]['explainations'] = explainations
-        threeWeaks['tag'+str(i)]['weak_pcr'] = weakTagProblems['tag'+str(i)]['weak_pcr']
+        Weaks.append(WeakTagProblem(
+            tag_name=weakTagProblems[tag_key]['tag_name'],
+            problems=problems,
+            explainations=explainations,
+            weak_pcr=weakTagProblems[tag_key]['weak_pcr']
+        ))
     
-    problems = {}
-    for i in range(1, 4):
-        tag_key = 'tag' + str(i)
-        
-        threeForgotten[tag_key] = {}
-        threeForgotten[tag_key]['tag'] = forgottenTagProblems['tag'+str(i)]['tag']
-        threeForgotten[tag_key]['forgottenPercent'] = forgottenTagProblems[tag_key]['forgottenPercent']
-        
-        problems_list = forgottenTagProblems[tag_key]
-        # 2를 빼는 이유는 태크와 망각률를 제외하고 문제수를 세기 위함
-        rotated_index = rotate % (len(problems_list) - 2)
+    
+    # Forgotten 서비스 안한다고 가정하고 더미값 출력 중, 추후 수정
+    for i in range(1, tag_num + 1):
+        tag_key = f'tag{i}'
+        problem_data = forgottenTagProblems[tag_key]['problem1']
+        forgotten = ForgottenTagProblem(
+            tag=forgottenTagProblems[tag_key]['tag'],
+            forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
+            problem=Problem(**problem_data)  # Problem 모델을 사용하여 직접 생성
+        )
+        Forgottens.append(forgotten)
+    
+    for i in range(1, n+1):
+        index = (rotate + i - 1) % len(similarityBasedProblems)
         cnt = 0
-        while cnt < len(problems_list) - 2:
-            if checkTier(problems_list['problem' + str(rotated_index)]['level'] ,filter):
-                threeForgotten[tag_key]['problem'] = problems_list['problem' + str(rotated_index)]
+        while cnt < len(similarityBasedProblems):
+            print(1)
+            
+            problem = similarityBasedProblems[f'problem{index + 1}']
+            if checkTier(problem['level'], filter):
+                Similars.append(Problem(**problem))
+                print(111)
                 break
             else:
+                index = (index + 1) % len(similarityBasedProblems)
                 cnt += 1
-                rotated_index = (rotated_index + 1) % (len(problems_list) - 2) + 1
-        if 'problem' not in threeForgotten[tag_key]:
-            threeForgotten[tag_key]['problem'] = {
-                'problemID': '',
-                'titleKo': '알맞은 문제가 없어요',
-                'level': '',
-                'averageTries': '',
-                'tags': ''
-            }
-    for i in range(1, 4):
-        index = (rotate + i) % len(similarityBasedProblems) + 1
-        cnt = 0
-        while cnt <= len(similarityBasedProblems):
-            tier = similarityBasedProblems['problem'+str(index)]['level']
-            if checkTier(tier ,filter):
-                threeSimilar['problem'+str(i)] = similarityBasedProblems['problem'+str(index)]
-                break
-            else:
-                index = 3 * (index + 1) % len(similarityBasedProblems) + 1
-                cnt += 1
-        if 'problem'+str(i) not in threeSimilar:
-            threeSimilar['problem'+str(i)] = {
-                'problemID': '',
-                'titleKo': '알맞은 문제가 없어요',
-                'level': '',
-                'averageTries': '',
-                'tags': ''
-            }
+            print(2)
+    
 
-    return threeWeaks, threeForgotten, threeSimilar
+    return Weaks, Forgottens, Similars
 
 # 딕셔너리를 JSON 파일로 저장하는 함수
 def save_as_json(data, filename, dir_path = 'user_data/'):

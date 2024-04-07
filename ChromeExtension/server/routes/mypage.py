@@ -7,17 +7,19 @@ from utils.model import *
 import pandas as pd
 from utils.preprocessing import *
 from utils.recommendation import *
-
+import os
 
 mypage_router = APIRouter(
     tags=["mypage"]
 )
 # 로깅 레벨 설정
-logging.basicConfig( level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 lock = asyncio.Lock()
 
 weak_strong_forget_df = make_forgetting_df()
-pivot_table = make_pivot()
+#pivot_table 만들 때 user_id를 어케주지...?
+user_df = make_df()
+
 index_to_problem = pd.read_csv('data/final_problem_processed.csv')
 id_to_index = pd.read_csv('data/khu_id_to_index.csv')
 
@@ -29,72 +31,47 @@ async def send_mypage_data(request_data: MyPageRequest):
         global cache
         current_url = request_data.url
         rotate = request_data.div
+        num_problems = request_data.numProblems
         filter = request_data.filter
         user_id = extract_user_id_from_mypage(current_url)
-        strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
-        print("weak_tag는 : ", weak_tag)
-        print("user id는 : ", user_id)
-        try:
-            if rotate == 0:
-                strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
-                # forget_curve를 이용해서...
-                forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
-                SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
-                weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 200)
-                async with lock:
-                    cache[user_id] = {}
-                    cache[user_id]['weakTagProblems'] = weakTagProblems   
-                    cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
-                    cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
-                threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
-            else:
-                async with lock:
-                    weakTagProblems = cache[user_id]['weakTagProblems']
-                    forgottenTagProblems = cache[user_id]['forgottenTagProblems']
-                    similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
-                threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter)
-        except:
-            user_id = 'eu2525'
-            if rotate == 0:
-                strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
-                # forget_curve를 이용해서...
-                forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
-                SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
-                weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 200)
-                async with lock:
-                    cache[user_id] = {}
-                    cache[user_id]['weakTagProblems'] = weakTagProblems   
-                    cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
-                    cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
-                threeWeaks, threeForgotten, threeSimilar = cutThreeProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems)
-            else:
-                async with lock:
-                    weakTagProblems = cache[user_id]['weakTagProblems']
-                    forgottenTagProblems = cache[user_id]['forgottenTagProblems']
-                    similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
-                threeWeaks, threeForgotten, threeSimilar = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter)
+        #User_id가 있는지
+        find = user_find(user_id)
+        if find == False:
+            global user_df
+            pwd = os.getcwd()
+            print(pwd)
+            os.chdir("../database/scrapy/recboj/recboj/Spiders")
+            print(pwd, " , " ,  os.getcwd())
+            os.system(f"scrapy runspider probleminfo.py -a newUser={user_id}")
+            os.chdir(pwd)
+            user_df = make_df()
 
-        # 1. weak_tag_problems 전처리
-        for tag_key, tag_value in threeWeaks.items():
-            tag_value['explainations'] = [
-                {
-                    "problemID": exp[0],
-                    "titleKo": exp[1],
-                    "level": str(exp[2]),  # level이 문자열이라면 변환 필요 없음
-                    "averageTries": float(exp[3])
-                } for exp in tag_value['explainations']
-            ]
-
-        # 2. forgotten_tag_problems 전처리
-        for tag_key, problem_value in threeForgotten.items():
-            problem_value['problem']['tags'] = [problem_value['problem']['tags']] \
-                if not isinstance(problem_value['problem']['tags'], list) else problem_value['problem']['tags']
-
+        if rotate == 0:
+            pivot_table = make_pivot(user_df, user_id)
+            strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
+            # forget_curve를 이용해서...
+            forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
+            SolvedBasedProblems = Solved_Based_Recommenation(pivot_table, user_id, index_to_problem, id_to_index, 500)
+            weakTagProblems, forgottenTagProblems, similarityBasedProblems = getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag, forgotten_pcr, 200)
+            async with lock:
+                cache[user_id] = {}
+                cache[user_id]['weakTagProblems'] = weakTagProblems   
+                cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
+                cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
+            Weaks, Forgottens, Similars = cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, n = num_problems)
+        else:
+            async with lock:
+                weakTagProblems = cache[user_id]['weakTagProblems']
+                forgottenTagProblems = cache[user_id]['forgottenTagProblems']
+                similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
+            Weaks, Forgottens, Similars = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter, n = num_problems)
+        
+    
         responseData = {
                 'user_id' : user_id,    
-                'weak_tag_problems': threeWeaks,
-                'forgotten_tag_problems': threeForgotten,
-                'similarity_based_problems': threeSimilar
+                'weak_tag_problems': Weaks,
+                'forgotten_tag_problems': Forgottens,
+                'similarity_based_problems': Similars
             }
         print(f"Responsed to {user_id} (Mypage)")
         # cache가 너무 커지면 비우기

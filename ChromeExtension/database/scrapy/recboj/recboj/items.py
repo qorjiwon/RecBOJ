@@ -6,8 +6,6 @@ import scrapy
 
 class User(scrapy.Item):
     user_id = scrapy.Field()
-    correct_problem = scrapy.Field()
-    wrong_problem = scrapy.Field()
     level = scrapy.Field()
     pass
 

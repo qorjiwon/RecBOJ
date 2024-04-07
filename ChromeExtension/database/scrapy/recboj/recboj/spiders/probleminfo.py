@@ -1,33 +1,48 @@
 import scrapy
-from scrapy import Spider
+from scrapy import Spider, Request
 from recboj import items
 import pandas as pd
 import urllib.parse
 import json
 import requests
+from scrapy.utils.defer import maybe_deferred_to_future
+import sys
 
 class ProblemInfoSpider(Spider) :
     name = "probleminfo"
 
     def start_requests(self):
-        #user_list = list(pd.read_csv('./khu_id_to_index.csv')['user_id'])[:4]
-        user_list = ["eu2525"]
-        base_url = "https://www.acmicpc.net/user/"
+        user_list = list(pd.read_csv('./khu_id_to_index.csv')['user_id'])[140:150]
+        print(user_list)
+        try :
+            if (self.newUser != None) :
+                user_list = [self.newUser]
+        except :
+            None
         for user in user_list :
-            profile_url = base_url + user
+            profile_url = f"https://www.acmicpc.net/status?user_id={user}&result_id=4"
             yield scrapy.Request(url = profile_url, callback = self.parse_user, cb_kwargs = {'user_id':user})
 
-    def parse_user(self, response, user_id) :
+    async def parse_user(self, response, user_id) :
         user = items.User()
         user['user_id'] = user_id
-        res = response.xpath('//*[@class="problem-list"]')
-        for index, link in enumerate(res):
-            if index == 0 :
-                user['correct_problem'] = link.xpath("./a/text()").getall()
-            else :
-                user['wrong_problem'] = link.xpath('./a/text()').getall()
-        problem_list = response.xpath('//*[@class="problem-list"]/a/text()').getall()
-        
+        print(user_id)
+        #Problem 정보 가져오기
+        problem_list=[]
+        for page in range(3) :
+            if page != 0 :
+                additional_request = Request(url = f"https://www.acmicpc.net/status?user_id={user_id}&result_id=4&top={top}")
+                deferred = self.crawler.engine.download(additional_request)
+                response = await maybe_deferred_to_future(deferred)
+            res = response.xpath('//*[@class="table-responsive"]/table/tbody')
+            for index in range(20):
+                submission = res.xpath(f'./tr[{index+1}]/td//text()').getall()
+                submission_number = submission[0]
+                problem_list.append(submission[2])
+                if index == 19 :
+                    top = submission[0]
+        problem_list = set(problem_list)
+
         #level 정보 받아오기.
         url = f"https://solved.ac/api/v3/user/show?handle={user_id}"
         r_profile = requests.get(url)
@@ -37,6 +52,7 @@ class ProblemInfoSpider(Spider) :
         else:
             level = 0
         user['level'] = level #level 정보 넣어주면 됌
+
         yield user
         for problem in problem_list :
             problem= urllib.parse.unquote(problem)

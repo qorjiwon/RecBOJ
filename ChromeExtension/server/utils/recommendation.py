@@ -6,31 +6,31 @@ import numpy as np
 import boto3
 from dotenv import load_dotenv
 import os
+#import bottleneck as bn
 
-def vae_recommend_problem(problem_list, origin_problem):
-    model = tf.keras.models.load_model("./VAE_model_final_7144.h5", custom_objects={'vae_loss': vae_loss , 'vae' : vae, 'encoder' : encoder, 'decoder' : decoder})
-    input_x = np.nan_to_num(problem_list)
-    input = np.vstack([origin_problem[0, :], input_x])
-    result = model.predict(input)
-    result = result[-1, :]
-    result[problem_list.nonzero()] = -np.inf
-    
+def ease_recommend_problem(input_pivot):
+    model = EASE(300)
+    model.train(input_pivot)
+    result = model.forward(input_pivot[:, :])
+    result[input_pivot.nonzero()] = -np.inf
+
     return result
 
 def Solved_Based_Recommenation(pivot_table, user_id, itpr, id_to_index ,NUM_TOP_PROBLEMS = 3):
+
     # url에서 필요한 정보를 
     #user_id에 맞는 문제 풀이 내역 추출
-
-    origin_solution = pivot_table.to_numpy()
-    user_solution = pivot_table[pivot_table.index == user_id].to_numpy().flatten()
-
+    user_id_index = pivot_table.index.get_loc(user_id)
+    # 피봇테이블의 컬럼(문제 번호) 정보 가져오기
+    columns = pivot_table.columns
+    X = pivot_table.to_numpy()
     #user 문제 풀이 내역을 통한 추천 문제
-    print("START VAE")
-    total_rec = vae_recommend_problem(user_solution, origin_solution)
-    top_problems = np.argpartition(-total_rec, NUM_TOP_PROBLEMS) # np.argpartition은 partition과 똑같이 동작하고, index를 리턴.
-    top_problems = top_problems[ :NUM_TOP_PROBLEMS]
-    print("VAE Problem", top_problems)
-    problem_id = index_to_problem(itpr, top_problems)
+    result = ease_recommend_problem(X)
+    top_problems_by_user = np.argsort(-result, axis=1)[:, :NUM_TOP_PROBLEMS]
+    #bn.argpartition(-result, NUM_TOP_PROBLEMS, axis=1)[:, :NUM_TOP_PROBLEMS]
+    rec_user = top_problems_by_user[user_id_index]
+    problem_id = columns[rec_user]
+    print("EASE Problem", problem_id)
     rtn = {}
     cnt = 0
     for item in problem_id:
@@ -70,7 +70,7 @@ def getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag
         explainations = []
         for j in range(num_to_extract):
             try:
-                response = getProblemsByTag(SolvedBasedProblems, weak_tag[i])    
+                response = getProblemsByTag(SolvedBasedProblems, weak_tag[i])   
                 problems.append(response['problem'+str(j+1)]['problemID'])
                 tem = []
                 for value in response['problem'+str(j+1)].values():
@@ -78,13 +78,14 @@ def getMypageProblemsDict(SolvedBasedProblems, weak_tag, weak_pcr, forgotten_tag
                 explainations.append(tem)
             except:
                 pass
+        
         weakTagProblems['tag'+str(i+1)] = {
             'tag_name' : weak_tag[i],
             'problems' : problems,
             'explainations' : explainations,
             'weak_pcr' : weak_pcr[i]
         }
-    
+
     try:
         for i in range(3):
             problems = {}
@@ -125,7 +126,8 @@ def weak_strong_rec(df, user_id):
     # df = df[df['level'] <= 10]
     # 평균 시도 횟수를 기준으로 나눔.
     weak_problem = df[(df['wrong_count'] + 1) > df['averageTries']]
-    strong_problem = df[(df['wrong_count'] + 1 )<= df['averageTries']]
+    strong_problem = df[(df['wrong_count'] + 1 ) <= df['averageTries']]
+    print(weak_problem)
     #tag를 split
     weak_df_tags = tag_split(weak_problem)
     st_df_tags = tag_split(strong_problem)
@@ -137,12 +139,13 @@ def weak_strong_rec(df, user_id):
     # 정답률 계산
     merged_df = pd.merge(weak_tag_counts, strong_tag_counts, how='outer', on=['user_id', 'tags']).fillna(0)
     merged_df['total_count'] = merged_df['strong_count'] + merged_df['weak_count']
-    merged_df = merged_df[merged_df['total_count'] >= 10]
-    merged_df['accuracy'] = merged_df['strong_count'] / merged_df['total_count']
+    merged_df = merged_df[merged_df['total_count'] >= 3]
+    merged_df['accuracy'] = merged_df['weak_count'] / merged_df['total_count']
+
 
     #strong, weak 3문제 뽑음
-    strong_3tag = merged_df.groupby('user_id').apply(lambda x: x.nlargest(3, 'accuracy')).reset_index(drop=True)
-    weak_3tag = merged_df.groupby('user_id').apply(lambda x: x.nsmallest(3, 'accuracy')).reset_index(drop=True)
+    strong_3tag = merged_df.groupby('user_id').apply(lambda x: x.nsmallest(3, 'accuracy')).reset_index(drop=True)
+    weak_3tag = merged_df.groupby('user_id').apply(lambda x: x.nlargest(3, 'accuracy')).reset_index(drop=True)
     #strong, weak 문제를 리스트로..
     strong = strong_3tag[strong_3tag['user_id'] == user_id]['tags'].to_list()
     weak = weak_3tag[weak_3tag['user_id'] == user_id]['tags'].to_list()
@@ -152,6 +155,8 @@ def weak_strong_rec(df, user_id):
     for i in range(len(min(strong_pcr, weak_pcr))):
         strong_pcr[i] = round(strong_pcr[i] * 100, 1)
         weak_pcr[i] = round(weak_pcr[i] * 100, 1)
+
+    print("약한 분야", weak_pcr)
     return strong, weak, strong_pcr, weak_pcr
 
 def forgetting_curve_with_repetition(df):
@@ -170,19 +175,13 @@ def forget_curve(df, user_id):
     # tag별 최신 풀었던 문제와 푼 문제수 추출
     df_tag = dfs.groupby('tags')['last_time'].agg(**{'recent_time':'max', 'count':'count'}).reset_index() 
     
-    # 15문제 이상은 풀어야 애들 tag가 이상한게 안 뽑히더라....
-    df_tag = df_tag[df_tag['count'] >= 15]
-    
     # 망각 곡선 계산 하기
     current_timestamp = time()
     df_tag['day'] = (current_timestamp - df_tag['recent_time']) / 86400
-    df_tag['forget_curve'] = df_tag.apply(forgetting_curve_with_repetition, axis=1).round(4)
     
-    weak_3tag = df_tag.sort_values('forget_curve', ascending = True).head(3)
+    weak_3tag = df_tag.sort_values('day', ascending = False).head(3)
     weak_tag = weak_3tag['tags'].to_list()
-    weak_tag_forgetpcr = weak_3tag['forget_curve'].to_list()
+    weak_tag_forgetpcr = weak_3tag['day'].to_list()
 
-    for i in range(len(weak_tag_forgetpcr)):
-        weak_tag_forgetpcr[i] = round(weak_tag_forgetpcr[i] * 100 , 1)
-
+    print(weak_tag, "망각률", weak_tag_forgetpcr)
     return weak_tag, weak_tag_forgetpcr
