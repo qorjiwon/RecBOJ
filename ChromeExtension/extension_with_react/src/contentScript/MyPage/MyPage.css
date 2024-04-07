@@ -26,6 +26,7 @@
 }
 .RecBOJ .RecommendBox {
   margin-top: 15px;
+  position: relative;
 }
 .RecBOJ .RecommendBox .WeekTags {
   display: flex;
@@ -179,6 +180,31 @@
   color: #1f1f1f;
   font-size: 17px;
   font-weight: 700;
+}
+.RecBOJ .RecommendBox .Notice {
+  width: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.RecBOJ .RecommendBox .Notice .Promise {
+  font-size: 29px;
+  font-weight: 900;
+}
+.RecBOJ .RecommendBox .Notice span {
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.RecBOJ .RecommendBox .BlurredSection {
+  filter: blur(5px);
+  pointer-events: none;
 }
 .RecBOJ .hrefBox {
   height: 40px;

@@ -201,62 +201,68 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                 )}
                 { currentPage === 2 && (
                     <>
-                        <p className='Message'>
-                            {'해당 분류의 문제를 푼 지 오래됐어요.'}
-                        </p>
-                        <p style={{textAlign: 'center', marginBottom: '0px', color: '#5f6368'}}>{'나중엔 더 기억나지 않을 거예요!'}</p>
-                        
-                        <div className={'OtherProblems'}>
-                            <button className='ReloadingM' onClick={() => setRotate((rotate) => rotate + 1)}/>
-                            <div className="OptionsContainer">
-                                <button className="ToggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
-                                <CSSTransition
-                                    in={isOptionsVisible}
-                                    timeout={250}
-                                    classNames="options"
-                                    unmountOnExit
+                        <div className={'BlurredSection'}>
+                            <p className='Message'>
+                                {'해당 분류의 문제를 푼 지 오래됐어요.'}
+                            </p>
+                            <p style={{textAlign: 'center', marginBottom: '0px', color: '#5f6368'}}>{'나중엔 더 기억나지 않을 거예요!'}</p>
+                            
+                            <div className={'OtherProblems'}>
+                                <button className='ReloadingM' onClick={() => setRotate((rotate) => rotate + 1)}/>
+                                <div className="OptionsContainer">
+                                    <button className="ToggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
+                                    <CSSTransition
+                                        in={isOptionsVisible}
+                                        timeout={250}
+                                        classNames="options"
+                                        unmountOnExit
+                                    >
+                                        <div className="Tiers">
+                                            {
+                                                Tiers.map((tier) => 
+                                                    <button onClick={() => 
+                                                        {
+                                                            handleFilter(tier);
+                                                            setRotate(0)
+                                                        }}>
+                                                        {tier}
+                                                    </button>)
+                                            }
+                                        </div>
+                                    </CSSTransition>
+                                </div>
+                            </div>
+
+                            <div className='Problems'>
+                                {
+                                    problems.forgotten_tag_problems.map((problemInfo) => {
+                                        return (
+                                            <a 
+                                                className='ProblemCard'
+                                                data-tip={`난이도: ${problemInfo.problem.level}, 분류: ${problemInfo.tag}`}
+                                                onClick={() => contentClick(`https://www.acmicpc.net/problem/${problemInfo.problem.problemID}`)}
+                                            >
+                                                <p className={'ProblemName'}>{problemInfo.problem.titleKo}</p>
+                                                {/* <p >난이도: {problemInfo.problem.level}</p> */}
+                                                <p>{'현재 '}<b>{problemInfo.tag}</b>{'내용을 '}<b>{problemInfo.forgottenPercent}</b>{' 기억하고 있어요.'}</p>
+                                                {/* <p>평균 시도 횟수: {problem['averageTries']}</p> */}
+                                            </a>
+                                        )
+                                    })
+                                }
+                            </div>
+                                
+                            <div className={'ServiceView'}>
+                                <a data-tip = {`해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`}
+                                    href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'
                                 >
-                                    <div className="Tiers">
-                                        {
-                                            Tiers.map((tier) => 
-                                                <button onClick={() => 
-                                                    {
-                                                        handleFilter(tier);
-                                                        setRotate(0)
-                                                    }}>
-                                                    {tier}
-                                                </button>)
-                                        }
-                                    </div>
-                                </CSSTransition>
+                                    {'에빙하우스의 망각곡선'}</a>
+                                <ReactTooltip place="left" type="dark" effect="solid"/>
                             </div>
                         </div>
-
-                        <div className='Problems'>
-                            {
-                                problems.forgotten_tag_problems.map((problemInfo) => {
-                                    return (
-                                        <a 
-                                            className='ProblemCard'
-                                            data-tip={`난이도: ${problemInfo.problem.level}, 분류: ${problemInfo.tag}`}
-                                            onClick={() => contentClick(`https://www.acmicpc.net/problem/${problemInfo.problem.problemID}`)}
-                                        >
-                                            <p className={'ProblemName'}>{problemInfo.problem.titleKo}</p>
-                                            {/* <p >난이도: {problemInfo.problem.level}</p> */}
-                                            <p>{'현재 '}<b>{problemInfo.tag}</b>{'내용을 '}<b>{problemInfo.forgottenPercent}</b>{' 기억하고 있어요.'}</p>
-                                            {/* <p>평균 시도 횟수: {problem['averageTries']}</p> */}
-                                        </a>
-                                    )
-                                })
-                            }
-                        </div>
-                            
-                        <div className={'ServiceView'}>
-                            <a data-tip = {`해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`}
-                                href='https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0'
-                            >
-                                {'에빙하우스의 망각곡선'}</a>
-                            <ReactTooltip place="left" type="dark" effect="solid"/>
+                        <div className={'Notice'}>
+                            <div className={'Promise'}>{'곧 만나요!'}</div>
+                            <span>{'해당 서비스를 열심히 제작하고 있습니다. 조금만 기다려 주세요!'}</span>
                         </div>
                     </>
                 )}

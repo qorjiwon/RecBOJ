@@ -32,6 +32,7 @@
 	
 	.RecommendBox {
 		margin-top: 15px;
+		position: relative;
 	
 		.WeekTags {
 			display: flex;
@@ -216,7 +217,38 @@
 					font-weight: 700;
 				}
 			}
-	
+		}
+		
+		.Notice {
+			width: auto;
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			
+			display:flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 40px;
+
+			.Promise {
+				font-size: 29px;
+				font-weight: 900;
+			}
+
+			span {
+				font-size: 17px;
+				font-weight: 700;
+				white-space: nowrap;
+			}
+
+		}
+
+		.BlurredSection {
+			filter: blur(5px);
+			pointer-events: none;
 		}
 	}
 		
@@ -308,4 +340,6 @@
 			text-decoration: none;
 		}
 	}
+
+	
 }
