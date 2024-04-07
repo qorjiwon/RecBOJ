@@ -12,7 +12,7 @@ class ProblemInfoSpider(Spider) :
     name = "probleminfo"
 
     def start_requests(self):
-        user_list = list(pd.read_csv('./khu_id_to_index.csv')['user_id'])[140:150]
+        user_list = list(pd.read_csv('./user_list.csv')['user_id'])
         print(user_list)
         try :
             if (self.newUser != None) :
