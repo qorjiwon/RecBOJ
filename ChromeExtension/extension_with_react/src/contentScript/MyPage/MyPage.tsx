@@ -67,7 +67,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                             <button
                                 key={index}
                                 className={`manu ${currentPage === index ? 'active' : ''}`}
-                                onClick={() => setCurrentPage((currentPage) => (currentPage === index ? -1 : index))}
+                                onClick={() => setCurrentPage((prev) => (prev === index ? -1 : index))}
                             >
                                 {text}
                             </button>
@@ -103,7 +103,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         </p>
                     
                         <div className={'OtherProblems'}>
-                            <button className='ReloadingM' onClick={() => setRotate((rotate) => rotate + 1)}/>
+                            <button className='ReloadingM' onClick={() => setRotate((prev) => prev + 1)}/>
                             <div className="OptionsContainer">
                                 <button className="ToggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
                                 <CSSTransition
@@ -151,7 +151,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         </div>
                     </>
                 )}
-                { currentPage === 1 && (
+                { currentPage === 1 && 
                     <>
                         <p className='Message'>
                             {'이런 문제는 어떤가요?'}
@@ -159,7 +159,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                         <p><b>{problems.user_id}</b>{'님과 비슷한 실력의 유저들이 많이 푼 문제들을 가져왔어요!'}</p>
                         
                         <div className={'OtherProblems'}>
-                            <button className='ReloadingM' onClick={() => setRotate((rotate) => rotate + 1)}/>
+                            <button className='ReloadingM' onClick={() => setRotate((prev) => prev + 1)}/>
                             <div className="OptionsContainer">
                                 <button className="ToggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
                                 <CSSTransition
@@ -201,7 +201,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                             }
                         </div>
                     </>
-                )}
+                }
                 { currentPage === 2 && (
                     <>
                         <div className={'BlurredSection'}>
@@ -211,7 +211,7 @@ function MyPage() { // 사용자 상세 페이지 렌더링
                             <p style={{textAlign: 'center', marginBottom: '0px', color: '#5f6368'}}>{'나중엔 더 기억나지 않을 거예요!'}</p>
                             
                             <div className={'OtherProblems'}>
-                                <button className='ReloadingM' onClick={() => setRotate((rotate) => rotate + 1)}/>
+                                <button className='ReloadingM' onClick={() => setRotate((prev) => prev + 1)}/>
                                 <div className="OptionsContainer">
                                     <button className="ToggleOptions" onClick={toggleOptions} > {'난이도 필터'} </button>
                                     <CSSTransition
