@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import RelatedProblem from "./RelatedProblem"
-import MyPage from "./MyPage"
+import MyPage from "./MyPage/MyPage"
 import React from 'react';
 
 function IfSubmitPage() {

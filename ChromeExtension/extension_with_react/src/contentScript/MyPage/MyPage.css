@@ -1,9 +1,9 @@
 @charset "UTF-8";
-.HeaderBar {
+.RecBOJ .HeaderBar {
   display: flex;
   border-bottom: 1px solid #ddd;
 }
-.HeaderBar .manu {
+.RecBOJ .HeaderBar .manu {
   padding: 10px;
   margin: 10px;
   width: 35%;
@@ -14,27 +14,26 @@
   font-size: 16px;
   border-radius: 6px !important;
 }
-.HeaderBar .manu:hover {
+.RecBOJ .HeaderBar .manu:hover {
   background-color: #eef2f9;
   font-weight: bold;
   border-radius: 100px;
 }
-.HeaderBar .manu.active {
+.RecBOJ .HeaderBar .manu.active {
   background-color: #eef2f9;
   font-weight: bold;
   border-radius: 100px;
 }
-
-.RecContent {
+.RecBOJ .RecommendBox {
   margin-top: 15px;
 }
-.RecContent .WeekTags {
+.RecBOJ .RecommendBox .WeekTags {
   display: flex;
   justify-content: space-around;
   margin: 10px;
   padding: 0 2%;
 }
-.RecContent .WeekTags .WeekTagBtn {
+.RecBOJ .RecommendBox .WeekTags .WeekTagBtn {
   width: 20%;
   min-width: 83px;
   height: 33px;
@@ -50,82 +49,81 @@
   border-radius: 5px !important;
   cursor: pointer;
 }
-.RecContent .WeekTags .WeekTagBtn:hover {
+.RecBOJ .RecommendBox .WeekTags .WeekTagBtn:hover {
   background: #FFDDD9;
 }
-.RecContent .WeekTags .WeekTagBtn.active {
+.RecBOJ .RecommendBox .WeekTags .WeekTagBtn.active {
   background: #FFD8E0;
 }
-
-.weak_message {
+.RecBOJ .RecommendBox .Message {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  font-family: Arial, sans-serif;
+  color: #202125;
 }
-
-.OtherProblems {
+.RecBOJ .RecommendBox p {
+  margin: 0;
+  text-align: center;
+}
+.RecBOJ .RecommendBox .OtherProblems {
+  padding: 0 25px;
   display: flex;
   align-items: center;
+  gap: 4px;
 }
-.OtherProblems .ReloadingM {
+.RecBOJ .RecommendBox .OtherProblems .ReloadingM {
   width: 23px;
   height: 23px;
+  border: none;
+  border-radius: 50% !important;
+  margin-bottom: 1%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E");
   background-size: cover;
   background-position: center;
-  border: 0;
-  border-radius: 50% !important;
   background-color: white;
   transition: background-color 0.1s;
   transition: transform 0.4s ease !important;
-  position: relative;
-  left: 2%;
-  margin-bottom: 1%;
 }
-.OtherProblems .ReloadingM:hover {
+.RecBOJ .RecommendBox .OtherProblems .ReloadingM:hover {
   background-color: lightgray;
   transform: rotate(400deg) !important;
 }
-.OtherProblems .option-button-container {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer {
   position: relative;
   display: inline-block;
-  left: 3%;
 }
-.OtherProblems .ToggleOptions {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .ToggleOptions {
   width: 70px;
   height: 30px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */
+  border: none;
+  border-radius: 3px !important;
   background-color: white;
   font-weight: bold;
-  border: 0;
   transition: background-color 0.2s;
   margin-bottom: 5%;
 }
-.OtherProblems .ToggleOptions:hover {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .ToggleOptions:hover {
   background-color: lightgray;
 }
-.OtherProblems .options-enter {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-enter {
   opacity: 0;
   transform: translateY(-20%);
 }
-.OtherProblems .options-enter-active {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-enter-active {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 300ms, transform 300ms;
 }
-.OtherProblems .options-exit {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-exit {
   opacity: 1;
   transform: translateY(0);
 }
-.OtherProblems .options-exit-active {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-exit-active {
   opacity: 0;
   transform: translateY(0%);
 }
-.OtherProblems .Tiers {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers {
   position: absolute;
   width: 100px;
   top: 100%;
@@ -137,9 +135,8 @@
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 8px;
-  z-index: 1;
 }
-.OtherProblems .Tiers button {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers button {
   margin: 4px 0;
   padding: 8px;
   cursor: pointer;
@@ -147,49 +144,43 @@
   background-color: transparent;
   text-align: left;
 }
-.OtherProblems .Tiers button:hover {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers button:hover {
   background-color: #f2f2f2;
   color: #041e49;
 }
-
-.divStyle {
+.RecBOJ .RecommendBox .Problems {
   display: flex;
-  padding: 10px;
-  width: 97%;
-  height: 220px;
-  border: none;
-  justify-content: center;
+  justify-content: space-around;
+  margin: 14px 3px;
 }
-.divStyle .ProblemBox {
-  flex-direction: row;
-  width: 28%;
-  margin-left: 40px;
-  margin-right: 14px;
-}
-.divStyle .ProblemBox .pBox {
-  background-color: #f8fafd;
-  padding: 3px;
-  margin-bottom: 14px;
-  color: #6D7856;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.RecBOJ .RecommendBox .Problems .ProblemCard {
+  width: 200px;
+  height: 190px;
   border-radius: 10px !important;
-  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
-}
-.divStyle .ProblemBox .eBox {
-  height: 140px;
-  background-color: #f8fafd;
-  padding: 10px;
-  overflow: hidden;
-  font-size: 15px;
+  padding: 8px;
+  border: none;
+  color: #6D7856;
+  text-decoration: none;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  overflow: auto;
+  background-color: #f8fafd;
+  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.2s ease-in-out;
 }
-
-.hrefBox {
+.RecBOJ .RecommendBox .Problems .ProblemCard:hover {
+  background-color: #EAF0FD;
+  transform: translateY(-3px);
+}
+.RecBOJ .RecommendBox .Problems .ProblemCard .ProblemName {
+  margin-bottom: 15px;
+  color: #1f1f1f;
+  font-size: 17px;
+  font-weight: 700;
+}
+.RecBOJ .hrefBox {
   height: 40px;
   color: #1f1f1f;
   background-color: #f7f7f9;
@@ -201,21 +192,18 @@
   text-align: center;
   font-weight: bold;
 }
-
-.hrefBox:hover {
+.RecBOJ .hrefBox:hover {
   color: #041e49;
   font-weight: bold;
 }
-
-.header_rp {
+.RecBOJ .header_rp {
   padding-bottom: 5px;
   color: #34495e;
   font-size: 15px;
   font-weight: bold;
   text-align: center;
 }
-
-.tagbtn_weak_problem {
+.RecBOJ .tagbtn_weak_problem {
   height: 110px;
   background-color: #f7f7f9;
   padding: 10px;
@@ -229,16 +217,14 @@
   box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 3%;
 }
-
-.list_rp {
+.RecBOJ .list_rp {
   padding-left: 6%;
   display: flex;
   flex-direction: row;
   list-style-type: none; /* 리스트 기본 스타일 제거 */
   padding: 5px;
 }
-
-.pBox_header {
+.RecBOJ .pBox_header {
   width: 60%;
   padding: 10px;
   font-size: 15px;
@@ -246,35 +232,12 @@
   align-items: center;
   justify-content: center;
 }
-
-.pBox_content {
-  height: 190px;
-  width: 100%;
-  background-color: #f8fafd;
-  border-radius: 13px !important;
-  font-size: 14px;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: pre-line;
-  border: none;
-  transition: background-color 0.2s;
-  transition: transform 0.2s ease-in-out;
-}
-
-.pBox_content:hover {
-  background-color: #EAF0FD;
-  transform: translateY(-3px);
-}
-
-.container_rp {
+.RecBOJ .container_rp {
   display: flex;
   flex-direction: "row";
   justify-content: center;
 }
-
-.rp_all {
+.RecBOJ .rp_all {
   margin-left: 3%;
   margin-right: 3%;
   align-items: center;
@@ -282,17 +245,16 @@
   display: "flex";
   flex-direction: "column";
 }
-
-.qmark {
-  font-size: 12px;
-  margin-left: 85%;
-  margin-top: 10px;
-  color: #34495e;
+.RecBOJ .ServiceView {
+  margin: 20px;
+  padding-right: 15px;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-end;
 }
-
-.qmark:hover {
-  font-weight: bold;
+.RecBOJ .ServiceView a {
   color: black;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=MyPage.css.map */

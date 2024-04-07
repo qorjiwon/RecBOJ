@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/MyPage.css":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/MyPage.css ***!
-  \***********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/MyPage/MyPage.css":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/MyPage/MyPage.css ***!
+  \************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27,12 +27,12 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
-.HeaderBar {
+.RecBOJ .HeaderBar {
   display: flex;
   border-bottom: 1px solid #ddd;
 }
 
-.HeaderBar .manu {
+.RecBOJ .HeaderBar .manu {
   padding: 10px;
   margin: 10px;
   width: 35%;
@@ -44,30 +44,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   border-radius: 6px !important;
 }
 
-.HeaderBar .manu:hover {
+.RecBOJ .HeaderBar .manu:hover {
   background-color: #eef2f9;
   font-weight: bold;
   border-radius: 100px;
 }
 
-.HeaderBar .manu.active {
+.RecBOJ .HeaderBar .manu.active {
   background-color: #eef2f9;
   font-weight: bold;
   border-radius: 100px;
 }
 
-.RecContent {
+.RecBOJ .RecommendBox {
   margin-top: 15px;
 }
 
-.RecContent .WeekTags {
+.RecBOJ .RecommendBox .WeekTags {
   display: flex;
   justify-content: space-around;
   margin: 10px;
   padding: 0 2%;
 }
 
-.RecContent .WeekTags .WeekTagBtn {
+.RecBOJ .RecommendBox .WeekTags .WeekTagBtn {
   width: 20%;
   min-width: 83px;
   height: 33px;
@@ -84,93 +84,95 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   cursor: pointer;
 }
 
-.RecContent .WeekTags .WeekTagBtn:hover {
+.RecBOJ .RecommendBox .WeekTags .WeekTagBtn:hover {
   background: #FFDDD9;
 }
 
-.RecContent .WeekTags .WeekTagBtn.active {
+.RecBOJ .RecommendBox .WeekTags .WeekTagBtn.active {
   background: #FFD8E0;
 }
 
-.weak_message {
+.RecBOJ .RecommendBox .Message {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  font-family: Arial, sans-serif;
+  color: #202125;
 }
 
-.OtherProblems {
+.RecBOJ .RecommendBox p {
+  margin: 0;
+  text-align: center;
+}
+
+.RecBOJ .RecommendBox .OtherProblems {
+  padding: 0 25px;
   display: flex;
   align-items: center;
+  gap: 4px;
 }
 
-.OtherProblems .ReloadingM {
+.RecBOJ .RecommendBox .OtherProblems .ReloadingM {
   width: 23px;
   height: 23px;
+  border: none;
+  border-radius: 50% !important;
+  margin-bottom: 1%;
   background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
   background-size: cover;
   background-position: center;
-  border: 0;
-  border-radius: 50% !important;
   background-color: white;
   transition: background-color 0.1s;
   transition: transform 0.4s ease !important;
-  position: relative;
-  left: 2%;
-  margin-bottom: 1%;
 }
 
-.OtherProblems .ReloadingM:hover {
+.RecBOJ .RecommendBox .OtherProblems .ReloadingM:hover {
   background-color: lightgray;
   transform: rotate(400deg) !important;
 }
 
-.OtherProblems .option-button-container {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer {
   position: relative;
   display: inline-block;
-  left: 3%;
 }
 
-.OtherProblems .ToggleOptions {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .ToggleOptions {
   width: 70px;
   height: 30px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */
+  border: none;
+  border-radius: 3px !important;
   background-color: white;
   font-weight: bold;
-  border: 0;
   transition: background-color 0.2s;
   margin-bottom: 5%;
 }
 
-.OtherProblems .ToggleOptions:hover {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .ToggleOptions:hover {
   background-color: lightgray;
 }
 
-.OtherProblems .options-enter {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-enter {
   opacity: 0;
   transform: translateY(-20%);
 }
 
-.OtherProblems .options-enter-active {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-enter-active {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 300ms, transform 300ms;
 }
 
-.OtherProblems .options-exit {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-exit {
   opacity: 1;
   transform: translateY(0);
 }
 
-.OtherProblems .options-exit-active {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-exit-active {
   opacity: 0;
   transform: translateY(0%);
 }
 
-.OtherProblems .Tiers {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers {
   position: absolute;
   width: 100px;
   top: 100%;
@@ -182,10 +184,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 8px;
-  z-index: 1;
 }
 
-.OtherProblems .Tiers button {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers button {
   margin: 4px 0;
   padding: 8px;
   cursor: pointer;
@@ -194,52 +195,48 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   text-align: left;
 }
 
-.OtherProblems .Tiers button:hover {
+.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers button:hover {
   background-color: #f2f2f2;
   color: #041e49;
 }
 
-.divStyle {
+.RecBOJ .RecommendBox .Problems {
   display: flex;
-  padding: 10px;
-  width: 97%;
-  height: 220px;
-  border: none;
-  justify-content: center;
+  justify-content: space-around;
+  margin: 14px 3px;
 }
 
-.divStyle .ProblemBox {
-  flex-direction: row;
-  width: 28%;
-  margin-left: 40px;
-  margin-right: 14px;
-}
-
-.divStyle .ProblemBox .pBox {
-  background-color: #f8fafd;
-  padding: 3px;
-  margin-bottom: 14px;
-  color: #6D7856;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.RecBOJ .RecommendBox .Problems .ProblemCard {
+  width: 200px;
+  height: 190px;
   border-radius: 10px !important;
-  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.divStyle .ProblemBox .eBox {
-  height: 140px;
-  background-color: #f8fafd;
-  padding: 10px;
-  overflow: hidden;
-  font-size: 15px;
+  padding: 8px;
+  border: none;
+  color: #6D7856;
+  text-decoration: none;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  overflow: auto;
+  background-color: #f8fafd;
+  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.2s ease-in-out;
 }
 
-.hrefBox {
+.RecBOJ .RecommendBox .Problems .ProblemCard:hover {
+  background-color: #EAF0FD;
+  transform: translateY(-3px);
+}
+
+.RecBOJ .RecommendBox .Problems .ProblemCard .ProblemName {
+  margin-bottom: 15px;
+  color: #1f1f1f;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.RecBOJ .hrefBox {
   height: 40px;
   color: #1f1f1f;
   background-color: #f7f7f9;
@@ -252,12 +249,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   font-weight: bold;
 }
 
-.hrefBox:hover {
+.RecBOJ .hrefBox:hover {
   color: #041e49;
   font-weight: bold;
 }
 
-.header_rp {
+.RecBOJ .header_rp {
   padding-bottom: 5px;
   color: #34495e;
   font-size: 15px;
@@ -265,7 +262,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   text-align: center;
 }
 
-.tagbtn_weak_problem {
+.RecBOJ .tagbtn_weak_problem {
   height: 110px;
   background-color: #f7f7f9;
   padding: 10px;
@@ -280,7 +277,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   margin-top: 3%;
 }
 
-.list_rp {
+.RecBOJ .list_rp {
   padding-left: 6%;
   display: flex;
   flex-direction: row;
@@ -288,7 +285,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   padding: 5px;
 }
 
-.pBox_header {
+.RecBOJ .pBox_header {
   width: 60%;
   padding: 10px;
   font-size: 15px;
@@ -297,34 +294,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   justify-content: center;
 }
 
-.pBox_content {
-  height: 190px;
-  width: 100%;
-  background-color: #f8fafd;
-  border-radius: 13px !important;
-  font-size: 14px;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: pre-line;
-  border: none;
-  transition: background-color 0.2s;
-  transition: transform 0.2s ease-in-out;
-}
-
-.pBox_content:hover {
-  background-color: #EAF0FD;
-  transform: translateY(-3px);
-}
-
-.container_rp {
+.RecBOJ .container_rp {
   display: flex;
   flex-direction: "row";
   justify-content: center;
 }
 
-.rp_all {
+.RecBOJ .rp_all {
   margin-left: 3%;
   margin-right: 3%;
   align-items: center;
@@ -333,19 +309,20 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
   flex-direction: "column";
 }
 
-.qmark {
-  font-size: 12px;
-  margin-left: 85%;
-  margin-top: 10px;
-  color: #34495e;
+.RecBOJ .ServiceView {
+  margin: 20px;
+  padding-right: 15px;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.qmark:hover {
-  font-weight: bold;
+.RecBOJ .ServiceView a {
   color: black;
+  text-decoration: none;
 }
 
-`, "",{"version":3,"sources":["webpack://./src/contentScript/style/MyPage.css"],"names":[],"mappings":"AAAA,gBAAgB;AAChB;EACE,aAAA;EACA,6BAAA;AACF;;AACA;EACE,aAAA;EACA,YAAA;EACA,UAAA;EACA,yBAAA;EACA,YAAA;EACA,eAAA;EACA,6DAAA;EACA,eAAA;EACA,6BAAA;AAEF;;AAAA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AAGF;;AADA;EACE,yBAAA;EACA,iBAAA;EACA,oBAAA;AAIF;;AADA;EACE,gBAAA;AAIF;;AAFA;EACE,aAAA;EACA,6BAAA;EACA,YAAA;EACA,aAAA;AAKF;;AAHA;EACE,UAAA;EACA,eAAA;EACA,YAAA;EACA,yBAAA;EACA,mBAAA;EACA,aAAA;EACA,gCAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,iBAAA;EACA,+EAAA;EACA,6BAAA;EACA,eAAA;AAMF;;AAJA;EACE,mBAAA;AAOF;;AALA;EACE,mBAAA;AAQF;;AALA;EACE,eAAA;EACA,iBAAA;EACA,kBAAA;AAQF;;AALA;EACE,aAAA;EACA,mBAAA;AAQF;;AANA;EACE,WAAA;EACA,YAAA;EACA,yDAAA;EACA,sBAAA;EACA,2BAAA;EACA,SAAA;EACA,6BAAA;EACA,uBAAA;EACA,iCAAA;EACA,0CAAA;EACA,kBAAA;EACA,QAAA;EACA,iBAAA;AASF;;AAPA;EACE,2BAAA;EACA,oCAAA;AAUF;;AARA;EACE,kBAAA;EACA,qBAAA;EACA,QAAA;AAWF;;AATA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,2BAAA;EACA,4BAAA;EACA,gBAAA;EACA,kCAAA;EACA,uBAAA;EACA,iBAAA;EACA,SAAA;EACA,iCAAA;EACA,iBAAA;AAYF;;AAVA;EACE,2BAAA;AAaF;;AAXA;EACE,UAAA;EACA,2BAAA;AAcF;;AAZA;EACE,UAAA;EACA,wBAAA;EACA,0CAAA;AAeF;;AAbA;EACE,UAAA;EACA,wBAAA;AAgBF;;AAdA;EACE,UAAA;EACA,yBAAA;AAiBF;;AAfA;EACE,kBAAA;EACA,YAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,sBAAA;EACA,sBAAA;EACA,sBAAA;EACA,kBAAA;EACA,wCAAA;EACA,YAAA;EACA,UAAA;AAkBF;;AAhBA;EACE,aAAA;EACA,YAAA;EACA,eAAA;EACA,YAAA;EACA,6BAAA;EACA,gBAAA;AAmBF;;AAjBA;EACE,yBAAA;EACA,cAAA;AAoBF;;AAjBA;EACE,aAAA;EACA,aAAA;EACA,UAAA;EACA,aAAA;EACA,YAAA;EACA,uBAAA;AAoBF;;AAlBA;EACE,mBAAA;EACA,UAAA;EACA,iBAAA;EACA,kBAAA;AAqBF;;AAnBA;EACE,yBAAA;EACA,YAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;AAsBF;;AApBA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,gBAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;AAuBF;;AApBA;EACE,YAAA;EACA,cAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,kBAAA;EACA,iBAAA;AAuBF;;AApBA;EACE,cAAA;EACA,iBAAA;AAuBF;;AApBA;EACE,mBAAA;EACA,cAAA;EACA,eAAA;EACA,iBAAA;EACA,kBAAA;AAuBF;;AApBA;EACE,aAAA;EACA,yBAAA;EACA,aAAA;EACA,eAAA;EACA,mBAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,8BAAA;EACA,4CAAA;EACA,cAAA;AAuBF;;AApBA;EACE,gBAAA;EACA,aAAA;EACA,mBAAA;EACA,qBAAA,EAAA,kBAAA;EACA,YAAA;AAuBF;;AApBA;EACE,UAAA;EACA,aAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;AAuBF;;AApBA;EACE,aAAA;EACA,WAAA;EACA,yBAAA;EACA,8BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,qBAAA;EACA,YAAA;EACA,iCAAA;EACA,sCAAA;AAuBF;;AApBA;EACE,yBAAA;EACA,2BAAA;AAuBF;;AApBA;EACE,aAAA;EACA,qBAAA;EACA,uBAAA;AAuBF;;AApBA;EACE,eAAA;EACA,gBAAA;EACA,mBAAA;EACA,UAAA;EACA,eAAA;EACA,wBAAA;AAuBF;;AApBA;EACE,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,cAAA;AAuBF;;AApBA;EACE,iBAAA;EACA,YAAA;AAuBF","sourcesContent":["@charset \"UTF-8\";\n.HeaderBar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n.HeaderBar .manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n.HeaderBar .manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.HeaderBar .manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n\n.RecContent {\n  margin-top: 15px;\n}\n.RecContent .WeekTags {\n  display: flex;\n  justify-content: space-around;\n  margin: 10px;\n  padding: 0 2%;\n}\n.RecContent .WeekTags .WeekTagBtn {\n  width: 20%;\n  min-width: 83px;\n  height: 33px;\n  border: 1px solid #E0E0E0;\n  font-weight: normal;\n  font-size: 11;\n  font-family: \"Arial, sans-serif\";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  border-radius: 5px !important;\n  cursor: pointer;\n}\n.RecContent .WeekTags .WeekTagBtn:hover {\n  background: #FFDDD9;\n}\n.RecContent .WeekTags .WeekTagBtn.active {\n  background: #FFD8E0;\n}\n\n.weak_message {\n  font-size: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.OtherProblems {\n  display: flex;\n  align-items: center;\n}\n.OtherProblems .ReloadingM {\n  width: 23px;\n  height: 23px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  border: 0;\n  border-radius: 50% !important;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n  position: relative;\n  left: 2%;\n  margin-bottom: 1%;\n}\n.OtherProblems .ReloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n.OtherProblems .option-button-container {\n  position: relative;\n  display: inline-block;\n  left: 3%;\n}\n.OtherProblems .ToggleOptions {\n  width: 70px;\n  height: 30px;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  overflow: hidden;\n  /* 자식 이미지를 부모 컨테이너 영역 안에서 클리핑합니다 */\n  background-color: white;\n  font-weight: bold;\n  border: 0;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n.OtherProblems .ToggleOptions:hover {\n  background-color: lightgray;\n}\n.OtherProblems .options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n.OtherProblems .options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n.OtherProblems .options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n.OtherProblems .options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n.OtherProblems .Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n  z-index: 1;\n}\n.OtherProblems .Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n.OtherProblems .Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n\n.divStyle {\n  display: flex;\n  padding: 10px;\n  width: 97%;\n  height: 220px;\n  border: none;\n  justify-content: center;\n}\n.divStyle .ProblemBox {\n  flex-direction: row;\n  width: 28%;\n  margin-left: 40px;\n  margin-right: 14px;\n}\n.divStyle .ProblemBox .pBox {\n  background-color: #f8fafd;\n  padding: 3px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n}\n.divStyle .ProblemBox .eBox {\n  height: 140px;\n  background-color: #f8fafd;\n  padding: 10px;\n  overflow: hidden;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n\n.hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n\n.header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n\n.list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n\n.pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.pBox_content {\n  height: 190px;\n  width: 100%;\n  background-color: #f8fafd;\n  border-radius: 13px !important;\n  font-size: 14px;\n  margin-bottom: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: pre-line;\n  border: none;\n  transition: background-color 0.2s;\n  transition: transform 0.2s ease-in-out;\n}\n\n.pBox_content:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n\n.container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n\n.rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n\n.qmark {\n  font-size: 12px;\n  margin-left: 85%;\n  margin-top: 10px;\n  color: #34495e;\n}\n\n.qmark:hover {\n  font-weight: bold;\n  color: black;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/contentScript/MyPage/MyPage.css"],"names":[],"mappings":"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","sourcesContent":["@charset \"UTF-8\";\n.RecBOJ .HeaderBar {\n  display: flex;\n  border-bottom: 1px solid #ddd;\n}\n.RecBOJ .HeaderBar .manu {\n  padding: 10px;\n  margin: 10px;\n  width: 35%;\n  background-color: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.3s, color 0.3s, font-size 0.3s;\n  font-size: 16px;\n  border-radius: 6px !important;\n}\n.RecBOJ .HeaderBar .manu:hover {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.RecBOJ .HeaderBar .manu.active {\n  background-color: #eef2f9;\n  font-weight: bold;\n  border-radius: 100px;\n}\n.RecBOJ .RecommendBox {\n  margin-top: 15px;\n}\n.RecBOJ .RecommendBox .WeekTags {\n  display: flex;\n  justify-content: space-around;\n  margin: 10px;\n  padding: 0 2%;\n}\n.RecBOJ .RecommendBox .WeekTags .WeekTagBtn {\n  width: 20%;\n  min-width: 83px;\n  height: 33px;\n  border: 1px solid #E0E0E0;\n  font-weight: normal;\n  font-size: 11;\n  font-family: \"Arial, sans-serif\";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: white;\n  transition: background-color 0.4s, color 0.4s, font-size 0.4s, font-weight 0.4s;\n  border-radius: 5px !important;\n  cursor: pointer;\n}\n.RecBOJ .RecommendBox .WeekTags .WeekTagBtn:hover {\n  background: #FFDDD9;\n}\n.RecBOJ .RecommendBox .WeekTags .WeekTagBtn.active {\n  background: #FFD8E0;\n}\n.RecBOJ .RecommendBox .Message {\n  font-size: 20px;\n  font-weight: bold;\n  text-align: center;\n  font-family: Arial, sans-serif;\n  color: #202125;\n}\n.RecBOJ .RecommendBox p {\n  margin: 0;\n  text-align: center;\n}\n.RecBOJ .RecommendBox .OtherProblems {\n  padding: 0 25px;\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n.RecBOJ .RecommendBox .OtherProblems .ReloadingM {\n  width: 23px;\n  height: 23px;\n  border: none;\n  border-radius: 50% !important;\n  margin-bottom: 1%;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='gray' d='M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z'/%3E%3C/g%3E%3C/svg%3E\");\n  background-size: cover;\n  background-position: center;\n  background-color: white;\n  transition: background-color 0.1s;\n  transition: transform 0.4s ease !important;\n}\n.RecBOJ .RecommendBox .OtherProblems .ReloadingM:hover {\n  background-color: lightgray;\n  transform: rotate(400deg) !important;\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer {\n  position: relative;\n  display: inline-block;\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .ToggleOptions {\n  width: 70px;\n  height: 30px;\n  border: none;\n  border-radius: 3px !important;\n  background-color: white;\n  font-weight: bold;\n  transition: background-color 0.2s;\n  margin-bottom: 5%;\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .ToggleOptions:hover {\n  background-color: lightgray;\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-enter {\n  opacity: 0;\n  transform: translateY(-20%);\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-enter-active {\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 300ms, transform 300ms;\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-exit {\n  opacity: 1;\n  transform: translateY(0);\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .options-exit-active {\n  opacity: 0;\n  transform: translateY(0%);\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers {\n  position: absolute;\n  width: 100px;\n  top: 100%;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 8px;\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers button {\n  margin: 4px 0;\n  padding: 8px;\n  cursor: pointer;\n  border: none;\n  background-color: transparent;\n  text-align: left;\n}\n.RecBOJ .RecommendBox .OtherProblems .OptionsContainer .Tiers button:hover {\n  background-color: #f2f2f2;\n  color: #041e49;\n}\n.RecBOJ .RecommendBox .Problems {\n  display: flex;\n  justify-content: space-around;\n  margin: 14px 3px;\n}\n.RecBOJ .RecommendBox .Problems .ProblemCard {\n  width: 200px;\n  height: 190px;\n  border-radius: 10px !important;\n  padding: 8px;\n  border: none;\n  color: #6D7856;\n  text-decoration: none;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  overflow: auto;\n  background-color: #f8fafd;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  transition: background-color 0.2s, transform 0.2s ease-in-out;\n}\n.RecBOJ .RecommendBox .Problems .ProblemCard:hover {\n  background-color: #EAF0FD;\n  transform: translateY(-3px);\n}\n.RecBOJ .RecommendBox .Problems .ProblemCard .ProblemName {\n  margin-bottom: 15px;\n  color: #1f1f1f;\n  font-size: 17px;\n  font-weight: 700;\n}\n.RecBOJ .hrefBox {\n  height: 40px;\n  color: #1f1f1f;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  font-weight: bold;\n}\n.RecBOJ .hrefBox:hover {\n  color: #041e49;\n  font-weight: bold;\n}\n.RecBOJ .header_rp {\n  padding-bottom: 5px;\n  color: #34495e;\n  font-size: 15px;\n  font-weight: bold;\n  text-align: center;\n}\n.RecBOJ .tagbtn_weak_problem {\n  height: 110px;\n  background-color: #f7f7f9;\n  padding: 10px;\n  font-size: 15px;\n  margin-bottom: 14px;\n  color: #6D7856;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 10px !important;\n  box-shadow: 0.5px 2px 4px rgba(0, 0, 0, 0.1);\n  margin-top: 3%;\n}\n.RecBOJ .list_rp {\n  padding-left: 6%;\n  display: flex;\n  flex-direction: row;\n  list-style-type: none; /* 리스트 기본 스타일 제거 */\n  padding: 5px;\n}\n.RecBOJ .pBox_header {\n  width: 60%;\n  padding: 10px;\n  font-size: 15px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.RecBOJ .container_rp {\n  display: flex;\n  flex-direction: \"row\";\n  justify-content: center;\n}\n.RecBOJ .rp_all {\n  margin-left: 3%;\n  margin-right: 3%;\n  align-items: center;\n  width: 23%;\n  display: \"flex\";\n  flex-direction: \"column\";\n}\n.RecBOJ .ServiceView {\n  margin: 20px;\n  padding-right: 15px;\n  font-weight: 700;\n  display: flex;\n  justify-content: flex-end;\n}\n.RecBOJ .ServiceView a {\n  color: black;\n  text-decoration: none;\n}\n\n/*# sourceMappingURL=MyPage.css.map */\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33495,9 +33472,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var dom_helpers_addClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dom-helpers/addClass */ "./node_modules/dom-helpers/esm/addClass.js");
@@ -33938,8 +33915,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   UNMOUNTED: () => (/* binding */ UNMOUNTED),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -38092,10 +38069,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./src/contentScript/style/MyPage.css":
-/*!********************************************!*\
-  !*** ./src/contentScript/style/MyPage.css ***!
-  \********************************************/
+/***/ "./src/contentScript/MyPage/MyPage.css":
+/*!*********************************************!*\
+  !*** ./src/contentScript/MyPage/MyPage.css ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -38115,7 +38092,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_MyPage_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./MyPage.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/style/MyPage.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_3_MyPage_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./MyPage.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/contentScript/MyPage/MyPage.css");
 
       
       
@@ -38511,7 +38488,6 @@ const getData = (url, numProblems, rotate, filterTier) => __awaiter(void 0, void
             }
         });
         if (response) {
-            console.log(response);
             return response.data;
         }
         return null;
@@ -38525,10 +38501,10 @@ const getData = (url, numProblems, rotate, filterTier) => __awaiter(void 0, void
 
 /***/ }),
 
-/***/ "./src/contentScript/MyPage.tsx":
-/*!**************************************!*\
-  !*** ./src/contentScript/MyPage.tsx ***!
-  \**************************************/
+/***/ "./src/contentScript/MyPage/MyPage.tsx":
+/*!*********************************************!*\
+  !*** ./src/contentScript/MyPage/MyPage.tsx ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -38538,10 +38514,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_MyPage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/MyPage.css */ "./src/contentScript/style/MyPage.css");
+/* harmony import */ var _MyPage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyPage.css */ "./src/contentScript/MyPage/MyPage.css");
 /* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/CSSTransition.js");
-/* harmony import */ var _Data_Data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Data/Data */ "./src/Data/Data.tsx");
+/* harmony import */ var _Data_Data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Data/Data */ "./src/Data/Data.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -38573,8 +38549,6 @@ function MyPage() {
                 if (response) {
                     setProblems(response);
                     setCurrentPage(0);
-                    console.log('good');
-                    console.log(response);
                 }
             }
             catch (error) {
@@ -38599,12 +38573,12 @@ function MyPage() {
         // 지정된 URL로 이동
         window.location.href = dynamicURL;
     };
-    const TypeOfRecommendation = ['취약 유형 기반 추천', '푼 지 오래된 문제 추천', '실력 기반 추천'];
+    const TypeOfRecommendation = ['취약 유형 기반 추천', '실력 기반 추천', '푼 지 오래된 문제 추천'];
     const Tiers = ['Random', 'Silver', 'Gold', 'Platinum', 'Diamond'];
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Main" },
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "RecBOJ" },
         problems &&
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", { className: "HeaderBar" }, TypeOfRecommendation.map((text, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: index, className: `manu ${currentPage === index ? 'active' : ''}`, onClick: () => setCurrentPage((currentPage) => (currentPage === index ? -1 : index)) }, text)))),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "RecContent" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "RecommendBox" },
             !problems && react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: 'https://velog.velcdn.com/images/qorjiwon/post/0de07a4d-690f-4f6a-b319-fceb8058e093/image.gif' })),
             currentPage === 0 && ( // 취약 유형 기반
@@ -38612,10 +38586,10 @@ function MyPage() {
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'WeekTags' }, problems.weak_tag_problems.map((tag, index) => {
                     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { key: tag.tag_name, className: 'WeekTagBtn', onClick: () => setSelectedField_weak(index) }, tag.tag_name));
                 })),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'weak_message' }, `${problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요.`),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: 'Message' }, `${problems.weak_tag_problems[selectedField_weak].weak_pcr}%만큼 약한 분야에요.`),
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'OtherProblems' },
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'ReloadingM', onClick: () => setRotate((rotate) => rotate + 1) }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "OptionsContainer" },
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "ToggleOptions", onClick: toggleOptions },
                             " ",
                             '난이도 필터',
@@ -38625,85 +38599,77 @@ function MyPage() {
                                     handleFilter(tier);
                                     setRotate(0);
                                 } }, tier)))))),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container_rp" }, (_a = problems.weak_tag_problems[selectedField_weak].explainations) === null || _a === void 0 ? void 0 : _a.map((problem, index) => {
-                        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'rp_all' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'pBox_content', "data-tip": `${problem['problemID']}번 풀러 가기`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problem['problemID']}`), style: { display: 'flex', flexDirection: 'column' } },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '17px', padding: '8px', color: '#1f1f1f' } },
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, problem['titleKo'])),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { fontSize: '3px' } },
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uB09C\uC774\uB3C4: ",
-                                    problem['level']),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
-                                    problem['averageTries']))));
-                    }))),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', paddingRight: '3%' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { "data-tip": `취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요.`, className: 'qmark' }, "\uCDE8\uC57D \uC720\uD615\uC774\uB780?"),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Problems" }, (_a = problems.weak_tag_problems[selectedField_weak].explainations) === null || _a === void 0 ? void 0 : _a.map((problem, index) => {
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { className: 'ProblemCard', "data-tip": `${problem['problemID']}번 풀러 가기`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problem['problemID']}`) },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: 'ProblemName' }, problem['titleKo']),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                            "\uB09C\uC774\uB3C4: ",
+                            problem['level']),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                            "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
+                            problem['averageTries'])));
+                })),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'ServiceView' },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { "data-tip": `취약 유형은 ${problems.user_id}님의 해당 유형의 정답률, 푼 문제 수 등을 고려하여 산출돼요.` }, '취약 유형이란?'),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "left", type: "dark", effect: "solid" })))),
             currentPage === 1 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { fontSize: '23px', fontFamily: 'Arial, sans-serif', marginBottom: '2px', textAlign: 'center', marginTop: '13px', color: '#202125' } }, "\uD574\uB2F9 \uBD84\uB958\uC758 \uBB38\uC81C\uB97C \uD47C \uC9C0 \uC624\uB798\uB410\uC5B4\uC694."),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { textAlign: 'center', marginBottom: '0px', color: '#5f6368' } }, "\uB098\uC911\uC5D4 \uB354 \uAE30\uC5B5\uB098\uC9C0 \uC54A\uC744 \uAC70\uC608\uC694!"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => setRotate(rotate => rotate + 1) }),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_4__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => setFilter('None') }, "\uBB34\uC791\uC704"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
-                                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC")))))),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: '20px' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' }, problems.forgotten_tag_problems.map((problemInfo) => {
-                        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'ProblemBox' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox' },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problemInfo.problem.level}, 분류: ${problemInfo.tag}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problemInfo.problem.problemID}` },
-                                    problemInfo.problem.titleKo,
-                                    " ")),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox' }, `현재 ${problemInfo.tag} 내용을 ${problemInfo.forgottenPercent}% 기억하고 있어요. `)));
-                    })),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { textAlign: 'right', fontSize: '13px', paddingRight: '3%', height: '33px' } },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`, style: { color: 'black', fontWeight: 'bold' }, href: 'https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0' }, '에빙하우스의 망각곡선')),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "top", type: "dark", effect: "solid" })))),
-            currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { fontSize: '24px', fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '13px', color: '#202125' } }, "\uC774\uB7F0 \uBB38\uC81C\uB294 \uC5B4\uB5A4\uAC00\uC694?"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { textAlign: 'center', marginBottom: '0px', color: '#5f6368' } },
-                    problems.user_id,
-                    "\uB2D8\uACFC \uBE44\uC2B7\uD55C \uC2E4\uB825\uC758 \uC720\uC800\uB4E4\uC774 \uB9CE\uC774 \uD47C \uBB38\uC81C\uB4E4\uC744 \uAC00\uC838\uC654\uC5B4\uC694!"),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', alignItems: 'center' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'reloadingM', onClick: () => setRotate(rotate => rotate + 1) }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "option-button-container" },
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "toggleOptions", onClick: toggleOptions }, " \uB09C\uC774\uB3C4 \uD544\uD130 "),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: 'Message' }, '이런 문제는 어떤가요?'),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, problems.user_id),
+                    '님과 비슷한 실력의 유저들이 많이 푼 문제들을 가져왔어요!'),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'OtherProblems' },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'ReloadingM', onClick: () => setRotate((rotate) => rotate + 1) }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "OptionsContainer" },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "ToggleOptions", onClick: toggleOptions },
+                            " ",
+                            '난이도 필터',
+                            " "),
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_4__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "options" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('None') }, "\uBB34\uC791\uC704"),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Silver') }, "\uC2E4\uBC84"),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Gold') }, "\uACE8\uB4DC"),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Platinum') }, "\uD50C\uB798\uD2F0\uB118"),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => handleFilter('Diamond') }, "\uB2E4\uC774\uC544\uBAAC\uB4DC"))))),
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: '20px' } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'divStyle' }, problems.similarity_based_problems.map((problem) => {
-                        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Box', id: 'Box1' },
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'pBox', id: "Problem1" },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `난이도: ${problem.level}, 분류: ${problem.tags}`, className: 'hrefBox', href: `https://www.acmicpc.net/problem/${problem.problemID}` }, problem.titleKo)),
-                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'eBox', style: { display: 'flex', flexDirection: 'column', gap: '5px' } },
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uB09C\uC774\uB3C4: ",
-                                    problem.level),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
-                                    problem.averageTries),
-                                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
-                                    "\uBD84\uB958: ",
-                                    problem.tags))));
-                    })),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "top", type: "dark", effect: "solid" })))))));
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Tiers" }, Tiers.map((tier) => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => {
+                                    handleFilter(tier);
+                                    setRotate(0);
+                                } }, tier)))))),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Problems' }, problems.similarity_based_problems.map((problem) => {
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { className: 'ProblemCard', "data-tip": `난이도: ${problem.level}, 분류: ${problem.tags}`, href: `https://www.acmicpc.net/problem/${problem.problemID}` },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: 'ProblemName' }, problem.titleKo),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                            "\uB09C\uC774\uB3C4: ",
+                            problem.level),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                            "\uD3C9\uADE0 \uC2DC\uB3C4 \uD69F\uC218: ",
+                            problem.averageTries),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                            "\uBD84\uB958: ",
+                            problem.tags)));
+                })))),
+            currentPage === 2 && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: 'Message' }, '해당 분류의 문제를 푼 지 오래됐어요.'),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { style: { textAlign: 'center', marginBottom: '0px', color: '#5f6368' } }, '나중엔 더 기억나지 않을 거예요!'),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'OtherProblems' },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: 'ReloadingM', onClick: () => setRotate((rotate) => rotate + 1) }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "OptionsContainer" },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "ToggleOptions", onClick: toggleOptions },
+                            " ",
+                            '난이도 필터',
+                            " "),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_4__["default"], { in: isOptionsVisible, timeout: 250, classNames: "options", unmountOnExit: true },
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "Tiers" }, Tiers.map((tier) => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: () => {
+                                    handleFilter(tier);
+                                    setRotate(0);
+                                } }, tier)))))),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'Problems' }, problems.forgotten_tag_problems.map((problemInfo) => {
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { className: 'ProblemCard', "data-tip": `난이도: ${problemInfo.problem.level}, 분류: ${problemInfo.tag}`, onClick: () => contentClick(`https://www.acmicpc.net/problem/${problemInfo.problem.problemID}`) },
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: 'ProblemName' }, problemInfo.problem.titleKo),
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null,
+                            '현재 ',
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, problemInfo.tag),
+                            '내용을 ',
+                            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, problemInfo.forgottenPercent),
+                            ' 기억하고 있어요.')));
+                })),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: 'ServiceView' },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { "data-tip": `해당 문제들은 독일의 심리학자 헤르만 에빙하우스의 망각곡선에 기반하여 ${problems.user_id}님이 오래 동안 풀지 않은 유형의 문제를 추천해 드리고 있어요.`, href: 'https://ko.wikipedia.org/wiki/%EB%A7%9D%EA%B0%81_%EA%B3%A1%EC%84%A0' }, '에빙하우스의 망각곡선'),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], { place: "left", type: "dark", effect: "solid" })))))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyPage);
 
@@ -38940,102 +38906,6 @@ module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%
 
 "use strict";
 module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cg transform=%27scale%28-1, 1%29 translate%28-24, 0%29%27%3E%3Cpath d=%27M0 0h24v24H0z%27 fill=%27none%27/%3E%3Cpath fill=%27gray%27 d=%27M12 6V3l-4 4l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8s-3.58-8-8-8z%27/%3E%3C/g%3E%3C/svg%3E";
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _extends)
-/* harmony export */ });
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends.apply(this, arguments);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _inheritsLoose)
-/* harmony export */ });
-/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
-  \*********************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _objectWithoutPropertiesLoose)
-/* harmony export */ });
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _setPrototypeOf)
-/* harmony export */ });
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
 
 /***/ }),
 
@@ -43193,6 +43063,102 @@ const isThenable = (thing) =>
 });
 
 
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _extends)
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _inheritsLoose)
+/* harmony export */ });
+/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \*********************************************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _objectWithoutPropertiesLoose)
+/* harmony export */ });
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/react-transition-group/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _setPrototypeOf)
+/* harmony export */ });
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
+
 /***/ })
 
 /******/ 	});
@@ -43319,7 +43285,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _RelatedProblem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RelatedProblem */ "./src/contentScript/RelatedProblem.tsx");
-/* harmony import */ var _MyPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyPage */ "./src/contentScript/MyPage.tsx");
+/* harmony import */ var _MyPage_MyPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyPage/MyPage */ "./src/contentScript/MyPage/MyPage.tsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 
@@ -43367,7 +43333,7 @@ if (IfMyPage()) {
     const divElement2 = document.createElement("div");
     parentElement.appendChild(divElement2);
     const root2 = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(divElement2);
-    root2.render(react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_MyPage__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+    root2.render(react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_MyPage_MyPage__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 }
 
 })();

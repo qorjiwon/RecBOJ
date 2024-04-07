@@ -24,7 +24,6 @@ export const getData = async (
         );
 
         if (response) {
-            console.log(response)
             return response.data;
         }
         return null
