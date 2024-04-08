@@ -17,7 +17,6 @@ def ease_recommend_problem(input_pivot):
     return result
 
 def Solved_Based_Recommenation(pivot_table, user_id, itpr, id_to_index ,NUM_TOP_PROBLEMS = 3):
-
     # url에서 필요한 정보를 
     #user_id에 맞는 문제 풀이 내역 추출
     user_id_index = pivot_table.index.get_loc(user_id)
@@ -127,7 +126,6 @@ def weak_strong_rec(df, user_id):
     # 평균 시도 횟수를 기준으로 나눔.
     weak_problem = df[(df['wrong_count'] + 1) > df['averageTries']]
     strong_problem = df[(df['wrong_count'] + 1 ) <= df['averageTries']]
-    print(weak_problem)
     #tag를 split
     weak_df_tags = tag_split(weak_problem)
     st_df_tags = tag_split(strong_problem)
@@ -156,7 +154,6 @@ def weak_strong_rec(df, user_id):
         strong_pcr[i] = round(strong_pcr[i] * 100, 1)
         weak_pcr[i] = round(weak_pcr[i] * 100, 1)
 
-    print("약한 분야", weak_pcr)
     return strong, weak, strong_pcr, weak_pcr
 
 def forgetting_curve_with_repetition(df):
@@ -182,6 +179,5 @@ def forget_curve(df, user_id):
     weak_3tag = df_tag.sort_values('day', ascending = False).head(3)
     weak_tag = weak_3tag['tags'].to_list()
     weak_tag_forgetpcr = weak_3tag['day'].to_list()
-
-    print(weak_tag, "망각률", weak_tag_forgetpcr)
+    
     return weak_tag, weak_tag_forgetpcr

@@ -37,14 +37,13 @@ async def send_mypage_data(request_data: MyPageRequest):
         #User_id가 있는지
         find = user_find(user_id)
         if find == False:
-            global user_df
+            global user_df, weak_strong_forget_df
             pwd = os.getcwd()
-            print(pwd)
             os.chdir("../database/scrapy/recboj/recboj/Spiders")
-            print(pwd, " , " ,  os.getcwd())
             os.system(f"scrapy runspider probleminfo.py -a newUser={user_id}")
             os.chdir(pwd)
             user_df = make_df()
+            weak_strong_forget_df = make_forgetting_df()
 
         if rotate == 0:
             pivot_table = make_pivot(user_df, user_id)
