@@ -47,6 +47,7 @@ async def send_mypage_data(request_data: MyPageRequest):
 
         if rotate == 0:
             pivot_table = make_pivot(user_df, user_id)
+            print(pivot_table)
             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
             # forget_curve를 이용해서...
             forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
