@@ -67,6 +67,12 @@ def make_df():
 def make_pivot(df, user_id):    
     low_level = min(df[df.user_id == user_id].level) - 2
     high_level = max(df[df.user_id == user_id].level) + 2
+    print("level은" , low_level, high_level)
+    # level이 낮은 애들은 컬럼 수가 너무 부족함.
+    # EASE모델에 넣을 컬럼 확보를 위해 조정.
+    if(high_level <= 10):
+        low_level = 0
+        high_level = 10
     selected_rows = df[(df['level'] >= low_level) & (df['level'] <= high_level)]
     pivot_df = selected_rows.pivot_table(index='user_id', columns='problem_id', values='solve', aggfunc='sum')
     # NaN 값을 0으로 채우기
