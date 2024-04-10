@@ -3,6 +3,8 @@ import numpy as np
 import json
 from models.mypage import *
 from typing import Dict
+from models.mypage import *
+from typing import Dict
 # Pivot_Table의 Nan값 처리
 def return_user_data(pivot_table):
     column_info = pivot_table.columns
@@ -13,7 +15,7 @@ def return_user_data(pivot_table):
 # user_id에 맞는 pivot table의 행을 추출 
 def get_problem_list(pivot, user_id, id_to_index):
     idx = id_to_index[id_to_index['user_id'] == user_id]['id_to_index']
-    problem_list = pivot[idx].flatten()
+    problem_list = pivot[['user_id'] == user_id].flatten()
     return problem_list
 
 # 데이터프레임의 tag를 나눔
@@ -126,7 +128,6 @@ def pretty_print(data, indent=0):
             # 딕셔너리가 아니면 그냥 출력
             print(' ' * indent + f'{key}: {value}')
 
-
 def cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, tag_num = 3, n = 3):
     
     # 취약 유형 문제 
@@ -169,6 +170,51 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
     Weaks: List[WeakTagProblem] = []
     Forgottens: List[ForgottenTagProblem] = []
     Similars: List[Problem] = []
+    # 취약 유형 문제 
+    weaks = []
+    for i in range(1, tag_num + 1):
+        tag_key = f'tag{i}'
+        problems = weakTagProblems[tag_key]['problems'][:3]
+        explainations_input = weakTagProblems[tag_key]['explainations'][:3]
+        
+        explainations = [
+            Explaination(problemID=exp[0], titleKo=exp[1], level=exp[2], averageTries=exp[3], tags=exp[4])
+            for exp in explainations_input
+        ]
+        
+        weak = WeakTagProblem(
+            tag_name=weakTagProblems[tag_key]['tag_name'],
+            problems=problems,
+            explainations=explainations,
+            weak_pcr=weakTagProblems[tag_key]['weak_pcr']
+        )
+        weaks.append(weak)
+
+    # 푼 지 오래된 문제
+    forgottens = []
+    for i in range(1, tag_num + 1):
+        tag_key = f'tag{i}'
+        print(forgottenTagProblems[tag_key])
+        # Todo: 망각기반 추천 문제 한 개도 없을 때 예외 처리
+        # 지금은 dummy data 전송
+        # problem_data = forgottenTagProblems[tag_key]['problem1']
+        problem_data = {'problemID': '1806', 'titleKo': '부분합', 'level': 'Gold IV', 'averageTries': 3.9, 'tags': 'prefix_sum'}
+        forgotten = ForgottenTagProblem(
+            tag=forgottenTagProblems[tag_key]['tag'],
+            forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
+            problem=Problem(**problem_data)  # Problem 모델을 사용하여 직접 생성
+        )
+        
+        forgottens.append(forgotten)
+
+    # 유사도 기반 추천
+    similars = [Problem(**similarityBasedProblems[f'problem{i}']) for i in range(1, n + 1)]
+    return weaks, forgottens, similars
+
+def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarityBasedProblems: Dict, rotate: int, filter: str, tag_num: int = 3, n: int = 3):
+    Weaks: List[WeakTagProblem] = []
+    Forgottens: List[ForgottenTagProblem] = []
+    Similars: List[Problem] = []
 
     rotate = int(rotate)
    
@@ -177,15 +223,16 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
         problems = []
         explainations = []
         cnt = 0
-       
         problems_list = weakTagProblems[tag_key]['problems']
         explanations_list = weakTagProblems[tag_key]['explainations']
         index = (n * rotate - (n-1)) % len(problems_list)
         while cnt < len(problems_list) and len(problems) < n:
             exp = explanations_list[index]
-            if checkTier(exp['level'], filter):
+            #exp가 List여서 2로 접근하는데 이거 아님.
+            # exp = [문제번호, 이름, 티어, 평균시도횟수, tag]
+            if checkTier(exp[2], filter):
                 problems.append(problems_list[index])
-                explainations.append(Explaination(**exp))
+                explainations.append(Explaination(problemID=exp[0], titleKo=exp[1], level=exp[2], averageTries=exp[3], tags=exp[4]))
             index = (index + 1) % len(problems_list)
             cnt += 1
 
@@ -195,37 +242,44 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
             explainations=explainations,
             weak_pcr=weakTagProblems[tag_key]['weak_pcr']
         ))
+        Weaks.append(WeakTagProblem(
+            tag_name=weakTagProblems[tag_key]['tag_name'],
+            problems=problems,
+            explainations=explainations,
+            weak_pcr=weakTagProblems[tag_key]['weak_pcr']
+        ))
     
-    for i in range(1, tag_num+1):
+    
+    # Forgotten 서비스 안한다고 가정하고 더미값 출력 중, 추후 수정
+    for i in range(1, tag_num + 1):
         tag_key = f'tag{i}'
-        
-        problems_list = forgottenTagProblems[tag_key]
-        rotated_index = rotate % (len(problems_list) - 2)
-        cnt = 0
-        while cnt < len(problems_list) - 2:
-            problem = problems_list[f'problem{rotated_index}']
-            if checkTier(problem['level'], filter):
-                Forgottens.append(ForgottenTagProblem(
-                    tag=forgottenTagProblems[tag_key]['tag'],
-                    forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
-                    problem=Problem(**problem)
-                ))
-                break
-            else:
-                cnt += 1
-                rotated_index = (rotated_index + 1) % (len(problems_list) - 2) + 1
+         # Todo: 망각기반 추천 문제 한 개도 없을 때 예외 처리
+        # 지금은 dummy data 전송
+        # problem_data = forgottenTagProblems[tag_key]['problem1']
+        problem_data = {'problemID': '1806', 'titleKo': '부분합', 'level': 'Gold IV', 'averageTries': 3.9, 'tags': 'prefix_sum'}
+        forgotten = ForgottenTagProblem(
+            tag=forgottenTagProblems[tag_key]['tag'],
+            forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
+            problem=Problem(**problem_data)  # Problem 모델을 사용하여 직접 생성
+        )
+        Forgottens.append(forgotten)
     
     for i in range(1, n+1):
         index = (rotate + i - 1) % len(similarityBasedProblems)
         cnt = 0
         while cnt < len(similarityBasedProblems):
+            print(1)
+            
             problem = similarityBasedProblems[f'problem{index + 1}']
             if checkTier(problem['level'], filter):
                 Similars.append(Problem(**problem))
+                print(111)
                 break
             else:
                 index = (index + 1) % len(similarityBasedProblems)
                 cnt += 1
+            print(2)
+    
 
     return Weaks, Forgottens, Similars
 

@@ -4,49 +4,89 @@ from datetime import datetime
 import warnings
 import ast
 from .registerNewUser import *
+#from database.connection import *
+import psycopg2
+from psycopg2 import OperationalError
 warnings.filterwarnings(action="ignore")
 
-def make_csv(user_id):
+database_host = os.getenv('DATABASE_HOST', 'localhost')
+
+def DBconnect():
     try:
-        if(check_id_duplicate(user_id) == False):
-            new_user_info_df, new_user_problem_df = registerNewUser.get_new_user_dataframe(user_id)
-            make_new_pivot_table(new_user_info_df)
-            make_new_forget_df(new_user_problem_df)
+        global cur, conn
+        #Port 지정시 Port Forwarding한 Host의 Port번호를 입력.
+        try:
+            conn = psycopg2.connect( user="myuser", password="mypassword", host = database_host , port=5433, database="mydatabase") #cursor 객체 생성(Create Object)
+        except OperationalError as e:
+            print(f"The error '{e}' occurred")
+        cur = conn.cursor()
+        print("Database Connect Success")
+        return cur, conn
+    except Exception as err:
+        print(str(err))
+
+def DBdisconnect():
+    try:
+        conn.close()
+        cur.close()
+        print("DB Connect Close")
     except:
-        print("error detection")
-
-def check_id_duplicate(user_id):
-    tf_id = pd.read_csv('data/khu_id_to_index.csv')
-    a = tf_id['user_id'] == user_id
-    return (a.sum() > 0)
-
-def make_new_pivot_table(u_i_df):
-    khu_user_info = pd.read_csv('data/final_khu_user_info.csv')
-    problem = pd.read_csv('data/final_problem_processed.csv')
-    khu_user_info['correct_problem'] = khu_user_info['correct_problem'].apply(ast.literal_eval)
-    user_df = pd.concat([khu_user_info, u_i_df],ignore_index=True)
-    #khu_user_info에 대한 csv파일 
-    user_df.to_csv('data/final_khu_user_info.csv', index = False)
-    user_df['id_to_index'] = user_df.index
-    
-    #id_to_index.csv 만들기
-    id_to_index = user_df[['user_id', 'id_to_index']]
-    id_to_index.to_csv('data/khu_id_to_index.csv', index = False)
-    
-    #pivot_table 만들기
-    user_df_result = user_df.explode('correct_problem')
-    user_df_result['solve'] = [1] * len(user_df_result)
-    final_df = pd.merge(user_df_result, problem, left_on='correct_problem', right_on='problemId').drop(columns=['problemId'])
-    pivot_table = final_df.pivot_table(index= ['id_to_index'] ,  columns=["Unnamed: 0"], values="solve")
-    pivot_table.to_csv('data/khu_pivot_table.csv', index = False)
+        print("Error: ", "Database Not Connected")
 
 
-def make_new_forget_df(u_p_df):
-    #데이터 불러오기
-    transform_csv = pd.read_csv('data/final_khu_user_problem_info.csv').drop(columns=['memory', 'time','language','code_length'])
-    transform_csv = pd.concat([transform_csv, u_p_df],ignore_index=True)
-    transform_csv.to_csv('data/final_khu_user_problem_info.csv', index = False)
-    #망각곡선, 취약유형에 쓰일 데이터프레임 만들기.
-    problem_info = pd.read_csv('data/final_problem_processed.csv').drop(columns=['titleKo','official','titles','isSolvable','acceptedUserCount','givesNoRating','Unnamed: 0','Unnamed: 0.1'])
-    df = pd.merge(transform_csv, problem_info, left_on='problem_id', right_on='problemId').drop(columns=['problemId'])
-    df.to_csv('data/final_khu_forgetting_curve_df.csv', index = False)
+def user_find(user_id):
+    try:
+        DBconnect()
+        # EXIST문을 통한 사용자 Record 검색
+        query = "SELECT EXISTS(SELECT 1 FROM USER_INFO UI WHERE UI.USER_ID = %s)"
+        cur.execute(query, (user_id, ))
+        result = cur.fetchone()
+        
+        # 사용자 ID의 존재 여부에 따라 True 또는 False 반환
+        if result and result[0]:
+            return True
+        else:
+            return False
+    except Exception as e:
+        print("Error:", e)
+        return False
+    finally:
+        # DB 연결 해제
+        DBdisconnect()
+
+def make_df():
+    cur, conn = DBconnect()
+    print("make_pivot을 위한 DB connection 성공")
+    query = """ SELECT COALESCE(PL.USER_ID, 'THISISNOTHUMANJUSTBOT') AS USER_ID, PD.PROBLEM_ID, 1 AS solve, UI.LEVEL 
+                FROM PROBLEM_DF PD LEFT JOIN PROBLEM_LOG PL 
+                                ON PL.PROBLEM_ID = PD.PROBLEM_ID, USER_INFO UI
+                WHERE PL.USER_ID = UI.USER_ID """
+    df = pd.read_sql_query(query, conn)
+    return df
+
+def make_pivot(df, user_id):    
+    low_level = min(df[df.user_id == user_id].level) - 2
+    high_level = max(df[df.user_id == user_id].level) + 2
+    print("level은" , low_level, high_level)
+    # level이 낮은 애들은 컬럼 수가 너무 부족함.
+    # EASE모델에 넣을 컬럼 확보를 위해 조정.
+    if(high_level <= 10):
+        low_level = 0
+        high_level = 10
+    selected_rows = df[(df['level'] >= low_level) & (df['level'] <= high_level)]
+    pivot_df = selected_rows.pivot_table(index='user_id', columns='problem_id', values='solve', aggfunc='sum')
+    # NaN 값을 0으로 채우기
+    pivot_df = pivot_df.fillna(0).astype(int)
+    print(pivot_df.shape)
+    DBdisconnect()
+    return pivot_df
+
+def make_forgetting_df():
+    cur, conned = DBconnect()
+    query = """SELECT pl.user_id, pl.problem_id , pl.total_count , pl.wrong_count, pl.last_time, pd.level, pd.averagetries as "averageTries", pd.tags
+               FROM PROBLEM_log pl join problem_df pd on pl.problem_id = pd.problem_id """
+    df = pd.read_sql_query(query, conned)
+    conned.close()
+    cur.close()
+    print("Make_Pivot의 DB Connect Close")
+    return df
