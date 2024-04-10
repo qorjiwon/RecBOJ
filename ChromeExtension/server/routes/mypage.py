@@ -33,6 +33,7 @@ async def send_mypage_data(request_data: MyPageRequest):
         rotate = request_data.div
         num_problems = request_data.numProblems
         filter = request_data.filter
+        num_problems = request_data.numProblems
         user_id = extract_user_id_from_mypage(current_url)
         #User_id가 있는지
         find = user_find(user_id)
@@ -72,12 +73,16 @@ async def send_mypage_data(request_data: MyPageRequest):
                 'user_id' : user_id,    
                 'weak_tag_problems': Weaks,
                 'forgotten_tag_problems': Forgottens,
+                'similarity_based_problems': Similars,
+                'weak_tag_problems': Weaks,
+                'forgotten_tag_problems': Forgottens,
                 'similarity_based_problems': Similars
             }
         print(f"Responsed to {user_id} (Mypage)")
         # cache가 너무 커지면 비우기
         if len(cache) >= 10000:
             cache.clear()
+
         response = ResponseData(**responseData)
         pretty_print(responseData)
         return response

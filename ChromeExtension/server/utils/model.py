@@ -11,16 +11,15 @@ with open('data/ProblemTagsDict.json', 'r') as f:
     TagDict = json.load(f)
 with open('data/level_to_tier.json', 'r') as f:
     TierDict = json.load(f)
+  
 
 def get_item2vec_problem(problem_id, submits, div) -> dict:
     # 저장된 모델 불러오기
-    model = Word2Vec.load("recsys_models/item2vec/word2vec_model.bin") 
+    model = Word2Vec.load(local_model_path)
     similar_problem = model.wv.most_similar(problem_id, topn= 500)
-
     problems = {}
     level_flag = get_levelflag(problem_id, submits, ProblemDict)
     problem_list = get_problem_by_level(problem_id, ProblemDict, similar_problem, level_flag)
-    print(problem_list)
     for i in range(3): 
         try:
             n = (3 * div + i) % len(problem_list)

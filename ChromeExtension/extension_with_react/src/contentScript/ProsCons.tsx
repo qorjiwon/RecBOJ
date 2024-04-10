@@ -34,26 +34,26 @@ function ProsCons() {
        
         const fetchTags = async () => {
         
-                const response = await fetch('http://127.0.0.1:8000/tags', {
-                    method: 'POST',
-                    body: JSON.stringify({ url: window.location.href}),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('서버 응답이 실패했습니다.');
+            const response = await fetch('http://127.0.0.1:8000/tags', {
+                method: 'POST',
+                body: JSON.stringify({ url: window.location.href}),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-                const data = await response.json();
-                let tagsData;
-                try {
-                    tagsData = JSON.parse(data.message);
-                } catch (error) {
-                    tagsData = data.message;
-                }
+            });
 
-                setTags(tagsData);
+            if (!response.ok) {
+                throw new Error('서버 응답이 실패했습니다.');
+            }
+            const data = await response.json();
+            let tagsData;
+            try {
+                tagsData = JSON.parse(data.message);
+            } catch (error) {
+                tagsData = data.message;
+            }
+
+            setTags(tagsData);
         };
 
         fetchTags();

@@ -1,5 +1,7 @@
 from typing import List
 from pydantic import BaseModel, Field
+from typing import List
+from pydantic import BaseModel, Field
 
 class MyPageRequest(BaseModel):
    url: str
@@ -22,6 +24,7 @@ class Explaination(BaseModel):
     tags: str
 
 class WeakTagProblem(BaseModel):
+
     tag_name: str
     problems: List[str]
     explainations: List[Explaination]
