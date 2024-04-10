@@ -58,6 +58,7 @@ async def send_mypage_data(request_data: MyPageRequest):
                 cache[user_id]['weakTagProblems'] = weakTagProblems   
                 cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
                 cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
+            print("test")
             Weaks, Forgottens, Similars = cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, n = num_problems)
         else:
             async with lock:

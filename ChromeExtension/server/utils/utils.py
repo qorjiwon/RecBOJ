@@ -152,12 +152,17 @@ def cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, 
     forgottens = []
     for i in range(1, tag_num + 1):
         tag_key = f'tag{i}'
-        problem_data = forgottenTagProblems[tag_key]['problem1']
+        print(forgottenTagProblems[tag_key])
+        # Todo: 망각기반 추천 문제 한 개도 없을 때 예외 처리
+        # 지금은 dummy data 전송
+        # problem_data = forgottenTagProblems[tag_key]['problem1']
+        problem_data = {'problemID': '1806', 'titleKo': '부분합', 'level': 'Gold IV', 'averageTries': 3.9, 'tags': 'prefix_sum'}
         forgotten = ForgottenTagProblem(
             tag=forgottenTagProblems[tag_key]['tag'],
             forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
             problem=Problem(**problem_data)  # Problem 모델을 사용하여 직접 생성
         )
+        
         forgottens.append(forgotten)
 
     # 유사도 기반 추천
@@ -200,7 +205,10 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
     # Forgotten 서비스 안한다고 가정하고 더미값 출력 중, 추후 수정
     for i in range(1, tag_num + 1):
         tag_key = f'tag{i}'
-        problem_data = forgottenTagProblems[tag_key]['problem1']
+         # Todo: 망각기반 추천 문제 한 개도 없을 때 예외 처리
+        # 지금은 dummy data 전송
+        # problem_data = forgottenTagProblems[tag_key]['problem1']
+        problem_data = {'problemID': '1806', 'titleKo': '부분합', 'level': 'Gold IV', 'averageTries': 3.9, 'tags': 'prefix_sum'}
         forgotten = ForgottenTagProblem(
             tag=forgottenTagProblems[tag_key]['tag'],
             forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
