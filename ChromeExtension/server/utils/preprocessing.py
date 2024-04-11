@@ -65,11 +65,8 @@ def make_df():
     return df
 
 def make_pivot(df, user_id):    
-    print(user_id)
     low_level = min(df[df.user_id == user_id].level) - 2
-    print(low_level)
     high_level = max(df[df.user_id == user_id].level) + 2
-    print("level은" , low_level, high_level)
     # level이 낮은 애들은 컬럼 수가 너무 부족함.
     # EASE모델에 넣을 컬럼 확보를 위해 조정.
     if(high_level <= 10):

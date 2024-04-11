@@ -118,15 +118,32 @@ def get_levelflag(problem_id, data, ProblemDict):
         flag = 0
     return flag
 
-def pretty_print(data, indent=0):
-    for key, value in data.items():
-        if isinstance(value, dict):
-            # 만약 값이 딕셔너리이면 재귀 호출
-            print(' ' * indent + f'{key}:')
-            pretty_print(value, indent + 2)
-        else:
-            # 딕셔너리가 아니면 그냥 출력
-            print(' ' * indent + f'{key}: {value}')
+def pretty_print(responseData):
+    # 사용자 ID 출력
+    print(f"User ID: {responseData['user_id']}\n")
+
+    # 약한 태그 문제 출력
+    print("Weak Tag Problems:")
+    for weak in set(map(str, responseData['weak_tag_problems'])):  # 중복 제거
+        weak_data = eval(weak)
+        print(f"  Tag: {weak_data['tag_name']} (Weak PCR: {weak_data['weak_pcr']}%)")
+        for exp in weak_data['explainations']:
+            print(f"    - Problem ID: {exp['problemID']}, Title: {exp['titleKo']}, Level: {exp['level']}, Average Tries: {exp['averageTries']}, Tags: {exp['tags']}")
+
+    # 잊혀진 태그 문제 출력
+    print("\nForgotten Tag Problems:")
+    for forgotten in set(map(str, responseData['forgotten_tag_problems'])):  # 중복 제거
+        forgotten_data = eval(forgotten)
+        problem = forgotten_data['problem']
+        print(f"  Tag: {forgotten_data['tag']} (Forgotten Percent: {forgotten_data['forgottenPercent']}%)")
+        print(f"    - Problem ID: {problem['problemID']}, Title: {problem['titleKo']}, Level: {problem['level']}, Average Tries: {problem['averageTries']}, Tags: {problem['tags']}")
+
+    # 유사 문제 출력
+    print("\nSimilarity Based Problems:")
+    for similar in set(map(str, responseData['similarity_based_problems'])):  # 중복 제거
+        similar_data = eval(similar)
+        print(f"  Problem ID: {similar_data['problemID']}, Title: {similar_data['titleKo']}, Level: {similar_data['level']}, Average Tries: {similar_data['averageTries']}, Tags: {similar_data['tags']}")
+
 
 def cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, tag_num = 3, n = 3):
     

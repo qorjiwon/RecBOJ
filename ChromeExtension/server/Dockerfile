@@ -13,12 +13,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 ADD . /app
 
 ENV PYTHONPATH=/app
-
-RUN pip install scrapy
 # 포트 8000 열기
 EXPOSE 8000
 
 CMD ["python", "app.py"]
-
-# Uvicorn으로 애플리케이션 실행
-#CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

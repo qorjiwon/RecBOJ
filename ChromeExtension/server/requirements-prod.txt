@@ -24,3 +24,4 @@ scipy==1.11.3
 psycopg2-binary==2.9.1
 fake-useragent==1.5.1
 scrapy-fake-useragent==1.4.4
+scrapy==2.11.1

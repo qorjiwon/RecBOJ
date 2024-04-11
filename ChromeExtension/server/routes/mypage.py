@@ -40,7 +40,6 @@ async def send_mypage_data(request_data: MyPageRequest):
         if find == False:
             global user_df, weak_strong_forget_df
             pwd = os.getcwd()
-            print(pwd)
             os.chdir("./scrapy/recboj/recboj/spiders")
             os.system(f"scrapy runspider probleminfo.py -a newUser={user_id}")
             os.chdir(pwd)
@@ -48,7 +47,6 @@ async def send_mypage_data(request_data: MyPageRequest):
             weak_strong_forget_df = make_forgetting_df()
         if rotate == 0:
             pivot_table = make_pivot(user_df, user_id)
-            print(pivot_table)
             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
             # forget_curve를 이용해서...
             forgotten_tag, forgotten_pcr = forget_curve(weak_strong_forget_df, user_id)
@@ -59,7 +57,6 @@ async def send_mypage_data(request_data: MyPageRequest):
                 cache[user_id]['weakTagProblems'] = weakTagProblems   
                 cache[user_id]['forgottenTagProblems'] = forgottenTagProblems
                 cache[user_id]['similarityBasedTagProblems'] = similarityBasedProblems
-            print("test")
             Weaks, Forgottens, Similars = cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, n = num_problems)
         else:
             async with lock:
@@ -84,7 +81,6 @@ async def send_mypage_data(request_data: MyPageRequest):
             cache.clear()
 
         response = ResponseData(**responseData)
-        pretty_print(responseData)
         return response
     except HTTPException as e:
         # HTTP 예외 발생 시 로그로 출력
