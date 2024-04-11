@@ -48,17 +48,23 @@ services:
     networks:
       - my-custom-network
 
-  # server:
-  #   build: 
-  #     context: ./server
-  #     dockerfile: Dockerfile
-  #   image: wjddn/recboj:latest
-  #   ports:
-  #     - 8000:8000
-  #   volumes:
-  #     - ./server/:/server
-  #   networks:
-  #     - my-custom-network
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    image: wjddn/recboj:latest
+    ports:
+      - 8000:8000
+    working_dir: /app
+    networks:
+      - my-custom-network
+    depends_on:
+      - scrapy
+      - postgres-server
+      - table-generator
+    environment:
+      DATABASE_HOST: postgres-server  # 이 줄을 추가합니다.
 
 networks:
   my-custom-network:

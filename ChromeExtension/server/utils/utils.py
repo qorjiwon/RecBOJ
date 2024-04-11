@@ -294,7 +294,7 @@ def load_from_json(filename, dir_path = 'user_data/'):
         return json.load(f)
     
 def checkTier(tier, filter):
-    if filter == "None":
+    if filter == "None" or filter == "Random":
         return True
     elif filter in tier:
         return True

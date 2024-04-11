@@ -11,8 +11,8 @@ with open('data/ProblemTagsDict.json', 'r') as f:
     TagDict = json.load(f)
 with open('data/level_to_tier.json', 'r') as f:
     TierDict = json.load(f)
-  
 
+local_model_path = 'recsys_models/item2vec/word2vec_model.bin'
 def get_item2vec_problem(problem_id, submits, div) -> dict:
     # 저장된 모델 불러오기
     model = Word2Vec.load(local_model_path)

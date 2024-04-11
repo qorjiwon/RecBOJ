@@ -14,6 +14,7 @@ ADD . /app
 
 ENV PYTHONPATH=/app
 
+RUN pip install scrapy
 # 포트 8000 열기
 EXPOSE 8000
 
