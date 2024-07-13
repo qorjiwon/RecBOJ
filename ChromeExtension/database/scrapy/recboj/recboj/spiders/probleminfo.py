@@ -53,6 +53,12 @@ class ProblemInfoSpider(Spider) :
             level = 0
         user['level'] = level #level 정보 넣어주면 됌
 
+        # correct problem
+        additional_request = Request(url = f"https://www.acmicpc.net/user/{user_id}")
+        deferred = self.crawler.engine.download(additional_request)
+        response = await maybe_deferred_to_future(deferred)
+        user['correct problem'] = response.xpath('//*[@class="problem-list"]')[0].xpath("./a/text()").getall()
+
         yield user
         for problem in problem_list :
             problem= urllib.parse.unquote(problem)
