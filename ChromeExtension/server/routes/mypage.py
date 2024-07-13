@@ -8,16 +8,25 @@ import pandas as pd
 from utils.preprocessing import *
 from utils.recommendation import *
 import os
+import time
 
+
+print("mypage_router전")
 mypage_router = APIRouter(
     tags=["mypage"]
 )
+print("mypage_router 후")
 # 로깅 레벨 설정
+print("logging.basicConfig 전")
 logging.basicConfig(level=logging.DEBUG)
+print("logging.basicConfig 후")
 lock = asyncio.Lock()
+print("lock = asyncio.Lock() 전")
 
+print("forgetting_df 드가자~")
 weak_strong_forget_df = make_forgetting_df()
 #pivot_table 만들 때 user_id를 어케주지...?
+print("user_df 드가자~")
 user_df = make_df()
 
 index_to_problem = pd.read_csv('data/final_problem_processed.csv')
@@ -37,6 +46,7 @@ async def send_mypage_data(request_data: MyPageRequest):
         user_id = extract_user_id_from_mypage(current_url)
         #User_id가 있는지
         find = user_find(user_id)
+        #user_id는 있지만, 오래전에 업데이트 한 경우에는 다시 크롤링
         if find == False:
             global user_df, weak_strong_forget_df
             pwd = os.getcwd()

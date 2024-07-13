@@ -3,8 +3,7 @@ import numpy as np
 import json
 from models.mypage import *
 from typing import Dict
-from models.mypage import *
-from typing import Dict
+
 # Pivot_Table의 Nan값 처리
 def return_user_data(pivot_table):
     column_info = pivot_table.columns
@@ -69,7 +68,7 @@ def get_problem_by_level(target_problem, ProblemDict, similar_problem, level_fla
         elif level_flag == 1:
             for i in range(200):
                 if int(ProblemDict[similar_problem[i][0]]['level']) < target_level \
-                     and int(ProblemDict[similar_problem[i][0]]['level']) >= max(target_level - 2, 1):
+                    and int(ProblemDict[similar_problem[i][0]]['level']) >= max(target_level - 2, 1):
                     problem_list.append((similar_problem[i][0], round(similar_problem[i][1] * 100)))
                     cnt += 1
                     if cnt == 15:
@@ -171,11 +170,18 @@ def cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, 
     forgottens = []
     for i in range(1, tag_num + 1):
         tag_key = f'tag{i}'
-        problem_data = forgottenTagProblems[tag_key]['problem1']
+        # problem_data = forgottenTagProblems[tag_key]['problem1']
+        # 뫀킹데이터임 이거 나중에 수정 필요!!
         forgotten = ForgottenTagProblem(
-            tag=forgottenTagProblems[tag_key]['tag'],
-            forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
-            problem=Problem(**problem_data)  # Problem 모델을 사용하여 직접 생성
+            tag="정렬",
+            forgottenPercent=85.5,
+            problem=Problem(
+                problemID="1001",
+                titleKo="문제 제목 1",
+                level="2",
+                averageTries=3.5,
+                tags="정렬, 배열"
+            )
         )
         forgottens.append(forgotten)
 
@@ -234,7 +240,7 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
     Similars: List[Problem] = []
 
     rotate = int(rotate)
-   
+    
     for i in range(1, tag_num+1):
         tag_key = f'tag{i}'
         problems = []
@@ -270,7 +276,7 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
     # Forgotten 서비스 안한다고 가정하고 더미값 출력 중, 추후 수정
     for i in range(1, tag_num + 1):
         tag_key = f'tag{i}'
-         # Todo: 망각기반 추천 문제 한 개도 없을 때 예외 처리
+        # Todo: 망각기반 추천 문제 한 개도 없을 때 예외 처리
         # 지금은 dummy data 전송
         # problem_data = forgottenTagProblems[tag_key]['problem1']
         problem_data = {'problemID': '1806', 'titleKo': '부분합', 'level': 'Gold IV', 'averageTries': 3.9, 'tags': 'prefix_sum'}
@@ -284,18 +290,15 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
     for i in range(1, n+1):
         index = (rotate + i - 1) % len(similarityBasedProblems)
         cnt = 0
-        while cnt < len(similarityBasedProblems):
-            print(1)
-            
+        while cnt < len(similarityBasedProblems):            
             problem = similarityBasedProblems[f'problem{index + 1}']
             if checkTier(problem['level'], filter):
                 Similars.append(Problem(**problem))
-                print(111)
                 break
             else:
                 index = (index + 1) % len(similarityBasedProblems)
                 cnt += 1
-            print(2)
+
     
 
     return Weaks, Forgottens, Similars

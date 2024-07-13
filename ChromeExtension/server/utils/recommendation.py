@@ -1,5 +1,6 @@
 from .model import *
 from .utils import *
+from .preprocessing import make_user_correct_problem
 import pandas as pd
 from time import time   
 import numpy as np
@@ -19,20 +20,25 @@ def ease_recommend_problem(input_pivot):
 def Solved_Based_Recommenation(pivot_table, user_id, itpr, id_to_index ,NUM_TOP_PROBLEMS = 3):
     # url에서 필요한 정보를 
     #user_id에 맞는 문제 풀이 내역 추출
+    correct_problem_list = make_user_correct_problem(user_id)
     user_id_index = pivot_table.index.get_loc(user_id)
     # 피봇테이블의 컬럼(문제 번호) 정보 가져오기
     columns = pivot_table.columns
     X = pivot_table.to_numpy()
+    
     #user 문제 풀이 내역을 통한 추천 문제
     result = ease_recommend_problem(X)
     top_problems_by_user = np.argsort(-result, axis=1)[:, :NUM_TOP_PROBLEMS]
-    #bn.argpartition(-result, NUM_TOP_PROBLEMS, axis=1)[:, :NUM_TOP_PROBLEMS]
+
     rec_user = top_problems_by_user[user_id_index]
     problem_id = columns[rec_user]
-    print("EASE Problem", problem_id)
+
+    # 추천된 문제들 중에서 맞았던 문제들은 제외!
+    filtered_problems = [pid for pid in problem_id if pid not in correct_problem_list]
+    print("EASE Problem", filtered_problems)
     rtn = {}
     cnt = 0
-    for item in problem_id:
+    for item in filtered_problems:
         rtn['problem'+str(cnt)] = item
         cnt += 1
     return rtn
@@ -150,10 +156,12 @@ def weak_strong_rec(df, user_id):
     strong_pcr = strong_3tag[strong_3tag['user_id'] == user_id]['accuracy'].to_list()
     weak_pcr = weak_3tag[weak_3tag['user_id'] == user_id]['accuracy'].to_list()
 
-    for i in range(len(min(strong_pcr, weak_pcr))):
-        strong_pcr[i] = round(strong_pcr[i] * 100, 1)
-        weak_pcr[i] = round(weak_pcr[i] * 100, 1)
-
+    try:
+        for i in range(len(min(strong_pcr, weak_pcr))):
+            strong_pcr[i] = round(strong_pcr[i] * 100, 1)
+            weak_pcr[i] = round(weak_pcr[i] * 100, 1)
+    except Exception as e:
+        print(e, "strong, weak 문제다!!")
     return strong, weak, strong_pcr, weak_pcr
 
 def forgetting_curve_with_repetition(df):

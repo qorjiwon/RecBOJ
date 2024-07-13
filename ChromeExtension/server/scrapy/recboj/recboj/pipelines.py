@@ -34,13 +34,14 @@ class RecbojPipeline:
     def handle_user(self,item, spider) :
         user_id = item.get('user_id')
         level = item.get('level')
+        correct_problem = item.get('correct_problem')
         print("handle user 시작합니다")
-        sql_query = "INSERT INTO user_info(user_id, level) " \
-                "VALUES (%s, %s) " \
+        sql_query = "INSERT INTO user_info(user_id, level, correct_problem) " \
+                "VALUES (%s, %s, %s) " \
                 "ON CONFLICT (user_id) DO UPDATE " \
                 "SET level = EXCLUDED.level;" 
-        data_to_insert = (user_id, level)
-        print(user_id, level)
+        data_to_insert = (user_id, level, correct_problem)
+        
         self.cur.execute(sql_query, data_to_insert)
         self.conn.commit()
 
@@ -103,5 +104,3 @@ class RecbojPipeline:
             print("DB Connect Close")
         except:
             print("Error: ", "Database Not Connected")
-
-

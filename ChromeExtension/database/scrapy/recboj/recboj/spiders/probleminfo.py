@@ -13,20 +13,24 @@ class ProblemInfoSpider(Spider) :
 
     def start_requests(self):
         user_list = list(pd.read_csv('./user_list.csv')['user_id'])
-        print(user_list)
+
         try :
             if (self.newUser != None) :
                 user_list = [self.newUser]
         except :
             None
         for user in user_list :
-            profile_url = f"https://www.acmicpc.net/status?user_id={user}&result_id=4"
-            yield scrapy.Request(url = profile_url, callback = self.parse_user, cb_kwargs = {'user_id':user})
+            profile_url = f"https://www.acmicpc.net/user/{user}"
+            yield scrapy.Request(url = profile_url, callback = self.parse_main, cb_kwargs = {'user_id':user})
 
-    async def parse_user(self, response, user_id) :
+    async def parse_main(self, response, user_id) :
         user = items.User()
         user['user_id'] = user_id
-        print(user_id)
+        user['correct_problem'] = response.xpath('//*[@class="problem-list"]')[0].xpath("./a/text()").getall()
+        yield scrapy.Request(url = f"https://www.acmicpc.net/status?user_id={user_id}&result_id=4", callback=self.parse_user, cb_kwargs = {'user':user})
+
+    async def parse_user(self, response, user) :
+        user_id = user['user_id']
         #Problem 정보 가져오기
         problem_list=[]
         for page in range(3) :
@@ -67,4 +71,3 @@ class ProblemInfoSpider(Spider) :
         log['wrong_count'] = sum([False if (result == '맞았습니다!!' or result == '100점') else True for result in response.xpath('//*[@class="result"]/span/text()').getall()])
         log['last_time'] = response.xpath('//*[@class="real-time-update show-date "]/@data-timestamp').get()
         yield log
-        
