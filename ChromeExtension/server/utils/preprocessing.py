@@ -50,6 +50,7 @@ def user_find(user_id):
     except Exception as e:
         print("Error:", e)
         return False
+    
     finally:
         # DB 연결 해제
         DBdisconnect()
@@ -64,9 +65,15 @@ def make_df():
     df = pd.read_sql_query(query, conn)
     return df
 
-def make_pivot(df, user_id):    
-    low_level = min(df[df.user_id == user_id].level) - 2
-    high_level = max(df[df.user_id == user_id].level) + 2
+def make_pivot(df, user_id):
+    low_level = 7
+    high_level = 13
+    try: 
+        low_level = min(df[df.user_id == user_id].level) - 2
+        high_level = max(df[df.user_id == user_id].level) + 2
+    except Exception as e:
+        print("low, high 여기가 문제다!!", e)
+
     # level이 낮은 애들은 컬럼 수가 너무 부족함.
     # EASE모델에 넣을 컬럼 확보를 위해 조정.
     if(high_level <= 10):
@@ -83,9 +90,29 @@ def make_pivot(df, user_id):
 def make_forgetting_df():
     cur, conned = DBconnect()
     query = """SELECT pl.user_id, pl.problem_id , pl.total_count , pl.wrong_count, pl.last_time, pd.level, pd.averagetries as "averageTries", pd.tags
-               FROM PROBLEM_log pl join problem_df pd on pl.problem_id = pd.problem_id """
+                FROM PROBLEM_log pl join problem_df pd on pl.problem_id = pd.problem_id """
     df = pd.read_sql_query(query, conned)
     conned.close()
     cur.close()
     print("Make_Pivot의 DB Connect Close")
     return df
+
+
+def make_user_correct_problem(user_id):
+    cur, conn = DBconnect()
+    print("User_correct_problem 을 위한 DB connection 성공")
+    
+    query = """ SELECT CORRECT_PROBLEM
+                FROM USER_INFO UI
+                WHERE UI.USER_ID = %s """
+
+    cur.execute(query, (user_id, ))
+    correct_list_str = cur.fetchone()
+
+    if correct_list_str:
+        print(type(correct_list_str[0]))
+        correct_list = [int(num) for num in correct_list_str[0]]    
+        return correct_list
+    else:
+        return None 
+

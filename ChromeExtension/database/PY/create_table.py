@@ -35,7 +35,8 @@ def create_user_table():
     create_user_query = """
     CREATE TABLE IF NOT EXISTS user_info (
         user_id text PRIMARY KEY,
-        level int
+        level int,
+        correct_problem text[] NOT NULL
     );"""
     cur.execute(create_user_query)
     conn.commit()
