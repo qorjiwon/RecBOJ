@@ -1,12 +1,13 @@
 import time,os
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 import warnings
 import ast
 from .registerNewUser import *
 #from database.connection import *
 import psycopg2
 from psycopg2 import OperationalError
+
 warnings.filterwarnings(action="ignore")
 
 database_host = os.getenv('DATABASE_HOST')
@@ -37,13 +38,17 @@ def DBdisconnect():
 def user_find(user_id):
     try:
         DBconnect()
-        # EXIST문을 통한 사용자 Record 검색
-        query = "SELECT EXISTS(SELECT 1 FROM USER_INFO UI WHERE UI.USER_ID = %s)"
-        cur.execute(query, (user_id, ))
+        query = "SELECT updated_at FROM USER_INFO UI WHERE UI.USER_ID = %s"
+        cur.execute(query, (user_id,))
         result = cur.fetchone()
-        
-        # 사용자 ID의 존재 여부에 따라 True 또는 False 반환
-        if result and result[0]:
+
+        if result:
+            updated_at = result[0]
+            time_diff = datetime.now(updated_at.tzinfo) - updated_at
+            
+            if time_diff > timedelta(hours=3):
+                return False
+            
             return True
         else:
             return False
