@@ -36,7 +36,8 @@ def create_user_table():
     CREATE TABLE IF NOT EXISTS user_info (
         user_id text PRIMARY KEY,
         level int,
-        correct_problem text[] NOT NULL
+        correct_problem text[] NOT NULL,
+        updated_at timestamp without time zone
     );"""
     cur.execute(create_user_query)
     conn.commit()
