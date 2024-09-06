@@ -1,6 +1,6 @@
 from typing import List
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel, Field
 
 class MyPageRequest(BaseModel):
@@ -37,6 +37,7 @@ class ForgottenTagProblem(BaseModel):
 
 class ResponseData(BaseModel):
     user_id: str = Field(..., example="12345")
-    weak_tag_problems: List[WeakTagProblem]
-    forgotten_tag_problems: List[ForgottenTagProblem]
-    similarity_based_problems: List[Problem]
+    message: str = "response ok"
+    weak_tag_problems: Optional[List[WeakTagProblem]]
+    forgotten_tag_problems: Optional[List[ForgottenTagProblem]]
+    similarity_based_problems: Optional[List[Problem]]

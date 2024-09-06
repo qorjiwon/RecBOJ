@@ -25,7 +25,7 @@ print("lock = asyncio.Lock() 전")
 
 print("forgetting_df 드가자~")
 weak_strong_forget_df = make_forgetting_df()
-#pivot_table 만들 때 user_id를 어케주지...?
+#pivot_table 만들 때 user_id를 어케주지...?            
 print("user_df 드가자~")
 user_df = make_df()
 
@@ -42,7 +42,6 @@ async def send_mypage_data(request_data: MyPageRequest):
         rotate = request_data.div
         num_problems = request_data.numProblems
         filter = request_data.filter
-        num_problems = request_data.numProblems
         user_id = extract_user_id_from_mypage(current_url)
         #User_id가 있는지
         find = user_find(user_id)
@@ -53,8 +52,17 @@ async def send_mypage_data(request_data: MyPageRequest):
             os.chdir("./scrapy/recboj/recboj/spiders")
             os.system(f"scrapy runspider probleminfo.py -a newUser={user_id}")
             os.chdir(pwd)
+            time.sleep(0.1)
+            if not user_find(user_id):
+                responseData = {
+                    'user_id' : user_id,
+                    'message' : "response failed"   
+                }
+                response = ResponseData(**responseData)
+                return response
             user_df = make_df()
             weak_strong_forget_df = make_forgetting_df()
+
         if rotate == 0:
             pivot_table = make_pivot(user_df, user_id)
             strong_tag, weak_tag, strong_pcr, weak_pcr = weak_strong_rec(weak_strong_forget_df, user_id)
@@ -74,13 +82,9 @@ async def send_mypage_data(request_data: MyPageRequest):
                 forgottenTagProblems = cache[user_id]['forgottenTagProblems']
                 similarityBasedProblems = cache[user_id]['similarityBasedTagProblems']
             Weaks, Forgottens, Similars = reloadProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, rotate, filter, n = num_problems)
-        
-    
+
         responseData = {
                 'user_id' : user_id,    
-                'weak_tag_problems': Weaks,
-                'forgotten_tag_problems': Forgottens,
-                'similarity_based_problems': Similars,
                 'weak_tag_problems': Weaks,
                 'forgotten_tag_problems': Forgottens,
                 'similarity_based_problems': Similars

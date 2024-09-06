@@ -3,6 +3,7 @@ import logging
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from utils.utils import *
 from utils.model import *
@@ -22,6 +23,10 @@ app.add_middleware(
     allow_methods=["*"], 
     allow_headers=["*"], 
 )
+
+# 정적 파일을 서비스하기 위한 StaticFiles 미들웨어 설정
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 # 로깅 레벨 설정
 logging.basicConfig(level=logging.DEBUG)

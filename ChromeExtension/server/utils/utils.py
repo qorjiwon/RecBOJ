@@ -189,50 +189,6 @@ def cutProblems(weakTagProblems, forgottenTagProblems, similarityBasedProblems, 
     similars = [Problem(**similarityBasedProblems[f'problem{i}']) for i in range(1, n + 1)]
     return weaks, forgottens, similars
 
-def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarityBasedProblems: Dict, rotate: int, filter: str, tag_num: int = 3, n: int = 3):
-    Weaks: List[WeakTagProblem] = []
-    Forgottens: List[ForgottenTagProblem] = []
-    Similars: List[Problem] = []
-    # 취약 유형 문제 
-    weaks = []
-    for i in range(1, tag_num + 1):
-        tag_key = f'tag{i}'
-        problems = weakTagProblems[tag_key]['problems'][:3]
-        explainations_input = weakTagProblems[tag_key]['explainations'][:3]
-        
-        explainations = [
-            Explaination(problemID=exp[0], titleKo=exp[1], level=exp[2], averageTries=exp[3], tags=exp[4])
-            for exp in explainations_input
-        ]
-        
-        weak = WeakTagProblem(
-            tag_name=weakTagProblems[tag_key]['tag_name'],
-            problems=problems,
-            explainations=explainations,
-            weak_pcr=weakTagProblems[tag_key]['weak_pcr']
-        )
-        weaks.append(weak)
-
-    # 푼 지 오래된 문제
-    forgottens = []
-    for i in range(1, tag_num + 1):
-        tag_key = f'tag{i}'
-        print(forgottenTagProblems[tag_key])
-        # Todo: 망각기반 추천 문제 한 개도 없을 때 예외 처리
-        # 지금은 dummy data 전송
-        # problem_data = forgottenTagProblems[tag_key]['problem1']
-        problem_data = {'problemID': '1806', 'titleKo': '부분합', 'level': 'Gold IV', 'averageTries': 3.9, 'tags': 'prefix_sum'}
-        forgotten = ForgottenTagProblem(
-            tag=forgottenTagProblems[tag_key]['tag'],
-            forgottenPercent=forgottenTagProblems[tag_key]['forgottenPercent'],
-            problem=Problem(**problem_data)  # Problem 모델을 사용하여 직접 생성
-        )
-        
-        forgottens.append(forgotten)
-
-    # 유사도 기반 추천
-    similars = [Problem(**similarityBasedProblems[f'problem{i}']) for i in range(1, n + 1)]
-    return weaks, forgottens, similars
 
 def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarityBasedProblems: Dict, rotate: int, filter: str, tag_num: int = 3, n: int = 3):
     Weaks: List[WeakTagProblem] = []
@@ -259,12 +215,6 @@ def reloadProblems(weakTagProblems: Dict, forgottenTagProblems: Dict, similarity
             index = (index + 1) % len(problems_list)
             cnt += 1
 
-        Weaks.append(WeakTagProblem(
-            tag_name=weakTagProblems[tag_key]['tag_name'],
-            problems=problems,
-            explainations=explainations,
-            weak_pcr=weakTagProblems[tag_key]['weak_pcr']
-        ))
         Weaks.append(WeakTagProblem(
             tag_name=weakTagProblems[tag_key]['tag_name'],
             problems=problems,

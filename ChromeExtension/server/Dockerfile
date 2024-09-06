@@ -13,6 +13,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 ADD . /app
 
 ENV PYTHONPATH=/app
+ENV DATABASE_HOST=postgres-server
 # 포트 8000 열기
 EXPOSE 8000
 

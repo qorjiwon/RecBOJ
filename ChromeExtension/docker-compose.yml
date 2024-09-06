@@ -48,23 +48,6 @@ services:
     networks:
       - my-custom-network
 
-  api:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    platform: linux/amd64
-    ports:
-      - 8000:8000
-    working_dir: /app
-    networks:
-      - my-custom-network
-    depends_on:
-      - scrapy
-      - postgres-server
-      - table-generator
-    environment:
-      DATABASE_HOST: postgres-server
-
 networks:
   my-custom-network:
     external: true
